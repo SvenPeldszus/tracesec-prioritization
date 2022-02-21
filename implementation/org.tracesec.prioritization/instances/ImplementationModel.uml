@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UMLsec="http://www.umlsec.de/profiles/UMLsec" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.umlsec.de/profiles/UMLsec carisma-profiles/UMLsec.profile.uml">
+  <uml:Model xmi:id="_OGpUQLiREeaWXqee5e1-gw" name="RootElement">
+    <packageImport xmi:id="_OIoRQLiREeaWXqee5e1-gw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:StateMachine" xmi:id="_OHDj8LiREeaWXqee5e1-gw" name="StateMachine1">
+      <region xmi:id="_OHdMkLiREeaWXqee5e1-gw" name="Region1">
+        <transition xmi:id="_ONf5sAsQEeePIbUye9NISA" source="_sJKRoAsPEeePIbUye9NISA" target="_JmVr4DvlEeefisnisHLu0w"/>
+        <transition xmi:id="_Wi76oAsQEeePIbUye9NISA" name="WebApplication.login()" source="_JmVr4DvlEeefisnisHLu0w" target="_SSk4sAsQEeePIbUye9NISA"/>
+        <transition xmi:id="_oUyLoAsQEeePIbUye9NISA" target="_X3boYAsQEeePIbUye9NISA"/>
+        <transition xmi:id="_Qq9AoCvrEeef15yQGnSPug" name="WebApplication.store()" source="_SSk4sAsQEeePIbUye9NISA" target="_SSk4sAsQEeePIbUye9NISA"/>
+        <transition xmi:id="_rAH9kCvrEeef15yQGnSPug" name="WebApplication.logout()" source="_SSk4sAsQEeePIbUye9NISA" target="_X3boYAsQEeePIbUye9NISA"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_sJKRoAsPEeePIbUye9NISA" name="Start"/>
+        <subvertex xmi:type="uml:State" xmi:id="_SSk4sAsQEeePIbUye9NISA" name="DoctorLoggedIn">
+          <region xmi:id="_-LIuQD7hEeep7-Z96CqMYA" name="Region1">
+            <transition xmi:id="_en7r0AsQEeePIbUye9NISA" name="WebApplication.retrieve()" source="_LpcrwDvoEeefisnisHLu0w" target="_LpcrwDvoEeefisnisHLu0w"/>
+            <transition xmi:id="_rIlzMDvoEeefisnisHLu0w" name="WebApplication.isRetrieveAllowed()" source="__-_4kD7hEeep7-Z96CqMYA" target="_LpcrwDvoEeefisnisHLu0w"/>
+            <transition xmi:id="_RKGSoD7iEeep7-Z96CqMYA" source="_P_kZMD7iEeep7-Z96CqMYA" target="__-_4kD7hEeep7-Z96CqMYA"/>
+            <subvertex xmi:type="uml:State" xmi:id="_LpcrwDvoEeefisnisHLu0w" name="DataAccessible"/>
+            <subvertex xmi:type="uml:State" xmi:id="__-_4kD7hEeep7-Z96CqMYA" name="DataNotAccessible"/>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_P_kZMD7iEeep7-Z96CqMYA" name="Initial1"/>
+          </region>
+        </subvertex>
+        <subvertex xmi:type="uml:FinalState" xmi:id="_X3boYAsQEeePIbUye9NISA" name="End"/>
+        <subvertex xmi:type="uml:State" xmi:id="_JmVr4DvlEeefisnisHLu0w" name="AuthorizationRequired"/>
+      </region>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_s9EhAAryEeePIbUye9NISA" name="Doctor">
+      <ownedAttribute xmi:id="_TuFosAr1EeePIbUye9NISA" name="usrName">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_dMyXwAr1EeePIbUye9NISA" name="pwd">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_qu73sA1yEeeFhMa9lWN3oQ" name="hospitals" type="_JrN_IA1yEeeFhMa9lWN3oQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_3uOWcAryEeePIbUye9NISA" name="WebApplication">
+      <ownedOperation xmi:id="_q-1dQArzEeePIbUye9NISA" name="login" concurrency="guarded">
+        <ownedParameter xmi:id="_Etga4Ar0EeePIbUye9NISA" name="usrName">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_JZNVAAr0EeePIbUye9NISA" name="pwd">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_w9_t4Ar0EeePIbUye9NISA" name="retrieve">
+        <ownedParameter xmi:id="_r73XIAr8EeePIbUye9NISA" name="ret" type="_vbHMkAr5EeePIbUye9NISA" direction="return"/>
+        <ownedParameter xmi:id="_EPQmkB6mEeeVELFaF4gncw" name="Patient" type="_1_i00Ar3EeePIbUye9NISA"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_vWOlMAr8EeePIbUye9NISA" name="store">
+        <ownedParameter xmi:id="_2uyuMAr8EeePIbUye9NISA" name="PatientData" type="_vbHMkAr5EeePIbUye9NISA"/>
+        <ownedParameter xmi:id="_YMqwMB6mEeeVELFaF4gncw" name="Patient" type="_1_i00Ar3EeePIbUye9NISA"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_vsTY0CvrEeef15yQGnSPug" name="logout"/>
+      <ownedOperation xmi:id="_NenacDvkEeefisnisHLu0w" name="authorizationObtained">
+        <ownedParameter xmi:id="_ZfPTsDvkEeefisnisHLu0w" name="Doctor" type="_TH2lwAsOEeePIbUye9NISA"/>
+        <ownedParameter xmi:id="_jos3ADvkEeefisnisHLu0w" name="ret" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_92OT0DvkEeefisnisHLu0w" name="ret" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_TKU4sDvnEeefisnisHLu0w" name="isRetrieveAllowed">
+        <ownedParameter xmi:id="_sh6zEDvnEeefisnisHLu0w" name="Patient" type="_1_i00Ar3EeePIbUye9NISA"/>
+        <ownedParameter xmi:id="_vhsW4DvnEeefisnisHLu0w" name="PatientData" type="_vbHMkAr5EeePIbUye9NISA"/>
+        <ownedParameter xmi:id="_8_FwIDvnEeefisnisHLu0w" name="ret" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_RwLxkAr1EeePIbUye9NISA" name="accessDB" client="_OGpUQLiREeaWXqee5e1-gw" supplier="_3uOWcAryEeePIbUye9NISA"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_1_i00Ar3EeePIbUye9NISA" name="Patient">
+      <ownedAttribute xmi:id="_qGVVsAr4EeePIbUye9NISA" name="PatientID">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_wKCkkAr4EeePIbUye9NISA" name="Gender">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_zx2YwAr4EeePIbUye9NISA" name="BirthDate">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_30P3MAr4EeePIbUye9NISA" name="Residence">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_67FsUAr4EeePIbUye9NISA" name="Height">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_-11DkAr4EeePIbUye9NISA" name="Weight">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_VJ9M8Ar5EeePIbUye9NISA" name="patient" type="_1_i00Ar3EeePIbUye9NISA"/>
+      <ownedAttribute xmi:id="_YJIT0Qr5EeePIbUye9NISA" name="doctor" type="_s9EhAAryEeePIbUye9NISA" association="_YJF3kAr5EeePIbUye9NISA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_f9FYUAr5EeePIbUye9NISA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_f9V3AAr5EeePIbUye9NISA" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_igg6MA1xEeeFhMa9lWN3oQ" name="patient data" type="_vbHMkAr5EeePIbUye9NISA" association="_igcowA1xEeeFhMa9lWN3oQ"/>
+      <ownedOperation xmi:id="_CzXQIAr5EeePIbUye9NISA" name="consentGiven">
+        <ownedParameter xmi:id="_JapGIAr5EeePIbUye9NISA" name="ret" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_KZy2AAr5EeePIbUye9NISA" name="telemedRequested">
+        <ownedParameter xmi:id="_RNbF8Ar5EeePIbUye9NISA" name="Doctor" type="_s9EhAAryEeePIbUye9NISA"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_YJF3kAr5EeePIbUye9NISA" memberEnd="_YJIT0Qr5EeePIbUye9NISA _YJIT0gr5EeePIbUye9NISA">
+      <eAnnotations xmi:id="_YJHswAr5EeePIbUye9NISA" source="org.eclipse.papyrus">
+        <details xmi:id="_YJIT0Ar5EeePIbUye9NISA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_YJIT0gr5EeePIbUye9NISA" name="patient" type="_1_i00Ar3EeePIbUye9NISA" association="_YJF3kAr5EeePIbUye9NISA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lAY6IAr5EeePIbUye9NISA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lAkgUAr5EeePIbUye9NISA" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_vbHMkAr5EeePIbUye9NISA" name="Patient Data">
+      <ownedAttribute xmi:id="_S3HUsAsGEeePIbUye9NISA" name="Patient" type="_1_i00Ar3EeePIbUye9NISA"/>
+      <ownedAttribute xmi:id="_5MR4wAsGEeePIbUye9NISA" name="EsameObiettivo">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_DGYxcAsHEeePIbUye9NISA" name="TerapiaInCorso">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_QPANgAsHEeePIbUye9NISA" name="Allergie">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XBIBkAsHEeePIbUye9NISA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XBJ2wAsHEeePIbUye9NISA" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_cMi9kAsHEeePIbUye9NISA" name="AspettiPsicologici">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kh10kAsHEeePIbUye9NISA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_kh3pwAsHEeePIbUye9NISA" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_wf6JEAsHEeePIbUye9NISA" name="AspettiNutrizionali">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1uAloAsHEeePIbUye9NISA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1uFeIAsHEeePIbUye9NISA" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_6iyjQAsHEeePIbUye9NISA" name="LimitazioniFunzionali">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__KQdoAsHEeePIbUye9NISA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__KRrwAsHEeePIbUye9NISA" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_fF4FsAsIEeePIbUye9NISA" name="TipoIntervento">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_ioi7MAsIEeePIbUye9NISA" name="DiagnosiIntervento">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_oYNMsAsIEeePIbUye9NISA" name="DescrizioneIntervento">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_3mxBkAsIEeePIbUye9NISA" name="VolumeLesione">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_6TkmEAsIEeePIbUye9NISA" name="ZonaCorpo">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="__URf0AsIEeePIbUye9NISA" name="SospettoDiagnostico">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_XbIyIAsJEeePIbUye9NISA" name="RefertoDiagnostico">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_ayXMoAsJEeePIbUye9NISA" name="DiagnosiIstologica">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_gWMooAsJEeePIbUye9NISA" name="Campione">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Node" xmi:id="_3Zkg0AsNEeePIbUye9NISA" name="OPBG">
+      <deployment xmi:id="_rptfEB6jEeeVELFaF4gncw" client="_3Zkg0AsNEeePIbUye9NISA" supplier="_QnVJwAsOEeePIbUye9NISA" deployedArtifact="_QnVJwAsOEeePIbUye9NISA"/>
+      <nestedNode xmi:id="_X6Q48B6jEeeVELFaF4gncw" name="Web Server">
+        <ownedAttribute xmi:id="_5W48kB6qEeeVELFaF4gncw" name="hiunj" type="_7quM8AsNEeePIbUye9NISA" association="_5W3ucB6qEeeVELFaF4gncw"/>
+        <deployment xmi:id="_lQxnEB6jEeeVELFaF4gncw" client="_X6Q48B6jEeeVELFaF4gncw" supplier="_N_MC0AsOEeePIbUye9NISA" deployedArtifact="_N_MC0AsOEeePIbUye9NISA"/>
+        <deployment xmi:id="_aH0HMCvsEeef15yQGnSPug" client="_X6Q48B6jEeeVELFaF4gncw" supplier="_PYalQCvsEeef15yQGnSPug" deployedArtifact="_PYalQCvsEeef15yQGnSPug"/>
+      </nestedNode>
+      <nestedNode xmi:id="_COUigCvsEeef15yQGnSPug" name="Kangee">
+        <ownedAttribute xmi:id="_IYipECvsEeef15yQGnSPug" name="web server" type="_X6Q48B6jEeeVELFaF4gncw" association="_IYdJgCvsEeef15yQGnSPug"/>
+        <deployment xmi:id="_fjqr4CvsEeef15yQGnSPug" client="_COUigCvsEeef15yQGnSPug" supplier="_cGcXECvsEeef15yQGnSPug" deployedArtifact="_cGcXECvsEeef15yQGnSPug"/>
+      </nestedNode>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Node" xmi:id="_7quM8AsNEeePIbUye9NISA" name="HIUNJ">
+      <deployment xmi:id="_xI1GEAsOEeePIbUye9NISA" client="_7quM8AsNEeePIbUye9NISA" supplier="_TH2lwAsOEeePIbUye9NISA" deployedArtifact="_TH2lwAsOEeePIbUye9NISA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_N_MC0AsOEeePIbUye9NISA" name="Database"/>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_QnVJwAsOEeePIbUye9NISA" name="Doctor OPBG" fileName=""/>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_TH2lwAsOEeePIbUye9NISA" name="Doctor HIUNJ" fileName=""/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_O2tegA1wEeeFhMa9lWN3oQ" name="Web Application implementation">
+      <interfaceRealization xmi:id="_aGAogA1wEeeFhMa9lWN3oQ" client="_O2tegA1wEeeFhMa9lWN3oQ" supplier="_3uOWcAryEeePIbUye9NISA" contract="_3uOWcAryEeePIbUye9NISA"/>
+      <ownedOperation xmi:id="_wuOFUB6kEeeVELFaF4gncw" name="login">
+        <ownedParameter xmi:id="_Ikog0B6lEeeVELFaF4gncw" name="usrName">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_L9f6EB6lEeeVELFaF4gncw" name="pwd">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_pkcCYB6oEeeVELFaF4gncw" name="retrieve">
+        <ownedParameter xmi:id="_vlQVUB6oEeeVELFaF4gncw" name="ret" type="_vbHMkAr5EeePIbUye9NISA" direction="return"/>
+        <ownedParameter xmi:id="_zToEgB6oEeeVELFaF4gncw" name="Patient" type="_1_i00Ar3EeePIbUye9NISA"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_Xkc58CvpEeef15yQGnSPug" name="store">
+        <ownedParameter xmi:id="_Xkc58SvpEeef15yQGnSPug" name="PatientData" type="_vbHMkAr5EeePIbUye9NISA"/>
+        <ownedParameter xmi:id="_Xkc58ivpEeef15yQGnSPug" name="Patient" type="_1_i00Ar3EeePIbUye9NISA"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_0CzQgDxpEeefisnisHLu0w" name="authorizationObtained">
+        <ownedParameter xmi:id="_9_UkADxpEeefisnisHLu0w" name="Doctor" type="_TH2lwAsOEeePIbUye9NISA"/>
+        <ownedParameter xmi:id="_BYEBcDxqEeefisnisHLu0w" name="ret" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_DQ_R8DxqEeefisnisHLu0w" name="ret" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_F34bsDxqEeefisnisHLu0w" name="isRetrieveAllowed">
+        <ownedParameter xmi:id="_LDF8UDxqEeefisnisHLu0w" name="Patient" type="_1_i00Ar3EeePIbUye9NISA"/>
+        <ownedParameter xmi:id="_OasxUDxqEeefisnisHLu0w" name="PatientData" type="_vbHMkAr5EeePIbUye9NISA"/>
+        <ownedParameter xmi:id="_SSmP8DxqEeefisnisHLu0w" name="ret" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mqbLUA1wEeeFhMa9lWN3oQ" name="Database">
+      <ownedAttribute xmi:id="_VpOesA1xEeeFhMa9lWN3oQ" name="patient" type="_1_i00Ar3EeePIbUye9NISA" association="_VpKNQA1xEeeFhMa9lWN3oQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_drhhMA1xEeeFhMa9lWN3oQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_drmZsA1xEeeFhMa9lWN3oQ" value="*"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_aTV-QB6lEeeVELFaF4gncw" name="store">
+        <ownedParameter xmi:id="_jmMpsB6lEeeVELFaF4gncw" name="PatientData" type="_vbHMkAr5EeePIbUye9NISA"/>
+        <ownedParameter xmi:id="_mS9VcB6mEeeVELFaF4gncw" name="Patient" type="_1_i00Ar3EeePIbUye9NISA"/>
+        <ownedParameter xmi:id="_dWhUAB6oEeeVELFaF4gncw" name="Doctor" type="_3Zkg0AsNEeePIbUye9NISA"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="_dQAukCvpEeef15yQGnSPug" name="retrieve">
+        <ownedParameter xmi:id="_dQAukSvpEeef15yQGnSPug" name="ret" type="_vbHMkAr5EeePIbUye9NISA" direction="return"/>
+        <ownedParameter xmi:id="_dQAukivpEeef15yQGnSPug" name="Patient" type="_1_i00Ar3EeePIbUye9NISA"/>
+        <ownedParameter xmi:id="_gyewcDvnEeefisnisHLu0w" name="Doctor" type="_7quM8AsNEeePIbUye9NISA"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_t3HbgA1wEeeFhMa9lWN3oQ" name="modify" client="_O2tegA1wEeeFhMa9lWN3oQ" supplier="_mqbLUA1wEeeFhMa9lWN3oQ"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_VpKNQA1xEeeFhMa9lWN3oQ" memberEnd="_VpOesA1xEeeFhMa9lWN3oQ _VpQT4A1xEeeFhMa9lWN3oQ">
+      <eAnnotations xmi:id="_VpNQkA1xEeeFhMa9lWN3oQ" source="org.eclipse.papyrus">
+        <details xmi:id="_VpNQkQ1xEeeFhMa9lWN3oQ" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_VpQT4A1xEeeFhMa9lWN3oQ" name="database" type="_mqbLUA1wEeeFhMa9lWN3oQ" association="_VpKNQA1xEeeFhMa9lWN3oQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bxdoQA1xEeeFhMa9lWN3oQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bxtf4A1xEeeFhMa9lWN3oQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_igcowA1xEeeFhMa9lWN3oQ" memberEnd="_igg6MA1xEeeFhMa9lWN3oQ _igg6MQ1xEeeFhMa9lWN3oQ">
+      <eAnnotations xmi:id="_igfsEA1xEeeFhMa9lWN3oQ" source="org.eclipse.papyrus">
+        <details xmi:id="_iggTIA1xEeeFhMa9lWN3oQ" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_igg6MQ1xEeeFhMa9lWN3oQ" name="patient" type="_1_i00Ar3EeePIbUye9NISA" association="_igcowA1xEeeFhMa9lWN3oQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_JrN_IA1yEeeFhMa9lWN3oQ" name="Hospitals" visibility="public">
+      <ownedLiteral xmi:id="_eiXNIA1yEeeFhMa9lWN3oQ" name="OPBG">
+        <specification xmi:type="uml:LiteralInteger" xmi:id="_qaJ4sC_bEeeth51WupbUOw" name="OPBG"/>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_gQ2IMA1yEeeFhMa9lWN3oQ" name="HIUNJ">
+        <specification xmi:type="uml:LiteralInteger" xmi:id="_ssLlsC_bEeeth51WupbUOw" name="HIUNJ" value="1"/>
+      </ownedLiteral>
+    </packagedElement>
+    <packagedElement xmi:type="uml:CommunicationPath" xmi:id="_5W3ucB6qEeeVELFaF4gncw" name="opbg2hiunj" memberEnd="_5W48kB6qEeeVELFaF4gncw _5W48kR6qEeeVELFaF4gncw">
+      <eAnnotations xmi:id="_5W4VgB6qEeeVELFaF4gncw" source="org.eclipse.papyrus">
+        <details xmi:id="_5W4VgR6qEeeVELFaF4gncw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_5W48kR6qEeeVELFaF4gncw" name="web server" type="_X6Q48B6jEeeVELFaF4gncw" association="_5W3ucB6qEeeVELFaF4gncw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_ki2QcB6rEeeVELFaF4gncw" name="saveNewDocuments" client="_s9EhAAryEeePIbUye9NISA" supplier="_hctUAB6tEeeVELFaF4gncw"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_hctUAB6tEeeVELFaF4gncw" name="Kangee">
+      <ownedOperation xmi:id="_FUVeoB6uEeeVELFaF4gncw" name="store">
+        <ownedParameter xmi:id="_FUVeoR6uEeeVELFaF4gncw" name="PatientData" type="_vbHMkAr5EeePIbUye9NISA"/>
+        <ownedParameter xmi:id="_FUVeoh6uEeeVELFaF4gncw" name="Patient" type="_1_i00Ar3EeePIbUye9NISA"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_kpdj4B6tEeeVELFaF4gncw" name="store" client="_OGpUQLiREeaWXqee5e1-gw _FUVeoB6uEeeVELFaF4gncw" supplier="_mqbLUA1wEeeFhMa9lWN3oQ"/>
+    <packagedElement xmi:type="uml:CommunicationPath" xmi:id="_IYdJgCvsEeef15yQGnSPug" memberEnd="_IYipECvsEeef15yQGnSPug _IYjQICvsEeef15yQGnSPug">
+      <eAnnotations xmi:id="_IYha8CvsEeef15yQGnSPug" source="org.eclipse.papyrus">
+        <details xmi:id="_IYiCACvsEeef15yQGnSPug" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_IYjQICvsEeef15yQGnSPug" name="kangee" type="_COUigCvsEeef15yQGnSPug" association="_IYdJgCvsEeef15yQGnSPug"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_PYalQCvsEeef15yQGnSPug" name="WebApplication" fileName=""/>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_cGcXECvsEeef15yQGnSPug" name="KangeeImplementation" fileName=""/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_qWwbACvsEeef15yQGnSPug" client="_QnVJwAsOEeePIbUye9NISA" supplier="_PYalQCvsEeef15yQGnSPug"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_rU-90CvsEeef15yQGnSPug" client="_QnVJwAsOEeePIbUye9NISA" supplier="_cGcXECvsEeef15yQGnSPug"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_vJvB0CvsEeef15yQGnSPug" client="_TH2lwAsOEeePIbUye9NISA" supplier="_PYalQCvsEeef15yQGnSPug"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_fjmskCwPEee73orew7NJ_w" client="_PYalQCvsEeef15yQGnSPug" supplier="_N_MC0AsOEeePIbUye9NISA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_n50woCwPEee73orew7NJ_w" client="_cGcXECvsEeef15yQGnSPug" supplier="_N_MC0AsOEeePIbUye9NISA"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_luEtAD7iEeep7-Z96CqMYA" name="requestConsentAndTelemed" client="_s9EhAAryEeePIbUye9NISA" supplier="_1_i00Ar3EeePIbUye9NISA"/>
+    <profileApplication xmi:id="_YsdcYLiREeaWXqee5e1-gw">
+      <eAnnotations xmi:id="_YseqgLiREeaWXqee5e1-gw" source="PapyrusVersion">
+        <details xmi:id="_YseqgbiREeaWXqee5e1-gw" key="Version" value="0.0.2"/>
+        <details xmi:id="_YseqgriREeaWXqee5e1-gw" key="Comment" value=""/>
+        <details xmi:id="_Yseqg7iREeaWXqee5e1-gw" key="Copyright" value=""/>
+        <details xmi:id="_YseqhLiREeaWXqee5e1-gw" key="Date" value="2016-07-21"/>
+        <details xmi:id="_YseqhbiREeaWXqee5e1-gw" key="Author" value=""/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_YseDcLiREeaWXqee5e1-gw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.umlsec.de/profiles/UMLsec/RABAC#/"/>
+      </eAnnotations>
+      <appliedProfile href="carisma-profiles/RABAC.profile.uml#_DhVN4LhMEeSB1MgAxQm9IQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_YseqhriREeaWXqee5e1-gw">
+      <eAnnotations xmi:id="_YsfRkLiREeaWXqee5e1-gw" source="PapyrusVersion">
+        <details xmi:id="_YsfRkbiREeaWXqee5e1-gw" key="Version" value="0.0.4"/>
+        <details xmi:id="_YsfRkriREeaWXqee5e1-gw" key="Comment" value="added privacy&#xD;&#xA;"/>
+        <details xmi:id="_YsfRk7iREeaWXqee5e1-gw" key="Copyright" value=""/>
+        <details xmi:id="_YsfRlLiREeaWXqee5e1-gw" key="Date" value="2016-07-27"/>
+        <details xmi:id="_YsfRlbiREeaWXqee5e1-gw" key="Author" value=""/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_Yseqh7iREeaWXqee5e1-gw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="carisma-profiles/UMLsec.profile.uml#_MQjs4FPqEea7isDEsq0j4g"/>
+      </eAnnotations>
+      <appliedProfile href="carisma-profiles/UMLsec.profile.uml#_kGQWQDnkEeCyb9nmG-9Lpw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_pvI1UAsGEeePIbUye9NISA">
+      <eAnnotations xmi:id="_pvKDcAsGEeePIbUye9NISA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+    </profileApplication>
+  </uml:Model>
+  <UMLsec:call xmi:id="_8CfvECwPEee73orew7NJ_w" base_Dependency="_qWwbACvsEeef15yQGnSPug"/>
+  <UMLsec:call xmi:id="_4IRVMCwPEee73orew7NJ_w" base_Dependency="_rU-90CvsEeef15yQGnSPug"/>
+  <UMLsec:secrecy xmi:id="_4KCPwCwPEee73orew7NJ_w" base_Dependency="_rU-90CvsEeef15yQGnSPug"/>
+  <UMLsec:integrity xmi:id="_4LwHACwPEee73orew7NJ_w" base_Dependency="_rU-90CvsEeef15yQGnSPug"/>
+  <UMLsec:secrecy xmi:id="_8EBZECwPEee73orew7NJ_w" base_Dependency="_qWwbACvsEeef15yQGnSPug"/>
+  <UMLsec:integrity xmi:id="_8FVnsCwPEee73orew7NJ_w" base_Dependency="_qWwbACvsEeef15yQGnSPug"/>
+  <UMLsec:call xmi:id="_91iaACwPEee73orew7NJ_w" base_Dependency="_vJvB0CvsEeef15yQGnSPug"/>
+  <UMLsec:secrecy xmi:id="_9_pYQCwPEee73orew7NJ_w" base_Dependency="_vJvB0CvsEeef15yQGnSPug"/>
+  <UMLsec:integrity xmi:id="_-AvkcCwPEee73orew7NJ_w" base_Dependency="_vJvB0CvsEeef15yQGnSPug"/>
+  <UMLsec:Internet xmi:id="_HHg7sCwQEee73orew7NJ_w" base_CommunicationPath="_5W3ucB6qEeeVELFaF4gncw"/>
+  <UMLsec:call xmi:id="__1uwICwPEee73orew7NJ_w" base_Dependency="_fjmskCwPEee73orew7NJ_w"/>
+  <UMLsec:secrecy xmi:id="__3jVECwPEee73orew7NJ_w" base_Dependency="_fjmskCwPEee73orew7NJ_w"/>
+  <UMLsec:integrity xmi:id="__5kHQCwPEee73orew7NJ_w" base_Dependency="_fjmskCwPEee73orew7NJ_w"/>
+  <UMLsec:authorizedstatus xmi:id="_Jje9oC_bEeeth51WupbUOw" base_State="_SSk4sAsQEeePIbUye9NISA"/>
+  <UMLsec:call xmi:id="_AZYwIC_cEeeth51WupbUOw" base_Dependency="_ki2QcB6rEeeVELFaF4gncw"/>
+  <UMLsec:integrity xmi:id="_AjZnwC_cEeeth51WupbUOw" base_Dependency="_ki2QcB6rEeeVELFaF4gncw"/>
+  <UMLsec:call xmi:id="_CwqJgC_cEeeth51WupbUOw" base_Dependency="_kpdj4B6tEeeVELFaF4gncw"/>
+  <UMLsec:integrity xmi:id="_CxvuoC_cEeeth51WupbUOw" base_Dependency="_kpdj4B6tEeeVELFaF4gncw"/>
+  <UMLsec:secrecy xmi:id="_CzEkUC_cEeeth51WupbUOw" base_Dependency="_kpdj4B6tEeeVELFaF4gncw"/>
+  <UMLsec:call xmi:id="_ED6hIC_cEeeth51WupbUOw" base_Dependency="_t3HbgA1wEeeFhMa9lWN3oQ"/>
+  <UMLsec:integrity xmi:id="_EFSaIC_cEeeth51WupbUOw" base_Dependency="_t3HbgA1wEeeFhMa9lWN3oQ"/>
+  <UMLsec:secrecy xmi:id="_EGeF4C_cEeeth51WupbUOw" base_Dependency="_t3HbgA1wEeeFhMa9lWN3oQ"/>
+  <UMLsec:call xmi:id="_GR-UIC_cEeeth51WupbUOw" base_Dependency="_RwLxkAr1EeePIbUye9NISA"/>
+  <UMLsec:integrity xmi:id="_GS_AwC_cEeeth51WupbUOw" base_Dependency="_RwLxkAr1EeePIbUye9NISA"/>
+  <UMLsec:secrecy xmi:id="_GUF0AC_cEeeth51WupbUOw" base_Dependency="_RwLxkAr1EeePIbUye9NISA"/>
+  <UMLsec:critical xmi:id="_IGBrsC_cEeeth51WupbUOw" base_Class="_s9EhAAryEeePIbUye9NISA" base_Classifier="_s9EhAAryEeePIbUye9NISA"/>
+  <UMLsec:critical xmi:id="_LtoEgC_cEeeth51WupbUOw" base_Class="_O2tegA1wEeeFhMa9lWN3oQ" base_Classifier="_O2tegA1wEeeFhMa9lWN3oQ"/>
+  <UMLsec:critical xmi:id="_MhIlEC_cEeeth51WupbUOw" base_Class="_hctUAB6tEeeVELFaF4gncw" base_Classifier="_hctUAB6tEeeVELFaF4gncw"/>
+  <UMLsec:critical xmi:id="_NTOwYC_cEeeth51WupbUOw" base_Class="_mqbLUA1wEeeFhMa9lWN3oQ" base_Classifier="_mqbLUA1wEeeFhMa9lWN3oQ"/>
+  <UMLsec:securedependency xmi:id="_febwYD7hEeep7-Z96CqMYA" base_Package="_OGpUQLiREeaWXqee5e1-gw"/>
+  <UMLsec:securelinks xmi:id="_fe0K4D7hEeep7-Z96CqMYA" base_Package="_OGpUQLiREeaWXqee5e1-gw"/>
+</xmi:XMI>

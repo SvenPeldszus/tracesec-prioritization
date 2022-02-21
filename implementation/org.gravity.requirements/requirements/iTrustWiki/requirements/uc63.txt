@@ -1,0 +1,30 @@
+====== Use Case 63: Obstetrics Patient Initialization ======
+
+===== 63.1 Preconditions =====
+An HCP is a registered user of the iTrust Medical Records system ([[requirements:uc2|UC2]]). The iTrust HCP user has authenticated himself or herself in the iTrust Medical Records system ([[requirements:uc3|UC3]]). The patient associated with the obstetrics patient initialziation must by a registered patient in the iTrust Medical Records system.
+
+===== 63.2: Main Flow =====
+Any HCP may search for the patient by MID or patient name [S1][E1][E2][E3]. The history of the patient's obstetrics care is displayed as a list of patient initialization records in decending order by date (the most recent record is at the top of the list). Any HCP has the option to select an existing record to view. If the HCP selects to view an existing record, the record is shown as a read only version of the information in [S2][S3]. Only HCPs with a specialization of "OB/GYN" may create a new obstetrics record via a link or button the list of patient initializaiton records. If the OB/GYN HCP selects to add a new record, the OB/GYN HCP enters information required for the initial obstetrics patient visit including the last menstrual period (LMP) [S2] and prior pregnancies [S3]. The OB/GYN HCP submits the form and is sent to the main page for obstetric records with the listing of the patient's history of obstetrics care.
+
+===== 63.3 Sub-flows =====
+  * [S1] If the patient's sex is female, the obstetric initialization page is shown. The current date of the obstetrics patient initialization is populated in the date field.
+  * [S2] The HCP enters the date of the first day of the patient's last menstrual period (LMP). The estimated due date (EDD) and the number of weeks pregnant on the obstetrics patient initialization date are calculated and displayed. 
+    * EDD = LMP + 280 days
+    * Day 0 of a week is the day (e.g., Monday, Tuesday, ect.) of the LMP. The LMP is day zero, LMP + 1 is 0 weeks 1 day, LMP + 7 is 1 week 0 days, LMP + 8 is 1 week 1 day, etc. The obstetrics patient initialzation shows the number of weeks pregnant on the day of the record creation.
+  * [S3] A prior pregnancy has the following information described in [[requirements:df14|Data Format 6.14]] [E4]. The table should be populated with information that already exists in the iTrust system, if any. The HCP adds any additional prior pregnancy information to the table.
+    * Year of conception
+    * Number of weeks pregnant
+    * Number of hours in labor
+    * Vaginal Delivery, Caesarean Section, or Miscarriage
+    * Whether the pregnancy was twins or not
+
+===== 63.4: Alternative Flows =====
+  * [E1] The HCP types an invalid medical identification number or name or a medical identification number or name of a patient not in the system and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient. The HCP does not confirm the selection and is prompted to try again.
+  * [E3] The selected patient's sex is male. The error message, "The patient is not eligible for obstetric care." is displayed and the HCP is prompted to try again.
+  * [E4] Invalid inputs are flagged and an error message appropriate to the input is printed.
+
+===== 63.5: Logging =====
+|Transaction Code|Verbose Description|Logged In MID|Secondary MID|Use Case(s) Involved|Type of Transaction|Additional Information|Patient Viewable|
+|6300|Create Initial Obstetric Record|Editor (HCP)|Patient|63|Create|EDD|Yes|
+|6301|View Initial Obstetric Record|Viewer (HCP)|Patient|63|View|EDD|Yes|

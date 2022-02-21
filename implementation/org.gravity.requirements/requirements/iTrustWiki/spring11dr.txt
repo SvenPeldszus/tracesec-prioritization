@@ -1,0 +1,21 @@
+===== Spring 2011 Developing Requirements =====
+
+=== Updated iTrust Documentation ===
+From Team 6, Fall 2010
+  * [[newCodes|New Transaction Code Table]]
+  * [[updatedReqs|Updated Requirements Specification]]
+  * [[knownBugs|Known Bugs]]
+
+=== Initial Ideas ===
+  * Diabetes features
+     * Remote monitoring?
+  * Nutritional monitoring
+  * Pediatric Features
+  * Obstetric (Pregnancy) Features
+  * Mobile app/mobile web
+
+=== Team Project ===
+  * [[developing_requirements:spring2011:referrals|Referrals]]
+  * [[developing_requirements:spring2011:labProcedures|Lab Procedures]]
+  * Have students create similar notification center/activity feed layout for other iTrust roles to maintain consistency across homepages?
+  

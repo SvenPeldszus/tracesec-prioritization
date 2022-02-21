@@ -1,0 +1,22 @@
+====UC38 Maintain Drug Interaction Use Case====
+==38.1 Preconditions:==
+The iTrust user (admin) has been authenticated in the iTrust Medical Records system [[requirements:uc3|(UC3)]].
+==38.2 Main Flow:==
+The administrator records [S1] or deletes [S2] a drug interaction between two prescription drugs.
+==38.3 Sub-flows:==
+  * [S1] The administer is presented with two lists of NDC codes/names. The administrator chooses a drug from each list to record an interaction between the two drugs [E1]. The two drugs and a textual description of the possible effects of the interaction are stored.
+  * [S2] The administrator selects one drug and is presented with a listing of all drug interactions currently associated with that drug. The administrator can select a particular pair of drugs and delete the interaction between the two drugs.
+==38.4 Alternative Flows:==
+  * [E1] The administrator has chosen the same drug from both lists. The system directs the user to make a different choice.
+==38.5 Logging==
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 3800 |  Add Drug Interactions Code  |  Admin  |  [empty]  |  38  |  Create  |  The two prescriptions involved in the interaction  |  No  |
+| 3801 |  Edit Drug Interactions Code  |  Admin  |  [empty]  |  38  |  Edit  |  The two prescriptions involved in the interaction  |  No  |
+| 3802 |  Delete Drug Interactions Code  |  Admin  |  [empty]  |  38  |  Delete  |  The medications involved in the interaction  |  No  |
+
+==38.6 Reference Documents==
+[[http://healthit.hhs.gov/portal/server.pt/gateway/PTARGS_0_10731_848121_0_0_18/MedGapFinalExtGap.pdf|US Department of Health and Human Services Medication Gaps Use Case]]
+
+
+
+

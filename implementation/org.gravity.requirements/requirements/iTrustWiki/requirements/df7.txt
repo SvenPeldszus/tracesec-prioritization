@@ -1,0 +1,10 @@
+====Data Format 6.7: Hospital Information====
+^Field^Format^
+|Hospital ID number  |A unique 10-digit integer|
+|Name  |Up to 30 alphanumeric characters|
+|Address  |Up to 30 alphanumeric characters|
+|City | Up to 15 alphanumeric characters|
+|State | Two-Character Postal Abbreviation|
+|Zip | //nnnnn-nnnn// |
+|Latitude| Double|
+|Longitude| Double|

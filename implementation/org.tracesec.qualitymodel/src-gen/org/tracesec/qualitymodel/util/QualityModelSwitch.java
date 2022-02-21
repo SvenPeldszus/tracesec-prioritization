@@ -66,16 +66,16 @@ public class QualityModelSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case QualityModelPackage.ABSTRACT_QUALITY_NODE: {
+				AbstractQualityNode abstractQualityNode = (AbstractQualityNode)theEObject;
+				T result = caseAbstractQualityNode(abstractQualityNode);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case QualityModelPackage.QUALITY_CATEGORY: {
 				QualityCategory qualityCategory = (QualityCategory)theEObject;
 				T result = caseQualityCategory(qualityCategory);
 				if (result == null) result = caseAbstractQualityNode(qualityCategory);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case QualityModelPackage.ABSTRACT_QUALITY_NODE: {
-				AbstractQualityNode abstractQualityNode = (AbstractQualityNode)theEObject;
-				T result = caseAbstractQualityNode(abstractQualityNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

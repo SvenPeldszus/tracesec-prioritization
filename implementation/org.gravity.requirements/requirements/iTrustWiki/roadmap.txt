@@ -1,0 +1,33 @@
+====== Road Map ======
+
+Since the primary source of development is by students, the versions of iTrust are based on semesters. 
+
+
+
+
+
+==== Source Code ====
+The source code for iTrust was originally from the CSC 712: Software Reliability and Testing semester project. Since then two types of development have been made: development during semesters with students and development between semesters to refactor and redesign the code.
+
+^ Version ^ Semester Used ^ Major Changes from Previous Version^
+| v21.0 | Fall 2016 | Taken from the best CSC326 project, generally available from homepage. |
+| v20.0 | Fall 2015 | Taken from the best CSC326 project, generally available from homepage. |
+| v19.0 | Spring 2015 | Taken from the best CSC326 project, generally available from homepage and SF.NET . |
+| v18.0 | Fall 2014 | Taken from the best CSC326 project, generally available from homepage and SF.NET . |
+| v17.0 | Spring 2014 | Taken from the best CSC326 project, generally available from homepage and SF.NET . |
+| v16.0 | Fall 2013 | Taken from the best CSC326 project, generally available from homepage and SF.NET . |
+| v15.0 | Spring 2013 | Taken from the best CSC326 project, generally available from homepage and SF.NET . |
+| v14.0 | Fall 2012 | Taken from the best CSC326 project, generally available from homepage and SF.NET . |
+| v13.0 | Spring 2012 | Taken from the best CSC326 project, generally available from homepage and SF.NET . |
+| v12.0 | Fall 2011 | Taken from the best CSC326 project, generally available from homepage and SF.NET . |
+| v11.0 | Spring 2011 | Taken from the best CSC326 project, generally available from homepage and SF.NET . |
+| v10.0 | Fall 2010 | Taken from the best CSC326 project, generally available from homepage and SF.NET . |
+| v9.0 | Spring 2010 | Taken from the best CSC326 project, generally available from homepage and SF.NET . |
+| v8.0 | Fall 2009 | Taken from the best CSC326 project, generally available from homepage and SF.NET . |
+| v7.0 | Spring 2009 | Taken from the best CSC 326 project, generally available from homepage and SF.NET . |
+| v6.0 | Fall 2008 | Taken from the best CSC 326 project, currently unavailable. |
+| v5.0 | Spring 2008 | Taken from the best CSC 712 version from previous semester, abandoned FIT tests for automated black box test cases in HTTPUnit |
+| v4.0 | Fall 2007 | Major code overhaul from previous version: Tomcat authentication, pseudo-MVC architecture, Eclipse WTP environment |
+| v3.0 | Spring 2007 | Taken from the best CSC 326 group of Fall 2006, some minor refactoring done | 
+| v2.0 | Fall 2006 | Refactoring of the v1.0 was done to prepare for general usage |
+| v1.0 | Submitted end of Fall 2005 | Originally submitted by the students |

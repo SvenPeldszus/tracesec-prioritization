@@ -1,0 +1,33 @@
+**UC84: Patient View Ophthalmology Office Visit**
+
+**84.1 Preconditions**
+
+An patient and/or their dependent(s) is a (are) registered user(s) of the iTrust Medical Records system ([[uc2|UC2]]). The iTrust user has authenticated himself or herself in the iTrust Medical Records system ([[uc3|UC3]]). If a patient is a dependent of another patient, the relationship is established in the iTrust Medical Records system ([[uc58|UC58]])([[uc59|UC59]]).
+
+**84.2: Main Flow**
+
+A patient selects an option to view their [S1] or their dependent’s [S2] ophthalmology office visit results [E1][E2]. 
+
+**84.3 Sub-flows**
+  * [S1] The patient chooses to view all of their ophthalmology office visit records [S3].
+  * [S2] The patient chooses to view one of their dependent’s ophthalmology office visit records [S3].
+  * [S3] The patient selects the specific ophthalmology office visit to view [S4].
+  * [S4] The patient can see, but not edit, the following [Data Format 6.17]:
+     * Date of the ophthalmology office visit.
+     * Attending Optometrist or Ophthalmologist HCP
+     * Visual Acuity Results for both the right (OD) and left (OS) eyes.
+     * Sphere (SPH) for both the right (OD) and left (OS) eyes. 
+     * Cylinder (CYL) for both the right (OD) and left (OS) eyes. If given.
+     * Axis for both the right (OD) and left (OS) eyes. If given
+     * Add for both the right (OD) and left (OS) eyes. 
+
+**84.4: Alternative Flows**
+
+  * [E1] The patient has no ophthalmology office visits, so the list is empty.
+  * [E2] The patient does not have permissions to view another patient’s ophthalmology office visits (the other patient is not a dependent).
+
+** 84.5: Logging**
+
+|Transaction Code|Verbose Description|Logged In MID|Secondary MID|Use Case(s) Involved|Type of Transaction|Additional Information|Patient Viewable|
+|8400|View Patient Ophthalmology Office Visit|Patient|N/A|84|View|Office Visit ID|Yes|
+|8401|View Dependent Ophthalmology Office Visit|Patient|Dependent Patient|84|View|Office Visit ID|Yes|

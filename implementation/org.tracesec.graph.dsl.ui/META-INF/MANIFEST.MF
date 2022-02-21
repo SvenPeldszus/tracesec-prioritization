@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.tracesec.graph.dsl.ui
+Bundle-ManifestVersion: 2
+Bundle-Name: org.tracesec.graph.dsl.ui
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.tracesec.graph.dsl.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.tracesec.graph.dsl,
+ org.tracesec.graph.dsl.ide,
+ org.eclipse.xtext.ui,
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.ui,
+ org.eclipse.compare,
+ org.eclipse.xtext.builder
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: org.tracesec.graph.dsl.ui.quickfix,
+ org.tracesec.graph.dsl.ui.contentassist,
+ org.tracesec.graph.dsl.ui.internal
+Bundle-Activator: org.tracesec.graph.dsl.ui.internal.DslActivator

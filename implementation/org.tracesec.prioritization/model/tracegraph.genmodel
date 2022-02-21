@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/org.tracesec.prioritization/src-gen" creationIcons="false"
+    editDirectory="/org.tracesec.prioritization.edit/src-gen" editorDirectory="/org.tracesec.prioritization.editor/src-gen"
+    modelPluginID="org.tracesec.prioritization" modelName="Tracegraph" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>tracegraph.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Tracegraph" basePackage="org.tracesec.prioritization" disposableProviderFactory="true"
+      ecorePackage="tracegraph.ecore#/">
+    <genClasses ecoreClass="tracegraph.ecore#//Graph">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tracegraph.ecore#//Graph/edges"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tracegraph.ecore#//Graph/nodes"/>
+    </genClasses>
+    <genClasses ecoreClass="tracegraph.ecore#//Node">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tracegraph.ecore#//Node/out"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tracegraph.ecore#//Node/in"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tracegraph.ecore#//Node/represents"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracegraph.ecore#//Node/id"/>
+    </genClasses>
+    <genClasses ecoreClass="tracegraph.ecore#//Edge">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tracegraph.ecore#//Edge/src"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference tracegraph.ecore#//Edge/trg"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute tracegraph.ecore#//Edge/capacity"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

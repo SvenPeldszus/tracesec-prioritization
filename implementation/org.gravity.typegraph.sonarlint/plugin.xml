@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+  <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution 
+      		allPopups="false" 
+            locationURI="popup:org.gravity.mainmenu">
+        <command
+              commandId="gravity.sonarlint.add"
+              label="Add SonarLint Findings to PM"
+              style="push"/>
+    </menuContribution>
+  </extension>
+  <extension point="org.eclipse.ui.commands">
+    <command 
+          defaultHandler="org.gravity.typegraph.sonarlint.AddFindingsHandler" 
+          id="gravity.sonarlint.add" 
+          name="Add SonarLint Findings to PM"/>
+  </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated sonarlint -->
+      <package
+            uri="http://www.gravity-tool.org/typegraph/antipatterngraph/sonarlint"
+            class="org.gravity.hulk.sonarlint.sonarlint.SonarlintPackage"
+            genModel="model/sonarlint.genmodel"/>
+   </extension>
+
+</plugin>

@@ -33,6 +33,12 @@
   <foreignModel>qualitymodel.uml</foreignModel>
   <genPackages xsi:type="genmodel:GenPackage" prefix="QualityModel" basePackage="org.tracesec"
       disposableProviderFactory="true" ecorePackage="qualitymodel.ecore#/">
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="qualitymodel.ecore#//AbstractQualityNode">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference qualitymodel.ecore#//AbstractQualityNode/owner"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute qualitymodel.ecore#//AbstractQualityNode/title"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute qualitymodel.ecore#//AbstractQualityNode/priority"/>
+    </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="qualitymodel.ecore#//QualityCategory">
       <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
           createChild="false" ecoreFeature="ecore:EReference qualitymodel.ecore#//QualityCategory/ownedNodes"/>
@@ -40,11 +46,6 @@
           createChild="true" ecoreFeature="ecore:EReference qualitymodel.ecore#//QualityCategory/aspects"/>
       <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
           createChild="true" ecoreFeature="ecore:EReference qualitymodel.ecore#//QualityCategory/subcategories"/>
-    </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="qualitymodel.ecore#//AbstractQualityNode">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference qualitymodel.ecore#//AbstractQualityNode/owner"/>
-      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute qualitymodel.ecore#//AbstractQualityNode/title"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="qualitymodel.ecore#//QualityAspect">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute qualitymodel.ecore#//QualityAspect/description"/>

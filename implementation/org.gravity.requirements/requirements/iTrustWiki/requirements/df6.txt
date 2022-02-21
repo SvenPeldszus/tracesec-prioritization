@@ -1,0 +1,7 @@
+====Data Format 6.6: Prescription History====
+^Field^Format^
+|Patient MID  |Patient Medical identification number unique 10-digit number that does not start with 9|
+|Medication  |National Drug Code|
+|Start Date  |Date|
+|End Date  |Date|
+|Office Visit ID  |Identifier that specifies the office visit.|

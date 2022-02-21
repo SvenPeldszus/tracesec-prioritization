@@ -1,0 +1,7 @@
+====Data Format 6.3: Audit & Transaction Logging ====
+^Field^Format^
+|Editor/Viewer MID (ie the user performing the action)  |10-digit number|
+|Secondary medical identification number  |10-digit number|
+|Transaction type  |See below|
+|Additional Information  |Up to 30 alphanumeric characters for optional description or clarification|
+|Date/ Time  |Timestamp|

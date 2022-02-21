@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_hH3WMG1REeupRZXCJybxZw" name="test">
+  <packageImport xmi:id="_haewMG1REeupRZXCJybxZw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_79F2wG1SEeupRZXCJybxZw" name="p">
+    <packagedElement xmi:type="uml:Class" xmi:id="_DSwcwG1TEeupRZXCJybxZw" name="C">
+      <interfaceRealization xmi:id="_IRkgIG1TEeupRZXCJybxZw" client="_DSwcwG1TEeupRZXCJybxZw" supplier="_F3sesG1TEeupRZXCJybxZw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_F3sesG1TEeupRZXCJybxZw" name="I"/>
+  </packagedElement>
+</uml:Model>

@@ -64,7 +64,7 @@ public interface QualityModelPackage extends EPackage {
 	 * @see org.tracesec.qualitymodel.impl.QualityModelPackageImpl#getAbstractQualityNode()
 	 * @generated
 	 */
-	int ABSTRACT_QUALITY_NODE = 1;
+	int ABSTRACT_QUALITY_NODE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' reference.
@@ -85,13 +85,22 @@ public interface QualityModelPackage extends EPackage {
 	int ABSTRACT_QUALITY_NODE__TITLE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Priority</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_QUALITY_NODE__PRIORITY = 2;
+
+	/**
 	 * The number of structural features of the '<em>Abstract Quality Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_QUALITY_NODE_FEATURE_COUNT = 2;
+	int ABSTRACT_QUALITY_NODE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Abstract Quality Node</em>' class.
@@ -110,7 +119,7 @@ public interface QualityModelPackage extends EPackage {
 	 * @see org.tracesec.qualitymodel.impl.QualityModelPackageImpl#getQualityCategory()
 	 * @generated
 	 */
-	int QUALITY_CATEGORY = 0;
+	int QUALITY_CATEGORY = 1;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' reference.
@@ -129,6 +138,15 @@ public interface QualityModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int QUALITY_CATEGORY__TITLE = ABSTRACT_QUALITY_NODE__TITLE;
+
+	/**
+	 * The feature id for the '<em><b>Priority</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALITY_CATEGORY__PRIORITY = ABSTRACT_QUALITY_NODE__PRIORITY;
 
 	/**
 	 * The feature id for the '<em><b>Owned Nodes</b></em>' reference list.
@@ -202,6 +220,15 @@ public interface QualityModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int QUALITY_ASPECT__TITLE = ABSTRACT_QUALITY_NODE__TITLE;
+
+	/**
+	 * The feature id for the '<em><b>Priority</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUALITY_ASPECT__PRIORITY = ABSTRACT_QUALITY_NODE__PRIORITY;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -314,6 +341,17 @@ public interface QualityModelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAbstractQualityNode_Title();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.tracesec.qualitymodel.AbstractQualityNode#getPriority <em>Priority</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Priority</em>'.
+	 * @see org.tracesec.qualitymodel.AbstractQualityNode#getPriority()
+	 * @see #getAbstractQualityNode()
+	 * @generated
+	 */
+	EAttribute getAbstractQualityNode_Priority();
 
 	/**
 	 * Returns the meta object for class '{@link org.tracesec.qualitymodel.QualityAspect <em>Quality Aspect</em>}'.
@@ -429,6 +467,14 @@ public interface QualityModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ABSTRACT_QUALITY_NODE__TITLE = eINSTANCE.getAbstractQualityNode_Title();
+
+		/**
+		 * The meta object literal for the '<em><b>Priority</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_QUALITY_NODE__PRIORITY = eINSTANCE.getAbstractQualityNode_Priority();
 
 		/**
 		 * The meta object literal for the '{@link org.tracesec.qualitymodel.impl.QualityAspectImpl <em>Quality Aspect</em>}' class.

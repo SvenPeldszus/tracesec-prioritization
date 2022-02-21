@@ -1,0 +1,31 @@
+====UC2 Create, Disable, and Edit Personnel Use Case====
+==2.1 Preconditions:==
+The iTrust Admin or LHCP has authenticated himself or herself in the iTrust Medical Records system [[requirements:uc3|(UC3)]].
+==2.2 Main Flow:==
+An admin creates a LHCP, an ER, a Laboratory Technician (LT), or a public health agent (PHA) [S1]. A LHCP creates UAPs [S2]. Once entered, the admin or LHCP is presented a detailed confirmation screen to approve.
+==2.3 Sub-flows:==
+  * [S1] An administrator enters a LHCP, ER, or public health agent as a user of iTrust Medical Records system, initially only the name and email are provided. A secret key is personally provided to the user, with which the user can reset his/her password. The admin must specify a specialty for a new LHCP (one of: General Physician, Heart Surgeon, OB/GYN, Pediatrician, Surgeon) and for a new LT (one of blood, tissue, or general). The data for personnel can be edited according to [[requirements:df2|Data Format 6.2]] (all fields mandatory except for associated MID and Street Address 2) [E1]. The administrator shall be allowed to assign a LHCP to multiple hospitals, and the administrator can choose among only the hospitals provided in the hospital list pull down menu. The hospital ID numbers for a LHCP are stored in the Medical Care Personnel Affiliation database ([[requirements:df8|data format 6.8]]). The administrator shall be allowed to assign a LT to a single hospital, and the administrator can choose among only the hospitals provided in the hospital list pull down menu. The hospital ID numbers for a LT are stored in the Medical Care Personnel Affiliation database ([[requirements:df11|data format 6.11]]).
+  * [S2] A LHCP enters an UAP as a user of iTrust Medical Records system according to [[requirements:df2|data format 6.2]] (all fields mandatory) [E1].
+==2.4 Alternative Flows:==
+  * [E1] The system prompts the admin or LCHP to correct the format of a required data field because the input of that data field does not match that specified in [[requirements:df2|data format 6.2]], for HCPs.
+==2.5 Logging==
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 200 |  Create a LHCP  |  Admin  |  LHCP  |  2  |  Create  |  None  |  No  |
+| 201 |  Edit a LHCP  |  Admin  |  LHCP  |  2  |  Edit  |  None  |  No  |
+| 202 |  Disable a LHCP  |  Admin  |  LHCP  |  2  |  Disable  |  None  |  No  |
+| 210 |  Create an ER  |  Admin  |  ER  |  2  |  Create  |  None  |  No  |
+| 211 |  Edit an ER  |  Admin  |  ER  |  2  |  Edit  |  None  |  No  |
+| 212 |  Disable an ER  |  Admin  |  ER  |  2  |  Disable  |  None  |  No  |
+| 220 |  Create an PHA  |  Admin  |  PHA  |  2  |  Create  |  None  |  No  |
+| 221 |  Edit a PHA  |  Admin  |  PHA  |  2  |  Edit  |  None  |  No  |
+| 222 |  Disable a PHA  |  Admin  |  PHA  |  2  |  Disable  |  None  |  No  |
+| 230 |  Assign LHCP to a hospital  |  Admin  |  LHCP  |  2  |  Create  |  None  |  No  |
+| 231 |  Remove a LHCP from a hospital  |  Admin  |  LHCP  |  2  |  Delete  |  None  |  No  |
+| 240 |  Create UAP  |  LHCP  |  UAP  |  2  |  Create  |  None  |  No  |
+| 241 |  Edit UAP  |  LHCP  |  UAP  |  2  |  Create  |  None  |  No  |
+| 242 |  Disable UAP  |  LHCP  |  UAP  |  2  |  Disable  |  None  |  No  |
+| 250 |  View Personnel  |  Viewer (all users)  |  Personnel being viewed  |  2  |  View  |  None  |  The role of the personnel  |
+
+
+==2.6 Reference document==
+The inclusion of the ER role was inspired by [[http://www.dhhs.gov/healthit/usecases/documents/EmergencyRespEHRUseCase.pdf|Department of Health and Human Services USA Emergency Responder]] Electronic Health Record Use Case 

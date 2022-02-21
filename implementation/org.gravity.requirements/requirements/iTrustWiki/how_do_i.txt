@@ -1,0 +1,413 @@
+
+The following page is a set of FAQs that have been put together by past and present CSC 326 TAs and students. Some of these ought to be considered //advice//, which we encourage you to use with appropriate discernment. If you have something you would like to add or modify, please contact your current TA or an iTrust project admin.
+
+====== In Eclipse, how do I.... ======
+
+==== ...install a plugin? ====
+
+For Eclipse [[http://agile.csc.ncsu.edu/SEMaterials/tutorials/install_plugin/|v3.1]] and [[http://agile.csc.ncsu.edu/SEMaterials/tutorials/install_plugin/index_v35.html|v3.5]], we have tutorials which describe this task.
+
+==== ...create a Java Project, Java Package, Java Class or Java Interface? ====
+
+For Eclipse [[http://agile.csc.ncsu.edu/SEMaterials/tutorials/eclipse/eclipse_tutorial_3.1.html|v3.1]] and [[http://agile.csc.ncsu.edu/SEMaterials/tutorials/eclipse/eclipse_tutorial_3.5.html|v3.5]], we have tutorials which describe these tasks.
+
+
+==== ...run a Java program? ====
+
+For Eclipse [[http://agile.csc.ncsu.edu/SEMaterials/tutorials/eclipse/eclipse_tutorial_3.1.html#section11_0|v3.1]] and [[http://agile.csc.ncsu.edu/SEMaterials/tutorials/eclipse/eclipse_tutorial_3.5.html#section11_0|v3.5]], we have tutorials which describe this task.
+
+
+
+==== ... use the Eclipse Debugger? ====
+
+[[http://agile.csc.ncsu.edu/SEMaterials/tutorials/eclipse-debugger/#section3_0|The Eclipse Debugger tutorial]] provides a step-by-step explanation of how to use the debugger.
+
+
+
+==== ... use the Eclipse Debugger on JSPs? ====
+
+   * First, you will need to start Tomcat in Debug mode.  In the **servers** view, right click on your instance of Tomcat and go to "Debug".  This will work if Tomcat is either running or stopped.  See the below figure.
+
+{{debuggingtomcat.jpg?200|}}
+
+   * Next, mark a breakpoint in the JSP file you are interested in, just like you would for any Java class.  See the figure below.
+
+{{togglebreakpoint.jpg?200x200|}}
+
+For more information on how to perform debugging in general, see [[http://agile.csc.ncsu.edu/SEMaterials/tutorials/eclipse-debugger/#section3_0|Using the Eclipse Debugger]] tutorial.
+
+
+==== ... show the packages in a hierarchy? ====
+
+In the Package Explorer, click on the down arrow and go to Package Presentation > Hierarchical.
+
+{{hierarchy.png?200|}}
+
+====== In iTrust, how do I.... ======
+
+
+
+
+==== ...learn the code? ====
+   * Take a look at the [[design notes]] page.
+   * Start early. Learning code takes time.
+   * Navigate through the code feature-by-feature, (rather than, for example, starting by looking at all the Java files). In Eclipse, use the Open Declaration (Ctrl + Left-Click) to go to where things are declared.
+   * Focus closely on a few features, rather than on trying to read the entire code base
+   * Use the unit tests as examples
+      * In Eclipse: to look at how a public method is tested, select the method name, right click and go to "Open Call Hierarchy" to see what methods call it. 
+   * Learn the code base with a partner while pair programming in the lab. Talk to each other a lot.
+   * Ask questions to the whole lab. Group discussion gets things solved very quickly.
+   * Talk to the teaching staff via the many channels you have
+      * Email CSC Support
+      * Post to the forums
+      * Ask the TA or Instructor in person
+      * Ask during a class session
+       
+
+
+
+
+
+
+==== ...connect to the remote database? ====
+
+There is a possibility that you are only using local databases for your semester. If your TA never gave you remote database information, then don't worry about this part.
+
+Your TA should give you a username, password, URL, and database name (sometimes the database name is combined with the URL). Here's how you connect:
+  - In iTrust, the database information is stored in iTrust/WebRoot/META-INF/context.xml
+  - Shut down the Tomcat server if you have it running.
+  - Edit the context.xml file following the file's comments. Here's an example excerpt
+	
+    username="astudent"
+	password="astudentspassword"
+	url="jdbc:mysql://theserver.csc.ncsu.edu:3306/astudentsdatabase"		
+	... other stuff that needs no modification ... />
+
+If you still cannot connect:
+  * Check the Eclipse console. Sometimes multiple exceptions get thrown.
+  * Make sure there's data in your database before starting up the Tomcat server. Use the TestDataGenerator for this.
+  * Make sure your MySQL driver JAR is in your <tomcat>/common/lib folder. 
+  * Make sure your username and password are correct. If there is a phpMyAdmin or other web-based MySQL client, try your password there. 
+  * If all of these don't work - contact your TA immediately (this shouldn't be a time-sink).
+
+==== ...connect to a local database? ====
+
+  You will have to be running a local instance of MySQL, and it should be started.  Check that these items are true.
+
+  - In iTrust, the database information is stored in iTrust/WebRoot/META-INF/context.xml
+  - Shut down the Tomcat server if you have it running.
+  - Edit the context.xml file following the file's comments. Here's an example excerpt
+	
+    username="astudent"
+	password="astudentspassword"
+	url="jdbc:mysql://localhost:3306/astudentsdatabase"		
+	... other stuff that needs no modification ... />
+
+If you still cannot connect:
+  * Check the Eclipse console. Sometimes multiple exceptions get thrown.
+  * Make sure there's data in your database before starting up the Tomcat server. Use the TestDataGenerator for this.
+  * Make sure your MySQL driver JAR is in your <tomcat>/common/lib folder. 
+  * Make sure your username and password are correct. If there is a phpMyAdmin or other web-based MySQL client, try your password there. 
+  * If all of these don't work - contact your TA immediately (this shouldn't be a time-sink).
+
+==== ...speed up my unit tests? ====
+  * Use a local database (see How do I connect to a local database?)
+    * Tweak your startup parameters using the MySQL Administrator. Increase memory for sort buffers and other caches.
+    * We do not recommend changing your MySQL engine back end. This can affect unit tests, such as the order in which records are returned when there is no sorting. 
+  * Do **only** what is required for your test
+    * If your unit test does not **require** data to be loaded into the database, do not load any data (e.g. validator, "Evil" test cases)
+    * If your test does not touch the database, make it a separate class (otherwise the setUp method will get called for each test)
+    * Only load the data that you need to load (use "standard data" sparingly)
+    * Don't drop and re-create tables in a test unless you need to. Always "clear" a table instead.
+  * Check your production code
+    * Make sure your code is not stuck in a loop somewhere
+    * Make sure all of your DB connections are being closed
+    * If you wrote a new SQL query, check that by itself and see if it's slow (use phpMyAdmin, or MySQL Query Browser)
+  * Keep an eye on your performance
+    * Log JUnit runtimes in your SVN comments, so others can see if you are way faster or slower. 
+    * Run your new tests often so that when performance issues do arise, you can better debug them
+  * When working on a feature, run a the new unit test by itself until it passes, then run everything at once.
+
+
+
+==== ...create a new database table? ====
+
+  - Use the MySQL Query Browser to get the table definition as you want it. If you have difficulty with the table definition, contact your TA. You //can// get the table definition auto-generated from the MySQL query browser - but this is often very verbose and doesn't follow our conventions. See below.
+  - Go to the sql/createTables.sql and add the definition there. 
+  - Re-run DBBuilder. 
+  - Re-run your unit tests just to make sure.
+  - Write a new DAO for that table, unit testing along the way.
+
+Please make sure that the CREATE TABLE statement generally matches the format and structure of the other tables in createTables.sql. Use similar column types and table options, rather than simply copying straight from some auto-generated code. Please keep the engine as MyISAM.
+
+==== ...create a new JSP page? ====
+
+First, decide who will have access to the JSP.  If it's any user, then you can place it in ''/WebRoot'', but pages which require certain authentication levels should go in the appropriate subfolder of ''/WebRoot/auth''. For example, a page which is accessible only to administrators should go in ''/WebRoot/auth/admin''.  Right click in the appropriate folder and go to New -> File.  The figure below shows the creation of a new file which is accessible only to administrators.
+
+{{creatinganewfileadmin.jpg?200x200|Creating a new administrator only file}}
+
+On the box that comes up, type in the filename followed by ''.jsp''.  This will create your file as a new JSP page.
+
+Every page in iTrust must start with ''<%@include file="/global.jsp" %>''  This includes the global resources and variables that an iTrust JSP will typically use.
+
+If you would like to set a title (in the browser title bar) for the page, you can include the following line:
+
+''<%
+pageTitle = "iTrust - ER Home";
+%>''
+
+Next, every JSP in iTrust must contain ''<%@include file="/header.jsp" %>'' and end with ''<%@include file="/footer.jsp" %>''.  These JSP fragments contain the HTML rendered for the appropriate user which have the context-appropriate menu and typical layout for an iTrust page.
+
+The contents of the page go in between these lines.  Thus, the whole body of the page will something like the following figure:
+
+{{bodyofnewpage.jpg|}}
+
+
+
+
+==== ...provide error handling in the JSP? ====
+
+Most pages in iTrust should contain a structure resembling the one in the following figure.
+
+{{bodyofnewpage.jpg|Example simple page}}
+
+If you want to catch and handle exceptions which come from iTrust classes (such as an Action class or a DAO) in the JSP, you will need to add the following line to the top of the JSP:
+
+''<%@page errorPage="/auth/exceptionHandler.jsp" %>''
+
+This is the simplest way to catch any exception which may come from the methods in iTrust classes you may call.  This setup will not catch certain types of exceptions, however, and the safest way to ensure that your code fails gracefully is to catch any exceptions which may occur in the method you call and throw it as an ''iTrustException''.  If you desire more control over how exceptions are handled, read on.
+
+If you wish to place your specific error messages within a certain segment of the page, consider the example provided by ''/WebRoot/auth/staff/editMyDemographics.jsp'' presented in the figure below.
+
+{{advancederrorhandling.jpg|Correct error handling}}
+
+The call to the action class is placed in a ''try'' block, and the code following the successful call returns an informational message telling the user that the action was successful.  This result goes in a ''iTrustMessage'' span, which is green and indicative of a positive result.  In the case of an exception, the catch block returns the error message (with ''e.getMessage()'') and presents it to the user in a well-formatted ''iTrustError'' span.  Note that not all errors received by this example will be of type ''FormValidationException''-- for example, the database could go out.  This is why ''editMyDemographics.jsp'' also includes the exception handler as mentioned above at the top of the page with the line:
+
+''<%@page errorPage="/auth/exceptionHandler.jsp" %>''
+
+Also, note that DBExceptions are formed from SQLException, printed out the console, and then a really vague error is shown to the user. This is intentional. For security reasons, database information should not become available to users. Note that you should alway print this out to the console so that you can trace your exception. 
+
+This is best practice for handling other types of exceptions which may occur.
+
+
+==== ...validate input? ====
+
+Use a Validator. Make sure that you validate input so that all errors are reported at once. This usually takes the form of:
+
+	ErrorList errorList = new ErrorList();
+	errorList.addIfNotNull( ... ); //bunch of these
+	if (errorList.hasErrors())
+		throw new FormValidationException(errorList);
+
+There's a whole host of regex's and other utility methods that can be used. If you have trouble generating the correct regex, look at some of the other examples and compare them to the requirements of how th
+
+A good example of a validator is PersonnelValidator.
+
+
+==== ...run the unit tests? ====
+We recommend using the built-in launch configuration, which will reset the database (via DBBuilder) prior to your unit tests. 
+
+If this is your first time running the iTrust unit tests, there are two ways to start them.  The easiest is to right-click the file iTrust Unit Tests.launch in the package explore and go to Run As -> iTrust Unit Tests as in the figure below.
+
+{{rununitsfromsaveddotlaunch.jpg?200x200|Running units from saved launch}}
+
+Another way is to go to Run > Run Configurations... at the top menu. Within the Run Configurations dialog, select iTrust Unit Tests and run that.
+
+{{runconfig.png?200|}}
+
+If you have executed your unit tests before, they should be in your recent runtime configurations.  Click the arrow to the right of the "Play" arrow and select "iTrust Unit Tests" from the menu that appears, as in the following figure.
+
+{{rununitsfromrecents.jpg?200x200|Running units from recent configurations}}
+
+If you cannot find the .launch file, you can also right-click the unittests source folder and go to Run As -> JUnit Test, as in the following figure. **Note: ** this will effectively run your unit tests twice, as this method considers the AllTests.java suite as a single test. We do not recommend this approach.
+
+{{rununitsfromsourcefolder.jpg?200x200|Running units from the source folder}}
+
+
+
+==== ...run a package of tests or a single test? ====
+
+JUnit will allow any of these execution units if you specify it in the package explorer when right-clicking.  The following figures show executing a package of tests and then a single JUnit test case (method), respectively.
+
+{{runningapackageoftests.jpg?200x200|Running a package of tests}}
+
+{{runningasingletestcase.jpg?200x200|Running a single test case}}
+
+
+
+==== ...run the http tests? ====
+If you have executed your HTTP tests before, they should be in your recent runtime configurations.  Click the arrow to the right of the "Play" arrow and select "iTrust HTTP Tests" from the menu that appears, as in the following figure.
+
+{{runninghttpsfromrecents.jpg?200x200|Running HTTPs from recents}}
+
+If this is your first time running the iTrust HTTP tests, there are two ways to start them.  The easiest is to right-click the file iTrust HTTP Tests.launch in the package explore and go to Run As -> iTrust HTTP Tests as in the figure below.
+
+{{runninghttpsfromdotlaunch.jpg?200x200|Running HTTPs from dot launch file}}
+
+If you cannot find the .launch file, you can also right-click the httptests source folder and go to Run As -> JUnit Test, as in the following figure.
+
+{{runninghttpsfromsourcefolder.jpg?200x200|Running HTTPs from source file}}
+
+
+==== ...reset the database? ====
+
+**NOTE**: These instructions are for //dropping and re-creating the table definitions// ("database schema"). Most times, you probably just want to reset the test data, for which there are instructions in the next section.
+
+There are two ways to reset the database: using the saved launch configuration or manually finding and executing the Java application.
+
+To reset the database using the saved launch configuration, just right click the file DBBuilder.launch and go to Run As -> Java Application as in the figure below.
+
+{{runningdbbuilderfromdotlaunch.jpg?200x200|Running DBBuilder from Launch Configuration}}
+
+To reset the database by manually finding the Java application, execute the file DBBuilder, which can be found in src -> unittests -> DBBuilder.java as in the following figure.
+
+{{runningdbbuildermanual.jpg?200x200|Running DBBuilder manually}}
+
+
+==== ...reset the test data? ====
+
+**NOTE:** You can reset the data that is used for manual testing by these instructions.  However, if you feel (or know) that you would like to drop and recreate all the iTrust tables in your database, you should see the other section on "reset the database".
+
+To reset the test data, execute the file TestDataGenerator.java as a Java application, which is located in unittests -> edu.ncsu.csc.itrust -> datagenerators -> TestDataGenerator.java.  The following two figures show how to execute the existing saved launch configuration, and how to execute this file manually, respectively.
+
+{{runningtestdatageneratorfromdotlaunch.jpg?200x200|Running test data generator from dot launch}}
+
+{{runningtestdatageneratormanual.jpg?200x200|Running test data generator manually}}
+
+
+
+==== ...create a test class which resets test data? ====
+
+In the JUnit **setUp()** method, insert a call to
+   TestDataGenerator.clearAllTables()
+   TestDataGenerator.standardData()
+
+See the existing unit tests for an example of the convention for best practice in iTrust tests.
+
+
+
+
+
+
+==== ...use the test data effectively? ====
+
+  * Think before adding new data. Look through the Standard Test Data call in TestDataGenerator and its referenced sql files for data that you can add to or modify. Think about it: //if everybody added new sql files every semester, we would have thousands of new sql files and no data reuse//. 
+  * Run all of your unit tests after making big changes to the test data. 
+  * Use the "Test Utility" page when going through the website. This will use use reflection to list all of the methods in TestDataGenerator.java and allow you to run them without switching back over to Eclipse. Click on the "Test Data Generator" link on the bottom. Configuration instructions are on the page. The direct URL is http://localhost:8080/iTrust/util/andystestutil.jsp
+
+===A note on conventions===
+When it comes to using TestDataGenerator, we follow a few conventions:
+  * Call clearAllTables() before every test method. This is not a very slow method (it's actually quite fast) but it clears all of the tables so that no data from a previous test can affect your current test.
+  * We do **not** recommend having one test method call another test method (except "standardData" or other intentionally "meta" methods). For example, loincs() should not call patient1() first. Instead, put BOTH patient1() and loincs() in your test case. If we keep this convention, then every time you call a method, you know that ONLY your sql file is called and nothing else. The alternative is a lot of unexpected, extraneous calls to some test methods like patient1().
+
+==== ...reset my test data without using Eclipse? ====
+
+See above.
+
+
+==== ...fix lots of unit tests at once? ====
+
+Fixing a bunch of broken tests can be painful, as re-running the whole unit tests suite (or HTTP test suite) can be slow. Here's a tip:
+
+  - Run all of your unit tests to get the failures
+  - Fix one unit test, and run it individually.
+  - Go back to your JUnit history to the full run
+  - Click on another test that failed, fix that (repeat until done)
+  - Run all of your tests again.
+
+Here's a shot of your JUnit history:
+
+{{unittesthistory.png?200|JUnit history}}
+
+==== ... debug unit tests failures? ====
+ (clear the tables, use the stacktraces, make sure expected values are correct, try the test by itself)
+
+
+
+
+
+
+
+
+
+==== ... use BeanBuilder? ====
+
+BeanBuilder is a utility that transfers parameter maps given by the JSP pages into a bean. BeanBuilder is intended to be used in the JSP, and the returning bean be passed to the Action class. The utility works by introspecting the bean, looking for all "setters". If a setter exists, then the utility will look up the name of the setter property in the parameter map, and then put the value into the setter. For example, if a bean has "setName", then the property name is "name". 
+
+Make SURE you get this right in your JSP by naming your HTML fields correctly, otherwise your parameter will not be passed into the Action class. Also, don't overload a setter - just name them differently. For example, use setDateOfBirthStr(String str), instead of overloading setDateOfBirth with both a string and date type. If BeanBuilder is used on a bean that is overloaded, then an exception will be thrown. 
+
+
+
+==== ...use the "Find User" popup (IFRAME)? ====
+
+See /WebRoot/auth/getPatientID.jsp for an example. Include the getUserScript.jspf, then make sure you pass the name of your hidden HTML value correctly.
+
+==== ...require an MID for a page? ====
+
+See /WebRoot/auth/hcp-uap/editPHR.jsp for an example. Send a forward to getPatientID.jsp, passing your current URL as the parameter "forward". 
+
+==== ...use the Date Picker? ====
+
+See /WebRoot/auth/hcp-uap/editPatient.jsp for an example. Include the DatePicker.js, which is located at: /WebRoot/js/DatePicker.js For a button (or any js event), call the function: displayDatePicker('PARAM'), where PARAM is the name of your HTML field 
+
+
+
+
+==== ...use DAOFactory? ====
+
+DAOFactory is a triple-singleton (tripleton?). It has exactly three instances... 
+
+  * Production Instance: use this in your JSPs. This obtains the database connection from Tomcat's connection pool.
+  * Test Instance: use this in your unit and http tests. This obtains the database connection from a custom connection pool.
+  * Evil Test Instance: doesn't do anything except throw an exception. Use this to force-throw an exception so you can test your exception handling.
+
+Also note that when in a DAO, you should use the "factory" variable to call other DAOs - since you don't know which instance is currently being used. 
+
+
+
+==== ...use the Patient Navigation tag? ====
+
+The Patient Navigation tag (ie <itrust:patientNav /> ) is supposed to be used to navigate from patient pages. To use it, you need to include the library at the top of your JSP: And then use it in your code with the following attributes 
+  * pid: the Patient's MID that will be used to form the link 
+  * thisTitle: the name of the page (must exactly match the value code in the PatientNavigation.java in the "tags" folder) See PatientNavigation.java in the "tags" folder for the actual JSP tag code. 
+
+
+==== ...use the State tag? ====
+
+This is to be used to make the State select tag easier. 
+  * Name: the name of your HTML field 
+  * Value: the default value of your HTML field
+
+For example: 
+
+    <itrust:state name="icState" value=""/>
+
+====== In the class, how do I.... ======
+
+
+==== ...work so that I get the best grade?  ====
+(Will describe more in-depth, but: work iteratively, prioritize well, test a lot, test along the way, start early, ask questions, listen to the TA)
+
+==== ...work with a deadbeat partner? ====
+(Will describe more in-depth, but: set deadlines, alert TA as early as possible, start early, we do look at PairEval, be polite but firm)
+
+
+==== ...import my project from a zip? ====
+
+We have a [[http://agile.csc.ncsu.edu/SEMaterials/tutorials/import_export/index.html#section1_0|tutorial]] which illustrates how to execute this task.
+
+
+==== ...export my project to a zip? ====
+
+We have a [[http://agile.csc.ncsu.edu/SEMaterials/tutorials/import_export/index.html#section2_0|tutorial]] which illustrates how to execute this task.
+
+==== ... submit my project? ====
+
+
+==== ... start working on the project? ====
+ (work iteratively, make a to-do list, better to have a half-working feature than half the code to work)
+
+==== ... complain about the class? ====
+ (polite, constructive - you'd be surprised how much we've improved this class from student feedback)
+
+x

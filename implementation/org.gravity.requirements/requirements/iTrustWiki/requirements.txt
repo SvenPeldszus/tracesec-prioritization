@@ -1,0 +1,129 @@
+======iTrust Medical Care Requirements Specification======
+Version 27 \\ 
+October 11, 2016 \\ 
+
+Document Authors:\\ 
+Laurie Williams \\ 
+Tao Xie \\ 
+Andy Meneely \\ 
+Lauren Hayward \\
+Jason King \\ 
+Sarah Heckman \\
+
+[[http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start|Return to iTrust Home page]] \\
+
+
+=====Introduction=====
+This project involves the development of an application through which doctors can obtain and share essential patient information and can view aggregate patient data. Currently, access to a patient's history regarding previous medical problems, previous surgery, medications, allergies and other factors is often difficult or obtainable only from a patient's recollection. Now, as more hospitals and doctor's offices are automated, this information is available electronically. However, it is not accessible by other doctors, and is often only viewed through some proprietary software so it can not be shared.
+
+The final product is a site where health care workers can access important patient information, the non-emergency access can be controlled, and all access would be tracked. Security and privacy of such a system is of paramount importance. HIPAA rules protect patients' information and also allow a patient to dictate who can access this information.
+
+
+
+
+=====Glossary=====
+Approved diagnostic information: The set of diagnostic information a patient allows a designated or other licensed health care professional to view. A patient is only given the choice to restrict viewing on selected diagnostic information, such as those related to mental illness, substance abuse, and cosmetic surgery. The licensed health care professional making a diagnosis determines if a patient is granted the ability to restrict viewing of the diagnosis. For the diagnostic information which a patient can restrict viewing, he or she can choose to enable designated licensed health care professionals, and/or other licensed health care professionals, and/or no one.
+
+There are ten roles in the iTrust Medical Records system. The role of a user determines their viewing and editing capabilities (role-based access control).
+  * **Health Care Personnel (HCP)**: All of designated licensed health care professionals, licensed health care professionals, and unlicensed authorized personnel, as defined below.
+  * **Patient**: When an American infant is born or a foreigner requests medical care, each is assigned a medical identification number and password. Then, this person's electronic records are accessible via the iTrust Medical Records system.
+  * **Administrator**: The administrator assigns medical identification numbers and passwords to LHCPs. [Note: for simplicity of the project, an administrator is added by directly entering the administrator into the database by an administrator that has access to the database.]
+  * **Licensed Health Care Professional (LHCP)**: A licensed health care professional that is allowed by a particular patient to view all approved medical records. In general, a patient does not know this non-designated health care professional, such as an emergency room doctor, and the set of approved records may be smaller than that granted to a designated licensed health care professional.
+  * **Designated Licensed Health Care Professional (DLHCP)**: A licensed health care professional that is allowed by a particular patient to view all approved medical records. Any LHCP can be a DLHCP to some patients (with whom he/she has an established relationship) and an LHCP to others (whom he/she has never/rarely seen before).
+  * **Emergency Responder (ER)**: Police, Fire, Emergency Medical Technicians (EMTs), and other medically trained emergency responders who provide care while at, or in transport from, the site of an emergency. [referred to as “on site care providers” by Department of Health and Human Services Emergency Responder Electronic Health Record Use Case [[http://www.dhhs.gov/healthit/usecases/documents/EmergencyRespEHRUseCase.pdf|Department of Health and Human Services]]
+  * **Unlicensed Authorized Personnel (UAP)**: A health care worker such as a medical secretary, case manager, care coordinator, or other authorized clerical-type personnel. An unlicensed personnel can enter and edit demographic information, diagnosis, office visit notes and other medical information, and can view records.
+  * **Software Tester**: An information technology worker who tests the iTrust Medical Records system. Of particular interest to the software tester is the operational profile information which informs him/her of the frequency of use of the features of the system.
+  * **Personal Representative**: A person legally authorized to make health care decisions on an individual's behalf or to act for a deceased individual. When a person logs into iTrust, if he or she is a personal representative, they view their own records or those of the person/people they are representing. (For example, a mother could choose herself and any one of her children.)
+  * **Public Health Agent (PHA)**: A person legally authorized view and respond to reports of adverse events.
+  * **Lab Technician (LT)**: A clinical worker that runs diagnostic tests on samples gathered from patients during office visits. The lab technician can specialize in blood work, tissue work, or general.
+These are the standards codes used within iTrust:
+  * **ICD-9CM**: The International Statistical Classification of Diseases and Related Health Problems (most commonly known by the abbreviation ICD) provides codes to classify diseases and a wide variety of signs, symptoms, abnormal findings, complaints, social circumstances and external causes of injury or disease. [[http://www.cdc.gov/nchs/icd.htm|NHCS Classification of Diseases, Functioning and Disability]]
+  * **ND**: The National Drug Code (NDC) is a universal product identifier used in the United States for drugs intended for human use. [[http://www.fda.gov/Drugs/InformationOnDrugs/ucm142438.htm|National Drug Code Directory]]
+  * **LOINC**: Logical Observation Identifiers Names and Codes (LOINC) is a database and universal standard for identifying medical laboratory observations.[[http://loinc.org/|LOINC c/o Medical Informatics]]
+  * **CPT**: The CPT code set accurately describes medical, surgical, and diagnostic services and is designed to communicate uniform information about medical services and procedures among physicians, coders, patients, accreditation organizations, and payers for administrative, financial, and analytical purposes.[[http://www.ama-assn.org/ama/pub/physician-resources/solutions-managing-your-practice/coding-billing-insurance/cpt/about-cpt.shtml|About CPT]]
+  * **ORC**: The override reason code. A set of reasons for ignoring a reaction warning and prescribing a medication anyways.[[http://archinte.ama-assn.org/cgi/content/full/163/21/2625/TABLEIOI20692T4|Override Reason Codes]]
+
+
+
+
+
+
+
+
+=====3. Functional Requirements=====
+
+
+
+====3.1 Use Case Diagram and Flow of Events====
+There are 41 Use Cases for the system, as indicated by the attached diagram: \\
+{{itrust_v20_usecasediagram.png?1000}} \\
+Throughout this document MID = medical identification number. The MID is a unique number assigned to all roles.
+
+The following use cases document flows of events.
+
+
+
+
+====3.2 Use Case Descriptions====
+
+=====4. Non-Functional Requirements=====
+==4.1 HIPAA==
+Implementation must not violate HIPAA guidelines.
+==4.2 Exlusive Authentication==
+The system shall enable multiple simultaneous users, each with his/her own exclusive authentication.
+==4.3 Form Validation==
+The form validation of the system shall show the errors of all the fields in a form at the same time.
+==4.4 Reports==
+A **report** is a page which opens in a separate window and contains minimal decoration. The format is printer-friendly in that the background is white and the information does not exceed the width of 750 pixels so that upon printing, no information is lost due to the information being too wide.
+==4.5 Privacy Policy==
+The system shall have a privacy policy linked off of the home page. The privacy policy should follow the template provided [[http://ecommerce.ncsu.edu/studio/templates/privacy_tem.doc|here.]]
+==4.6 Security of MID==
+Remove MID from being displayed on all pages and URLs. MIDs should be considered private, sensitive information.
+=====5. Constraints=====
+==5.1 Language==
+All new development must use JavaServer Faces (JSF).
+==5.2 Coding Standards==
+The implementation shall adhere to the Java Coding Standards.
+==5.3 Documentation==
+All new code shall be documented using the Javadoc documentation system.
+==5.4 Environment==
+The implementation shall run on the Windows platform in the Eclipse 4.6 environment.
+==5.5 Testing==
+All non-GUI classes must have at least 80% unit testing/JUnit coverage of tests that pass.
+==5.6 Database==
+To control open connections to the database, all database access should be done through an object that uses the Singleton pattern.
+==5.7 Patterns==
+The implementation must use the Strategy pattern for epidemic detection and cause-of-death trends and the Singleton pattern for database connections.
+==5.8 Static Analysis==
+The application should have no true positive Severe or Medium FindBugs errors.
+==5.9 Build==
+The application shall be configured to run and build using Maven.
+
+
+
+
+
+=====6. Data Field Formats=====
+
+
+=====8. Document Revision History=====
+  * August, 2015: Sarah Heckman
+     * Updated requirements for Spring 2016
+
+  * August, 2015: Sarah Heckman
+     * Updated requirements for Fall 2015
+
+  * January 7, 2015: Jason King
+    * Updated requirements version for Spring 2015
+
+  * August 20, 2014: Sarah Heckman
+    * Updated requirements version for Fall 2014
+  
+  * October 13, 2011: Laurie Williams
+    * Updated requirements to reflect iTrust v12 implementation for Fall 2011
+  
+  * August 9, 2011: Jason King
+    * Reorganized to separate Use Cases and Data Formats onto individual wiki pages for easier referencing
+
+  * January 1, 2011: Jason King
+    * Updated requirements to reflect iTrust v11 implementation for Spring 2011

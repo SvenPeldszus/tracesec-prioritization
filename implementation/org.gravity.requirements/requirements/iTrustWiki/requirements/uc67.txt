@@ -1,0 +1,21 @@
+====== Use Case 67: Manage Allergy records ======
+
+===== 67.1: Preconditions =====
+
+UC10 must be fully implemented.
+===== 67.2: Main Flow =====
+
+Any HCP may add a new allergy to a patient record from the patient records page [S1]. Upon submitting
+the form, the allergy is added to the patient record [S2][E1][E2].
+==== 67.3: Subflows ====
+
+  * [S1] - A form is displayed allowing the HCP to enter an allergy name.
+  * [S2] - A plaintext allergy is added to the patient record.
+===== 67.4: Alternate Flows =====
+
+  * [E1] - An error message is displayed when the allergy being added is not plaintext (contains special symbols) informing the HCP that only plaintext is allowed
+  * [E2] - An error message is displayed when the allergy being added exceeds 64 chars in length informing the user that the allergy string must be less than 64 chars
+===== 67.5: Logging =====
+
+^ Transaction Code ^ Verbose Description ^ Logged-In MID ^ Secondary MID ^ UseCase(s) Involved ^ Type of Transaction ^ Additional Information ^ Patient Viewable ^
+| 6700 | An allergy record has been added | HCP MID | patient the record is being set for | 67 | Create | The allergy record id | True |

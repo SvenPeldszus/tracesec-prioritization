@@ -1,0 +1,39 @@
+====== Use Case 64: Obstetrics Patient Office Visit ======
+
+===== 64.1 Preconditions =====
+
+An HCP is a registered user of the iTrust Medical Records system (UC2). The iTrust HCP user has authenticated himself or herself in the iTrust Medical Records system (UC3). The patient must be a registered patient in the iTrust Medical Records system.
+
+===== 64.2: Main Flow =====
+
+A HCP chooses to document [S2] or edit [S3] an obstetrics office visit for a current obstetrics patient [S1]. A current obstetrics patient is defined as a female patient who has been initialized as an obstetrics patient (UC63) with an LMP that is less than 49 weeks, 0 days prior to the office visit date [S4]. 
+
+===== 64.3 Sub-flows =====
+
+  * [S1] The HCP enters a MID [E1] or name of a patient and confirms their selection [E2][E3].
+  * [S2] An OB/GYN HCP [E4] documents the following information related to an obstetrics office visit and saves the obstetrics office visit record. All events are logged (UC5, S8) and the HCP is sent to an overview of obstetrics office visits for the patient. All information is required [E5] and details are described in [[requirements:df15|Data Format 6.15]]: Date of the office visit - current date
+     * Number of weeks pregnant as of the office visit date (generated from last menstral period).
+     * Weight in pounds
+     * Blood pressure
+     * Fetal heart rate (FHR)
+     * Fundal height of the uterus (FHU)
+     * If the current pregnancy is twins
+     * Whether a low lying placenta was observed during the visit
+
+  * [S3] OB/GYN HCPs can return to an obstetrics office visit and modify or delete the fields of the obstetrics office visit. The event is logged (UC 5, S8) and the HCP is returned in the specific office visit record to verify his or her changes.
+  * [S4] If multiple obstetrics patient initializations fall within the 49 week window, the most recent obstetrics patient initialization is used.
+  * [S5] If the patient’s RH- flag (UC66) is set and the current pregnancy term is past 28 weeks, a notice is displayed that the patient should be given an RH immune globulin shot if they have not already
+
+===== 64.4: Alternative Flows =====
+  * [E1] The HCP types an invalid patient medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient. The HCP does not confirm the selection and is prompted to try again.
+  * [E3] The patient chosen is not a current obstetrics patient. The HCP is prompted to try again.
+  * [E4] An HCP without the OB/GYN specialization is unable to create or edit an obstetrics office visit. They are prompted to create a regular office visit (UC11).
+  * [E5] Invalid or missing inputs are flagged and an error message appropriate to the input is printed.
+
+===== 64.5: Logging =====
+
+|Transaction Code|Verbose Description|Logged In MID|Secondary MID|Use Case(s) Involved|Type of Transaction|Additional Information|Patient Viewable|
+|6400|Create Obstetric Office Visit|Editor (HCP)|Patient|64|Create|Office Visit ID|Yes|
+|6401|View Obstetric Office Visit|Viewer (HCP)|Patient|64|View|Office Visit ID|Yes|
+|6402|Edit Obstetric Office Visit|Editor (HCP)|Patient|64|Edit|Office Visit ID|Yes|

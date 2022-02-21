@@ -1,0 +1,45 @@
+**UC80 Exercise Diary Add**
+
+**80.1 Preconditions**
+
+A patient is a registered user of the iTrust Medical Records
+System (UC1). The iTrust patient user has authenticated
+himself or herself in the iTrust Medical Records System (UC3).
+
+**80.2 Main Flow**
+
+Any patient may select to either view their exercise diary or
+add a new diary entry. If patient selects to view their exercise
+diary, every diary entry is displayed with the information
+contained in [S1] with the most recent entries (by date of the
+entry in the sleep diary) being displayed first and calculates
+totals with [S2]. If patient selects to add a new diary entry,
+they enter the required information into the form [S1]. The
+patient submits the form [E1] and is sent to the page to view
+their exercise diary.
+
+**80.3 Sub-flows**
+
+  * [S1] A single exercise diary entry has the following information described in section VII below:
+    * date (current date is default).
+    * Type of Exercise.
+    * Activity Name.
+    * Hours Worked.
+    * Number of Sets (Only for “weight training” type exercises).
+      * Number of Reps per Set.
+    * Calories Burned.
+  * [S2] Each day in the exercise diary has its own total for calories burned.
+
+**80.4 Alternative flows**
+
+  * [E1] Invalid inputs are flagged and an error message appropriate to the input is printed.
+
+**80.5 Logging**
+
+Transaction Code: ​8000
+Verbose Description:​Exercise diary entry add.
+LoggedInMID: ​Patient (view and edit)
+Secondary MID: ​None.
+Use Case Involved: ​80
+Type of Transaction: ​Add
+Additional Information: ​None

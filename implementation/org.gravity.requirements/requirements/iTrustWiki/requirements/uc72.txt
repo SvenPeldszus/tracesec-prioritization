@@ -1,0 +1,45 @@
+**UC72 View Patient Caloric and Macro-nutrient Graph**
+
+**72.1 Preconditions**
+
+An HCP is a registered user of the iTrust Medical Records
+System (UC2). The iTrust HCP user has authenticated himself
+or herself in the iTrust Medical Records System (UC3).
+
+**72.2 Main Flow**
+
+Any HCP may search for the patient by MID or patient name
+[E1][E2]. After selecting the patient, their optimal daily caloric
+and macronutrient intake is displayed according to [S1], and
+the HCP can select a date to view a graph comparing that
+day’s actual caloric and macronutrient intake vs the Patient’s
+optimal caloric and macronutrient intake [S2]. Only HCP’s with
+a specialization of “Nutritionist” may view a Patient’s calories
+and macronutrients, and HCP’s may only view the calories and
+macronutrients of a Patient for which they are the designated
+nutritionist (UC73).
+
+**72.3 Sub-flows**
+
+  * [S1] The HCP shall see:
+    * Carbohydrate: x%
+    * Protein: y%
+    * Fat: z%
+    * Optimal Daily Calories: n calories
+  * [S2] The HCP shall select a date for which the Patient selected has a Food Diary entry.
+
+**72.4 Alternative Flows**
+
+  * [E1] The HCP types an invalid medical identification number or name or a medical identification number or name of a patient not in the system and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient. The HCP does not confirm the selection and is prompted to try again.
+
+**72.5 Logging**
+
+Transaction Code: ​7200
+Verbose Description: ​Patient’s data viewed by HCP
+LoggedInMID: ​Viewer (HCP)
+Secondary MID: ​Patient
+Use Case Involved: ​72
+Type of Transaction: ​View
+Additional Information: ​None
+Patient Viewable: ​Yes

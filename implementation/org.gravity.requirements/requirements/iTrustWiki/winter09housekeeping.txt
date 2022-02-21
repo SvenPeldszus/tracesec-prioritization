@@ -1,0 +1,25 @@
+===== What we did =====
+  * Removed appointments, appointment requests, and all corresponding artifacts entirely.
+  * Synchronized with the best team's latest manual blackbox test plan.
+  * Anonymized (removed all references to the team members, or their passwords)
+  * Hid err.txt, a file which is required by the MockObject for System.out, away from the developer.
+  * Several HTTPUnit tests had class names which reflected their use case numbers.  These were renamed to give a short description of the functionality they are testing for.
+  * Fixed a few instances where deleteFromAllTables() was called unnecessarily (but there is a lot of work to be done here).
+  * Added the basic functionality for uploading an image. Including:
+    * The added dependency files, commons-upload, and commons-io.
+    * Database schema changes
+    * A new DAO, ImageDAO for inserting/retrieving databases
+    * The JSPs to consistently upload and retrieve images from a BLOB.
+    * Change to the admin's menu
+    * An example page, which shows how to use the other machinery.
+    * Unit tests for the DAO.
+    * No HTTP tests--too complicated and left for students to do.
+  * Some minor aesthetic testing issues were resolved.
+  * The test data for Cause of Death Trends ([[requirements#uc20_view_cause-of-death_trends_report_use_case|UC20]]) has been updated and made to insert correctly.
+  * Cause of Death Trends ([[requirements#uc20_view_cause-of-death_trends_report_use_case|UC20]]) is now properly implemented--by the requirements.  Two causes of death which have the same rank are now just arbitrarily assigned different ranks (the requirements are unclear on this point).
+  * Made some alterations to the developer notes.
+  * Made significant changes to the iTrust **website** in order to make resources more dynamic and accessible to students and teaching staff alike.
+  * Fixed that annoying issue where if you reboot the server while you are logged in, iTrust still thinks you are logged in for a second. Now you are redirected to login.
+
+----
+[[housekeeping|Back to iTrust Housekeeping]] | [[start]]

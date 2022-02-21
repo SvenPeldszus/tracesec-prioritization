@@ -1,0 +1,92 @@
+Ideas for Paper....
+
+Transitioning from Use Cases to Traditional Requirements
+  * Asked questions from the book
+  * Removed ambiguity, but described the point of the requirement without giving implementation details
+  * Recorded the context and rationale to maintain that sometimes get lost
+
+Discuss movement from word doc to wiki
+  * Allowed for multiple users to easily edit
+  * Allowed for automatic versioning control
+
+Tool features that would have been helpful
+  * Automatic linking to the glossary (forwards and backwards)
+  * Automatic ordering of the glossary
+  * Support for autonumbering of requirements and their subparts
+  * Support for generating reports with specific pieces (like just requirements or requirements with use cases or requirements and open issues)
+  * Automatically creating expandable nodes in the requirements below the requirement description
+  * Being able to denote issues / concerns in the wiki, but have them automatically and optionally removed from the final document.
+  * Keywords and definitions should be detected by the editor when text is input and links to the appropriate definitions should be automatically generated when these terms are placed in an online format.
+  * Automatic recognition of plural keywords and definitions such that the previous bullet point would still create the linking where appropriate.
+  * Incorporate wikislicing
+
+Mapping Index 
+  * New Term -> Old Term\\
+  * Patient -> Patient\\
+  * Personal Representative -> Personal Representative\\
+  * Physician -> LHCP\\
+  * Designated Physician -> DLHCP\\
+  * Administrative Assistant -> UAP\\
+  * Medical Administrator -> Administrator\\
+  * System Administrator -> Software Tester
+
+
+Methodology post-extraction:
+  * Z Added priority and origin to each function rqmt
+  * Z Moved use cases to appendix a
+  * Z Removed 'account' from rqmts
+  * Z Formatted level headings
+
+  * A Format Issues / Concerns in italics (really used double equals)
+  * A Generate Internal Links for Glossary / User Roles
+  * A Check Requirements  for plural / singular subjects
+  * A Format Appendices
+  * A Check entire doc formatting
+
+  * B+ Comb doc for specific fixes mentioned in meeting w/ Dr. Anton
+  * B+ Define practicing physician
+  * B+ Possibly constraing rqmt 44 to web-based system
+  * B+ Examine rqmts for personal representative issues
+  * B+ Requirement 45b - We are using appointment for a lab procedure, but this may conflict with our definition of appointment.
+    * Note: we haven't fully completed the relationships between lab procedures and office visits.  For example, we know the chain from Requested -> Scheduled -> Completed Lab Proc, but we haven't defined the Requested Appointment -> Office Visit chain that corresponds to this.  Can a Scheduled Lab Procedure be scheduled for multiple appointments?  Should a completed lab proc have a reference to all the office visits that related to the diagnosis?  Should a requested laboratory procedure be tied in some way to a requested appointment?  Should a patient be able to cancel these scheduled procedures or appointments?
+  * B+ Define requested lap proc., scheduled lab proc., and completed lab proc.
+  * B+ Add subheadings in order to group the requirements according to things like "Laboratory Procedures," "Office Visits," etc...
+  * B+ Check on the priority listings for all personal representative requirements.
+  * B+ Examine for ambiguity
+  * B+ Examine for testability
+  * B+ Non-Functional Requirements / Constraints
+  * B+ Verify double equals notations (fix terminology conflicts -> terminology correction, remove all open issues and make them more specific such as legal concerns, engineering concerns, etc...)
+  * B+ define password, timeout
+  * B+ Clarify all introductory sections with some text.
+
+  Aaron is fantastic:
+  * [DONE] Link the technologies listed in the non-func. to the actual sites for those technologies.
+  * [DONE] Add links to Use Cases from the Requirements' Origin section.
+  * [DONE] Check Disabled Patient Record Links are all now Disabled Record links
+  * [DONE] Create Table include Original Roles -> iTrust Roles -> HIPAA roles  (**mention Appendix A**)
+  * [DONE] Aaron, can you do a find and replace on an authenticated account and password, "patients" links?
+  * [DONE] Check on linking of patient records
+  * [DONE] Be sure all glossary terms have had a find / replace  (Operational Profile, Medical Standards, Healthcare Facility Information).
+  * [DONE] Create a table at the end with Requirement #, Functional, Non-Func., Legal (Note: I didn't think this was useful so I created a table of the concerns for the functional requirements, which could be useful.)
+  * ??? Tidy up the linking between practicing physician and office visits.
+
+Wish List
+  * C Go through and identify Q&A concerns
+  * C Denote legal concerns / origin (with HIPAA sections)
+  * C Denote security concerns
+  * C Build new / revise old use cases for the new requirements
+  * C Define Access Rules in the glossary and update the requirements associated with designatable diagnostic information.
+
+Open Issues to Consider:
+  * what does "printable" mean?
+  * what is a "history of prescriptions?"
+  * should admin assist be able to edit or update requests for appt?
+  * what does "single web page" mean?
+  * Does rqmt 61,62,63 duplicate things from rqmts 8-12?
+
+  * ZZ Spellcheck document.
+  * ZZ Verify numbering for requirements
+  * ZZ Backup the wiki text so that we don't lose it if the page is deleted.
+
+Notes from meeting with Dr. Anton:
+  * Try and be happy.

@@ -1,0 +1,35 @@
+**UC74 Create labels for multiple food diaries**
+
+**74.1 Preconditions**
+
+A Patient is a registered user of the iTrust Medical Records
+System (UC1). The iTrust Patient user has authenticated
+himself or herself in the iTrust Medical Records System (UC3).
+
+**74.2 Main Flow**
+
+Any patient may create a new label for food diary entries [S1].
+The patient may create food diary entries under any of the
+unique labels they have created [S2]. If the patient does not
+create a label, entries will be placed under the “default” label
+[E1]
+
+**74.3 Sub-flows**
+
+  * [S1] A patient may create a new food diary label that will index a unique set of diary entries.
+  * [S2] The patient may create a new food diary entry under the new label (UC68).
+
+**74.4 Alternative flows**
+
+  * [E1] A patient shall add new entries to the “default” label if no labels have been created.
+
+**74.5 Logging**
+
+Transaction Code: ​7400
+Verbose Description: ​Patient creates multiple diary labels
+LoggedInMID: ​Patient
+Secondary MID: ​N/A
+Use Case Involved: ​74
+Type of Transaction: ​Create
+Additional Information: ​None
+Patient Viewable: ​Yes

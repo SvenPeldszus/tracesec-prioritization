@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/org.gravity.requirements/src-gen" creationIcons="false"
+    editDirectory="/org.gravity.requirements.edit/src-gen" editorDirectory="/org.gravity.requirements.editor/src-gen"
+    modelPluginID="org.gravity.requirements" modelName="Requirements" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>requirements.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Requirements" basePackage="org.gravity" disposableProviderFactory="true"
+      ecorePackage="requirements.ecore#/">
+    <genClasses ecoreClass="requirements.ecore#//RequirementsModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements.ecore#//RequirementsModel/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements.ecore#//RequirementsModel/usecases"/>
+    </genClasses>
+    <genClasses ecoreClass="requirements.ecore#//UseCase">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements.ecore#//UseCase/supportet"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements.ecore#//UseCase/preconditons"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements.ecore#//UseCase/mainflows"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements.ecore#//UseCase/subflows"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements.ecore#//UseCase/alternativeflows"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference requirements.ecore#//UseCase/model"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference requirements.ecore#//UseCase/loggingRequirements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements.ecore#//UseCase/description"/>
+    </genClasses>
+    <genClasses ecoreClass="requirements.ecore#//PreConditon"/>
+    <genClasses ecoreClass="requirements.ecore#//SubFlow"/>
+    <genClasses ecoreClass="requirements.ecore#//MainFlow"/>
+    <genClasses ecoreClass="requirements.ecore#//IdentifyableObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements.ecore#//IdentifyableObject/id"/>
+    </genClasses>
+    <genClasses ecoreClass="requirements.ecore#//Element">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference requirements.ecore#//Element/references"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements.ecore#//Element/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference requirements.ecore#//Element/usecase"/>
+    </genClasses>
+    <genClasses ecoreClass="requirements.ecore#//AlternativeFlow"/>
+    <genClasses ecoreClass="requirements.ecore#//LoggingRequirement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute requirements.ecore#//LoggingRequirement/additionalInformation"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

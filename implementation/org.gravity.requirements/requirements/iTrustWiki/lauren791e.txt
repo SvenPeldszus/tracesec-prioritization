@@ -1,0 +1,2485 @@
+//**Note:  This page has been created for Lauren Hayward and Aaron Massey's CSC 791e project.  Please do not make revisions or delete.  Contact Lauren at ljhaywar@ncsu.edu if you have questions.**//
+
+Lauren's paper notes [[lauren791enotes]]
+
+-----------------
+
+<html><img
+src="http://aramis.csc.ncsu.edu:8080/iTrust/resources/Images/top_logo.jpg"></html>
+<html><br><font size="4">iTrust Medical Care Requirements Specification</font></html>
+
+
+======= Table of Contents =======
+**NOTE**: This table of contents has been added explicitly because DokuWiki does not have the ability to generate a printable version of its pages.  As a result, the automatically generated table of contents does not print.  If there are any errors here, they are a result of the difficulty of maintaining the table of contents in an automated fashion.  Please refer to the online documentation whenever possible.
+
+   * [[lauren791e#Introduction|Introduction]] 
+     * [[lauren791e#Authors|Authors]]
+     * [[lauren791e#About this Document|About this Document]]
+     * [[lauren791e#How to Read this Document|How to Read this Document]]
+       * [[lauren791e#Description|Description]]
+       * [[lauren791e#Rationale|Rationale]]
+       * [[lauren791e#Context|Context]]
+       * [[lauren791e#Priority|Priority]]
+       * [[lauren791e#Origin|Origin]]
+     * [[lauren791e#About the Appendices|About the Appendices]]
+   * [[lauren791e#Description of User Roles|Description of User Roles]]
+     * [[lauren791e#Employee Roles|Employee Roles]]
+       * [[lauren791e#Physician|Physician]]
+       * [[lauren791e#Designated Physician|Designated Physician]]
+       * [[lauren791e#Administrative Assistant|Administrative Assistant]]
+       * [[lauren791e#Medical Administrator|Medical Administrator]]
+       * [[lauren791e#System Administrator|System Administrator]]
+     * [[lauren791e#Non-Employee Roles|Non-Employee Roles]]
+       * [[lauren791e#Patient|Patient]]
+       * [[lauren791e#Personal Representative|Personal Representative]]
+     * [[lauren791e#Mapping of Roles|Mapping of Roles]]
+   * [[lauren791e#Functional Requirements|Functional Requirements]]
+     * [[lauren791e#Requirement 1|Requirement 1]]
+     * [[lauren791e#Requirement 2|Requirement 2]]
+     * [[lauren791e#Requirement 3|Requirement 3]]
+     * [[lauren791e#Requirement 4|Requirement 4]]
+     * [[lauren791e#Requirement 5|Requirement 5]]
+     * [[lauren791e#Requirement 6|Requirement 6]]
+     * [[lauren791e#Requirement 7|Requirement 7]]
+     * [[lauren791e#Requirement 8|Requirement 8]]
+     * [[lauren791e#Requirement 9|Requirement 9]]
+     * [[lauren791e#Requirement 10|Requirement 10]]
+     * [[lauren791e#Requirement 11|Requirement 11]]
+     * [[lauren791e#Requirement 12|Requirement 12]]
+     * [[lauren791e#Requirement 13|Requirement 13]]
+     * [[lauren791e#Requirement 14|Requirement 14]]
+     * [[lauren791e#Requirement 15|Requirement 15]]
+     * [[lauren791e#Requirement 16|Requirement 16]]
+     * [[lauren791e#Requirement 17|Requirement 17]]
+     * [[lauren791e#Requirement 18|Requirement 18]]
+     * [[lauren791e#Requirement 19|Requirement 19]]
+     * [[lauren791e#Requirement 20|Requirement 20]]
+     * [[lauren791e#Requirement 21|Requirement 21]]
+     * [[lauren791e#Requirement 22|Requirement 22]]
+     * [[lauren791e#Requirement 23|Requirement 23]]
+     * [[lauren791e#Requirement 24|Requirement 24]]
+     * [[lauren791e#Requirement 25|Requirement 25]]
+     * [[lauren791e#Requirement 26|Requirement 26]]
+     * [[lauren791e#Requirement 27|Requirement 27]]
+     * [[lauren791e#Requirement 28|Requirement 28]]
+     * [[lauren791e#Requirement 29|Requirement 29]]
+     * [[lauren791e#Requirement 30|Requirement 30]]
+     * [[lauren791e#Requirement 31|Requirement 31]]
+     * [[lauren791e#Requirement 32|Requirement 32]]
+     * [[lauren791e#Requirement 33|Requirement 33]]
+     * [[lauren791e#Requirement 34|Requirement 34]]
+     * [[lauren791e#Requirement 35|Requirement 35]]
+     * [[lauren791e#Requirement 36|Requirement 36]]
+     * [[lauren791e#Requirement 37|Requirement 37]]
+     * [[lauren791e#Requirement 38|Requirement 38]]
+     * [[lauren791e#Requirement 39|Requirement 39]]
+     * [[lauren791e#Requirement 40|Requirement 40]]
+     * [[lauren791e#Requirement 41|Requirement 41]]
+     * [[lauren791e#Requirement 42|Requirement 42]]
+     * [[lauren791e#Requirement 43|Requirement 43]]
+     * [[lauren791e#Requirement 44|Requirement 44]]
+     * [[lauren791e#Requirement 45|Requirement 45]]
+     * [[lauren791e#Requirement 46|Requirement 46]]
+     * [[lauren791e#Requirement 47|Requirement 47]]
+     * [[lauren791e#Requirement 48|Requirement 48]]
+     * [[lauren791e#Requirement 49|Requirement 49]]
+     * [[lauren791e#Requirement 50|Requirement 50]]
+     * [[lauren791e#Requirement 51|Requirement 51]]
+     * [[lauren791e#Requirement 52|Requirement 52]]
+     * [[lauren791e#Requirement 53|Requirement 53]]
+     * [[lauren791e#Requirement 54|Requirement 54]]
+     * [[lauren791e#Requirement 55|Requirement 55]]
+     * [[lauren791e#Requirement 56|Requirement 56]]
+     * [[lauren791e#Requirement 57|Requirement 57]]
+     * [[lauren791e#Requirement 58|Requirement 58]]
+     * [[lauren791e#Requirement 59|Requirement 59]]
+     * [[lauren791e#Requirement 60|Requirement 60]]
+     * [[lauren791e#Requirement 61|Requirement 61]]
+     * [[lauren791e#Requirement 62|Requirement 62]]
+     * [[lauren791e#Requirement 63|Requirement 63]]
+   * [[lauren791e#Non-Functional Requirements|Non-Functional Requirements]]
+     * [[lauren791e#Requirement 64|Requirement 64]]
+     * [[lauren791e#Requirement 65|Requirement 65]]
+     * [[lauren791e#Requirement 66|Requirement 66]]
+     * [[lauren791e#Requirement 67|Requirement 67]]
+     * [[lauren791e#Requirement 68|Requirement 68]]
+     * [[lauren791e#Requirement 69|Requirement 69]]
+     * [[lauren791e#Requirement 70|Requirement 70]]
+     * [[lauren791e#Requirement 71|Requirement 71]]
+     * [[lauren791e#Requirement 72|Requirement 72]]
+     * [[lauren791e#Requirement 73|Requirement 73]]
+   * [[lauren791e#Glossary|Glossary]]
+     * [[lauren791e#Account Information|Account Information]]
+     * [[lauren791e#Authenticated Account|Authenticated Account]]
+     * [[lauren791e#Appointment|Appointment]]
+     * [[lauren791e#Completed Laboratory Procedure|Completed Laboratory Procedure]]
+     * [[lauren791e#Default Password|Default Password]]
+     * [[lauren791e#Demographic Information|Demographic Information]]
+     * [[lauren791e#Designatable Diagnostic Information|Designatable Diagnostic Information]]
+     * [[lauren791e#Diagnostic Information|Diagnostic Information]]
+     * [[lauren791e#Disabled Record|Disabled Record]]
+     * [[lauren791e#Emergency Contact Information|Emergency Contact Information]]
+     * [[lauren791e#Emergency Report|Emergency Report]]
+     * [[lauren791e#Employee Information|Employee Information]]
+     * [[lauren791e#Employee Record|Employee Record]]
+     * [[lauren791e#Health Network|Health Network]]
+     * [[lauren791e#Insurance Company Information|Insurance Company Information]]
+     * [[lauren791e#Invalid Employee Record|Invalid Employee Record]]
+     * [[lauren791e#Invalid Patient Record|Invalid Patient Record]]
+     * [[lauren791e#Laboratory Procedure|Laboratory Procedure]]
+     * [[lauren791e#Non-Designatable Diagnostic Information|Non-Designatable Diagnostic Information]]
+     * [[lauren791e#Office Visit|Office Visit]]
+     * [[lauren791e#Office Visit Information|Office Visit Information]]
+     * [[lauren791e#Office Visit Notes|Office Visit Notes]]
+     * [[lauren791e#Operation|Operation]]
+     * [[lauren791e#Operational Profile|Operational Profile]]
+     * [[lauren791e#Patient Record|Patient Record]]
+     * [[lauren791e#Password|Password]]
+     * [[lauren791e#Practicing Physician|Practicing Physician]]
+     * [[lauren791e#Prescription|Prescription]]
+     * [[lauren791e#Restricted Diagnostic Information|Restricted Diagnostic Information]]
+     * [[lauren791e#Standards Repository|Standards Repository]]
+     * [[lauren791e#Timeout Limit|Timeout Limit]]
+     * [[lauren791e#Unauthenticated Account|Unauthenticated Account]]
+     * [[lauren791e#Unrestricted Diagnostic Information|Unrestricted Diagnostic Information]]
+     * [[lauren791e#User ID|User ID]]
+     * [[lauren791e#User Session|User Session]]
+   * [[lauren791e#Tabled Use Cases|Tabled Use Cases]]
+     * [[lauren791e#UC14 Request Biosurveillance|UC14 Request Biosurveillance]]
+     * [[lauren791e#UC16 Identify risk of chronic disease|UC16 Identify risk of chronic disease]]
+     * [[lauren791e#UC17 Proactively Determine Needed Patient Care|UC17 Proactively Determine Needed Patient Care]]
+     * [[lauren791e#UC20 View cause-of-death trends report|UC20 View cause-of-death trends report]]
+     * [[lauren791e#UC24 Take Satisfaction Survey|UC24 Take Satisfaction Survey]]
+     * [[lauren791e#UC25 View Physician Satisfaction Survey Results|UC25 View Physician Satisfaction Survey Results]]
+   * [[lauren791e#Appendix A: Original Glossary|Appendix A: Original Glossary]]
+     * [[lauren791e#Glossary|Glossary]]
+   * [[lauren791e#Appendix B: Original Use Case Diagram|Appendix B: Original Use Case Diagram]]
+   * [[lauren791e#Appendix C: Original Use Cases|Appendix C: Original Use Cases]]
+     * [[lauren791e#UC1 Create and Disable Patients|UC1 Create and Disable Patients]]
+     * [[lauren791e#UC2 Create, Disable, and Edit Personnel|UC2 Create, Disable, and Edit Personnel]]
+     * [[lauren791e#UC3 Authenticate Users|UC3 Authenticate Users]]
+     * [[lauren791e#UC4 Enter/edit Demographics|UC4 Enter/edit Demographics]]
+     * [[lauren791e#UC5 Log Transaction|UC5 Log Transaction]]
+     * [[lauren791e#UC6 Declare/Undeclare Designated Licensed Health Care Professional|UC6 Declare/Undeclare Designated Licensed Health Care Professional]]
+     * [[lauren791e#UC7 Allow/disallow access to diagnosis|UC7 Allow/disallow access to diagnosis]]
+     * [[lauren791e#UC8 View Access Log|UC8 View Access Log]]
+     * [[lauren791e#UC9 View records|UC9 View records]]
+     * [[lauren791e#UC10 Enter/edit personal health records|UC10 Enter/edit personal health records]]
+     * [[lauren791e#UC11 Document office visit|UC11 Document office visit]]
+     * [[lauren791e#UC12 Determine Operational Profile|UC12 Determine operational profile]]
+     * [[lauren791e#UC13 Declare/undeclare Personal Representative|UC13 Declare/undeclare Personal Representative]]
+     * [[lauren791e#UC14 Request Biosurveillance|UC14 Request Biosurveillance]]
+     * [[lauren791e#UC15 Maintain standards lists|UC15 Maintain standards lists]]
+     * [[lauren791e#UC16 Identify risk of chronic disease|UC16 Identify risk of chronic disease]]
+     * [[lauren791e#UC17 Proactively Determine Needed Patient Care|UC17 Proactively Determine Needed Patient Care]]
+     * [[lauren791e#UC18 Maintain a hospital listing|UC18 Maintain a hospital listing]]
+     * [[lauren791e#UC19 View prescription report|UC19 View prescription report]]
+     * [[lauren791e#UC20 View cause-of-death trends report|UC20 View cause-of-death trends report]]
+     * [[lauren791e#UC21 View emergency report|UC21 View emergency report]]
+     * [[lauren791e#UC22: Flow of Events for the Schedule Appointments|UC22: Flow of Events for the Schedule Appointments]]
+     * [[lauren791e#UC23 View Comprehensive Patient Report|UC23 View Comprehensive Patient Report]]
+     * [[lauren791e#UC24 Take Satisfaction Survey|UC24 Take Satisfaction Survey]]
+     * [[lauren791e#UC25 View Physician Satisfaction Survey Results|UC25 View Physician Satisfaction Survey Results]]
+     * [[lauren791e#UC26 View/Edit Laboratory Procedure Status|UC26 View/Edit Laboratory Procedure Status]]
+     * [[lauren791e#UC27 Alert Users by Email|UC27 Alert Users by Email]]
+   * [[lauren791e#Appendix D: Original Data Field Formats|Appendix D: Original Data Field Formats]]
+     * [[lauren791e#6.0 User|6.0 User]]
+     * [[lauren791e#6.1 Patient|6.1 Patient]]
+     * [[lauren791e#6.2 Medical Care Personnel|6.2 Medical Care Personnel]]
+     * [[lauren791e#6.3 Transaction log|6.3 Transaction log]]
+     * [[lauren791e#6.4 Patient Personal Health Record|6.4 Patient Personal Health Record]]
+     * [[lauren791e#6.5 Diagnosis Information|6.5 Diagnosis Information]]
+     * [[lauren791e#6.6 Prescription History|6.6 Prescription History]]
+     * [[lauren791e#6.7 Hospital Information|6.7 Hospital Information]]
+     * [[lauren791e#6.8 Medical Care Personnel Affiliation|6.8 Medical Care Personnel Affiliation]]
+     * [[lauren791e#6.9 Chronic disease risk factors|6.9 Chronic disease risk factors]]
+       * [[lauren791e#6.9.1 Diabetes risk factors|6.9.1 Diabetes risk factors]]
+       * [[lauren791e#6.9.2 Heart disease risk factors|6.9.2 Heart disease risk factors]]
+     * [[lauren791e#6.10 Patient Appointment Request|6.10 Patient Appointment Request]]
+     * [[lauren791e#6.11 Logical Observation Identifiers Names and Codes (LOINC)|6.11 Logical Observation Identifiers Names and Codes (LOINC)]]
+     * [[lauren791e#6.12 Laboratory Procedure|6.12 Laboratory Procedure]]
+     * [[lauren791e#6.13 Satisfaction Survey|6.13 Satisfaction Survey]]
+
+
+
+======= 1. Introduction =======
+
+This document describes the iTrust Medical Records System, an open source Electronic Health Records system designed and implemented by the students and faculty at [[http://www.csc.ncsu.edu/|North Carolina State University]].  iTrust is released under the [[http://www.opensource.org/licenses/ecl1.php|Educational Community License]].
+
+===== 1.1 Authors =====
+
+Laurie Williams\\
+Tao Xie\\
+Andy Meneely\\
+Lauren Hayward\\
+Aaron Massey\\
+
+[[http://agile.csc.ncsu.edu/iTrust | Return to iTrust Homepage]]
+
+
+===== 1.2 About this Document =====
+
+This project involves the development of an electronic health records (EHR) system. Doctors can use an EHR to obtain and to share essential [[lauren791e#Patient|patient]] information. They can view aggregate [[lauren791e#Patient|patient]] data.  Without an electronic system, access to a [[lauren791e#Patient|patient's]] history regarding previous medical problems, previous surgery, medications, allergies and other factors is often difficult or obtainable only from a [[lauren791e#Patient|patient's]] recollection.  Now, as more hospitals and doctor's offices are automated, this information is available electronically.  However, it is not accessible by other doctors, and is often only viewed through some proprietary software so it can not be shared.
+
+The final product is a site where health care workers can access important [[lauren791e#Patient|patient]] information, the non-emergency access can be controlled, and all access would be tracked. Security and privacy of such a system is of paramount importance.  HIPAA rules protect [[lauren791e#Patient|patients']] information and also allow a [[lauren791e#Patient|patient]] to dictate who can access this information.
+
+The previous version of this document can be found as [[requirements|version 12 of the iTrust Medical Care Requirements Specification.]]  A revision history for this document exists for versions prior to version 12 as [[http://agile.csc.ncsu.edu/iTrust/doc/formalreqs11.html|version 11 of the requirements.]]
+
+
+===== 1.3 How to Read this Document =====
+
+This section describes the required components of each of the functional requirements described in this document.  There may be additional elements such as Legal Concerns, Security Concerns, Open Issues, and Questions with Answers.   These sections are optional and added simply to clarify the requirements.
+
+==== 1.3.1 Description ====
+The description is the formal, testable definition for each requirement.  It is the official statement and all other aspects of the requirement are supplementary, clarifying resources.
+
+==== 1.3.2 Rationale ====
+The rationale for each requirement explains why the requirement is important to the iTrust system.
+
+==== 1.3.3 Context ====
+The context explains the setting for the operation of the elements of the system described by the requirement.
+
+==== 1.3.4 Priority ====
+Requirements with legal implications are denoted with an L attached to their priority.  For example, Critical-L is a Critical requirement that also has a legal implication.  Requirements denoted as such should be prioritized above the requirements with no legal implications in their priority category. For example, the following requirements categories are listed in order of priority: Critical-L, Critical, High-L, High, etc.
+|Critical|These requirements are the original and most basic elements of the iTrust system.  Without these, the system simply cannot function at all.|
+|High|These requirements are also extracted from the original iTrust system, but many of them were extended through additional domain knowledge.|
+|Medium|These requirements are added purely from domain knowledge and experience of the authors.  In addition, they extend the primary benefits of the iTrust system.|
+|Low|These requirements are primarily niceties that were added to enhance the user experience of iTrust|
+
+==== 1.3.5 Origin ====
+The origin of a requirement denotes its provenance.  
+|Original (UCXX)|Requirements extracted from version 12 of the [[requirements|iTrust Medical Care Requirements Specification]] accessed on 28 March 2008 10:04 AM EST. The use case from which the requirement was extracted is denoted in parenthesis.|
+|Legal (XXXX)|Requirements stemming primarily from a legal concern. The statute from which the concern originated is denoted in parenthesis.|
+| Authors' EHR Experience |Requirements generated through the authors' experience in healthcare information technology.|
+| Authors' Web Development Experience |Requirements generated through the authors' experience in web application development.|
+
+
+===== 1.4 About the Appendices =====
+The appendices attached to this document represent the **original** information found in the previous iTrust requirements document.  They are not representative of the current system.
+
+== Engineering Concern ==
+Should we include these at all in the final version of this requirements document?
+
+
+======= 2. Description of User Roles =======
+The following is a list of roles user accounts may have within the iTrust Medical Records system. 
+
+== Legal Concern ==
+In some cases, multiple roles may be assigned to the same user account. For example, a [[lauren791e#Physician|physician]] could also be a [[lauren791e#Patient|patient]] at the health care facility, but they shouldn't have access to their own medical information.
+
+
+===== Employee Roles =====
+An employee is anyone who works at the healthcare facility and is regulated by HIPAA as a healthcare professional. Each of the following roles can be referred to as an "employee."
+
+== Terminology Correction ==
+//Employee role// is derived from the term HCP from previous requirements document.
+
+
+==== Physician ====
+A physician is a person at the healthcare facility that is licensed to diagnose any [[lauren791e#Patient|patient]] or perform any medical procedure.
+
+== Terminology Correction ==
+//Physician// is derived from the term Licensed Health Care Professional from the previous requirements document.
+
+
+==== Designated Physician ====
+A designated physician is a [[lauren791e#Physician|physician]] at the hospital designated by a particular [[lauren791e#Patient|patient]] to view that [[lauren791e#Patient|patient's]] [[lauren791e#Diagnostic Information|diagnostic information]] (e.g. all of that [[lauren791e#Patient|patient's]] diagnostic information).  This document uses the convention of referring to [[lauren791e#Patient|patients']] [[lauren791e#Designated Physician|designated physicians]] by saying "designated by" or "who designates."  These colloquial phrases are intended to refer to this [[lauren791e#Employee Roles|employee]] role definition.
+
+== Terminology Correction ==
+//Designated physician// is derived from the term DLHCP from the previous requirements document.
+
+== Question ==
+Can a [[lauren791e#Designated Physician|designated physician]] be designated by multiple [[lauren791e#Patient|patients]]?
+
+== Answer ==
+Yes.  [[lauren791e#Designated Physician|Designated physicians]] be designated by multiple [[lauren791e#Patient|patients]].
+
+== Question ==
+Can a [[lauren791e#Patient|patient]] designate multiple [[lauren791e#Physician|physicians]]?
+
+== Answer ==
+Yes.  A [[lauren791e#Patient|patient]] can designate multiple [[lauren791e#Physician|physicians]].
+
+
+== Question ==
+Once designated by a patient, is a [[lauren791e#Designated Physician|designated physician]] classified as designated for all [[lauren791e#Patient|patients]]?
+
+== Answer ==
+No.  Each [[lauren791e#Patient|patient]] must [[lauren791e#Designated Physician|designate]] their own [[lauren791e#Physician|physicians]].  No patient can universally designate a physician for all [[lauren791e#Patient|patients]].
+
+==== Administrative Assistant ====
+An administrative assistant is a person at the healthcare facility that performs scheduling or other administration of [[lauren791e#Patient|patient]] health information.
+
+== Terminology Correction ==
+//Administrative Assistant// is derived from the term Unlicensed Authorized Personnel from the previous requirements document.
+
+
+==== Medical Administrator ====
+A medical administrator is a person at the healthcare facility that manages the [[lauren791e#Employee Roles|employees]] of the healthcare facility (e.g. chief of internal medicine).
+
+
+==== System Administrator ====
+A system administrator is a person at the healthcare facility that tests, maintains and updates the iTrust Medical Records system code.
+
+== Terminology Correction ==
+//System administrator// is derived from the term Software Tester from the previous requirements document.
+
+
+===== Non-Employee Roles =====
+A non-employee is anyone who needs access to iTrust itself, but is not an [[lauren791e#Employee Roles|employee]] of the [[lauren791e#Health Network|health network]].  Each of the follow roles may be referred to as "non-employees."
+
+
+==== Patient ====
+A patient is a person at the healthcare facility who is receiving or has received medical care.
+
+
+==== Personal Representative ====
+A personal representative is a person at the healthcare facility who can view [[lauren791e#Patient Record|patient records]] or make decisions on behalf of a [[lauren791e#Patient|patient]] at the healthcare facility. This document uses the convention of refering to [[lauren791e#Patient|patients']] [[lauren791e#Personal Representative|personal representatives]] by saying "represented by" or "who represents."  These colloquial phrases are intended to refer to this non-employee role definition.
+
+
+===== Mapping of Roles =====
+The following table is intended to provide basic traceability between the current iTrust roles, the previous iTrust roles and the HIPAA-equivalent roles.  For more information on the previous roles in iTrust, please see [[lauren791e#Appendix AOriginal Glossary|Appendix A]].  The HIPAA roles are currently based on the assumption that a small healthcare facility will be maintaining iTrust on their own.  If parts of the maintenance or use of the system are outsourced to third parties, then roles such as System Administrator may change to Third Party.
+
+^Current iTrust Role^Original iTrust Role^HIPAA-equivalent Role^
+|Patient|Patient|Patient or Individual|
+|Personal Representative|Personal Representative|Representative|
+|Physician|LHCP|HCP|
+|Designated Physician|DLHCP|HCP|
+|Administrative Assistant|UAP|HCP|
+|Medical Administrator|Administrator|HCP|
+|System Administrator|Software Tester|HCP|
+
+== Legal Concern ==
+We haven't modeled the hierarchy of roles in HIPAA here and should mention that the HIPAA roles actually inherit responsibilities and obligations for all their 'parent' roles.
+
+
+======= 3. Functional Requirements =======
+
+This section provides a complete list and description for all of the functional requirements for iTrust.  The latest version of these requirements is available at: http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=lauren791e 
+
+
+====== 3.1 Functional Requirements for Creating, Disabling and Destroying Accounts ======
+The following requirements detail the processes involved in managing user accounts within iTrust.
+
+===== Requirement 1 =====
+**Description**: iTrust shall allow an [[lauren791e#Employee Roles|employee]], using their authorized account, to create a new [[lauren791e#Patient|patient]] record by adding [[lauren791e#Demographic Information|demographic information]] for the new [[lauren791e#Patient|patient]].\\
+**Rationale**: Employees need to be able to add [[lauren791e#Patient|patients]].\\
+**Context**: This supports basic iTrust operations.  Healthcare facilities may have new [[lauren791e#Patient|patients]] born at the facility in addition to simply having new [[lauren791e#Patient|patients]] transfer from another healthcare facility.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC1 Create and Disable Patients|UC1]])
+
+
+===== Requirement 2 =====
+**Description**: iTrust shall allow an [[lauren791e#Employee Roles|employee]], using their authorized account, to [[lauren791e#Disabled Record|disable]] a [[lauren791e#Patient|patient]] record by marking that [[lauren791e#Patient|patient's]] record as [[lauren791e#Disabled Record|disabled]].\\
+**Rationale**: Employees need to be able to [[lauren791e#Disabled Record|disable]] [[lauren791e#Patient|patient]] records.\\
+**Context**: Patients may die or transfer to another healthcare facility.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC1 Create and Disable Patients|UC1]])
+
+
+===== Requirement 3 =====
+**Description**: iTrust shall allow an [[lauren791e#Employee Roles|employee]], using their authorized account, to destroy [[lauren791e#Invalid Patient Record|invalid patient records]].\\
+**Rationale**: Employees need to be able to remove [[lauren791e#Patient|patient]] records that shouldn't have been added in the first place.\\
+**Context**: This is done when someone was accidentally added as a [[lauren791e#Patient|patient]] or already existed under a different [[lauren791e#Patient|patient]] record.\\
+**Priority**: High\\
+**Origin**: Authors' EHR Experience
+
+
+== Security Concern ==
+The previous three requirements use the [[lauren791e#Employee Roles|employee]] role for simplicity, but there may be instances where it doesn't make sense for all of the employee role types to be able to create, [[lauren791e#Disabled Record|disable]] and remove [[lauren791e#Patient|patient]] records.
+
+
+== Legal Concern ==
+We are unsure of what HIPAA or other laws require for destroying records.  We are using the term "destroy" but this could have several meanings including a basic deletion from the database or deleting all references to the patient record including backup copies.  The intention for this document is for "destroy" to mean complete removal of all instances where the records may be stored including backups.
+
+
+===== Requirement 4 =====
+**Description**: iTrust shall email a [[lauren791e#Patient|patient]] when their account status is altered as per Requirements 1, 2 or 3 with a description of the alteration made.\\
+**Rationale**: Users should be aware of fundamental changes to their information in a healthcare system.\\
+**Context**: If a user's identity was stolen and their record was [[lauren791e#Disabled Record|disabled]] as a result, they should be notified in a timely fashion.\\
+**Priority**: Medium\\
+**Origin**: Authors' Web Development Experience
+
+== Security Concern ==
+This should apply to all accounts.\\
+
+== Question ==
+What should the email contain?  What is the description required?
+
+== Answer ==
+The email should contain a summary of the type of alteration made.  For example, the patient reading the email should know whether it was sent as a result of a change according to Requirement 1, 2 or 3 with a description of the alteration made.
+
+== Legal Concern ==
+Should the healthcare facility staff have access to a record of whomever it was that originally made this change?
+
+
+===== Requirement 5 =====
+**Description**: iTrust shall email a [[lauren791e#Personal Representative|personal representative]] when the account status of a [[lauren791e#Patient|patient]] they represent is altered as per Requirements 1, 2 or 3.\\
+**Rationale**: Users should be aware of fundamental changes to their information in a healthcare system.\\
+**Context**: If a user's identity was stolen and their record was [[lauren791e#Disabled Record|disabled]] as a result, they should be notified in a timely fashion.\\
+**Priority**: Low\\
+**Origin**: Authors' Web Development Experience
+
+== Question ==
+What should the email contain?  What is the description required?
+
+== Answer ==
+The email should contain a summary of the type of alteration made.  For example, the personal representative reading the email should know whether it was sent as a result of a change according to Requirement 1, 2 or 3 with a description of the alteration made.
+
+== Legal Concern ==
+Should the healthcare facility staff have access to a record of whomever it was that originally made this change?
+
+
+===== Requirement 6 =====
+**Description**: iTrust shall maintain a [[lauren791e#Patient|patient's]] records for a period of seven years after their record has been [[lauren791e#Disabled Record|disabled]].\\
+**Rationale**: HIPAA requires records to be maintained for six years, but doesn't clearly specify when that six year time period starts.\\
+**Context**: This is done to provide a buffer which can guarantee compliance with HIPAA.\\
+**Priority**: High-L\\
+**Origin**: Original ([[lauren791e#UC1 Create and Disable Patients|UC1]]), Legal (HIPAA)
+
+
+===== Requirement 7 =====
+**Description**: iTrust shall automatically destroy a [[lauren791e#Patient|patient's]] records after their record has been [[lauren791e#Disabled Record|disabled]] for a period of seven years.\\
+**Rationale**: HIPAA only requires that records are maintained for six years, but a hospital must maintain records accurately if they are maintained at all.  This requirement allows a hospital to allocate resources to maintain active records rather than [[lauren791e#Disabled Record|disabled]] records.\\
+**Context**: If a hospital has a record for a [[lauren791e#Patient|patient]] whose record was [[lauren791e#Disabled Record|disabled]] seven years ago (i.e. past the HIPAA-required time period), but that record is inaccurate, then the hospital may be held liable for the inaccuracies even though the hospital didn't have to maintain the record at all.  Therefore, all records that are definitively past the HIPAA-required maintenance time period are destroyed.\\
+**Priority**: High-L\\
+**Origin**: Legal (HIPAA)
+
+
+== Legal Concern ==
+Records are probably backed up somewhere.  Does this apply to backups as well?  (We think yes.)\\
+
+
+== Legal Concern ==
+Should a cryptographic scrubber be used or should the record simply be deleted using common operating system commands?\\
+
+
+===== Requirement 8 =====
+**Description**: iTrust shall allow a [[lauren791e#System Administrator|system administrator]], using their authorized account, to create a new [[lauren791e#Employee Record|employee record]] by adding [[lauren791e#Demographic Information|demographic information]] for the new [[lauren791e#Employee Roles|employee]].\\
+**Rationale**: [[lauren791e#System Administrator|System administrators]] need to be able to add [[lauren791e#Employee Roles|employees]].\\
+**Context**: This supports basic iTrust operations.  Healthcare facilities have turnover in [[lauren791e#Employee Roles|employees]] like other businesses.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC2 Create Disable and Edit Personnel|UC2]])
+
+
+===== Requirement 9 =====
+**Description**: iTrust shall allow a [[lauren791e#System Administrator|system administrator]], using their authorized account, to [[lauren791e#Disabled Record|disable]] an [[lauren791e#Employee Record|employee record]] by marking that [[lauren791e#Employee Roles|employee's]] record as [[lauren791e#Disabled Record|disabled]].\\
+**Rationale**: [[lauren791e#System Administrator|System administrators]] need to be able to [[lauren791e#Disabled Record|disable]] [[lauren791e#Employee Record|employee records]].\\
+**Context**: Employees with legal concerns (e.g. malpractice) must be able to avoid the appearance of impropriety during the resolution of those legal concerns. \\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC2 Create Disable and Edit Personnel|UC2]])
+
+
+===== Requirement 10 =====
+**Description**: iTrust shall allow a [[lauren791e#System Administrator|system administrator]], using their authorized account, to destroy [[lauren791e#Invalid Employee Record|invalid employee records]].\\
+**Rationale**: [[lauren791e#System Administrator|System administrators]] need to be able to destroy [[lauren791e#Employee Record|employee records]] that shouldn't have been added in the first place or for [[lauren791e#Employee Roles|employees]] who are no longer employed by the healthcare facility.\\
+**Context**: This is done when someone was accidentally added as an [[lauren791e#Employee Roles|employee]] or already existed under a different [[lauren791e#Employee Record|employee record]].\\
+**Priority**: High\\
+**Origin**: Authors' EHR Experience
+
+
+== Legal Concern ==
+We are unsure of how long an [[lauren791e#Employee Record|employee's records]] need to be maintained after termination of their employment.
+
+
+===== Requirement 11 =====
+**Description**: iTrust shall email an [[lauren791e#Employee Roles|employee]] when their record status is altered as per Requirements 8, 9 or 10.\\
+**Rationale**: Users should be aware of fundamental changes to their information in a healthcare system.\\
+**Context**: If a user's identity was stolen and their record was [[lauren791e#Disabled Record|disabled]] as a result, they should be notified in a timely fashion.\\
+**Priority**: Medium\\
+**Origin**: Authors' Wed Development Experience
+
+
+== Question ==
+What should the email contain?  What is the description required?
+
+== Answer ==
+The email should contain a summary of the type of alteration made.  For example, the personal representative reading the email should know whether it was sent as a result of a change according to Requirement 8, 9, or 10 with a description of the alteration made.
+
+== Legal Concern ==
+Should the healthcare facility staff have access to a record of whomever it was that originally made this change?
+
+== Legal Concern ==
+Should this apply to all accounts?\\
+
+
+====== 3.2 Functional Requirements for Authenticating a User ======
+The following requirements detail the processes involved in managing user authentication.
+
+===== Requirement 12 =====
+**Description**: iTrust shall support [[lauren791e#Authenticated Account|user authentication]] by allowing a user to input their [[lauren791e#User ID|user ID]] and [[lauren791e#Password|password]].\\
+**Rationale**: Users need to be able to log in to the system to perform operations.\\
+**Context**: This supports basic iTrust operations.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC3 Authenticate Users|UC3]])
+
+
+===== Requirement 13 =====
+**Description**: iTrust shall support [[lauren791e#Unauthenticated Account|user unauthentication]] by allowing a user to explicitly indicate they would like to unautheticate.\\
+**Rationale**: Users need to be able to log out of the system for security purposes.\\
+**Context**: This supports basic iTrust operations.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC3 Authenticate Users|UC3]])
+
+
+===== Requirement 14 =====
+**Description**: iTrust shall generate a unique [[lauren791e#User ID|user ID]] and [[lauren791e#Default Password|default [[lauren791e#Password|password]]]]  upon account creation.\\
+**Rationale**: Users need to have the ability to identify and authenticate themselves to iTrust.\\
+**Context**: This supports basic iTrust operations: iTrust must be able to differentiate between accounts.\\
+**Priority**: Critical-L\\
+**Origin**: Original([[lauren791e#UC1 Create and Disable Patients|UC1]]), Legal (HIPAA)
+
+
+===== Requirement 15 =====
+**Description**: iTrust shall allow a user, using their authorized account, to request their current [[lauren791e#Password|password]] be emailed to their recorded email address and shall require the user's [[lauren791e#User ID|user ID]] be provided to satisfy this request.\\
+**Rationale**: Users need to be able to recover control of their account if they have forgotten their [[lauren791e#Password|password]].\\
+**Context**: This process should be automated so that a user doesn't have to contact the [[lauren791e#System Administrator|system administrator]] outside of iTrust.\\
+**Priority**: Medium\\
+**Origin**: Authors' Web Development Experience
+
+
+== Security Concern ==
+We are explicitly not changing a [[lauren791e#Password|password]] when provided only a [[lauren791e#User ID|user ID]] to avoid allowing anyone who knows a [[lauren791e#User ID|user ID]] the ability to change the [[lauren791e#Password|password]] associated with that [[lauren791e#User ID|user ID]].
+
+
+== Engineering Concern ==
+Users may also forget their user names.  This is currently not handled by the system.
+
+
+== Security Concern ==
+If a user has forgotten their [[lauren791e#Password|password]] and has a new email, they can't access their account in any fashion.
+
+
+== Engineering Concern ==
+How should personal representatives be able to request a [[lauren791e#Password|password]] for people they represent?  What are the privacy concerns with this?
+
+
+===== Requirement 16 ======
+**Description**: After a user is [[lauren791e#Authenticated Account|authenticated]], iTrust shall automatically [[lauren791e#Unauthenticated Account|unauthenticate]] the user and redirect to the login screen for any [[lauren791e#User Session|user session]] in which the user has remained idle for the [[lauren791e#Timeout Limit|timeout limit]].\\
+**Rationale**: In order to protect sensitive information within iTrust (e.g. [[lauren791e#Patient|patient]] information), inactive accounts should be proactively logged out.\\
+**Context**: When an [[lauren791e#Employee Roles|employee]] goes to lunch, that [[lauren791e#Employee Roles|employee's]] screen may be displaying information that shouldn't remain available for all the world to see.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC3 Authenticate Users|UC3]])
+
+
+===== Requirement 17 =====
+**Description**: iTrust shall, when installed, assign the [[lauren791e#Timeout Limit|timeout limit]] to be five minutes and shall, at any time after installation, allow a [[lauren791e#System Administrator|system administrator]] to configure the [[lauren791e#Timeout Limit|timeout limit]].\\
+**Rationale**: [[lauren791e#System Administrator|System administrators]] may have differing opinions on how long sensitive information should be displayed without activity by a user account.\\
+**Context**: A [[lauren791e#System Administrator|system administrator]] in a healthcare facility with no terminals physically accessible by [[lauren791e#Patient|patients]] may be willing to have a longer timeout limit than a [[lauren791e#System Administrator|system administrator]] in a healthcare facility where terminals are physically accessible by [[lauren791e#Patient|patients]].\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC3 Authenticate Users|UC3]])
+
+
+== Engineering Concern ==
+Users may want to be able to return to where they were upon being automatically logged out.
+
+
+== Engineering Concern ==
+Users may want to be notified before automatically being logged out and given the option to remain logged in.  (e.g. viewing [[lauren791e#Patient|patient]] information in an emergency room)
+
+
+===== Requirement 18 =====
+**Description**: iTrust shall automatically notify users one minute before the [[lauren791e#Timeout Limit|timeout limit]] is reached.\\
+**Rationale**: This provides enhanced usability of the system.\\
+**Context**: A user may want to know that they are about to be logged out before it happens.\\
+**Priority**: Low\\
+**Origin**: Open Issue from previous requirement
+
+
+====== 3.3 Functional Requirements for Editing Patient Records ======
+The following section describes the requirements for editing patient records.
+
+
+===== Requirement 19 =====
+**Description**: iTrust shall allow a [[lauren791e#Physician|physician]], [[lauren791e#Designated Physician|designated physician]], [[lauren791e#Administrative Assistant|administrative assistant]], or [[lauren791e#Medical Administrator|medical administrator]], each using their authorized accounts, to read or update [[lauren791e#Unrestricted Diagnostic Information|unrestricted diagnostic information]] and [[lauren791e#Patient|patient]] record information.\\
+**Rationale**: Only [[lauren791e#Employee Roles|employees]] with a job description requiring them to read [[lauren791e#Patient|patient]] information should be allowed to access it.\\
+**Context**: [[lauren791e#System Administrator|System administrators]] don't have a valid reason to access [[lauren791e#Patient|patient]] information directly.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC4 Enter Edit Demographics|UC4]])
+
+
+===== Requirement 20 =====
+**Description**: iTrust shall allow a [[lauren791e#Designated Physician|designated physician]], using their authorized accounts, to read or update [[lauren791e#Restricted Diagnostic Information|restricted diagnostic information]] for the [[lauren791e#Patient|patients]] who have labeled that [[lauren791e#Physician|physician]] as [[lauren791e#Designated Physician|designated]].  \\
+**Rationale**: [[lauren791e#Designated Physician|Designated physicians]] need to be able to read and update the information that a [[lauren791e#Patient|patient]] has explicitly designated them as a valid [[lauren791e#Physician|physician]].\\
+**Context**: This differs from Requirement 16 only in that the [[lauren791e#Physician|physician]] and the information are both designated explicitly by the [[lauren791e#Patient|patient]].\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC4 Enter Edit Demographics|UC4]])
+
+
+===== Requirement 21 =====
+**Description**: iTrust shall allow a [[lauren791e#Patient|patient]], using their authorized account, to read or update their [[lauren791e#Demographic Information|demographic information]], the [[lauren791e#Demographic Information|demographic information]] for the [[lauren791e#Patient|patients]] they represent, their list of [[lauren791e#Personal Representative|personal representatives]], the list of [[lauren791e#Personal Representative|personal representatives]] for the [[lauren791e#Patient|patients]] they represent, their list of [[lauren791e#Designated Physician|designated physicians]], and the list of [[lauren791e#Designated Physician|designated physicians]] for the [[lauren791e#Patient|patients]] they represent.\\
+**Rationale**: Patients need to be able to access their records and control their own non-medical information.\\
+**Context**: Hospital staff should not be forced to handle this sort of update.  Conversely, [[lauren791e#Patient|patients]] should not be forced to go through hospital staff to perform this sort of update.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC4 Enter Edit Demographics|UC4]])
+
+
+== Legal Concern ==
+We are not sure whether a [[lauren791e#Personal Representative|personal representative]] should be allowed to remove himself from a list of [[lauren791e#Personal Representative|personal representatives]].
+
+
+===== Requirement 22 =====
+**Description**: iTrust shall allow a [[lauren791e#Patient|patient]], using their authorized account, to read their [[lauren791e#Diagnostic Information|diagnostic information]] or the [[lauren791e#Diagnostic Information|diagnostic information]] for the [[lauren791e#Patient|patients]] they represent.\\
+**Rationale**: Patients need to be able to view medical information, but don't need to and probably should be able to update it.\\
+**Context**: Patients may want to take this information to another healthcare facility for a second opinion without notifying the first healthcare facility's staff.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC4 Enter Edit Demographics|UC4]], [[lauren791e#UC9 View Records|UC9]])
+
+
+== Legal Concern ==
+Is there any [[lauren791e#Patient|patient]] information that a [[lauren791e#Patient|patient]] should not be allowed to access?  [[lauren791e#Office Visit Notes|Office visit notes]]?  Unconfirmed thoughts on a diagnosis?
+
+
+====== 3.4 Functional Requirements for Logging Operations ======
+The following section contains a description of the requirements involved in logging operations.
+
+
+===== Requirement 23 =====
+**Description**: iTrust shall record the [[lauren791e#User ID|user ID]], [[lauren791e#Operation|operation]] and date/time of all completed [[lauren791e#Operation|operations]] performed by a user, using their authorized account, during a [[lauren791e#User Session|user session]].\\
+**Rationale**: Operations should be logged for several reasons including testing, maintenance, and legal compliance.\\
+**Context**: Only [[lauren791e#Operation|operations]] that are completed requests, which provide value or service to the user, should be logged.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC5 Log Transaction|UC5]])
+
+
+== Legal Concern ==
+There are some [[lauren791e#Operation|operations]] in EHRs that are regulated by HIPAA and those should be distinctly marked.
+
+
+== Engineering Concern ==
+There is a trade-off between [[lauren791e#Operation|operations]] that are being logged for the purposes of validating current features and those that are being logged for improving iTrust and creating new features.
+
+
+====== 3.5 Functional Requirements for Declaring Physicians ======
+The following section describes the requirements involved in managing physician declarations.
+
+
+===== Requirement 24 =====
+**Description**: iTrust shall allow a [[lauren791e#Patient|patient]], using their authorized account, to declare a set of zero or more [[lauren791e#Physician|physicians]] as their [[lauren791e#Designated Physician|designated physicians]].\\
+**Rationale**: Patients have preferred doctors and should be able to make this relationship explicit through iTrust.\\
+**Context**: A [[lauren791e#Patient|patient]] may want a particular [[lauren791e#Physician|physician]] to have access to records that they might prefer other [[lauren791e#Physician|physicians]] and [[lauren791e#Administrative Assistant|administrative assistants]] not see.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC6 Declare Undeclare Designated Licensed Health Care Professional|UC6]])
+
+
+===== Requirement 25 =====
+**Description**: iTrust shall allow a [[lauren791e#Personal Representative|personal representative]], using their authorized account, to declare a set of zero or more [[lauren791e#Physician|physicians]] as the set of [[lauren791e#Designated Physician|designated physicians]] for the [[lauren791e#Patient|patients]] that they represent.\\
+**Rationale**: [[lauren791e#Personal Representative|Personal representatives]] should have the same control over the records of those [[lauren791e#Patient|patients]] they represent as they would over their own record.\\
+**Context**: A parent may want to designate a particular [[lauren791e#Physician|physician]] as preferred for the purposes of accessing their child's records.\\
+**Priority**: High\\
+**Origin**: Authors' EHR Expereince
+
+
+===== Requirement 26 =====
+**Description**: iTrust shall allow a [[lauren791e#Patient|patient]], using their authorized account, to undeclare a set of one or more previously [[lauren791e#Designated Physician|designated physicians]] as no longer designated.\\
+**Rationale**: Patients should be able to change their minds about which [[lauren791e#Physician|physicians]] they want as [[lauren791e#Designated Physician|designated]] to have preferred access to their health records.\\
+**Context**: A [[lauren791e#Patient|patient]] may come to trust a different [[lauren791e#Physician|physician]] and wish to change their declaration sets.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC6 Declare Undeclare Designated Licensed Health Care Professional|UC6]])
+
+
+===== Requirement 27 =====
+**Description**: iTrust shall allow a [[lauren791e#Personal Representative|personal representative]], using their authorized account, to undeclare a set of one or more previously [[lauren791e#Designated Physician|designated physicians]] as no longer designated for the [[lauren791e#Patient|patients]] that they represent.\\
+**Rationale**: [[lauren791e#Personal Representative|Personal representatives]] should have the same control over the records of those [[lauren791e#Patient|patients]] they represent as they would over their own record.\\
+**Context**: A [[lauren791e#Patient|patient]] may come to trust a different [[lauren791e#Physician|physician]] and wish to change the declaration sets of those [[lauren791e#Patient|patients]] they represent.\\
+**Priority**: High\\
+**Origin**: Authors' EHR Expereince
+
+
+== Legal Concern ==
+This sort of designation does not exist in HIPAA.
+
+
+====== 3.6 Functional Requirements for Accessing Diagnostic Information ======
+The following section describes the requirements involved in accessing diagnostic information.
+
+
+===== Requirement 28 =====
+**Description**: iTrust shall allow a [[lauren791e#Patient|patient]], using their authorized account, to set access rules for each [[lauren791e#Office Visit|office visit]] that produces [[lauren791e#Designatable Diagnostic Information|designatable diagnostic information]] to be either viewable by all (as [[lauren791e#Unrestricted Diagnostic Information|unrestricted diagnostic information]]) or viewable by [[lauren791e#Designated Physician|designated physicians]] only (as [[lauren791e#Restricted Diagnostic Information|restricted diagnostic information]]).\\
+**Rationale**: Patients need a mechanism to control the information to which they have been granted access.\\
+**Context**: A [[lauren791e#Patient|patient]] does not want to have to contact hospital staff to alter the access control rules for their information, and neither does the hospital want to be forced to staff this sort of [[lauren791e#Operation|operation]].\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC7 Allow Disallow Access to Diagnosis|UC7]])
+
+
+===== Requirement 29 =====
+**Description**: iTrust shall allow a [[lauren791e#Personal Representative|personal representative]], using their authorized account, to set access rules for each [[lauren791e#Office Visit|office visit]] that produces [[lauren791e#Designatable Diagnostic Information|designatable diagnostic information]] of those [[lauren791e#Patient|patients]] they represent to be either viewable by all (as [[lauren791e#Unrestricted Diagnostic Information|unrestricted diagnostic information]]) or viewable by [[lauren791e#Designated Physician|designated physicians]] only (as [[lauren791e#Restricted Diagnostic Information|restricted diagnostic information]]).\\
+**Rationale**: [[lauren791e#Personal Representative|Personal representatives]] need to have the same level of control over the information of the [[lauren791e#Patient|patients]] they represent as they would over their own information.\\
+**Context**: A [[lauren791e#Patient|patient]] does not want to have to contact hospital staff to alter the access control rules for their information, and neither does the hospital want to be forced to staff this sort of [[lauren791e#Operation|operation]].\\
+**Priority**: High\\
+**Origin**: Authors' EHR Experience
+
+
+===== Requirement 30 =====
+**Description**: iTrust shall allow a [[lauren791e#Physician|physician]], using their authorized account, to set as [[lauren791e#Designatable Diagnostic Information|designatable diagnostic information]] any [[lauren791e#Diagnostic Information|diagnostic information]] resulting from [[lauren791e#Office Visit|office visits]] for which they were listed as the [[lauren791e#Practicing Physician|practicing physician]].\\
+**Rationale**: Physicians should be able to grant [[lauren791e#Patient|patients]] control over their information.\\
+**Context**: After an [[lauren791e#Office Visit|office visit]], a [[lauren791e#Physician|physician]] should be able to quickly mark all resulting [[lauren791e#Diagnostic Information|diagnostic information]] according to its sensitivity.\\
+**Priority**: High\\
+**Origin**: Authors' EHR Experience
+
+
+== Legal Concern ==
+This whole scheme of restricting access to particular [[lauren791e#Physician|physicians]] is not a part of HIPAA.
+
+
+====== 3.7 Functional Requirements for Viewing Access Logs and Records ======
+The following section describes the requirements involved in viewing access logs and records.
+
+
+===== Requirement 31 =====
+**Description**: iTrust shall allow a [[lauren791e#Patient|patient]], using their authorized account, to view the logged [[lauren791e#Operation|operations]] relating to their own [[lauren791e#Patient Record|patient record]].\\
+**Rationale**: Patients should be able to know who is looking at their records.\\
+**Context**: A [[lauren791e#Patient|patient]] should be able to determine when a person is inappropriately looking at their health records.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC8 View Access Log|UC8]])
+
+
+== Legal Concern ==
+We are unsure of the legal status of [[lauren791e#Patient|patients]] accessing a list of [[lauren791e#Employee Roles|employees]] that have seen their records.  It may not be covered by HIPAA, but it may be covered by another law.
+
+
+===== Requirement 32 =====
+**Description**: iTrust shall allow a [[lauren791e#Personal Representative|personal representative]], using their authorized account, to view the logged [[lauren791e#Operation|operations]] relating to the [[lauren791e#Patient Record|patient records]] of those [[lauren791e#Patient|patients]] they [[lauren791e#Personal Representative|represent]].\\
+**Rationale**: [[lauren791e#Personal Representative|Personal representatives]] should be able to know who is looking at the records of the [[lauren791e#Patient|patients]] they represent.\\
+**Context**: A [[lauren791e#Personal Representative|personal representative]] should be able to determine when a person is inappropriately looking at the health records of those they [[lauren791e#Personal Representative|represent]].\\
+**Priority**: High\\
+**Origin**: Authors' EHR Experience
+
+
+===== Requirement 33 =====
+**Description**: iTrust shall allow a [[lauren791e#Patient|patient]], using their authorized account, to view their own [[lauren791e#Patient|patient]] records or the [[lauren791e#Patient|patient]] records of those [[lauren791e#Patient|patients]] they represent.\\
+**Rationale**: Patients should be able to view their own records and the records of those they represent.\\
+**Context**: This is a basic function of the system.  We cannot have a health records system without allowing [[lauren791e#Patient|patients]] to view their records.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC9 View Records|UC9]])
+
+
+====== 3.8 Functional Requirements for Documenting Office Visits ======
+The following section describes the requirements for documenting office visits.
+
+
+===== Requirement 34 =====
+**Description**: iTrust shall allow a [[lauren791e#Physician|physician]], using their authorized account, to record [[lauren791e#Office Visit Information|office visit information]] about a [[lauren791e#Patient|patient]] resulting from an [[lauren791e#Office Visit|office visit]]. \\
+**Rationale**: Physicians record certain basic pieces of health information at every [[lauren791e#Office Visit|office visit]].\\
+**Context**: This is a basic, common operation of iTrust.  For example, recording the height, weight and blood pressure of a [[lauren791e#Patient|patient]] would fit this requirement.  Furthermore, [[lauren791e#Requested Laboratory Procedure|requested laboratory procedures]] are created as a part of the process of recording an [[lauren791e#Office Visit|office visit]].\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC11 Document Office Visit|UC11]])
+
+
+====== 3.9 Functional Requirements for Editing Personal Health Records ======
+The following section describes the requirements for editing personal health records.
+
+
+===== Requirement 35 =====
+**Description**: iTrust shall allow a [[lauren791e#Physician|physician]], [[lauren791e#Administrative Assistant|administrative assistant]], or [[lauren791e#Medical Administrator|medical administrator]], each using their authorized account, to edit [[lauren791e#Patient|patient]] records.\\
+**Rationale**: Certain healthcare [[lauren791e#Employee Roles|employees]] should be able to update information on a [[lauren791e#Patient|patient's]] permanent health record.\\
+**Context**: This is a basic operation of iTrust that does not occur on every [[lauren791e#Office Visit|office visit]].  For example, updating a list of allergies or chronic conditions in a [[lauren791e#Patient|patient]] record or updating contact information would fit this requirement.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC10 Enter Edit Personal Health Records|UC10]])
+
+
+====== 3.10 Functional Requirements for Operational Profile ======
+The following section describes the requirements for managing [[lauren791e#Operational Profile|operational profile]]s.
+
+
+===== Requirement 36 =====
+**Description**: iTrust shall allow a [[lauren791e#System Administrator|system administrator]], using their authorized account, to view an [[lauren791e#Operational Profile|operational profile]] of iTrust.\\
+**Rationale**: [[lauren791e#System Administrator|System administrators]] need [[lauren791e#Operational Profile|operational profile]] information to maintain and update iTrust.\\
+**Context**: This is a regularly occurring operation of iTrust. \\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC12 Determine Operational Profile|UC12]])
+
+
+====== 3.11 Functional Requirements for Personal Representatives ======
+The following section describes the requirements for managing personal representatives.
+
+
+===== Requirement 37 =====
+**Description**: iTrust shall allow a [[lauren791e#Patient|patient]], using their authorized account, to declare a set of zero or more [[lauren791e#Patient|patients]] as their [[lauren791e#Personal Representative|personal representatives]].\\
+**Rationale**: Patients should be able to able to declare other people to act on their behalves.\\
+**Context**: A child may want their mother and father to have access to their records and make medical decisions for him.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC13 Declare Undeclare Personal Representative|UC13]])
+
+
+== Legal Concern ==
+A [[lauren791e#Patient|patient]] should be able to declare someone who is not a [[lauren791e#Patient|patient]] at that particular healthcare facility (who would not have an iTrust account) as a [[lauren791e#Personal Representative|personal representative]].
+
+
+===== Requirement 38 =====
+**Description**: iTrust shall allow a [[lauren791e#Patient|patient]], using their authorized account, to undeclare a set of one or more [[lauren791e#Personal Representative|personal representatives]] as no longer [[lauren791e#Personal Representative|personal representatives]].\\
+**Rationale**: Patients should be able to change their minds about who are their [[lauren791e#Personal Representative|personal representatives]].\\
+**Context**: When a child turns 18, they may no longer want their parents to be their [[lauren791e#Personal Representative|personal representatives]].\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC13 Declare Undeclare Personal Representative|UC13]])
+
+
+== Legal Concern ==
+Should parents automatically be taken off the [[lauren791e#Personal Representative|personal representatives]] list when a child turns 18?
+
+== Legal Concern ==
+Should [[lauren791e#Personal Representative|personal representatives]] be able to edit the [[lauren791e#Personal Representative|personal representatives]] list?
+
+== Legal Concern ==
+Should [[lauren791e#Personal Representative|personal representatives]] be able to remove themselves from the list?
+
+
+====== 3.12 Functional Requirements for Standards Repository and Hospital Lists ======
+The following section describes the requirements for managing the standards repository list as well as the hospital list.
+
+
+===== Requirement 39 =====
+**Description**: iTrust shall allow a [[lauren791e#Medical Administrator|medical administrator]], using their authorized account, to add, update or delete medical standards in the [[lauren791e#Standards Repository|standards repository]].\\
+**Rationale**: [[lauren791e#Medical Administrator|Medical administrators]] must be able to maintain a lexicon of procedures, terminology and industry codes relating to their particular healthcare domain.  For example, when documenting medical procedures, consistency among the codes is important.\\
+**Context**: iTrust needs to maintain standardized terminology about diagnoses and medical conditions among the [[lauren791e#Patient|patient]] records.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC15 Maintain Standards Lists|UC15]])
+
+
+== Engineering Concern ==
+Should we explicitly state in other requirements (such as those that detail documenting [[lauren791e#Office Visit|office visits]] or [[lauren791e#Diagnostic Information|diagnostic information]]) that [[lauren791e#Physician|physicians]] have access to this set of medical standards?
+
+
+===== Requirement 40 =====
+**Description**: iTrust shall allow a [[lauren791e#Medical Administrator|medical administrator]] or a [[lauren791e#System Administrator|system administrator]], each using their authorized account, to add, remove, or update healthcare facility information as a part of a list of healthcare facilities managed by a particular iTrust installation.\\
+**Rationale**: Many healthcare organizations have multiple locations that share [[lauren791e#Patient|patients]], [[lauren791e#Physician|physicians]] and information.\\
+**Context**:   iTrust should facilitate the sharing of [[lauren791e#Patient|patient]] accounts, [[lauren791e#Physician|physician]] accounts and information directly.  Furthermore, a [[lauren791e#System Administrator|system administrator]] may be responsible for the technical aspects of adding, removing or updating healthcare information technology on a location by location basis.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC18 Maintain a hospital listing|UC18]])
+
+
+== Engineering Concern ==
+This sort of locality information could be kept to a greater detail in large healthcare complexes.  For example, some hospitals are sprawling campuses with multiple buildings, floors and wards that could each be tracked to the floor or room level.  Should iTrust enable this sort of tracking?
+
+
+===== Requirement 41 =====
+**Description**: iTrust shall allow a user, using their authorized account, to specify a set of one or more healthcare facilities within the iTrust [[lauren791e#Health Network|health network]] to which their account is associated.\\
+**Rationale**: Many healthcare organizations have multiple locations within a [[lauren791e#Health Network|health network]] that share [[lauren791e#Patient|patients]], [[lauren791e#Physician|physicians]] and information.\\
+**Context**:   iTrust should facilitate the sharing of [[lauren791e#Patient|patient]] accounts, [[lauren791e#Physician|physician]] accounts and information directly.  Furthermore, a [[lauren791e#System Administrator|system administrator]] may be responsible for the technical aspects of adding, removing or updating healthcare information technology on a location by location basis.\\
+**Priority**: High\\
+**Origin**: Authors' EHR Experience
+
+
+== Engineering Concern ==
+This is intended to be a list of locations where a user role has and is willing to interact, but it could be interpreted as a list of preferred locations, which may or may not be more helpful to actual customers.  (We need more domain knowledge.)
+
+
+== Engineering Concern ==
+Does a CPT code, ICD9 code, or drug code need to be associated with a particular healthcare facility?  For example, should we worry about procedures that may not be possible in a smaller family practice or drugs that may not be available at a regional clinic?
+
+
+====== 3.13 Functional Requirements for Prescription Reports and Emergency Reports ======
+The following section describes the requirements for managing prescription reports as well as Emergency Reports.
+
+
+===== Requirement 42 =====
+**Description**: iTrust shall allow a [[lauren791e#Physician|physician]], using their authorized account, to generate a printable [[lauren791e#Prescription|prescription]], which includes the [[lauren791e#Patient|patient]] name and space for a [[lauren791e#Physician|physician]] to sign and date the [[lauren791e#Prescription|prescription]], based on the [[lauren791e#Diagnostic Information|diagnostic information]] recorded as a part of a [[lauren791e#Prescription|prescription]] in an [[lauren791e#Office Visit|office visit]].\\ 
+**Rationale**: In addition to storing [[lauren791e#Prescription|prescription]] information as a part of a [[lauren791e#Patient|patient's]] health record, [[lauren791e#Physician|physicians]] need to be able to sign a [[lauren791e#Prescription|prescription]] report so their [[lauren791e#Patient|patients]] can redeem it at a pharmacy.\\
+**Context**: A [[lauren791e#Physician|physician]] may want to print and sign a [[lauren791e#Prescription|prescription]] for their [[lauren791e#Patient|patient]] during an [[lauren791e#Office Visit|office visit]].\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC19 View Prescription Report|UC19]])
+
+== Legal Concern ==
+Pharmacies may be better able to fill [[lauren791e#Prescription|prescriptions]] if they were directly linked to the health records systems of the [[lauren791e#Health Network|health network]] responsible for those [[lauren791e#Prescription|prescriptions]].  Are there legal or technical barriers to achieving this?
+
+
+===== Requirement 43 =====
+**Description**: iTrust shall allow a [[lauren791e#Patient|patient]], using their authorized account, to view a history of their [[lauren791e#Prescription|prescriptions]].\\
+**Rationale**: Patients may want to be able to see the names of previous [[lauren791e#Prescription|prescriptions]] that have worked well for them.\\
+**Context**: iTrust has information on [[lauren791e#Prescription|prescriptions]] anyhow, so it makes sense to be able to fill this [[lauren791e#Patient|patient]] need through iTrust.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC19 View Prescription Report|UC19]])
+
+
+===== Requirement 44 =====
+**Description**: iTrust shall allow a [[lauren791e#Personal Representative|personal representative]], using their authorized account, to view a history of the [[lauren791e#Prescription|prescriptions]] of those [[lauren791e#Patient|patients]] they represent.\\
+**Rationale**: [[lauren791e#Personal Representative|Personal representatives]] may want to be able to see the names of previous [[lauren791e#Prescription|prescriptions]] that have worked well for the [[lauren791e#Patient|patients]] they represent.\\
+**Context**: iTrust has information on [[lauren791e#Prescription|prescriptions]] anyhow, so it makes sense to be able to fill this [[lauren791e#Personal Representative|personal representative]] need through iTrust.\\
+**Priority**: High\\
+**Origin**: Original ([[lauren791e#UC19 View Prescription Report|UC19]])
+
+
+===== Requirement 45 =====
+**Description**: iTrust shall allow a [[lauren791e#Physician|physician]], [[lauren791e#Administrative Assistant|administrative assistant]], or a [[lauren791e#Medical Administrator|medical administrator]], each using their authorized account, to generate a printable [[lauren791e#Emergency Report|emergency report]] for a [[lauren791e#Patient|patient]] record.\\
+**Rationale**: In an emergency situation outside of a [[lauren791e#Patient|patient's]] home [[lauren791e#Health Network|health network]], the healthcare facility handling the emergency situation may need a quick health summary for that [[lauren791e#Patient|patient]].\\
+**Context**: iTrust should be able to generate a printable report that a [[lauren791e#Patient|patient]] could take with them or that could be faxed to an out of [[lauren791e#Health Network|network]] healthcare facility.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC21 View Emergency Report|UC21]])
+
+
+== Legal Concern ==
+Should something like this be designed for in [[lauren791e#Health Network|network]] healthcare facilities?  They have access to iTrust, but do they need faster access in emergency situations?  If so, how is an emergency situation determined to exist?
+
+
+====== 3.14 Functional Requirements for Appointments ======
+The following section describes requirements for managing [[lauren791e#Appointment|appointments]] made between [[lauren791e#Patient|patients]] and physicians.
+
+
+===== Requirement 46 =====
+**Description**: iTrust shall allow a [[lauren791e#Patient|patient]], using their authorized account, to request an [[lauren791e#Appointment|appointment]] with a [[lauren791e#Physician|physician]].\\
+**Rationale**: Patients may want to initiate the scheduling process online and during the non-business hours of the healthcare facility.\\
+**Context**: iTrust should record requested [[lauren791e#Appointment|appointments]] since they are possibly pertinent to the requesting [[lauren791e#Patient|patient's]] health status.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC22 Flow of Events for the Schedule Appointments|UC22]])
+
+
+===== Requirement 47 =====
+**Description**: iTrust shall allow a [[lauren791e#Personal Representative|personal representative]], using their authorized account, to request an [[lauren791e#Appointment|appointment]] with a [[lauren791e#Physician|physician]] on behalf of the [[lauren791e#Patient|patient]] they represent.\\
+**Rationale**: [[lauren791e#Personal Representative|Personal representatives]] may want to initiate the scheduling process online and during the non-business hours of the healthcare facility.\\
+**Context**: iTrust should record requested [[lauren791e#Appointment|appointments]] since they are possibly pertinent to the requesting [[lauren791e#Patient|patient's]] health status.\\
+**Priority**: High\\
+**Origin**: Authors' EHR Experience
+
+
+===== Requirement 48 =====
+**Description**: iTrust shall allow an [[lauren791e#Administrative Assistant|administrative assistant]], using their authorized account, to view all requests for [[lauren791e#Appointment|appointments]].\\
+**Rationale**: [[lauren791e#Administrative Assistant|Administrative assistants]] need to be able to process pending requests and view past requests to support the scheduling of actual [[lauren791e#Appointment|appointments]].\\
+**Context**: iTrust should allow [[lauren791e#Administrative Assistant|administrative assistants]] to transfer requests for [[lauren791e#Appointment|appointments]] into another scheduling system for managing [[lauren791e#Physician|physicians']] on-duty hours.\\
+**Priority**: Critical\\
+**Origin**: Authors' EHR Experience
+
+== Engineering Concern ==
+Should iTrust become a fully fledged [[lauren791e#Employee Roles|employee]] scheduling system to help manage [[lauren791e#Employee Roles|employee]] shifts as well as [[lauren791e#Patient|patient]] [[lauren791e#Appointment|appointments]]?
+
+== Engineering Concern ==
+Does iTrust need to have a notion of the organizational chart for the healthcare facilities that it manages?
+
+
+===== Requirement 49 =====
+**Description**: iTrust shall allow an [[lauren791e#Administrative Assistant|administrative assistant]], using their authorized account, to schedule an [[lauren791e#Appointment|appointment]] for a patient with a physician.\\
+**Rationale**: [[lauren791e#Administrative Assistant|Administrative assistants]] need to be able to schedule actual [[lauren791e#Appointment|appointments]].\\
+**Context**: One of the primary functions of an administrative assistant is to manage the scheduling of [[lauren791e#Appointment|appointments]].  iTrust should support this function.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC22 Flow of Events for the Schedule Appointments|UC22]]), Authors' EHR Experience
+
+== Engineering Concern ==
+iTrust currently cannot support canceling [[lauren791e#Appointment|appointments]], rescheduling [[lauren791e#Appointment|appointments]], or documenting a patient's failure to keep an [[lauren791e#Appointment|appointment]].
+
+== Engineering Concern ==
+How should a scheduled [[lauren791e#Appointment|appointment]] relate to a requested [[lauren791e#Appointment|appointment]]?
+
+
+====== 3.15 Functional Requirements for Comprehensive Reports ======
+The following section describes requirements for managing comprehensive reports.
+
+
+===== Requirement 50 =====
+**Description**: iTrust shall allow a [[lauren791e#Patient|patient]], using their authorized account, to generate on a single web page a complete report of their [[lauren791e#Patient|patient]] record.\\
+**Rationale**: Patients may want to take their medical record with them when they transfer to a new healthcare facility.\\
+**Context**: iTrust has easy access to this information and it would be a simple service to automate for a [[lauren791e#Patient|patient]].\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC23 View Comprehensive Patient Report|UC23]]), Authors' EHR Experience
+
+
+===== Requirement 51 =====
+**Description**: iTrust shall allow a [[lauren791e#Personal Representative|personal representative]], using their authorized account, to generate on a single web page a complete report for each of the [[lauren791e#Patient|patient]] records for the [[lauren791e#Patient|patients]] they represent.\\
+**Rationale**: [[lauren791e#Personal Representative|Personal representatives]] should have the ability to do anything that a [[lauren791e#Patient|patient]] may want to do.\\
+**Context**: iTrust has easy access to this information and it would be a simple service to automate for a [[lauren791e#Patient|patient]].\\
+**Priority**: High\\
+**Origin**: Original ([[lauren791e#UC23 View Comprehensive Patient Report|UC23]]), Authors' EHR Experience
+
+
+== Legal Concern ==
+Should there be a way to generate reports on subsets of health information for police orders such as subpoenas?
+
+
+== Legal Concern ==
+Should there be a way to flag [[lauren791e#Office Visit|office visits]] as potentially criminal and generate reports based on those?  For example, should a [[lauren791e#Physician|physician]] be able to denote a particular [[lauren791e#Office Visit|office visit]] as suspected spousal abuse?
+
+
+====== 3.16 Functional Requirements for Laboratory Procedures======
+The following section describes requirements for managing laboratory procedures.
+
+
+===== Requirement 52 =====
+**Description**: iTrust shall allow a [[lauren791e#Physician|physician]], using their authorized account, to create, view, edit or delete [[lauren791e#Requested Laboratory Procedure|requested laboratory procedures]], [[lauren791e#Scheduled Laboratory Procedure|scheduled laboratory procedures]], or [[lauren791e#Completed Laboratory Procedure|completed laboratory procedures]].\\
+**Rationale**: Physicians and [[lauren791e#Medical Administrator|medical administrators]] need to have access to this sort of information to carry out their jobs.\\
+**Context**: iTrust must not hinder the basic elements of a [[lauren791e#Physician|physician's]] or a [[lauren791e#Medical Administrator|medical administrator's]] job.  Furthermore, iTrust would be the ideal setting to support this sort of request.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC26 View Edit Laboratory Procedure Status|UC26]])
+
+
+===== Requirement 53 =====
+**Description**: iTrust shall allow a [[lauren791e#Medical Administrator|medical administrator]], using their authorized account, to create, view, edit, or delete [[lauren791e#Laboratory Procedures]].\\
+**Rationale**: A healthcare facility needs to be able to track all the full procedures that can be performed at the healthcare facility.\\
+**Context**: Administrative assistants would use this list to help manage the scheduling of laboratory procedures.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC26 View Edit Laboratory Procedure Status|UC26]])\\
+
+== Question ==
+How is a Laboratory Procedure different from a Standards Repository List?
+
+== Answer ==
+The Standards Repository List contains a coded listing of procedures that can be performed.  The Laboratory Procedure list contains a list of coherent procedures that are actually performed at the healthcare facility.  For example, if a patient is undergoing chemotherapy, they may have two or more standard procedures from the Standards Repository List performed on them all as a part of a single Laboratory Procedure.
+
+
+===== Requirement 54 =====
+**Description**: iTrust shall allow an [[lauren791e#Administrative Assistant|administrative assistant]], using their authorized account, to [[lauren791e#Scheduled Laboratory Procedure|schedule a laboratory procedure]] that was [[lauren791e#Requested Laboratory Procedure|requested]] during an [[lauren791e#Office Visit|office visit]].\\
+**Rationale**: Administrative assistants need to be able to schedule an [[lauren791e#Appointment|appointment]] for a requested laboratory procedure.\\
+**Context**: Administrative assistants should be provided by iTrust both a list of requested laboratory procedures as well as an ability to schedule [[lauren791e#Appointment|appointments]] for each request.\\
+**Priority**: High\\
+**Origin**: Original ([[lauren791e#UC26 View Edit Laboratory Procedure Status|UC26]])
+
+== Engineering Concern ==
+We haven't fully defined the relationship between [[lauren791e#Appointment|appointments]] / office visits and requested / scheduled / completed laboratory procedures.
+
+
+===== Requirement 55 =====
+**Description**: iTrust shall allow a [[lauren791e#Physician|physician]], using their authorized account, to [[lauren791e#Completed Laboratory Procedure|complete]] a [[lauren791e#Laboratory Procedure|laboratory procedure]], by providing the information required by a [[lauren791e#Completed Laboratory Procedure|completed laboratory procedure]] as defined in the glossary.\\
+**Rationale**: Physicians need to be able to provide this sort of information to carry out their jobs.\\
+**Context**: iTrust must support the basic elements of a [[lauren791e#Physician|physician's]] job.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC26 View Edit Laboratory Procedure Status|UC26]])
+
+
+===== Requirement 56 =====
+**Description**: iTrust shall allow a [[lauren791e#Patient|patient]], using their authorized account, to view their [[lauren791e#Requested Laboratory Procedure|requested laboratory procedures]], [[lauren791e#Scheduled Laboratory Procedure|scheduled laboratory procedures]] and [[lauren791e#Completed Laboratory Procedure|completed laboratory procedures]].\\
+**Rationale**: Patients will want to be able to check the status of [[lauren791e#Laboratory Procedure|laboratory procedures]].\\
+**Context**: Healthcare facilities can better serve [[lauren791e#Patient|patient]] needs by providing this service immediately through iTrust.\\
+**Priority**: Critical\\
+**Origin**: Original ([[lauren791e#UC26 View Edit Laboratory Procedure Status|UC26]])
+
+
+== Legal Concern ==
+Should actual laboratory results be bundled with [[lauren791e#Laboratory Procedure|laboratory procedures]] or is this not truly the domain of an electronic health record?  (i.e. Should the x-ray film itself be considered a part of a patient's electronic health record as protected health information?)
+
+
+== Engineering Concern ==
+Should [[lauren791e#Patient|patients]] be able to cancel (via editing) a [[lauren791e#Requested Laboratory Procedure|requested laboratory procedure]]?
+
+
+===== Requirement 57 =====
+**Description**: iTrust shall allow a [[lauren791e#Personal Representative|personal representative]], using their authorized account, to view [[lauren791e#Requested Laboratory Procedure|requested laboratory procedures]], [[lauren791e#Scheduled Laboratory Procedure|scheduled laboratory procedures]] and [[lauren791e#Completed Laboratory Procedure|completed laboratory procedures]] for the [[lauren791e#Patient|patients]] they represent.\\
+**Rationale**: [[lauren791e#Personal Representative|Personal representatives]] will want to be able to check the status of [[lauren791e#Laboratory Procedure|laboratory procedures]] for those they represent.\\
+**Context**: Healthcare facilities can better serve [[lauren791e#Patient|patient]] needs by providing this service immediately through iTrust.\\
+**Priority**: High\\
+**Origin**: Original ([[lauren791e#UC26 View Edit Laboratory Procedure Status|UC26]])
+
+
+====== 3.17 Functional Requirements for EMail ======
+The following section describes requirements for managing emails that must be sent by iTrust.
+
+
+===== Requirement 58 =====
+**Description**: iTrust shall allow a [[lauren791e#Patient|patient]], using their authorized account, to specify a preference as to whether they would like to receive emails regarding any changes to their [[lauren791e#Patient|patient]] records.\\
+**Rationale**: Patients within the iTrust system may or may not want to be pestered with emails regarding changes to their account.\\
+**Context**: iTrust can operate more efficiently if it is aware of user preferences regarding email.\\
+**Priority**: High\\
+**Origin**: Original ([[lauren791e#UC27 Alert Users by Email|UC27]]), Authors' Web Development Experience
+
+
+===== Requirement 59 =====
+**Description**: iTrust shall allow a [[lauren791e#Personal Representative|personal representative]], using their authorized account, to specify a preference as to whether they would like to receive emails regarding any changes to the [[lauren791e#Patient Record|patient records]] of those they represent.\\
+**Rationale**: [[lauren791e#Personal Representative|Personal representatives]] within the iTrust system may or may not want to be pestered with emails regarding changes to the accounts of those they represent.\\
+**Context**: iTrust can operate more efficiently if it is aware of user preferences regarding email.\\
+**Priority**: Medium\\
+**Origin**: Original ([[lauren791e#UC27 Alert Users by Email|UC27]]), Authors' Web Development Experience
+
+
+===== Requirement 60 =====
+**Description**: iTrust shall allow an [[lauren791e#Employee Roles|employee]], using their authorized account, to specify a preference as to whether they would like to receive emails regarding any changes to their [[lauren791e#Employee Record|employee records]].\\
+**Rationale**: Employees within the iTrust system may or may not want to be pestered with emails regarding changes to their account.\\
+**Context**: iTrust can operate more efficiently if it is aware of user preferences regarding email.\\
+**Priority**: High\\
+**Origin**: Original ([[lauren791e#UC27 Alert Users by Email|UC27]]), Authors' Web Development Experience
+
+
+== Engineering Concern ==
+Should we delineate between the various kinds of updates?  (i.e. A [[lauren791e#Patient|patient]] may want to receive information on [[lauren791e#Completed Laboratory Procedure|completed laboratory procedures]] but not information regarding standard [[lauren791e#Office Visit|office visits]].)
+
+
+===== Requirement 61 =====
+**Description**: iTrust shall send an email to a [[lauren791e#Patient|patient's]] email address at the time the [[lauren791e#Patient|patient's]] record is updated and according to the stored preferences regarding email for that [[lauren791e#Patient|patient]].\\
+**Rationale**: iTrust should control the sending of emails automatically and needs to honor preferences regarding emails.\\
+**Context**: A [[lauren791e#Patient|patient]] may begin to distrust a healthcare facility that cannot consistently respect user preferences regarding something as simple as email.\\
+**Priority**: High\\
+**Origin**: Original ([[lauren791e#UC27 Alert Users by Email|UC27]]), Authors' Web Development Experience
+
+
+===== Requirement 62 =====
+**Description**: iTrust shall send an email to a [[lauren791e#Personal Representative|personal representative's]] email address at the time the patient records of the [[lauren791e#Patient|patients]] they represent are updated and according to the stored preferences regarding email for that [[lauren791e#Personal Representative|personal representative]].\\
+**Rationale**: iTrust should control the sending of emails automatically and needs to honor preferences regarding emails.\\
+**Context**: A [[lauren791e#Patient|patient]] may begin to distrust a healthcare facility that cannot consistently respect user preferences regarding something as simple as email.\\
+**Priority**: Medium\\
+**Origin**: Authors' Web Development Experience, Authors' EHR Experience
+
+
+===== Requirement 63 =====
+**Description**: iTrust shall send an email to an [[lauren791e#Employee Roles|employee's]] email address at the time their [[lauren791e#Employee Record|employee record]] is updated and according to the stored preferences regarding email for that [[lauren791e#Employee Roles|employee]].\\
+**Rationale**: iTrust should control the sending of emails automatically and needs to honor preferences regarding emails.\\
+**Context**: An [[lauren791e#Employee Roles|employee]] may become dissatisfied with their employer if that employer cannot respect their preferences regarding email.\\
+**Priority**: High\\
+**Origin**: Original ([[lauren791e#UC27 Alert Users by Email|UC27]]), Authors' Web Development Experience
+
+
+====== 3.18 Functional Requirement Concerns ======
+This section contains a table of all the functional requirements and the associated number of concerns of each type.  It is important to first define what is meant by each concern type.  This table is intended to be updated as concerns are added and resolved.  As with all elements of this document, the table is never "final" in the sense that it can be altered throughout the software process.
+
+**Engineering Concern**: Concerns relating to the software engineering process itself such as requirements, design or testing.
+
+**Security Concerns**: Concerns relating to the generic security of information stored in or services provided by iTrust.
+
+**Legal Concern**: Concerns with legal implications for a healthcare facility that uses iTrust.
+
+^ Requirement Number ^ Engineering Concerns ^ Security Concerns ^ Legal Concerns ^
+| Requirement 1 | 0 | 0 | 0 |
+| Requirement 2 | 0 | 0 | 0 |
+| Requirement 3 | 0 | 1 | 1 |
+| Requirement 4 | 0 | 1 | 1 |
+| Requirement 5 | 0 | 0 | 1 |
+| Requirement 6 | 0 | 0 | 0 |
+| Requirement 7 | 0 | 0 | 2 |
+| Requirement 8 | 0 | 0 | 0 |
+| Requirement 9 | 0 | 0 | 0 |
+| Requirement 10 | 0 | 0 | 1 |
+| Requirement 11 | 0 | 0 | 2 |
+| Requirement 12 | 0 | 0 | 0 |
+| Requirement 13 | 0 | 0 | 0 |
+| Requirement 14 | 0 | 0 | 0 |
+| Requirement 15 | 2 | 2 | 0 |
+| Requirement 16 | 0 | 0 | 0 |
+| Requirement 17 | 2 | 0 | 0 |
+| Requirement 18 | 0 | 0 | 0 |
+| Requirement 19 | 0 | 0 | 0 |
+| Requirement 20 | 0 | 0 | 0 |
+| Requirement 21 | 0 | 0 | 1 |
+| Requirement 22 | 0 | 0 | 1 |
+| Requirement 23 | 1 | 0 | 1 |
+| Requirement 24 | 0 | 0 | 0 |
+| Requirement 25 | 0 | 0 | 0 |
+| Requirement 26 | 0 | 0 | 0 |
+| Requirement 27 | 0 | 0 | 1 |
+| Requirement 28 | 0 | 0 | 0 |
+| Requirement 29 | 0 | 0 | 0 |
+| Requirement 30 | 0 | 0 | 1 |
+| Requirement 31 | 0 | 0 | 1 |
+| Requirement 32 | 0 | 0 | 0 |
+| Requirement 33 | 0 | 0 | 0 |
+| Requirement 34 | 0 | 0 | 0 |
+| Requirement 35 | 0 | 0 | 0 |
+| Requirement 36 | 0 | 0 | 0 |
+| Requirement 37 | 0 | 0 | 1 |
+| Requirement 38 | 0 | 0 | 3 |
+| Requirement 39 | 1 | 0 | 0 |
+| Requirement 40 | 1 | 0 | 0 |
+| Requirement 41 | 2 | 0 | 0 |
+| Requirement 42 | 0 | 0 | 1 |
+| Requirement 43 | 0 | 0 | 0 |
+| Requirement 44 | 0 | 0 | 0 |
+| Requirement 45 | 0 | 0 | 1 |
+| Requirement 46 | 0 | 0 | 0 |
+| Requirement 47 | 0 | 0 | 0 |
+| Requirement 48 | 2 | 0 | 0 |
+| Requirement 49 | 2 | 0 | 0 |
+| Requirement 50 | 0 | 0 | 0 |
+| Requirement 51 | 0 | 0 | 2 |
+| Requirement 52 | 0 | 0 | 0 |
+| Requirement 53 | 0 | 0 | 0 |
+| Requirement 54 | 1 | 0 | 0 |
+| Requirement 55 | 0 | 0 | 0 |
+| Requirement 56 | 1 | 0 | 1 |
+| Requirement 57 | 0 | 0 | 0 |
+| Requirement 58 | 0 | 0 | 0 |
+| Requirement 59 | 0 | 0 | 0 |
+| Requirement 60 | 1 | 0 | 0 |
+| Requirement 61 | 0 | 0 | 0 |
+| Requirement 62 | 0 | 0 | 0 |
+| Requirement 63 | 0 | 0 | 0 |
+
+======= 4. Non-Functional Requirements =======
+The following section describes the non-functional requirements that must be maintained by iTrust or that constrain iTrust in some fundamental fashion.
+
+
+===== Requirement 64 =====
+iTrust shall comply with [[http://www.hhs.gov/ocr/hipaa/|HIPAA]] and other laws and regulations.
+
+== Legal Concern ==
+A full examination of laws that apply to iTrust needs to be conducted.
+
+
+===== Requirement 65 =====
+iTrust shall have a privacy policy, which is linked off of the login screen.
+
+== Legal Concern ==
+Privacy policies are required by HIPAA, but we have not investigated the requirements for a HIPAA-compliant privacy policy.
+
+== Question ==
+Should the privacy policy be editable in iTrust by a medical administrator role?
+
+== Answer ==
+Unknown at this time.
+
+
+===== Requirement 66 =====
+iTrust shall be a web-based application implemented using [[http://java.sun.com/products/jsp/|Java Server Pages]], [[http://java.sun.com/javase/6/|Java 1.6]], and [[http://www.mysql.com/|MySQL]].
+
+
+===== Requirement 67 =====
+iTrust code shall adhere to the [[http://java.sun.com/docs/codeconv/|Java Coding Standards]].
+
+
+===== Requirement 68 =====
+iTrust shall be documented using the [[http://java.sun.com/j2se/javadoc/|Javadoc documentation system]].
+
+
+===== Requirement 69 =====
+iTrust server shall run on the Windows platform in the [[http://www.eclipse.org/|Eclipse 3.3]] environment.
+
+
+===== Requirement 70 =====
+The iTrust server shall run on [[http://tomcat.apache.org/|Apache Tomcat Server]], which can be installed on Windows XP, Linux distributions based on the [[http://www.kernel.org/|2.6 Linux kernel]], or Mac OS X.
+
+
+===== Requirement 71 =====
+iTrust shall operate in [[http://www.microsoft.com/windows/products/winfamily/ie/default.mspx|Internet Explorer 7]], [[http://www.mozilla.com/en-US/firefox/|Firefox 2]], and [[http://www.apple.com/safari/|Safari 3]].
+
+
+===== Requirement 72 =====
+All iTrust automated tests shall pass.  All iTrust Java classes shall have at least 80% unit testing/[[http://www.junit.org/|JUnit]] coverage of tests.  Every requirement shall have at least three black box tests automated through [[http://httpunit.sourceforge.net/|HttpUnit]].
+
+
+===== Requirement 73 =====
+iTrust shall have no true positive Severe or Medium [[http://findbugs.sourceforge.net/|FindBugs]] errors.
+
+
+
+
+======= 5. Glossary =======
+This glossary of terms defines each element of information relating to the iTrust Medical Records system.
+
+
+===== Account Information =====
+A [[lauren791e#User ID|user ID]] and [[lauren791e#Password|password]].
+
+
+===== Authenticated Account =====
+An [[lauren791e#Account Information|account]] is considered to be an [[lauren791e#Authenticated Account|authenticated account]] when a user has successfully input their correct [[lauren791e#User ID|user ID]] and [[lauren791e#Password|password]].  An account remains authenticated until the user indicates they would like to [[lauren791e#Unauthenticated Account|unauthenticate]] or the [[lauren791e#Timeout limit|timeout limit]] is reached.
+
+
+===== Appointment =====
+A scheduled date and time setup for a particular [[lauren791e#Patient|patient]] to meet with a particular [[lauren791e#Physician|physician]].
+
+== Terminology Correction == 
+This conflicts with the definition of Appointment ([[lauren791e#UC22 Flow of Events for the Schedule Appointments|UC22]]) in the current requirements where [[lauren791e#Appointment|appointments]] can only be made with an [[lauren791e#Physician|physician]].
+
+== Question ==
+How does an [[lauren791e#Appointment|appointment]] relate to an office visit?
+
+== Answer ==
+When a patient arrives and meets with a physician to fulfill their [[lauren791e#Appointment|appointment]], an office visit is created as a result of the [[lauren791e#Appointment|appointment]].
+
+== Question ==
+Does every [[lauren791e#Appointment|appointment]] become an office visit?
+
+== Answer ==
+No. Some [[lauren791e#Appointment|appointments]] may be rescheduled or canceled.  Furthermore, a patient may simply not show up for an [[lauren791e#Appointment|appointment]].
+
+== Engineering Concern ==
+It is currently not possible for an [[lauren791e#Appointment|appointment]] to be rescheduled or canceled.
+
+===== Completed Laboratory Procedure====
+A [[lauren791e#Completed Laboratory Procedure|completed laboratory procedure]] consists of a date of completion, a reference to the original [[lauren791e#Laboratory Procedure|laboratory procedure]] request and a textual summary of the results provided by the executing [[lauren791e#Physician|physician]].  This may also include a reference to the [[lauren791e#Office Visit|office visit]] in which the [[lauren791e#Laboratory Procedure|laboratory procedure]] results were or are to be provided to the associated [[lauren791e#Patient|patient]].
+
+
+===== Default Password =====
+A [[lauren791e#Default Password|default [[lauren791e#Password|password]]]] is a randomly generated, alphanumeric character string of at least six characters.
+
+== Security Concern ==
+Should a [[lauren791e#Default Password|default [[lauren791e#Password|password]]]] length be configurable?\\
+
+
+===== Demographic Information =====
+The following information is classified as [[lauren791e#Demographic Information|demographic information]]: First, Middle and Last Name, Gender, Birth date, Deceased Date, Ethnicity, Email address, Street address, City, State, Zip code, Phone number, Emergency contact information, and Insurance company information.
+
+== Legal Concern ==
+We haven't setup an explicit mapping between [[lauren791e#Demographic Information|demographic information]] and protected health information (PHI).
+
+== Definition Conflict ==
+This term was not explicitly defined in the previous requirements document.
+
+
+===== Designatable Diagnostic Information =====
+The set of [[lauren791e#Diagnostic Information|diagnostic information]] to which a [[lauren791e#Patient|patient]] can control access as granted by a [[lauren791e#Physician|physician]] account(s).
+
+
+===== Diagnostic Information =====
+Any information resulting from a [[lauren791e#Patient|patient's]] [[lauren791e#Office Visit|office visit]] with a [[lauren791e#Physician|physician]].  For example, data regarding any illness, mental illness, or substance abuse that was diagnosed as well as any data regarding billing, scheduling or pharmacological [[lauren791e#Prescription|prescriptions]]. 
+
+== Legal Concern ==
+Currently we don't really include [[lauren791e#Appointment|appointment]] information, which may be protected by HIPAA.
+
+
+===== Disabled Record =====
+A record that is no longer active.  The owner cannot log into iTrust, but others, using their authorized accounts, can still acces the record.
+
+== Question ==
+Does this apply to employee or [[lauren791e#Patient Record|patient records]]?
+
+== Answer ==
+This applies to both [[lauren791e#Patient Record|patient]] and [[lauren791e#Employee Record|employee]] records.
+
+== Legal Concern ==
+We are intending for [[lauren791e#Disabled Record|disabled]] [[lauren791e#Patient|patient]] records to be those records that are in the six year maintenance period defined by HIPAA. 
+
+
+===== Emergency Contact Information =====
+The following information is classified as [[lauren791e#Emergency Contact Information]]: First, Middle and Last name, Phone number and Email address.
+
+== Legal Concern ==
+Emergency contacts may not always be contacted in an emergency situation.  For example, they may simply be contacted to verify the phone number is accurate in case there was an emergency.
+
+
+===== Emergency Report =====
+The subset of [[lauren791e#Diagnostic Information|diagnostic information]] including any active [[lauren791e#Prescription|prescriptions]], any chronic conditions, any allergies, and the details of the last several [[lauren791e#Office Visit|office visits]].
+
+== Legal Concern ==
+We need to define the exact elements of the various levels of [[lauren791e#Diagnostic Information|diagnostic information]].  Should we also make a distinction between [[lauren791e#Diagnostic Information|diagnostic information]] that changes over time (weight) and that which does not (blood type)?
+
+
+===== Employee Information =====
+The following information is classified as [[lauren791e#Employee Information|employee information]]:  First, Middle and Last Name, Gender, Birth date, Email address, Street address, City, State, Zip code, Phone number, Emergency contact information, Social Security Number, and College Degree.
+
+
+===== Employee Record =====
+An [[lauren791e#Employee Record|employee records]] consists of all information stored in iTrust about that employee including account, user role (e.g. [[lauren791e#Physician|physician]], [[lauren791e#Administrative Assistant|administrative assistant]], etc.), and [[lauren791e#Employee Information|employee information]].  An [[lauren791e#Employee Roles|employee]] record does not include information about their [[lauren791e#Patient|patients]] or their own [[lauren791e#Patient|patient]] record.
+
+
+===== Health Network =====
+A [[lauren791e#Health Network|health network]] is a set of individual healthcare facilities, practices or buildings that are all administered by a single iTrust database.  Typically, a [[lauren791e#Health Network|health network]] is a regional community of specialists that serve the same population of [[lauren791e#Patient|patients]].
+
+== Engineering Concern ==
+A discussion with the customer is necessary to find what the health network means in their domain.
+
+===== Insurance Company Information =====
+The following information is classified as insurance company information: Insurance company name, Street address, City, State, Zip code, Phone number, and Insurance identification.
+
+== Legal concern ==
+We're not sure how regulated Insurance IDs are.  This may also be PHI protected by HIPAA.
+
+
+===== Invalid Employee Record =====
+An [[lauren791e#Employee Record|employee record]] is invalid if the record does not refer to an actual person, does not refer to an employee or if the record refers to a person who is more completely described in another [[lauren791e#Employee Record|employee record]]. 
+
+
+===== Invalid Patient Record =====
+A [[lauren791e#Patient|patient]] record is invalid if the record does not refer to an actual person or the record refers to a person who is more completely described in another [[lauren791e#Patient|patient]] record.
+
+
+===== Laboratory Procedure =====
+A [[lauren791e#Laboratory Procedure|laboratory procedure]] consists of a set of procedures selected from the [[lauren791e#Standards Repository|standards repository]] defined by the [[lauren791e#Medical Administrator|medical administrator]].
+
+== Question ==
+How does a laboratory procedure relate to an office visit?
+
+== Answer ==
+When a patient has an office visit and a laboratory procedure is requested by the physician, then a requested laboratory procedure is created.  When an administrative assistant schedules the requested laboratory procedure, then it becomes a scheduled laboratory procedure.  When that scheduled laboratory procedure is actually performed and the results are in, then it becomes a completed laboratory procedure.
+
+
+===== Non-Designatable Diagnostic Information =====
+The set of [[lauren791e#Diagnostic Information|diagnostic information]] to which a [[lauren791e#Patient|patient]] cannot control access. 
+
+
+===== Office Visit =====
+A date and time when one or more [[lauren791e#Physician|physicians]] perform a medical procedure on, perform a medical analysis of, or provide medical advice to a [[lauren791e#Patient|patient]].
+
+== Question ==
+Do all office visits have an associated [[lauren791e#Appointment|appointment]]?
+
+== Answer ==
+No.  An office visit can be created without an [[lauren791e#Appointment|appointment]].  For example, [[lauren791e#Patient|patients]] may be allowed to see a physician on a walk-in basis with no prior [[lauren791e#Appointment|appointment]].
+
+
+===== Office Visit Information =====
+The set of [[lauren791e#Diagnostic Information|diagnostic information]] associated with a particular [[lauren791e#Office Visit|office visit]].  For example, a healthcare practice may record height, weight and blood pressure routinely with each [[lauren791e#Office Visit|office visit]], but [[lauren791e#Office Visit Information|office visit information]] also includes any procedures performed particular to that individual [[lauren791e#Office Visit|office visit]].  Additionally, the location for each [[lauren791e#Office Visit|office visit]] is included in the [[lauren791e#Office Visit Information|office visit information]].  Office visit information also includes any lab procedures that were requested as a part of the diagnostic process.  Office visit information also includes a list of [[lauren791e#Practicing Physician|practicing physicians]] for that office visit.
+
+== Engineering Concern ==
+We should include in a tabular format the information that is considered office visit information as well as what parts of it are required and what parts are optional.
+
+
+===== Office Visit Notes =====
+Office visit notes consist of the notes the [[lauren791e#Physician|physician]] makes during the [[lauren791e#Office Visit|office visit]] which are not directly relevant to the final diagnosis (e.g. other possible diagnoses that were rejected).
+
+== Legal Concern ==
+We are unsure of what information a [[lauren791e#Patient|patient]] has access to view under HIPAA or other laws.
+
+
+===== Operation =====
+An [[lauren791e#Operation|operation]] is performed by a user, using their authorized account, and consists of any input or output of information to iTrust.  For example, the creation of a new [[lauren791e#Patient|patient]] record or the declaration of a new [[lauren791e#Designated Physician|designated physician]] is an [[lauren791e#Operation|operation]].
+
+== Engineering Concern ==
+We should list explicitly the current requirements that are considered [[lauren791e#Operation|operations]] here.
+
+
+===== Operational Profile =====
+An [[lauren791e#Operational Profile|operational profile]] consists of the operations defined in the table below and includes a count of how many times each of these operations has been used by each type of [[lauren791e#Employee Role|employee role]] or [[lauren791e#Non-Employee Role|non-employee role]].  
+
+== Engineering Concern ==
+We have not currently listed the operations in a tabular format.
+
+
+===== Patient Record =====
+A [[lauren791e#Patient|patient]] record consists of all information stored in iTrust about that [[lauren791e#Patient|patient]] including [[lauren791e#Account Information|account information]], [[lauren791e#Diagnostic Information|diagnostic information]], [[lauren791e#Demographic Information|demographic information]], a list of [[lauren791e#Personal Representative|personal representatives]] and a list of [[lauren791e#Designated Physician|designated physicians]].  A [[lauren791e#Patient|patient]] record does not include [[lauren791e#Office Visit|office visit]] notes.
+
+
+===== Password =====
+A [[lauren791e#Password|password]] is an ordered set of alphanumeric characters between 6 and 20 characters long.
+
+== Security Concern ==
+Should we add a requirement to indicate iTrust should cryptographically hash [[lauren791e#Password|password]]s?
+
+
+===== Practicing Physician =====
+A [[lauren791e#Physician|physician]] who performs a medical procedure on, performs a medical analysis of, or provides medical advice to a patient during an [[lauren791e#Office Visit|office visit]].
+
+== Question ==
+Why is a practicing physician not a user role?
+
+== Answer ==
+Practicing physicians are not user roles because a physician's status as a practicing physician changes from office visit to office visit and is not an inherent quality of any particular group of physicians.
+
+
+===== Prescription =====
+A [[lauren791e#Prescription|prescription]] consists of a drug code, a quantity associated with that drug, a date assigned, an expiration date, a number of refills, and an assigning [[lauren791e#Physician|physician]].  Furthermore, a [[lauren791e#Prescription|prescription]] must be assigned to a [[lauren791e#Patient|patient]] record via an [[lauren791e#Office Visit|office visit]].
+
+== Engineering Concern ==
+What is a drug code?  Are names of drugs valid for [[lauren791e#Prescription|prescriptions]]?
+
+
+===== Restricted Diagnostic Information =====
+The subset of [[lauren791e#Designatable Diagnostic Information|designatable diagnostic information]] to which a [[lauren791e#Patient|patient]] allows access to only their [[lauren791e#Designated Physician|designated physician]] account(s).
+
+
+===== Requested Laboratory Procedure =====
+A [[lauren791e#Requested Laboratory Procedure|requested laboratory procedure]] is generated through an [[lauren791e#Office Visit|office visit]] and includes both a reference to the [[lauren791e#Laboratory Procedure|laboratory procedure]] and a textual reason why the laboratory procedure is required as provided by the requesting [[lauren791e#Physician|physician]].
+
+
+===== Scheduled Laboratory Procedure =====
+A [[lauren791e#Scheduled Laboratory Procedure|scheduled laboratory procedure]] is generated by an administrative assistant who creates an [[lauren791e#Appointment|appointment]] for a patient based on a [[lauren791e#Requested Laboratory Procedure|requested laboratory procedure]].
+
+
+===== Standards Repository =====
+The [[lauren791e#Standards Repository|standards repository]] is a repository of medical procedure codes, drug codes and their associated descriptions.
+
+== Engineering Concern ==
+Discussion with the customer is necessary to find which standards should be included in the repository.
+
+===== Timeout Limit =====
+A [[lauren791e#Timeout Limit|timeout limit]] is the length of time a user can remain [[lauren791e#Authenticated Account|authenticated]] while idle. 
+
+
+===== Unauthenticated Account =====
+An [[lauren791e#Unauthenticated Account|unauthenticated account]] is an [[lauren791e#Account Information|account]]  that is not [[lauren791e#Authenticated Account|authenticated]].
+
+== Engineering Concern ==
+Is there a better way to say this while keeping the definition simple?
+
+===== Unrestricted Diagnostic Information =====
+The [[lauren791e#Designatable Diagnostic Information|designatable diagnostic information]] to which a [[lauren791e#Patient|patient]] has chosen not to disallow access as well as the [[lauren791e#Non-Designatable Diagnostic Information|non-designatable diagnostic information]].
+
+
+===== User ID =====
+A [[lauren791e#User ID|user ID]] is a random number number that is assigned at account creation time.  Note that a [[lauren791e#User ID|user ID]] may identify multiple roles (e.g. a [[lauren791e#Physician|physician]] that is also a [[lauren791e#Patient|patient]] at the hospital).
+
+
+===== User Session =====
+A [[lauren791e#User Session|user session]] is the set of information generated by a user, using their authorized account, from the time it is [[lauren791e#Authenticated Account|authenticated]] until it is [[lauren791e#Unauthenticated Account|unauthenticated]]. For example, the user's browser activity history is part of the user session.
+
+== Engineering Concern ==
+Do we need a requirement that defines if or when sessions are saved?\\
+
+== Engineering Concern ==
+We need to better define what should and should not be a part of a user session.\\
+
+
+
+====== 6. Tabled Use Cases ======
+The following are use cases from the original iTrust Medical Care
+Requirements document that were dropped in this version for the reasons
+specified in this section.  The original use cases can be found in Appendix
+B.
+
+
+===== UC14 Request Biosurveillance =====
+**Rationale**: ([[lauren791e#UC14 Request Biosurveillance1|UC14]]) Biosurveillance is not typically a part of an EHR system.  This is a broader healthcare operation that may involve expert systems or outside organizations such as local governments or regional hospital networks.  Furthermore, there are other situations that are equally important for healthcare facilities to report, such as gunshot wounds or possible escaped convicts in the emergency room. 
+
+
+===== UC16 Identify risk of chronic disease =====
+**Rationale**:  ([[lauren791e#UC16 Identify Risk of Chronic Disease1|UC16]]) This is not a part of an EHR system.  Identifying chronic disease is traditionally done with an expert system.  Perhaps in a later version of iTrust, requirements can be added to provide interoperability with specific expert systems.
+
+
+===== UC17 Proactively Determine Needed Patient Care =====
+**Rationale**: ([[lauren791e#UC17 Proactively Determine Needed Patient Care1|UC17]]) This is not part of an EHR system. It is closer to an expert system.  However, we have used this use case to add an additional requirement which allows for the scheduling of regular [[lauren791e#Appointment|appointments]].  This may occur at a dental office or at an obstetrician, where [[lauren791e#Appointment|appointments]] occur at regular intervals.
+
+
+===== UC20 View cause-of-death trends report =====
+**Rationale**: ([[lauren791e#UC20 View Cause-of-Death Trends Report1|UC20]]) This use case does not seem to be a core aspect of an EHR system.  It is perhaps of benefit to a more mature system or for a government organization, but it simply doesn't make sense as a basic EHR system requirement.
+
+
+===== UC24 Take Satisfaction Survey =====
+**Rationale**: ([[lauren791e#UC24 Take Satisfaction Survey1|UC24]]) This is not a core requirement for an EHR system.  Perhaps this would be a good requirement for an employee management system, but it is not directly related to the health records of a population of [[lauren791e#Patient|patients]].
+
+
+===== UC25 View Physician Satisfaction Survey Results =====
+**Rationale**: ([[lauren791e#UC25 View Physician Satisfaction Survey Results1|UC25]]) This is not a core requirement for an EHR system.  Perhaps this would be a good requirement for an employee management system, but it is not directly related to the health records of a population of [[lauren791e#Patient|patients]].
+
+
+======= Appendix A: Original Glossary ======
+This section contains the original glossary for reference only.  **These terms do not reflect the changes in this document.**
+
+===== Glossary =====
+Approved diagnostic information:  The set of diagnostic information a patient allows a designated or other licensed health care professional to view.  A patient is only given the choice to restrict viewing on selected diagnostic information, such as those related to mental illness, substance abuse, and cosmetic surgery.  The licensed health care professional making a diagnosis determines if a patient is granted the ability to restrict viewing of the diagnosis.  For the diagnostic information which a patient can restrict viewing, he or she can choose to enable designated licensed health care professionals, and/or other licensed health care professionals, and/or no one.        
+
+  * Health Care Personnel (HCP):  All of designated licensed health care professionals, licensed health care professionals, and unlicensed authorized personnel, as defined below.
+
+There are seven roles in the iTrust Medical Records system.  The role of a user determines their viewing and editing capabilities (role-based access control).
+  * **Patient**:  When an American infant is born or a foreigner requests medical care, each is assigned a medical identification number and [[lauren791e#Password|password]].  Then, this person's electronic records are accessible via the iTrust Medical Records system.     
+  * **Administrator**:  The administrator assigns medical identification numbers and [[lauren791e#Password|password]]s to LHCPs. [Note:  for simplicity of the project, an administrator is added by directly entering the administrator into the database by an administrator that has access to the database.]
+  * **Licensed Health Care Professional (LHCP)**:  A licensed health care professional that is allowed by a particular patient to view all approved medical records.  In general, a patient does not know this non-designated health care professional, such as an emergency room doctor, and the set of approved records may be smaller than that granted to a designated licensed health care professional. 
+  * **Designated Licensed Health Care Professional (DLHCP)**:  A licensed health care professional that is allowed by a particular patient to view all approved medical records.  Any LHCP can be a DLHCP to some [[lauren791e#Patient|patients]] (with whom he/she has an established relationship) and an LHCP to others (whom he/she has never/rarely seen before).
+  * **Unlicensed Authorized Personnel (UAP)**:  A health care worker such as a medical secretary, laboratory technician, or other authorized clerical-type personnel. An unlicensed personnel can enter and edit demographic information, diagnosis, office visit notes and other medical information, and can view records.    
+  * **Software Tester**:  An information technology worker who tests the iTrust Medical Records system.  Of particular interest to the software tester is the [[lauren791e#Operational Profile|operational profile]] information which informs him/her of the frequency of use of the features of the system.  
+  * **Personal Representative**:  A person legally authorized to make health care decisions on an individual's behalf or to act for a deceased individual. When a person logs into iTrust, if he or she is a personal representative, they view their own records or those of the person/people they are representing. (For example, a mother could choose herself and any one of her children.)
+
+
+======= Appendix B: Original Use Case Diagram =======
+This section contains the original use case diagram for iTrust for reference only.  **This diagram does not reflect the changes in this document.**
+
+{{itrust_v13.jpg}} 
+
+
+
+====== Appendix C: Original Use Cases ======
+This section contains the original use cases for iTrust.  These use cases were previously the only descriptions of the optative functionality desired in iTrust.  **These use cases do not reflect the changes in this document.**
+
+
+The following use cases document flows of events.  Throughout this document MID = medical identification number. The MID is a unique number assigned to all roles.
+
+
+===== UC1 Create and Disable Patients =====
+Mean: The system has to be able to support adding new [[lauren791e#Patient|patients]] and handling [[lauren791e#Patient|patients]] who are moving away, have died, or were accidentally added.
+Exist: Patients are quintessential to the healthcare facility.
+Often: New [[lauren791e#Patient|patients]] are going to be added regularly depending on the size of the healthcare facility.
+What if: iTrust would be useless as a medical records system without the ability to add [[lauren791e#Patient|patients]].
+Who: The patient himself and the physician adding the patient.
+
+== 1.1 Preconditions: ==
+An employee has authenticated himself or herself in the iTrust Medical Records system [UC3].
+
+== 1.2 Main Flow: ==
+An employee creates patient records [S1], disables patient records [S2] and removes patient records [S3]. 
+
+== 1.3 Sub-flows: ==
+  * [S1] The employee enters a patient as a new user of iTrust Medical Records system by providing the name and email address. An email with a randomly genereated [[lauren791e#Password|password]] is sent to the user.  The user can reset his/her [[lauren791e#Password|password]] after logging into iTrust using the initial randomly generated [[lauren791e#Password|password]]. The employee can edit the patient according to data format 6.4 with all initial values (except patient MID) defaulting to null and/or 0 as appropriate. Patient MID should be the number assigned when the patient is added to the system and cannot be edited.  The employee does not have the ability to enter/edit/view the patient's security question/password. 
+  * [S2] The employee provides a deceased date (data format 6.4). An optional diagnosis code is entered as the cause of death. [S3]  
+  * [S3] The employee removes an invalid patient.
+  * [S4] The create/disable [[lauren791e#Patient|patients]] and HCP transaction is logged [UC4].    
+
+== 1.4 Alternative Flows: ==
+  * [E1] The system prompts the enterer/editor to correct the format of a required data field because the input of that data field does not match that specified in data format 6.4 or 6.2, for [[lauren791e#Patient|patients]]. 
+  * [E2] The enterer/editor is presented with the name of the user and determines if it is invalid or not the right person. The enterer/editor is prompted to try again.
+
+
+===== UC2 Create, Disable, and Edit Personnel ====== 
+== 2.1 Preconditions: ==
+The iTrust Admin has authenticated himself or herself in the iTrust Medical Records system [UC3].
+
+== 2.2 Main Flow: ==
+An admin creates [S1] a LHCP. A LHCP creates [S2] UAPs. Once entered, the enterer/editor is presented a screen of the input to approve [E2]. 
+
+== 2.3 Sub-flows: ==
+  * [S1] An administrator enters a LHCP as a user of iTrust Medical Records system, initially only the name and email are provided. An email with a secret key is sent to the user, with which the user can reset his/her [[lauren791e#Password|password]]. The data for personnel can be edited according to Data Format 5.2 (all fields mandatory except for associated MID and Street Address 2) [S6, E1]. The administrator shall be allowed to assign a LHCP to multiple hospitals, and the administrator can choose among only the hospitals provided in the hospital list pull down menu. The hospital ID numbers for a LHCP are stored in the Medical Care Personnel Affiliation database (data format 5.11).
+  * [S2] A LHCP enters an UAP as a user of iTrust Medical Records system according to data format 5.2 (all fields mandatory) [S6, E1].
+  * [S3] The create/disable [[lauren791e#Patient|patients]] and HCP transaction is logged [UC4].    
+== 2.4 Alternative Flows: ==
+  * [E1] The system prompts the enterer/editor to correct the format of a required data field because the input of that data field does not match that specified in data format 5.2, for HCPs.
+  * [E2] The enterer/editor is presented with the name of the user and determines if it is invalid or not the right person. The enterer/editor is prompted to try again.
+
+
+===== UC3 Authenticate Users =====
+
+== 3.1 Preconditions: ==
+UC1/UC2 has completed and a user has been created.  
+
+== 3.2 Main Flow: ==
+A user enters their MID and their [[lauren791e#Password|password]] to gain role-based entry into the iTrust Medical Records system [E1] or requests that their [[lauren791e#Password|password]] be changed [S1]. A session that has been inactive for too long is terminated [S3]. An authenticated session ends when the user logs out or closes the iTrust application.  
+
+== 3.3 Sub-flows: ==
+  * [S1] If the security question/answer has been set (it is not null) [E2], present security question and obtain answer [S2, E1].
+  * [S2] If answer to security question is correct, allow user to change their [[lauren791e#Password|password]]. An email notification is sent [UC27, S1].
+  * [S3] Electronic sessions must terminate after a "pre-determined" period of inactivity. Allow the administrator to set the length of this period of time and ensure that all authorization is disabled after a period of inactivity that exceeds this length.
+  * [S4]  A LHCP is presented with a screen of links to the following:
+     * Recent Laboratory Results: recent (within the last month) laboratory results [UC26] for laboratory procedures he/she ordered in office visits. 
+     * Any upcoming [[lauren791e#Appointment|appointments]] within the next week
+     * Rejection/Acceptance of comprehensive report
+
+  * [S5]  A patient is presented with a screen of links to the following:
+     * Recent Laboratory Results: recent (within the last month) laboratory results [UC26] for laboratory procedures that the patient (or a patient he/she represents), that the patient has access.
+     * Any upcoming [[lauren791e#Appointment|appointments]] within the next week
+     * Comprehensive report requested/generated of the patient, including [[lauren791e#Patient|patients]] that he/she represents
+
+== 3.4 Alternative Flows: ==
+  * [E1] The user may try three times.  After three failed attempts with a userid in a given session, disallow attempts to log in via IP address for 15 minutes (see comments in the source code).
+  * [E2] If the patient has never stored a security question/answer, the user is not provided the ability to change the [[lauren791e#Password|password]].
+
+
+===== UC4 Enter/edit Demographics =====
+
+== 4.1 Precondition: ==
+UC1 has completed and a patient has been created.  The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].    
+
+== 4.2 Main Flow: ==
+Demographic information is entered and/or edited [S1, S2].  Once entered, the enterer/editor is presented a screen of the input to approve [E2].     
+
+== 4.3 Sub-flows: ==
+  * [S1] A patient or personal health representative may enter or edit their own demographic information including their security question/answer according to data format 5.1. When answer to the security question is typed in, the answer should not appear on the screen (similar to how a [[lauren791e#Password|password]] normally appears) and the answer should be confirmed (by the patient or personal health representative) before it is saved. [S4, E1].  
+  * [S2] HCP must enter the MID of a patient and then enter or edit demographic information with the exception of the patient's security question/password according to data format 5.1 [S4, E1].  
+  * [S3] An HCP may enter or edit their own demographic information according to data format 5.2 [S4, E1]. 
+  * [S4] The enter/edit demographics transaction is logged [UC5]. 
+
+== 4.4 Alternative Flows: ==
+  * [E1] The system prompts the patient or HCP to correct the format of a required data field because the input of that data field does not match that specified in data format 5.1 or data format 5.2, as appropriate.
+  * [E2] The enter/editor reviews the input and finds an error, they or she does not confirm the selection. He/She provides the correct input and submits again.
+
+
+===== UC5 Log Transaction =====
+
+== 5.1 Precondition: ==
+One of UC1-UC4 or UC6-UC17 has been initiated.  
+
+== 5.1 Precondition: ==
+One of UC1-UC4 or UC6-UC17 has been initiated.        
+
+== 5.2 Main Flow: ==
+An HCP or patient enter/edits demographics [UC4, S1], declares/un-declares DLHCP [UC6, S2], allows/disallows access to diagnosis [UC7, S3], views access log [UC8, S4], views medical records [UC9, S5], view prescription report [UC19, S19], or chronic disease risk factors [UC16, S15], authenticates users [UC3, S6], enter/edits personal health information [UC10, S7], documents an office visit [UC11, S8] or proactively determines if healthcare is an office visit or procedure is due for a patient [UC17, S17].  An administrator or HCP creates or disables a HCP [UC2, S9] or patient [UC1, S9] respectively.  An administrator maintains the standards list [UC 15, S10, S12-14] or maintains the hospital list [UC 18, S18]. An HCP requests biosurveillance information [UC14, S11], declares/undeclares a personal health representative for a patient [UC13, S16]. All transaction logs are formatted via data format 5.3.   
+
+== 5.3 Sub-flows: ==
+  * [S1] Enter/edit demographics. The MID of the editor (may be the patient) and of the patient, transaction type = 1, and the date are recorded.
+
+  * [S2] Declare/undeclare LHCP as DLHCP. The MID of the editor (may be the patient) and of the patient, transaction type = 2, and the MID of the LHCP,  and the date are recorded.  
+
+  * [S3] Allow/disallow access to diagnosis. The MID of the editor (may be the patient) and of the patient, transaction type = 3, the diagnosis number and "-allow" or -Y´-disallow¡ (concatenated with diagnosis number), and the date are recorded. 
+
+  * [S4] View access log. The MID of the viewer (must be patient), transaction type = 4, and the date are recorded. 
+
+  * [S5] View medical records. The MID of the viewer (may be patient) and of the patient, transaction type = 5,and the date are recorded.
+
+  * [S6] Authenticate users. The MID of the patient and/or the health care professional, transaction type= 6, an optional string of "authenticated" and the date are recorded. "Authenticated" should be logged when the user's home page is accessed.
+
+  * [S7]  Enter/edit personal health information. The MID of the editor and of the patient, transaction type = 7, and the date are recorded.
+
+  * [S8] Document office visit. The MID of the editor and of the patient, the office visit id, transaction type = 8, and the date are recorded. 
+
+  * [S9] Create/disable patient or HCP. The MID of the editor and of the new patient or health care personnel, and role of the new user,  transaction type = 9, and the date are recorded.
+
+  * [S10] Diagnosis code. The MID of the administrator, [patient = blank], transaction type =10, the diagnosis code, and the date are recorded.
+
+  * [S11] Request biosurveillance. The MID of the administrator, [patient = blank], transaction type =11, the diagnosis code, and the date are recorded.
+
+  * [S12] Medical procedure code. The MID of the administrator, [patient = blank], transaction type =12, the medical procedure code, and the date are recorded.
+
+  * [S13] Drug code. The MID of the administrator, [patient = blank], transaction type =13, the drug code, and the date are recorded.
+
+  * [S14] Identify risk factors. The MID of the LHCP and of the patient, transaction type =14, and the date are recorded.
+
+  * [S15] Cause of Death Trends. The MID of the logged in user, transaction type = 15, and the date are recorded.
+
+  * [S16] Declare/undeclare personal health representative. The MID of the editing HCP and of the patient, transaction type = 16, and the MID of the personal representative, and the date are recorded.
+
+  * [S17] Proactively determine necessary patient care. The MID of the HCP making the request, secondary MID = patient MID, transaction type = 17, and the date are recorded. Note that each patient in the presented patient list will have one log entry
+
+  * [S18] Maintain a hospital listing. The MID of the administrator, [secondary MID = blank], transaction type = 18; optional entry = hospital ID number, and the date are recorded.
+
+  * [S19] View prescription report. The MID of the editor and of the patient, transaction type = 19, and the date are recorded. 
+
+  * [S20] View Hospital Statistics. The MID of the HCP, transaction type = 20; and the date are recorded.
+
+  * [S21] View patient comprehensive record. The MID of the HCP and of the patient, transaction type = 21, and the date are recorded. 
+
+  * [S22] View emergency report. The MID of the LHCP and of the patient, transaction type = 22, and the date are recorded.
+
+  * [S23] Schedule Appointments. The MID of the person logged in, secondary MID = the person who the [[lauren791e#Appointment|appointment]] is scheduled with, transaction type=23, and the date are recorded.
+
+  * [S24] Request Appointment.  The MID of the person logged in, the person who the [[lauren791e#Appointment|appointment]] is requested with (if applicable), transaction type=24, and the date are recorded.
+
+  * [S25] Comprehensive Report. The MID of the person logged in, the MID of the patient's record being requested (as the secondary MID), the status of the request at the time of the transaction (including the requesting LHCP where applicable)
+
+  * [S26] Take Satisfaction Survey.  The MID of the patient, the office visit id, transaction type = 26, and the date are recorded. 
+
+  * [S27] View physician satisfaction results. The MID of the patient, transaction type = 27, and the date are recorded.      
+
+  * [S28] View laboratory procedure results. The MID of the viewer and of the patient, laboratory procedure ID, transaction type = 28, and the date are recorded. 
+
+
+
+== 5.4 Alternative Flows:==
+None.
+
+
+===== UC6 Declare/Undeclare Designated Licensed Health Care Professional =====
+
+== 6.1 Precondition: ==
+UC1 and UC2 have completed and a licensed health care professional and a patient have been created.  The patient has authenticated himself or herself in the iTrust Medical Records system [UC3].     
+
+== 6.2 Main Flow: ==
+The patient chooses to declare/undeclare DLHCP, enters the MID of their DLHCP [E1], and confirms the selection [E2].  Upon confirmation, the patient sees a listing of all of their DLHCPs.  The event is logged [UC5]. 
+
+== 6.3 Sub-flows: ==
+None
+
+== 6.4 Alternative Flows: ==
+  * [E1] The patient types an invalid MID and is prompted to try again.
+  * [E2] The DLHCP chosen is not the desired DLHCP.  The patient does not confirm the selection and is prompted to try again. 
+
+
+===== UC7 Allow/disallow access to diagnosis =====
+
+== 7.1 Precondition: ==
+The patient has authenticated himself or herself in the iTrust Medical Records system [UC2].        
+
+== 7.2 Main Flow: ==
+The patient chooses to allow/disallow access to diagnosis to DLHCP, to LHCP, or to no one.  He or she is presented with a listing of diagnoses for which allowing access is discretionary.  The default access option is "allow" and all prior allow/disallow choices are displayed.  The patient can change the default or current choices.  The patient is then asked to confirm their selection [E1].  Upon confirmation, the patient sees a listing of their diagnoses with discretionary access and the current allow/disallow status.  
+
+== 7.3 Sub-flows: ==
+None.
+
+== 7.4 Alternative Flows: ==
+  * [E1] The patient does not agree with the update and is prompted to try again.
+
+  * [E2] If an office visit applies to more than one diagnosis and any of those diagnoses has discretionary access, the office visit can only be seen by the DLHCP.
+
+
+===== UC8 View Access Log =====
+
+== 8.1 Precondition: ==
+A patient is a registered user of the iTrust Medical Records system [UC1]. The patient has authenticated himself or herself in the iTrust Medical Records system [UC3].
+
+== 8.2 Main Flow: ==
+The patient chooses to view the access log for a specified (by the patient) period of time.   A listing of the names of HCPs that viewed or edited the medical records and the date the viewing/editing occurred is displayed.  The event is logged [UC5]. 
+
+== 8.3 Sub-flows: ==
+None.
+
+== 8.4 Alternative Flows: ==
+None.
+
+
+===== UC9 View records =====
+
+== 9.1 Precondition: ==
+A patient is a registered user of the iTrust Medical Records system [UC1]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].
+
+== 9.2 Main Flow: ==
+A patient or personal health representative [S1] chooses to view medical records. The event is logged [UC5].
+
+== 9.3 Sub-flows: ==
+  * [S1] The patient or personal health representative can see patient personal health information (including historical values) and office visit information (date, diagnoses, medication, name of attending physician but not notes, laboratory procedures) for (a) their own records and (b) the records for whom the user is a personal representative. If a patient or personal health representative has not taken an office visit satisfaction survey for an office visit yet, the patient may choose to take the survey for an office visit (if the survey has already been taken, the patient or personal health representative will not have the ability to take the survey or view their previously submitted survey) [UC24].
+
+== 9.4 Alternative Flows: ==
+None. 
+
+
+===== UC10 Enter/edit personal health records =====
+
+== 10.1 Precondition: ==
+An HCP is a registered user of the iTrust Medical Records system [UC2]. The HCP has authenticated himself or herself in the iTrust Medical Records system [UC3]. 
+
+== 10.2 Main Flow: ==
+An HCP chooses to enter/edit personal health information. The health care personnel enters a medical identification number [E1] of a patient and confirms their selection [E2].  The event is immediately logged as a "view" by the HCP [UC5, S5]. The health care personnel may enter/edit personal health information including editing historical values from Data Format 5.4.1.  Personal health information from Data Format 5.4.2 cannot be edited. The HCP can indicate the patient has passed away, providing an appropriate diagnosis code. The event is logged [UC5, S7]. 
+ 
+== 10.3 Sub-flows: ==
+None.
+
+== 10.4 Alternative Flows: ==
+  * [E1] The health care professional types an invalid medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient.  The health care professional does not confirm the selection and is prompted to try again.
+
+ 
+===== UC11 Document office visit =====
+
+== 11.1 Precondition: == 
+An HCP is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].
+
+== 11.2 Main Flow: == 
+An HCP chooses to document an office visit [S1]. 
+
+== 11.3 Sub-flows: ==
+  * [S1] The HCP enters a MID [E1] of a patient and confirms their input [E2].  The HCP document the notes (numbers, characters, ?, -, ', ., :, blankspace and carriage return) of an office visit, providing the date of the office visit, and their own medical identification number. Additionally, the HCP can document one or more diagnoses (ICD-9CM code), one or more medical procedures (CPT code) performed, one or more lab procedures that are ordered (LOINC code, see Data Format 6.11) and one or more medications (NDC, see Data Format 5.6) prescribed from appropriate pull-down lists.  The HCP can view the prescription report [UC19, S3] of the selected office visit, which is the current office visit. The HCP can indicate if the patient is allowed to restrict access to the diagnosis information. HCPs can return to an office visit and alter the fields of the office visit [text, diagnoses, medical procedures, medications]. The event is logged [UC5, S8].
+
+== 11.4 Alternative Flows: ==
+  * [E1] The HCP types an invalid medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient.  The health care personnel does not confirm the selection and is prompted to try again.
+
+
+
+===== UC12 Determine Operational Profile =====
+
+== 12.1 Precondition: ==
+A software tester has a login and [[lauren791e#Password|password]].  Similar to an administrator, a software tester is added by directly entering the software tester into the database by an administrator that has access to the database.
+
+== 12.2 Main Flow: ==
+The software tester authenticates himself or herself in the iTrust Medical Records system [UC2].  He or she is then presented with the actual [[lauren791e#Operational Profile|operational profile]] of the operations of the iTrust Medical Records where the use percentage is the % of total transactions of a particular type by each of the user types [patient, LHCP, UHCP, admin, tester]
+ 
+^Operation ^ Reference ^ Use Percentage (%) 
+|Enter/Edit patient/personnel demographics | UC4 |
+|Declare/Undeclare an hcp | UC6 |
+|Allow/Disallow access to patient diagnosis | UC7 |
+|View patient's record access log | UC8 |
+|View patient's medical records | UC9 |
+|Authenticate user | UC3 |
+|Enter/Edit Personal Health Information | UC10 |
+|Document an office visit | UC11 |
+|Create or disable a patient or hcp | UC1 & UC2|
+|Declare Personal Health Representative | UC13 |
+|Request biosurveillance | UC14 |
+|Manage ICD9CM diagnosis codes| UC15 | 
+|Manage CPT Procedure Codes | UC15 |
+|Manage ND Drug Codes | UC15 |
+|Identify risk factors for chronic diseases | UC16 |
+|Proactively determine necessary patient care | UC17 |
+|Maintain hospital listing | UC18 |
+|View prescription report | UC19 |
+|Examine cause-of-death trends | UC20 |
+|View emergency patient report | UC21 | 
+|Schedule [[lauren791e#Appointment|appointments]] | UC22 |
+|Request [[lauren791e#Appointment|appointments]] | UC22 |
+
+ 
+== 12.3 Sub-flows: ==
+None.
+
+== 12.4 Alternative Flows: ==
+None 
+
+
+===== UC13 Declare/undeclare Personal Representative =====
+
+== 13.1 Precondition: ==
+An HCP is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].   
+
+== 13.2 Main Flow: ==
+A patient's DLHCP chooses to add or delete a patient's [E1, E2] personal representative by typing that person's MID [E1, E2]. The event is logged [UC5]. 
+
+== 13.3 Sub-flows: ==
+None.
+
+== 13.4 Alternative Flows: ==
+  * [E1] The health care personnel types an invalid medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient.  The health care personnel does not confirm the selection and is prompted to try again. 
+
+ 
+===== UC14 Request Biosurveillance =====
+
+== 14.1 Precondition: ==
+An HCP is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].
+
+== 14.2 Main Flow: ==
+A LHCP chooses to determine if instances of a certain ailment is reaching epidemic proportions in a given area. Allowable epidemic queries are malaria [S1] and influenza [S2]. Alternatively, the LHCP chooses to examine recent trends in diagnoses [S3]. The event is logged [UC5]. 
+
+== 14.3 Sub-flows: ==
+  * [S1] The LHCP can choose a malaria diagnosis [E1] and type in the desired zip code [E2] and a date (such as today's date) [E3]. The data in the database is analyzed according to the heuristics in section 5.7.1 to determine if an epidemic is occurring in the region defined by the zip code that match the first three numbers in the provided zip code (e.g. if zip code 27695 is provided, all data with zip code 276xx is analyzed, where each x is any digit from 0-9). If the health care professional chooses to analyze the epidemic potential for a diagnosis for which there is not a defined epidemic detection algorithm, the doctor is notified that no analysis can occur. The LHCP is provided a yes/no answer on whether an epidemic is occurring during any consecutive two weeks during the time period.
+
+  * [S2] The LHCP can choose an influenza diagnosis [E1] and type in the desired zip code [E2] and a date (such as today's date) [E3]. The data in the database is analyzed according to the heuristics in section 5.7.2 to determine if an epidemic is occurring in the region defined by the zip code that match the first three numbers in the provided zip code (e.g. if zip code 27695 is provided, all data with zip code 276xx is analyzed, where each x is any digit from 0-9). If the health care professional chooses to analyze the epidemic potential for a diagnosis for which there is not a defined epidemic detection algorithm, the doctor is notified that no analysis can occur. The LHCP is provided a yes/no answer on whether an epidemic is occurring.
+
+  * [S3] The LHCP can choose to examine recent trends in diagnoses. The LHCP can choose any diagnosis code [E1] and type in the desired zip code [E2] and a date (such as today's date) [E3] . The LHCP is then provided a bar chart (such as can be found here: http://www.imedi.org/docs/references/testbed.htm) for the last 8 weeks. For each week, three bars are provided: (1) the region (region defined by the zip code that match the first three numbers in the provided zip code (e.g. if zip code 27695 is provided, all data with zip code 276xx is analyzed, where each x is any digit from 0-9); (2) the state (region defined by the zip code that match the first two numbers in the provided zip code (e.g. if zip code 27695 is provided, all data with zip code 27xxx is analyzed, where each x is any digit from 0-9); and (3) all cases in the database.
+
+== 14.4 Alternative Flows: ==
+  * [E1] The HCP types an invalid diagnosis code and is prompted to try again.
+  * [E2] The HCP types a invalid zip code and is prompted to try again.
+  * [E3] The HCP types an invalid date and is prompted to try again.
+
+
+===== UC15 Maintain standards lists =====
+
+== 15.1 Precondition: ==
+The administrator has authenticated himself or herself in the iTrust Medical Records system [UC2].
+
+== 15.2 Main Flow: ==
+An administrator chooses to maintain the standards list for immunizations [S1], diagnoses [S2], or allowable drugs [S3]. The event is logged [UC5]. 
+
+== 15.3 Sub-flows: ==
+  * [S1] The administrator will maintain [add/update] a listing of allowable immunizations that an HCP can use. The administrator will store (1) the CPT code (CPT = Current Procedural Terms, reference American Medical Association, educational/fair use) [E1} and (2) up to 30 alpha characters giving the name [E1] of the immunization.
+
+  * [S2] The administrator will maintain a listing of allowable diagnoses that an HCP can use. The administrator will store (1) the ICD-9CM code for the diagnosis [E1]; and (2) up to 30 alphanumeric characters giving the name [E1] of the diagnosis.
+
+  * [S3] The administrator will maintain [add/update] a listing of allowable drugs that an HCP can use. The administrator will store (1) the National Drug Code
+
+  * [S4] The administrator will maintain [add/update] a listing of allowable physical services (including laboratory procedures) that an HCP can use. The administrator will store information of a LOINC code [E1] according to Data Format 6.11. 
+
+== 15.4 Alternative Flows: ==
+  * [E1] The administrator types an invalid code information and is prompted to try again.
+
+
+===== UC16 Identify risk of chronic disease =====
+
+== 16.1 Precondition: ==
+The LHCP has authenticated himself or herself in the iTrust Medical Records system [UC3].
+
+== 16.2 Main Flow: ==
+Through the Personal Health Records page, an LHCP chooses a chronic disease and a patient. The data in the database is analyzed according to the risk factors for the disease to determine if the patient exhibits a certain risk factor. Currently available risk factors for chronic diseases are defined for Diabetes and Type 1 and Type2 and Heart Disease. When the chosen patient satisfies the preconditions of the chosen chronic disease [E1], the LHCP is provided with a warning message if that patient exhibits three or more risk factors. The message will display the risk factors that the [[lauren791e#Patient|patients]] exhibit.  The event is logged [UC5].
+
+== 16.3 Sub-flows: ==
+None.
+
+== 16.4 Alternative Flows: ==
+  * [E1] The LHCP chooses to examine a patient for which the preconditions do not apply (e.g., an adult shouldn't be tested for child diabetes) and the LHCP is prompted that no analysis can occur.
+
+ 
+===== UC17 Proactively Determine Needed Patient Care =====
+
+== 17.1 Precondition: ==
+The HCP has authenticated himself or herself in the iTrust Medical Records system [UC2].
+
+== 17.2 Main Flow: ==
+An HCP chooses either [S1] or [S2] and is presented with a listing of [[lauren791e#Patient|patients]] who need care because of satisfying the one of preceding conditions. The presented patient information shall include each patient's name and home phone number so that reminder calls can be made. The list is sorted based on the alphabetical order of the [[lauren791e#Patient|patients]]' last names, and then first names. The event is logged [UC5]. This feature must be incorporated into a page entitled "Office Visit Reminders".
+
+== 17.3 Sub-flows: ==
+  * [S1] An alive patient who has not had an office visit for more than one year and who has been diagnosed with 
+    * diabetes mellitus [is diagnosed with ICD code beginning with 250: http://icd9cm.chrisendres.com/index.php?action=child&recordid=1765],
+    * asthma [is diagnosed with ICD code beginning with 493: http://icd9cm.chrisendres.com/index.php?action=child&recordid=4700], or
+    * circulatory-system disease [is diagnosed with an ICD code between 390 and 459 inclusive: http://icd9cm.chrisendres.com/index.php?action=child&recordid=4025]. 
+
+  * [S2] An alive patient over 50 years old who has not had a flu shot [CPT codes 90656, 90658, 90660 per http://www.influenza.com/index.cfm?fa=ADDITIONAL_RES_HC_2] during the months Sept - Dec of the last calendar year (or during the months Sept - Dec of the current calendar year if the retrieval time is between Sept - Dec).
+
+
+== 17.4 Alternative Flows: ==
+None.
+
+
+===== UC18 Maintain a hospital listing =====
+
+== 18.1 Precondition: ==
+The administrator has authenticated himself or herself in the iTrust Medical Records system [UC2].                    
+
+== 18.2 Main Flow: ==
+An administrator chooses to maintain hospitals that a health care professional belongs to (a health care professional can belong to multiple hospitals [UC2, S3]]) [S1] and the event is logged [UC5]. 
+
+== 18.3 Sub-flows: ==
+  * [S1] The administrator will store (1) hospital Id number for the hospital [E1]; and (2) up to 30 alphanumeric characters giving the name of the hospital 
+  * [S2]. The system shall enable the administrator to add a new entry for a hospital, or modify the hospital name in an existing entry. Note that the administrator is not allowed through the system interface to delete an existing entry or modify the hospital ID number in an existing entry.
+
+== 18.4 Alternative Flows: ==
+  * [E1] The administrator types an invalid ID and is prompted to try again.
+  * [E2] The administrator types an invalid name and is prompted to try again.
+
+
+===== UC19 View prescription report =====
+
+== 19.1 Precondition: ==
+A patient and LHCP is a registered user of the iTrust Medical Records system [UC1 and UC2]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].
+
+== 19.2 Main Flow: ==
+A patient or personal health representative [S1] or LHCP [S2] chooses to view prescription reports. The event is logged [UC5].
+
+== 19.3 Sub-flows: ==
+  * [S1] The user (patient) can view a list of historical office visit information (date and office visit id) for (a) their own records and (b) the records for which the user is a personal representative. The list is sorted by dates (the later date is ranked earlier). The user shall select one or more office visits and view the prescription reports [S3] for the selected office visits.
+
+  * [S2] The user (LHCP) enters a MID [E1] and confirms their input [E2].  At this point, the LHCP can view  a list of historical office visit information (date and office visit id). The user shall select one or more office visits and view the prescription reports [S3] for the selected office visits.
+
+  * [S3] The user can view the prescription report (including patient MID, patient name, medication, date prescribed, start date, and end date for each prescription) for the selected office visit(s). If there are more than one prescription entries, they are sorted by dates (the later date is ranked earlier).
+
+== 19.4 Alternative Flows: ==
+  * [E1] The LHCP types an invalid medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient. The LHCP does not confirm the selection and is prompted to try again. 
+
+
+===== UC20 View cause-of-death trends report =====
+
+== 20.1 Precondition: ==
+A LHCP is a registered user of the iTrust Medical Records system [UC1 and UC2]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].         
+
+== 20.2 Main Flow: ==
+A LHCP chooses to view a cause-of-death trends report that provides a sorted list of the "top 2" most common causes of death for all [[lauren791e#Patient|patients]] [S1], for all males [S2], and for all females in the databased [S3] for a stated time period. The set of a LHCP's [[lauren791e#Patient|patients]] are all those [[lauren791e#Patient|patients]] whom have ever had an office visit with the LHCP. The event is logged [UC5].
+
+== 20.3 Sub-flows: ==
+  * [S1] The LHCP chooses the time period for which he or she would like to see the report at the granularity level of a starting year and an ending year (which can be the same) [E1]. The LHCP can then view the top 2 most common causes of death of his or her own [[lauren791e#Patient|patients]] and the top 2 most common causes of death for all [[lauren791e#Patient|patients]] during the specified time period. For each of the top 2, the diagnosis ICD-9CM code and name is displayed, the quantity of deaths by this diagnosis is provided.
+
+  * [S2] The LHCP chooses the time period for which he or she would like to see the report at the granularity level of a starting year and an ending year (which can be the same) [E1]. The LHCP can then view the top 2 most common causes of death of his or her own male [[lauren791e#Patient|patients]] and the top 2 most common causes of death for all male [[lauren791e#Patient|patients]] during the specified time period. For each of the top 2, the diagnosis ICD-9CM code and name is displayed, the quantity of deaths by this diagnosis is provided.
+
+  * [S3] The LHCP chooses the time period for which he or she would like to see the report at the granularity level of a starting year and an ending year (which can be the same) [E1]. The LHCP can then view the top 2 most common causes of death of his or her own female [[lauren791e#Patient|patients]] and the top 2 most common causes of death for all female [[lauren791e#Patient|patients]] during the specified time period. For each of the top 2, the diagnosis ICD-9CM code and name is displayed, the quantity of deaths by this diagnosis is provided.
+
+
+== 20.4 Alternative Flows: ==
+  * [E1] The LHCP chooses and invalid year and is prompted to try again.
+
+
+===== UC21 View emergency report =====
+
+== 21.1 Precondition: ==
+A LHCP is a registered user of the iTrust Medical Records system [UC1 and UC2]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].            
+
+== 21.2 Main Flow: ==
+A LHCP chooses to view an emergency report and provides an MID [S1]. At this point, the LHCP obtains a printable report [meaning you should minimize the space taken up to provide the information] containing vital information for the patient:
+    * Name
+    * Allergies
+    * Blood type
+    * A list of any of the following diagnosis codes for the patient (including multiple diagnoses within the same range). The notation below [x,y) means that the range starts at x and ends below y, such as 42 <= a < 43:
+      * HIV: ICD-9CM code [42,43)
+      * Tiberculosis: ICD-9CM [10-19)
+      * Hepatitis: ICD-9CM [70-71)
+    * A list of any of the following prescriptions if the patient is currently taking them (taking as of today). No need to re-display the National Drug Code, just the name of the prescription:
+      * Tetracycline: National drug code 009042407
+      * Prioglitazone: National drug code 647641512
+
+The event is logged [UC5].
+
+== 21.3 Sub-flows: ==
+[S1] The LHCP enters a MID [E1] and confirms the input [E2]. 
+
+== 21.4 Alternative Flows: ==
+  * [E1] The LHCP types an invalid medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient. The LHCP does not confirm the selection and is prompted to try again. 
+
+
+===== UC22: Flow of Events for the Schedule Appointments =====
+== 22.1 Precondition: ==
+A patient and LHCP are registered users of the iTrust Medical Records system [UC1 and UC2]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3]. \\
+== 22.2 Main Flow: == 
+A patient can request an [[lauren791e#Appointment|appointment]] with an LHCP [S1] or an LHCP can request an [[lauren791e#Appointment|appointment]] with a patient [S4].  An [[lauren791e#Appointment|appointment]] request can be accepted or rejected by the recipient [S3].  Also, users are notified of accepted [[lauren791e#Appointment|appointments]] on their [[lauren791e#Appointment|appointments]] page [S6]. Both [[lauren791e#Patient|patients]] and LHCPs can view a list of their upcoming [[lauren791e#Appointment|appointments]] [S6].
+== 22.3 Sub-flows: ==
+  * [S1] The patient requests an [[lauren791e#Appointment|appointment]] by inputting either the mid of the LHCP or a hospital.  The patient also inputs the reason for the [[lauren791e#Appointment|appointment]], his top two date and time options for the [[lauren791e#Appointment|appointment]], and length of the visit [E1](see Data Format 6.10) [E2].  The event is logged [UC5, S24].\\
+  * [S2] The LHCP is notified on his/her [[lauren791e#Appointment|appointment]] page if a patient has requested an [[lauren791e#Appointment|appointment]] with him/her or if a patient has requested an [[lauren791e#Appointment|appointment]] at his/her hospital that has not already been scheduled.  If he/she chooses to schedule [[lauren791e#Appointment|appointments]], a list of requested [[lauren791e#Appointment|appointments]] that apply to him/her is displayed. If he/she selects an [[lauren791e#Appointment|appointment]] request, he/she can view all information input into data format 6.10.  [S3]\\
+  * [S3] He/She can accept [E1, E3] or reject the suggested dates and times.  If he/she rejects both dates and times, he/she is prompted to suggest two more dates and times [E1], length of the visit, and/or comments [E2]. The event is logged [UC5, S24].  If the [[lauren791e#Appointment|appointment]] is accepted, the LHCP medical identification number, patient medical identification number, date, time, and length of the [[lauren791e#Appointment|appointment]] are recorded. The event is logged [UC5, S23].\\
+  * [S4] The LHCP chooses to request an [[lauren791e#Appointment|appointment]] with the patient.  He/She inputs the reason for the [[lauren791e#Appointment|appointment]] (optional), length of the visit, and approximately how far from today's date the [[lauren791e#Appointment|appointment]] should be scheduled in weeks (see Data Format 6.10) [E2].  His/her mid is recorded with the [[lauren791e#Appointment|appointment]] request.  The event is logged [UC5, S24].  
+  * [S5] The patient is notified on his/her [[lauren791e#Appointment|appointment]] page if any requested [[lauren791e#Appointment|appointments]] have been accepted or rejected.  The patient is also notified on the [[lauren791e#Appointment|appointment]] page if an LHCP has requested an [[lauren791e#Appointment|appointment]].  When the patient chooses to schedule [[lauren791e#Appointment|appointments]], he/she can view a list of any requested [[lauren791e#Appointment|appointments]] that have been accepted or rejected or if an LHCP has requested an [[lauren791e#Appointment|appointment]].  If an LHCP has requested an [[lauren791e#Appointment|appointment]] (indicating how many weeks away the [[lauren791e#Appointment|appointment]] should be scheduled), [S1]. If an LHCP has responded to a previous [[lauren791e#Appointment|appointment]] request with this patient, [S3].  
+  * [S6] The LHCP is notified on their [[lauren791e#Appointment|appointment]] page and via email [UC27, S3] of any newly accepted or rejected [[lauren791e#Appointment|appointments]].
+== 22.4  Alternative Flows: ==
+  * [E1] The [[lauren791e#Appointment|appointment]] time conflicts with another [[lauren791e#Appointment|appointment]] that the user previously scheduled.  The system asks if the user would like to schedule the [[lauren791e#Appointment|appointment]].  The user is permitted to schedule the [[lauren791e#Appointment|appointment]] despite conflicts.\\
+  * [E2] The user inputs invalid information and is prompted to try again.
+  * [E3] The LHCP chooses to accept an [[lauren791e#Appointment|appointment]] with his/her hospital, but another LHCP has already accepted. The system notifies the LHCP of this and does not allow the [[lauren791e#Appointment|appointment]] to be scheduled.
+
+
+===== UC23 View Comprehensive Patient Report =====
+
+== 23.1 Precondition: ==
+
+An LHCP and Admin have authenticated themselves in the iTrust Medical Records system [UC2].
+
+== 23.2 Main Flow: ==
+
+The LHCP requests a comprehensive patient report for a particular patient [S1]. The Admin can either approve [S2] or reject [E3] the report from a list of requests. Upon approval, the LHCP chooses to view the approved comprehensive patient report [S3] from a list of his/her requests. The events of requesting, approving/rejecting, and report generation are logged [UC4].
+
+== 23.3 Sub-flows: ==
+  * [S1] The LHCP enters a patient medical identification number (MID) [E1] and confirms his/her input [E2]. 
+  * [S2] The Admin views the Names and MIDs of the requesting LHCP and the requested patient, and approves the report [E3]. 
+  * [S3] The LHCP is allowed a one-time only view of the comprehensive patient [[#reports | report]] for the specified patient, including the information below. An email notification is sent [UC27, S4]
+    * All patient demographic information (address, phone, etc.), see [UC4] and Data Format 6.1
+    * The entire history of personal health records, see [UC10] and Data Format 6.4
+    * All diagnoses, including those not normally viewable by the requesting LHCP, see [UC11] and Data Format 6.5
+    * All designated HCPs (MIDs and Names), see [UC6]
+    * All allergies, procedures, medications, office visits, and known relatives, see [UC11] and Data Format 6.5, 6.6
+    * All MIDs and names of people that this person is representing, see [UC13]
+    * All MIDs and names of people that this person is represented by, see [UC13]
+    * The date/time in which the report was generated by the LHCP
+    * The date/time in which the report was approved by an Admin
+    * The MID and name of the LHCP who requested the report
+    * The MID and name of the Admin who approved the report
+  * [S4] The LHCP views a list of requests he/she has made for reports, with the status and pertinent information about the requests. For approved requests, a one-time only link to generate and display the report [S3] is shown.
+
+== 23.4 Alternative Flows: ==
+  * [E1] The LHCP types an invalid MID and is prompted to try again.
+  * [E2] The chosen patient is not the desired patient. The LHCP does not confirm the selection and can try again.  
+  * [E3] The Admin rejects the request for a comprehensive patient report, providing justification for the rejection. The LHCP can view rejection justification in his/her list of report requests.
+
+
+===== UC24 Take Satisfaction Survey =====
+
+== 24.1 Precondition ==
+A patient is a registered user of the iTrust Medical Records system [UC1]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].            
+
+== 24.2 Main Flow ==
+
+A patient or personal health representative can answer any of the following questions relative to a previous (in UC9, S1) office visit according to Data Format 6.13.
+  * How many minutes did you wait in the waiting room?
+  * How many minutes did you wait in the examination room before seeing your physician?
+  * How satisfied were you with your office visit?
+  * How satisfied were you with the treatment or information you received?
+The answers to the survey are stored.  The event is logged [UC5, S26].
+
+== 24.3 Sub-flows ==
+None
+
+== 24.4 Alternative Flows ==
+None
+ 
+
+===== UC25 View Physician Satisfaction Survey Results =====
+
+== 25.1 Precondition ==
+A user is a registered user of the iTrust Medical Records system [UC1]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].            
+
+== 25.2 Main Flow ==
+A user chooses to view physician satisfaction survey results. The user provides a zip code [E1] and an (optional) physician type (from a pull-down list: see data format 6.2 - general, surgeon, heart specialist, pediatrician, OB/GYN). The patient is provided with the following for each physician of that type that practices in a zip code (based upon the address/zipcode provided in UC2) that match the first three digits of the provided zip code:
+  * Name
+  * Address
+  * Average number of minutes [[lauren791e#Patient|patients]] wait in waiting room
+  * Average number of minutes [[lauren791e#Patient|patients]] wait in examination room prior to seeing physician
+  * Average office visit satisfaction
+  * Average satisfaction with treatment/information
+  * Percentage of office visits for which satisfaction information is available
+
+The event is logged [UC5, S27].
+
+== 25.3 Sub-flows ==
+None
+
+== 25.4 Alternative Flows: ==
+[E1] The input is not a valid zip code and/or a valid physician type (see Data Format 6.2). The user is asked to try again.
+
+
+===== UC26 View/Edit Laboratory Procedure Status =====
+
+== 26.1 Precondition ==
+A patient and HCP are registered users of the iTrust Medical Records system [UC1 and UC2]. The iTrust user has been authenticated in the iTrust Medical Records system [UC3].            
+
+== 26.2 Main Flow ==
+A patient or personal health representative [S1] or HCP [S2] chooses to view laboratory procedure status; or a HCP chooses to edit a laboratory procedure [S3].
+
+== 26.3 Sub-flows ==
+  * [S1] The patient can view a list of laboratory procedures and status for (a) their own records and (b) the records for which the user is a personal representative. Only laboratory procedures for which the HCP has allowed viewing access are shown. The list is sorted by date of the last status update, most recent first. The event is logged [UC5, S28].
+
+  * [S2] The HCP enters a MID [E1] of a patient and confirms their input [E2]. The HCP can view a list of laboratory procedures and results, sorted by the date of the last status update, most recent first. The HCP can choose to sort by date of the last status update or by LOINC code ([UC15 S3], ascending order). If the HCP is the HCP that ordered the laboratory procedure, the HCP can allow or disallow viewing access to the laboratory results and is given the option to edit the office visit in which the laboratory procedure was ordered. The event is logged [UC5, S28].
+
+  * [S3] The HCP enters a MID [E1] of a patient and confirms their input [E2]. The HCP can view a list of laboratory procedures and can choose to update the status and comments (including results, if applicable) (see Data Format 6.11). The list is sorted by the dates of the last status update. The event is logged [UC5, S28] and an email notification is sent [UC27, S2].
+
+== 26.4 Alternative Flows ==
+  * [E1] The HCP types an invalid medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient. The HCP does not confirm the selection and is prompted to try again.
+
+
+===== UC27 Alert Users by Email =====
+
+== 27.1 Precondition ==
+One of UC3, UC22, UC23, or UC26 has been initiated. 
+
+== 5.2 Main Flow ==
+An email alert is sent out to the iTrust user in the event of a changed [[lauren791e#Password|password]] [S1], status change in laboratory procedure [S2], accepted scheduled [[lauren791e#Appointment|appointment]] [S3], comprehensive report requested and generated [S4]. //Note to students: the iTrust system does NOT currently support actual email sending, only a "fake" email sending facility. All email notifications should be executed through the fake email utility.//
+
+== 5.3 Sub-flows ==
+  * [S1] The user has successfully changed his/her [[lauren791e#Password|password]] [UC3, S2]. An email informing the user of the [[lauren791e#Password|password]] change is sent to the user including the MID but //not// the [[lauren791e#Password|password]].
+  * [S2] The status of a laboratory procedure has been updated [UC26, S3]. The patient is notified with the following information: the LOINC number and the updated status.
+  * [S3] The patient or LHCP has accepted an [[lauren791e#Appointment|appointment]] as scheduled [UC22, S6] and both users are notified of the date, time, length,  and comment via email.
+  * [S4] The admin has approved the comprehensive report generation [UC23, S2] or the LHCP generates the report. The patient is notified via email that a comprehensive report was generated, and the MID of the LHCP and the approving Admin are included.
+
+======= Appendix D: Original Non-Functional Requirements =======
+This section contains the original non-functional requirements for reference only.  **These non-functional requirements do not reflect the changes in this document.**
+
+===== 4.1 HIPAA =====
+Implementation must not violate HIPAA guidelines.
+
+===== 4.2 Exlusive Authentication =====
+The system shall enable multiple simultaneous users, each with his/her own exclusive authentication. 
+
+===== 4.3 Form Validation =====
+The form validation of the system shall show the errors of all the fields in a form at the same time.
+
+===== 4.4 Reports =====
+ A **report** is a page which opens in a separate window and contains minimal decoration. The format is printer-friendly in that the background is white and the information does not exceed the width of 750 pixels so that upon printing, no information is lost due to the information being too wide.
+
+===== 4.5 Privacy Policy =====
+The system shall have a privacy policy linked off of the home page.  The privacy policy should follow the template provided here: http://ecommerce.ncsu.edu/studio/templates/privacy_tem.doc
+
+
+======= Appendix E: Original Constraints =======
+This section contains the original constraints placed upon iTrust for reference only.  **These constraints do not reflect the changes in this document.**
+
+===== 5.1 Language =====
+The system shall be implemented as a Java Server Page web application.
+
+===== 5.2 Coding Standards =====
+The implementation shall adhere to the Java Coding Standards.
+
+===== 5.3 Documentation =====
+All new code shall be documented using the Javadoc documentation system.
+
+===== 5.4 Environment =====
+The implementation shall run on the Windows platform in the Eclipse 3.3 environment.
+
+===== 5.5 Testing =====
+All non-GUI classes must have at least 80% unit testing/JUnit coverage of tests that pass.
+
+===== 5.6 Database =====
+To control open connections to the database, all database access should be done through an object that uses the Singleton pattern.  
+
+===== 5.7 Patterns =====
+The implementation must use the Strategy pattern for epidemic detection and cause-of-death trends and the Singleton pattern for database connections.
+
+===== 5.8 Static Analysis =====
+The application should have no true positive Severe or Medium FindBugs errors.
+
+
+======= Appendix F: Original Data Field Formats =======
+This section contains the original data field formats for reference only.  **These data field formats do not reflect the changes in this document.**
+
+
+===== 6.0 User =====
+^ Field ^ Format ^
+| Security question | Up to 50 alphanumeric characters and symbols: <space> ? - '|
+| Security answer | Up to 30 alphanumeric characters and symbols: <space> ? - '  |
+| Password | 8-20 alphanumeric characters. In production, [[lauren791e#Password|password]] should be encrypted in the database. During development, [[lauren791e#Password|password]] can be in plain text. |
+
+===== 6.1 Patient =====
+
+^Field^Format^
+| Medical identification number (MID) | Unique 10-digit number that does not start with 9 (reserved for personnel, ie LHCP, UHCP (UAP), Admin) |
+| Last Name | Up to 20 alpha characters and symbol - and ', <space> |
+| First Name | Up to 20 alpha characters and symbol - and ' ,<space> |
+| Contact email | Up to 30 alphanumeric characters and symbols . and _ @, <space> |
+| Street Address 1 | Up to 20 alphanumeric characters and symbols: . <space> |
+| Street Address 2 | Up to 20 alphanumeric characters and symbols: . <space> (optional field) |
+| City | Up to 15 alpha characters |
+| State | Approved 2-letter state abbreviation |
+| Zip Code | 5 digits - 4 digits (the latter part -- 4 digits-- is optional) |
+| Phone | 3 digits - 3 digits - 4 digits |
+| Emergency contact name | Up to 40 alpha characters and symbol - and ', <space> |
+| Emergency contact phone | 3 digits - 3 digits - 4 integers |
+| Insurance company name | Up to 20 alphanumeric characters |
+| Insurance company Address 1 | Up to 20 alphanumeric characters and symbols: . - and blankspace |
+| Insurance company Address 2 | Up to 20 alphanumeric characters and symbols: . - and blankspace (optional field) |
+| Insurance company City | Up to 15 alpha characters |
+| Insurance company State | Approved 2-letter state abbreviation |
+| Insurance company Zip | 5 integers - 4 integers (the latter part -- 4 integers -- is optional) |
+| Insurance company Phone | 3 integers - 3 integers - 4 integers |
+| Insurance identification | Up to 20 alphanumeric characters |
+
+
+
+===== 6.2 Medical Care Personnel ====== 
+^ Field ^ Format ^
+| Medical identification number (MID) | Unique 10-digit number that begins with 9 |
+| Role | "Administrator", "Licensed health care professional", "Unlicensed authorized personnel" (admin, hcp, uap) |
+| LHCP Type | (for LHCP only) "General", "Surgeon", "Heart specialist", "Pediatrician", "OB/GYN" |
+| Last Name | Up to 20 alpha characters and symbol - and ' |
+| First Name | Up to 20 alpha characters and symbol - and ' |
+| Street Address 1 | Up to 30 alphanumeric characters and symbol: . |
+| Street Address 2 | Up to 30 alphanumeric characters and symbol: . (optional field) |
+| City | Up to 15 alphanumeric characters |
+| State | Approved 2-letter state abbreviation |
+| Zip Code | 5 integers - 4 integers (the latter part -- 4 integers -- is optional) |
+| Phone | 3 integers - 3 integers - 4 integers |
+| Contact Email | Up to 30 alphanumeric characters and symbols . and _ @, <space> |
+
+
+===== 6.3  Transaction log ====== 
+
+^ Field ^ Format ^
+| Editor/Viewer MID (ie the user performing the action) | 10-digit number |
+| Secondary medical identification number | 10-digit number |
+| Transaction type | See below |
+| Additional Information | Up to 30 alphanumeric characters for optional description or clarification |
+| Date/ Time | Timestamp |
+
+Transaction Types
+^ Code ^ Use Case ^
+| 1 | enter/edit demographics |
+| 2 | declare/undeclare designated licensed health care professional |
+| 3 | allow/disallow access to diagnosis |
+| 4 | view access log |
+| 5 | view medical records |
+| 6 | authenticate users |
+| 7 | enter/edit personal health information |
+| 8 | document [[lauren791e#Office Visit|office visit]] |
+| 9 | create/disable [[lauren791e#Patient|patient]] or health care personnel |
+| 10 | maintain diagnosis code |
+| 11 | request biosurveillance |
+| 12 | manage procedure code |
+| 13 | manage drug code |
+| 14 | identify risk factors of chronic diseases |
+| 15 | cause of death trends |
+| 16 | declare/undeclare representative |
+| 17 | [[lauren791e#Patient|patient]] reminders (proactively determine [[lauren791e#Patient|patient]]-needed care) |
+| 18 | maintain hospital listing |
+| 19 | view [[lauren791e#Prescription|prescription]] report |
+| 20 | view hospital statistics |
+| 21 | view comprehensive report |
+| 22 | view [[lauren791e#Emergency Report|emergency report]] |
+| 23 | schedule [[lauren791e#Appointment|appointments]] |
+| 24 | request [[lauren791e#Appointment|appointment]] |
+| 25 | comprehensive report | 
+| 26 | take satisfaction survey | 
+| 27 | satisfaction survey |
+| 28 | view/edit [[lauren791e#Laboratory Procedure|laboratory procedures]] | 
+
+
+
+
+
+
+
+
+===== 6.4 Patient Personal Health Record ====== 
+
+Order of these entries does not matter.
+
+The following information must be maintained
+
+**Table 5.4.1**
+^ Field ^ Format ^
+| Patient MID | Unique 10-digit number that does not start with 9 [uneditable] |
+| Topical notes | Up to 200 alphanumeric characters and symbols: ? - ' . blankspace and carriage return of personal information about the [[lauren791e#Patient|patient]] (optional field) |
+| Blood type | O+, A+, B+, AB+, O-, A-, B-, AB- |
+| Ethnicity | Choose from Caucasian, African American, Hispanic, American Indian, Asian, other |
+| Gender | Male or Female |
+| Mother MID | Unique 10-digit number that does not start with 9 |
+| Father MID | Unique 10-digit number that does not start with 9 (optional) |
+| Allergies | As many entries as necessary of up to 30 alpha characters each; stored per [[lauren791e#Office Visit|office visit]]. |
+| Birth date | including day, month, and year |
+| Deceased date | including day, month, and year (optional field) |
+| Deceased diagnosis | The cause-of-death diagnosis, in ICD9CM format (optional field) [for UC16] |
+
+Additionally, a history of the following information must be maintained
+
+**Table 6.4.2**
+^ Field ^ Format ^
+| Height | Up to 3-digit number+ up to 1 decimal place (inches).|
+| Weight | Up to 4-digit number + up to 1 decimal place  (pounds). |
+| Blood pressure | Up to 3-digit number / Up to 3-digit number |
+| Cholesterol | HDL [integer less than 90], triglyceride [integer between 100 and 600], LDL [integer between 0 and 600] and the total cholesterol [integer between 100 and 600]. |
+| Smoker | (Yes/No) |
+
+
+
+
+
+===== 6.5  Diagnosis Information ====== 
+
+^ Field ^ Format ^
+| Patient MID | Unique 10-digit number that does not start with 9 |
+| Diagnosis number | Unique (to that [[lauren791e#Patient|patient]]) up to 10-digit number |
+| Diagnosis | ICD9cm code |
+| Discretionary Access | Yes/no, specifies whether or not the [[lauren791e#Patient|patient]] has the ability to hide this diagnosis |
+| Privacy Level | Privacy level of the diagnosis set by the [[lauren791e#Patient|patient]]: all, none, designated HCP only |
+| Office Visit ID | Integer identifier that specifies the [[lauren791e#Office Visit|office visit]]. |
+
+
+
+===== 6.6 Prescription History ====== 
+
+^ Field ^ Format ^
+| Patient Medical identification number | Unique 10-digit number that does not start with 9 |
+| Medication | National Drug Code |
+| Start Date | Date |
+| End Date | Date |
+| Office Visit ID | Identifier that specifies the [[lauren791e#Office Visit|office visit]]. |
+
+
+
+===== 6.7 Hospital Information ====== 
+
+^ Field ^ Format ^
+| Hospital ID number | A unique 10-digit integer |
+| Name | Up to 30 alphanumeric characters |
+
+
+
+
+===== 6.8 Medical Care Personnel Affiliation =====
+
+^ Field ^ Format ^
+| Medical identification number (MID) | 10-digit number that begins with 9 |
+| Hospital ID number | A 10-digit integer  |
+
+ 
+
+
+
+===== 6.9 Chronic disease risk factors ====== 
+
+==== 6.9.1 Diabetes risk factors ====
+
+=== 6.9.1.1 Type 1 diabetes (11 years old or younger) ===
+
+From: [[http://www.webmd.com/hw/diabetes_1_2/uq1456.asp]]
+
+    * Family history of type 1 diabetes (mother, father, sister, brother)
+    * Ethnicity: Increase risk for Caucasian people.
+    * Viral infections during childhood (less than 18 years old): echovirus (ICD9cm 079.1) and Coxsackie B (ICD9cm 079.2)
+
+=== 6.9.1.2 Type 2 diabetes ===
+
+From: [[http://www.webmd.com/content/article/59/66831]]
+
+    * Age over 45.
+    * Ethnicity. The risk of diabetes is greater in Hispanics, African American, American Indians, and Asians.
+    * Being overweight. If you are overweight, defined as a body mass index (BMI) greater than 25.
+       * Assume any height and weight are in inches and pounds, respectively.
+       * With the English system, calculate BMI by dividing weight in pounds (lbs) by height in inches (in) squared and multiplying by a conversion factor of 703.
+    * Hypertension. High blood pressure increases the risk of developing diabetes.
+       * Systolic blood pressure over 240 mmHg and/or a diastolic blood pressure over 120 mmHg.
+    * Abnormal cholesterol levels. HDL ("good") cholesterol levels under 35 mg/dL (milligrams per deciliter) and/or a triglyceride level over 250 mg/dL increases your risk.
+    * Prior diagnoses. History of gestational diabetes, polycystic ovary disease (PCOS) or vascular disease
+    * Family history of type 2 diabetes (mother, father, sister, brother)  
+
+
+==== 6.9.2 Heart disease risk factors ====
+
+From: [[http://www.webmd.com/content/pages/9/1675_57840]]
+
+    * Gender. Men have greater risk than women.
+    * Age. Over 45
+    * Ethnicity. The risk of heart disease is greater in African American, American Indians and Hispanic Americans.
+    * Obesity. If you are overweight, defined as a body mass index (BMI) greater than 30.
+      * Assume any height and weight are in inches and pounds, respectively.
+      * With the English system, calculate BMI by dividing weight in pounds (lbs) by height in inches (in) squared and multiplying by a conversion factor of 703.
+    * Hypertension. High blood pressure increases the risk of developing diabetes.
+       * Systolic blood pressure over 240 mmHg and/or a diastolic blood pressure over 120 mmHg.
+    * Abnormal cholesterol levels. HDL ("good") cholesterol levels under 35 mg/dL (milligrams per deciliter) and/or a triglyceride level over 250 mg/dL increases your risk.
+    * Smoking. Current or prior smoker
+    * Prior diagnoses. Diabetes.
+    * Family history of heart disease (mother, father, sister, brother)
+
+
+===== 6.10 Patient Appointment Request =====
+
+^ Field ^ Format ^
+| Medical identification number | Unique 10-digit number |
+| Reason for the visit | up to 500 characters (optional) |
+| HCP Medical identification number | Unique 10-digit number *|
+| Hospital ID number | Unique 10-digit number *|
+| Date 1 | Date that is today or after (optional) |
+| Time 1 | Time (optional) |
+| Date 2 | Date that is today or after (optional) |
+| Time 2 | Time (optional) |
+| Length of Visit | up to a 4 digit number |
+| Status of the [[lauren791e#Appointment|appointment]] request | "Scheduled", "Need Patient Confirm", "Need LHCP Confirm", "Rejected"|
+| Rejection Message | up to 500 characters (optional) |
+| Comments | up to 500 characters (optional) |
+| Number of Weeks to Visit | 2 digit number (optional) |
+ 
+Either the HCP Medical Identification Number or the hospital is required.\\
+Note: Date/Time can be timestamps.
+
+
+===== 6.11 Logical Observation Identifiers Names and Codes (LOINC) =====
+
+^ Field ^ Format ^
+| Laboratory Procedure Code | (Unique) LOINC Number([[http://www.regenstrief.org/medinformatics/loinc/]]) Digits of the format nnnnn-n |
+| Component | Up to 100 characters |
+| Kind of Property | Up to 100 characters |
+| Time Aspect | Up to 100 characters (optional) |
+| System | Up to 100 characters (optional) | 
+| Scale Type | Up to 100 characters (optional)  |
+| Method Type | Up to 100 characters (optional) |
+
+see [[Test Data]] for examples
+
+
+
+===== 6.12 Laboratory Procedure =====
+
+^ Field ^ Format ^
+| Patient MID | Unique 10-digit number that does not start with 9 |
+| Laboratory Procedure ID | Unique identifier for a [[lauren791e#Laboratory Procedure|laboratory procedure]] of a [[lauren791e#Patient|patient]] |
+| Laboratory Procedure Code | LOINC Number |
+| Status | One of (NOT YET RECEIVED, PENDING, COMPLETED) |
+| Commentary | Up to 500 alphanumeric characters |
+| Results | Up to 500 alphanumeric characters |
+| Office Visit ID| Identifier that specifies the [[lauren791e#Office Visit|office visit]] in which the [[lauren791e#Laboratory Procedure|laboratory procedure]] was ordered |
+| Date/Time of last status update | Timestamp |
+
+
+===== 6.13 Satisfaction Survey =====
+All fields are optional.
+^ Field ^ Format ^
+| Minutes | Up to 3 digit number |
+| Satisfaction Rating | Number ranging from 1 (very unhappy) to 5 (very satisfied) | 
+

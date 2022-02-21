@@ -1,0 +1,23 @@
+====Data Format 6.1: Patient====
+^Field^Format^
+|Username  |Unique, up to 20 alphanumeric characters|
+|Last Name  |Up to 30 alpha characters and symbol - and ', <space>|
+|First Name  |Up to 20 alpha characters and symbol - and ' ,<space>|
+|Contact email  |Up to 30 alphanumeric characters and symbols . and _ @, <space>|
+|Street Address 1  |Up to 50 alphanumeric characters and symbols: . <space>|
+|Street Address 2  |Up to 50 alphanumeric characters and symbols: . <space> (optional field)|
+|City  |Up to 15 alpha characters|
+|State  |Approved 2-letter state abbreviation|
+|Zip Code  |5 digits - 4 digits (the latter part – 4 digits– is optional)|
+|Phone  |3 digits - 3 digits - 4 digits|
+|Emergency contact name  |Up to 40 alpha characters and symbol - and ', <space>|
+|Emergency contact phone  |3 digits - 3 digits - 4 integers|
+|Insurance company name  |Up to 20 alphanumeric characters|
+|Insurance company Address 1  |Up to 20 alphanumeric characters and symbols: . - and blankspace|
+|Insurance company Address 2  |Up to 20 alphanumeric characters and symbols: . - and blankspace (optional field)|
+|Insurance company City  |Up to 15 alpha characters|
+|Insurance company State  |Approved 2-letter state abbreviation|
+|Insurance company Zip  |5 integers - 4 integers (the latter part – 4 integers – is optional)|
+|Insurance company Phone  |3 integers - 3 integers - 4 integers|
+|Insurance identification  |Up to 20 alphanumeric characters|
+

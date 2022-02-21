@@ -1,0 +1,66 @@
+====== Use case 65: Labor and Delivery Report ======
+
+===== 65.1: Preconditions =====
+
+UC 63, 64, and 66 must be fully implemented (including their pre-requisites) before UC 65 can be
+implemented.
+
+===== 65.2: Main Flow =====
+
+Any HCP may search for the patient by MID or patient name [S1][E1][E2]. A report will be generated
+containing all relevant information about the pregnancy. All HCPs can generate this report in case of
+emergency.
+
+==== 65.3: Subflows ====
+
+[S1] - A current labor and delivery report is generated and displayed containing the following
+information. The generation of the report is logged.
+   * Information for each past pregnancy
+       * Pregnancy term
+       * Delivery type
+       * Conception year
+       * Whether the pregnancy was 
+   * Estimated delivery date
+   * Blood type
+   * Obstetrics Office Visit Information, most recent visit first
+       * Weeks pregnant at office visit
+       * Weight at office visit
+       * Blood pressure at office visit
+       * Fetal heart rate (FHR) at office visit
+       * Fundal height of uterus (FHU) at office visit
+       * If a low lying placenta was observed during the visit
+   * Pregnancy complication warning flags
+       * RH- flag
+       * High Blood Pressure
+       * Advanced Maternal Age
+       * Whether or not the mother has a relevant pre-existing condition (listed later)
+       * Whether or not there are relevant maternal allergies (listed later)
+       * Low-lying placenta
+       * High genetic potential for miscarriage
+       * Abnormal fetal heart rate
+       * Twins
+       * Atypical weight change
+   * A list of relevant pre-existing conditions, including:
+       * Diabetes
+       * Chronic illness (autoimmune disorders)
+       * Cancers
+       * STDs
+   * A list of the mother’s common drug allergies, including:
+       * Penicillin
+       * Sulfa drugs
+       * Tetracycline
+       * Codeine
+       * NSAIDs
+
+===== 65.3: Alternate Flows =====
+
+  * [E1] The HCP types an invalid medical identification number or name or a medical identification
+number or name of a patient not in the system and is prompted to try again.
+  * [E2] The selected patient is not a female patient with an obstetrics record. The error message,
+"Selected patient does not have an obstetrics record" is displayed and the HCP is prompted to
+try again.
+
+===== 65.4: Logging =====
+
+^ Transaction Code ^ Verbose Description ^ Logged-In MID ^ Secondary MID ^ Use Case(s) Involved ^ Type of Transaction ^ Additional Information ^ Patient Viewable ^
+| 6500  | Labor and Delivery Report | Accessed HCP | MID of patient being accessed | 65 | View | None | True |

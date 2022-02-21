@@ -1,0 +1,677 @@
+
+====== Team Project Spring 2008 New Requirements ======
+
+==== UC22: Flow of Events for the Schedule Appointments Use Case ====
+== 22.1 Precondition: ==
+A patient and LHCP are registered users of the iTrust Medical Records system [UC1 and UC2]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3]. \\
+== 22.2 Main Flow: == 
+A patient can request an appointment with an LHCP [S1] or an LHCP can request an appointment with a patient [S4].  An appointment request can be accepted or rejected by the recipient [S3].  Also, users are notified of accepted appointments on their appointments page [S6]. Both patients and LHCPs can view a list of their upcoming appointments [S6].
+== 22.3 Sub-flows: ==
+  * [S1] The patient requests an appointment by inputting either the mid of the LHCP or a hospital.  The patient also inputs the reason for the appointment, his top two date and time options for the appointment**, and length of the visit** [E1](see Data Format 6.10) [E2].  **An e-mail notification with all information from Data Format 6.10 is sent to the LHCP the patient indicated or to all LHCPS at the hospital the patient indicated.**  The event is logged [UC5, S24].\\
+  * [S2] The LHCP is notified on his/her appointment page if a patient has requested an appointment with him/her or if a patient has requested an appointment at his/her hospital that has not already been scheduled.  If he/she chooses to schedule appointments, a list of requested appointments that apply to him/her is displayed. If he/she selects an appointment request, he/she can view all information input into Data Format 6.10.  [S3]\\
+  * [S3] He/She can accept [E1, E3] or reject the suggested dates and times.  If he/she rejects both dates and times, he/she is prompted to suggest two more dates and times [E1], **length of the visit,** and/or comments [E2]. **An e-mail notification with the suggested dates and times, length of the visit, and/or comments is sent to the user whose appointment request is rejected.**  The event is logged [UC5, S24].  If the appointment is accepted, the LHCP medical identification number, patient medical identification number, date, time, and **length** of the appointment are recorded. **An e-mail notification with the LHCP medical identification number, patient medical identification number, date, time, and length of the appointment is sent to the user whose appointment request is accepted.** The event is logged [UC5, S23].\\
+  * [S4] The LHCP chooses to request an appointment with the patient.  He/She inputs the reason for the appointment (optional), **length of the visit**, and approximately how far from today's date the appointment should be scheduled in weeks (see Data Format 6.10) [E2].  His/her mid is recorded with the appointment request.  **An e-mail notification with all information from Data Format 6.10 is sent to the patient the LHCP indicated.**  The event is logged [UC5, S24].  
+  * [S5] The patient is notified on his/her appointment page if any requested appointments have been accepted or rejected.  The patient is also notified on the appointment page if an LHCP has requested an appointment.  When the patient chooses to schedule appointments, he/she can view a list of any requested appointments that have been accepted or rejected or if an LHCP has requested an appointment.  If an LHCP has requested an appointment (indicating how many weeks away the appointment should be scheduled), [S1]. If an LHCP has responded to a previous appointment request with this patient, [S3].  
+  * [S6] The LHCP is notified on their appointment page of any newly accepted or rejected appointments.
+== 22.4  Alternative Flows: ==
+  * [E1] The appointment time conflicts with another appointment that the user previously scheduled.  The system asks if the user would like to schedule the appointment.  The user is permitted to schedule the appointment despite conflicts.\\
+  * [E2] The user inputs invalid information and is prompted to try again.
+  * [E3] The LHCP chooses to accept an appointment with his/her hospital, but another LHCP has already accepted. The system notifies the LHCP of this and does not allow the appointment to be scheduled.
+
+
+==== UC24 Take Satisfaction Survey Use Case ====
+
+== 24.1 Precondition ==
+A patient is a registered user of the iTrust Medical Records system [UC1]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].            
+
+== 24.2 Main Flow ==
+
+A patient or personal health representative can answer any of the following questions relative to a previous (in UC9, S1) office visit.
+
+  * How many minutes did you wait in the waiting room?
+  * How many minutes did you wait in the examination room before seeing your physician?
+  * On a scale from 1 (very unhappy) to 5 (very satisfied): How satisfied were you with your office visit?
+  * On a scale from 1 (very unhappy) to 5 (very satisfied): How satisfied were you with the treatment or information you received?
+The answers to the survey are stored.  The event is logged [UC5, S26].
+
+== 24.3 Sub-flows ==
+None
+
+== 24.4 Alternative Flows ==
+None
+
+ 
+
+
+
+==== UC25 View Physician Satisfaction Survey Results Use Case ====
+
+== 25.1 Precondition ==
+A user is a registered user of the iTrust Medical Records system [UC1]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].            
+
+== 25.2 Main Flow ==
+A user chooses to view physician satisfaction survey results. The user provides a zip code [E1] and an (optional) physician type (from a pull-down list: see data format 6.XXXX - general, surgeon, heart specialist, pediatrician, OB/GYN). The patient is provided with the following for each physician of that type that practices in a zip code (based upon the address/zipcode provided in UC2) that match the first three digits of the provided zip code:
+  * Name
+  * Address
+  * Average number of minutes patients wait in waiting room
+  * Average number of minutes patients wait in examination room prior to seeing physician
+  * Average office visit satisfaction
+  * Average satisfaction with treatment/information
+  * Percentage of office visits for which satisfaction information is available
+
+The event is logged [UC5, S27].
+
+== 25.3 Sub-flows ==
+None
+
+== 25.4 Alternative Flows: ==
+[E1] The input is not a valid zip code and/or a valid physician type. The user is asked to try again.
+
+
+==== UC26 View/Edit Laboratory Procedure Status Use Case ====
+
+== 26.1 Precondition ==
+A patient, LHCP, or UAP is a registered user of the iTrust Medical Records system [UC1 and UC2]. The iTrust user has been authenticated in the iTrust Medical Records system [UC3].            
+
+== 26.2 Main Flow ==
+A patient or personal health representative [S1] or LHCP [S2] chooses to view laboratory procedure status; or a LHCP or UAP chooses to edit a laboratory procedure [S3].
+
+== 26.3 Sub-flows ==
+  * [S1] The patient can view a list of laboratory procedures and status for (a) their own records and (b) the records for which the user is a personal representative. Only laboratory procedures for which the LHCP has allowed viewing access are shown. The list is sorted by date of the last status update, most recent first. The event is logged [UC5, S26].
+
+  * [S2] The LHCP enters a MID [E1] of a patient and confirms their input [E2]. At this point, the LHCP can view  a list of laboratory procedures and results, sorted by the date of the last status update, most recent first. The LHCP can choose to sort by date of the last status update or by CPT-4/HCPCS code ([UC15 S3], ascending order). If the LHCP is the LHCP that ordered the laboratory procedure, the LHCP can allow or disallow viewing access to the laboratory results and is given the option to edit the office visit in which the laboratory procedure was ordered. The event is logged [UC5, S24].
+
+  * [S3] The LHCP or UAP enters a MID [E1] of a patient and confirms their input [E2].  At this point, the LHCP/UAP can view  a list of laboratory procedures without results and can choose to edit the results and commentary (see Data Format 5.10). The list is sorted by the dates of the last status update. The event is logged [UC5, S25].
+
+== 26.4 Alternative Flows ==
+  * [E1] The LHCP types an invalid medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient. The LHCP does not confirm the selection and is prompted to try again.
+
+
+
+==== 5.10 Laboratory History ==== 
+Split this into two tables: HCPCS code standard, and Lab procedure for a particular patient
+^ Field ^ Format ^
+| Patient MID | Unique 10-digit number that does not start with 9 |
+| Laboratory Procedure ID | Unique identifier associate with laboratory procedure |
+| Laboratory Procedure Type | CPT-4/HCPCS code |
+| Results | Up to 20 alphanumeric characters |
+| Commentary | Up to 50 alphanumeric characters |
+| Office Visit/Phone Consultation ID | Identifier that specifies the office visit/phone consultation in which the laboratory procedure was ordered |
+| Date Procedure Performed | Date |
+| Date Initially Viewed by LHCP | null or Date |
+| Date Initially Viewed by Patient/Personal Health Representative| null or Date |
+
+
+
+
+
+
+==== Other Changes to be made to the requirements ====
+  * Add a physician speciality (edit personnel demographics, data format): "General" "Surgeon" "Cardiologist" "Pediatrician" "OB/GYN", "Not Specified"
+  * Clarify some of the comprehensive report specifics: no security information, etc.
+  * Add email notifications for: laboratory procedures, change password, when comprehensive patient report is generated, when new appointment is scheduled 
+
+=== Maintain Standards Listing ===
+[S3] The administrator will maintain [add/update] a listing of allowable physical services (including laboratory procedures) that an HCP can use. The administrator will store (1) the CPT-4/HCPCS code (CPT = Current Procedural Terms, reference American Medical Association, educational/fair use; HCPCS = Healthcare Common Procedure Coding System) [E1] and (2) up to 100 alpha characters giving the name/description [E2] of the procedure.
+  * Need a data format for that
+
+=== Document Office Visit ===
+Add to [S1]: and one or more lab procedures that are ordered (CPT-4/HCPCS code, see Data Format 6.XXXXX).
+
+=== View Records ===
+[S1] The patient or personal health representative can see patient personal health information (including historical values) and office visit information (date, diagnoses, medication, name of attending physician but not notes, laboratory procedures) for (a) their own records and (b) the records for whom the user is a personal representative. If a patient or personal health representative has not taken an office visit satisfaction survey for an office visit yet, the patient may choose to take the survey for an office visit (if the survey has already been taken, the patient or personal health representative will not have the ability to take the survey) [UC23].
+
+=== Authenticate Users==
+(revamp the homepage)
+[S4]  A LHCP is presented with a screen of links to the following:
+  * Recent Laboratory Results: recent (within the last month) laboratory results [UC22] for laboratory procedures he/she ordered in office visits.  
+  * Any upcoming appointments within the next week
+  * Rejection/Acceptance of comprehensive report
+
+[SX]  A patient is presented with a screen of links to the following:
+  * Recent Laboratory Results: recent (within the last month) laboratory results [UC22] for laboratory procedures that the patient (or a patient he/she represents), that the patient has access. 
+  * Any upcoming appointments within the next week
+  * Comprehensive report requested/generated of the patient, including patients that he/she represents
+
+The transaction is logged [UC4].
+
+
+===UC11 Document office visit and/or phone consultation Use Case===
+11.3 Sub-flows:
+
+    * [S1] The HCP enters a MID [E1] of a patient and confirms their input [E2]. The HCP document the notes (text) of an office visit, providing the date of the office visit, and their own medical identification number if they are a LHCP or the MID of the associated LHCP if it is an UAP. Additionally, the HCP can document one or more diagnoses (ICD-9CM code), one or more medical procedures (CPT-4/HCPCS code) performed, one or more medications (NDC, see Data Format 5.6) prescribed from appropriate pull-down lists, and one or more lab procedures that are ordered (CPT-4/HCPCS code, see Data Format 5.10). The HCP can view the prescription report [UC19, S3] of the selected office visit, which is the current office visit. The HCP can indicate if the patient is allowed to restrict access to the diagnosis information. HCPs can return to an office visit and alter the fields of the office visit [text, diagnoses, medical procedures, medications, laboratory procedures] ONLY for their own office visits. The event is logged [UC5, S8].
+
+==== Extra Credit Ideas ====
+  * Privacy policy - Last semester, this was mandatory.  Link to sample policy: http://ecommerce.ncsu.edu/studio/templates/privacy_tem.doc
+  * Something security-related (not sure yet - maybe fixing DoS, maybe secure filter, maybe just find a few vulnerabilities to fix)
+  * Post a canonical test data set on their wiki (i.e. what is generated by TestDataGenerator)
+  * Include hospitals in the view satisfaction survey results
+  * Use Jazz (if we can get all that set up in time!!!)
+
+
+==== Project Ideas ====
+  * We should post a wiki-syntax version of the RAF
+[[sample_raf]]
+
+====== Random Ideas for Assignments ======
+  * Make the discretionary access thing so that you have All, Declared HCP Only, Original Documentor Only. How do we account for emergency situations? This whole discretionary access thing is in the incubator at the moment. 
+     * I haven't examined it yet, but Mike says that his partner did a really nice job about handling discretionary access issues...something about checking all previous office visits recursively to adjust the access levels.  He was group 20 if anyone is curious. -Lauren
+  * Adding a "created by" column in the patients and personnel table
+  * Always the UAP Bosses idea (shudder)
+  * Notification of various things on login: appointments stuff, prescriptions within the current time period, newly documented office visits, changed password, etc
+  * Laboratory testing and results viewing: this is in the USDHH requirements from last semester and would be a good one
+  * View Hospital Statistics: cause-of-death info, diagnosis info, office visits, number of patients, number of HCPs, etc. Use a chart, probably.
+  * Update the Comprehensive Report to allow the possibility of exporting to XML instead of a regular report.
+  * Also, we can do Satisfaction Reports.
+  * Add length of time for office visit appointments (should add a time conflict check for the entire visit time)
+  * UAPs should be able to schedule visits for their HCPs (this would require setting up the bosses idea)
+  * When documenting an office visit, users should be able to add information about the next appointment (how far from today it should be and any comments) so that a uap could schedule it
+  * Send out e-mail notifications for appointment requests being rejected, accepted, or scheduled
+
+
+
+
+
+
+
+
+
+
+==== UC23 View Comprehensive Patient Report Use Case ====
+
+== 23.1 Precondition: ==
+
+An LHCP and Admin have authenticated themselves in the iTrust Medical Records system [UC2].
+
+== 23.2 Main Flow: ==
+
+The LHCP requests a comprehensive patient report for a particular patient [S1]. The Admin can either approve [S2] or reject [E3] the report. Upon approval, the LHCP chooses to view the approved comprehensive patient report [S3] from a list of his/her requests. The events of requesting, approving/rejecting, and viewing are logged [UC4].
+
+== 23.3 Sub-flows: ==
+  * [S1] The LHCP enters a medical identification number (MID) [E1] and confirms his/her input [E2]. 
+  * [S2] The Admin views the Names and MIDs of the requesting LHCP and the requested patient, and approves the report [E3]. 
+  * [S3] The LHCP is allowed a one-time only view of the comprehensive patient report for the specified patient, including the following information:
+    * All patient demographic information (address, phone, etc.)
+    * The entire history of personal health records
+    * All diagnoses viewable by the viewer (LHCP)
+    * All designated HCPs (MIDs and Names)
+    * All allergies, procedures, medications, office visits, and known relatives
+    * All MIDs and names of people that this person is representing
+    * All MIDs and names of people that this person is represented by
+    * The date/time in which the report was generated
+    * The MID and name of the LHCP who requested the report
+    * The MID and name of the Admin who approved the report
+
+== 23.4 Alternative Flows: ==
+  * [E1] The LHCP types an invalid MID and is prompted to try again.
+  * [E2] The chosen patient is not the desired patient. The LHCP does not confirm the selection and is prompted to try again.  
+  * [E3] The Admin rejects the request for a comprehensive patient report, providing justification for the rejection. The LHCP can view rejection justification in his/her list of report requests.
+
+
+=== Other Changes for UC23 ===
+  * Add a transaction type
+  * Add what the meaning of a report is in the non-functional requirements. The definition would be:
+A **report** is a page which opens in a separate window and contains minimal decoration. The format is printer-friendly in that the background is white and the information does not exceed the width of 7.5 inches, that is upon printing, no information is lost due to the data being too wide.
+
+
+
+
+
+
+
+
+==== UC 23 Test Data ====
+
+  * We should enter in the data for Andy Programmer - there's lots of data already there for him, then use it in Comprehensive Report
+  * We should enter in a new patient with slightly different data than Andy Programmer for testing
+
+== Patient MID 2 ==
+
+^ MID ^ First Name ^ Last Name ^ Email ^ Address ^ City ^ State ^ Zip Code ^ Phone Number ^ Emergency Contact Name ^ Emergency Contact Phone Number ^ Insurance Company Name ^ Insurance Company Address ^ Insurance Company City ^ Insurance Company State ^ Insurance Company Zip Code ^ Insurance Company Phone Number ^ Insurance Company ID ^ Date Of Birth ^ Date Of Death ^ Cause Of Death ^ Mother MID ^ Father MID ^ Blood Type ^ Ethnicity ^ Gender ^ TopicalNotes ^ 
+| 2 | Andy | Programmer | andy.programmer@gmail.com | 344 Bob Street  |  Raleigh |  NC | 27607 |  555-555-5555 | Mr Emergency | 555-555-5551 | IC | Street1  Street2 | City | PA | 19003 | 2715-5555 | 555-5555 |  1984-05-19 | NULL |  | 1 | 0 | O- | Caucasian | Male | This person is absolutely crazy. Do not touch them. |
+
+**Authentication Information**
+^ password ^  Security Question ^  Security Answer ^
+| pw | how you doin? | good |
+
+**Allergies**
+^ Description ^  FirstFound ^ 
+|  Pollen  | 2007-06-05 20:33:58 | 
+|  Penicillin  | 2007-06-04 20:33:58 |
+
+**Personal Health Information**
+^ Height ^ Weight ^ Smoker ^ Blood Pressure ^ Cholesterol HDL ^ Cholesterol LDL ^ Cholesterol Triglycerides ^ Recording HCP ^  AsOfDate ^
+|  60  |  200  | 0 | 190 / 100 | 500 | 239 | 290 | 9000000000 | 2007-06-07 20:33:58 | 
+| 62 | 210 | 1 | 195 / 250 | 36 | 215 | 280 | 9000000000 | 2007-06-07 20:34:58 |
+
+**Office Visits**
+^id ^ Visit Date ^ With HCP ^ Notes ^ Hospital ID ^
+| 902 | 2007-6-09 | 9000000000 | Yet another office visit. | 1 | 
+| 903 | 2005-10-10 | 9000000000 | Yet another office visit. | 1 | 
+| 904 | 2005-10-10 | 9000000000 | Yet another office visit. | 1 | 
+| 905 | 2007-6-10 | 9000000000 | Yet another office visit. | 1 | 
+| 906 | 2005-10-10 | 9000000000 | Yet another office visit. | 1 |
+| 907 | 2005-10-10 | 9000000000 | Yet another office visit. | 1 |
+| 908 | 2005-10-10 | 9000000000 | Yet another office visit. | 1 | 
+| 909 | 2006-10-10 | 9000000000 | Yet another office visit. | 1 |
+| 910 | 1985-10-10 | 9000000000 | Yet another office visit. |  |
+
+
+**Diagnoses**
+^ ID ^  ICDCode ^  VisitID ^  DiscretionaryAccess ^  PrivacyLevel ^
+| 100 |  250.1 |  905 |  true |  All| 
+| 101 |  79.30 |  910 |  false |  All | 
+| 102 |  250.1 |  910 |  true |  Declared HCP Only | 
+| 103 |  250.1 |  910 |  true |  No One | 
+| 104 |  11.4 |  910 |  true |  No One | 
+| 105 |  15.00 |  910 |  true |  Declared HCP Only |
+
+**Prescriptions**
+^ NDCode ^  VisitID ^  StartDate ^ EndDate ^ Dosage ^ Instructions ^
+| 009042407 |  905  |  2006-10-10 |  2006-10-11  |  5  |  Take twice daily  | 
+| 009042407 |  905  |  2006-10-10 |  2006-10-11  |  5  |  Take twice daily  | 
+| 647641512 |  905  |  2006-10-10 |  2020-10-11  |  5  |  Take twice daily  |
+
+**Procedures**
+^ CPTCode ^  VisitID ^
+| 1270F | 905 |
+
+**Declared HCPs**
+^ HCPID ^
+|  9000000003  |
+
+**Representatees**
+^ Representee MID ^ 
+| 1 |
+
+
+
+==== UC 23 Acceptance Test ====
+
+^ Test ID ^ Description ^ Expected ^ Actual ^
+| ComprehensiveAcceptanceSuccess | An HCP 9000000000, Admin 9000000001, and Patient MID 2 have been entered into the system. <html><br></html> The HCP logs in and requests a comprehensive report for patient 2. <html><br></html> The Admin logs in and approves the new request for patient 2. <html><br></html> The HCP views the approved comprehensive patient report. | When the admin approves the request, the patient ID is displayed. <html><br></html> The following information is viewable on the comprehensive report for patient 2: **enter in patient 2 data here** The HCP cannot view the approved patient report via the same URL again. |
+| ComprehensiveAcceptanceRejected| An HCP 9000000000, Admin 9000000001, and Patient MID 2 have been entered into the system. <html><br></html> The HCP logs in and requests a comprehensive report for patient 2. <html><br></html> The Admin logs in and rejects the new request for patient 2 with justification "You cannot access this patient!" entered. | The HCP views the rejection message and the MID 9000000001 (rejector of the approval). |
+
+===== UC22: Flow of Events for the Schedule Appointments Use Case =====
+== 22.1 Precondition: ==
+A patient and LHCP are registered users of the iTrust Medical Records system [UC1 and UC2]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3]. \\
+== 22.2 Main Flow: == 
+A patient can request an appointment with an LHCP [S1] or an LHCP can request an appointment with a patient [S4].  An appointment request can be accepted or rejected by the recipient [S3].  Also, users are notified of accepted appointments on their appointments page [S6]. Both patients and LHCPs can view a list of their upcoming appointments [S6].
+== 22.3 Sub-flows: ==
+  * [S1] The patient requests an appointment by inputting either the mid of the LHCP or a hospital.  The patient also inputs the reason for the appointment, and his top two date and time options for the appointment [E1](see Data Format 6.10) [E2].  The event is logged [UC5, S24].\\
+  * [S2] The LHCP is notified on his/her appointment page if a patient has requested an appointment with him/her or if a patient has requested an appointment at his/her hospital.  If he/she chooses to schedule appointments, a list of requested appointments that apply to him/her is displayed. If he/she selects an appointment request, he/she can view all information input into data format 6.10.  [S3]\\
+  * [S3] He/She can accept [E1, E3] or reject the suggested dates and times.  If he/she rejects both dates and times, he/she is prompted to suggest two more dates and times [E1] and/or comments [E2]. The event is logged [UC5, S24].  If the appointment is accepted, the LHCP medical identification number, patient medical identification number, date, and time of the appointment are recorded. The event is logged [UC5, S23].\\
+  * [S4] The LHCP chooses to request an appointment with the patient.  He/She inputs the reason for the appointment (optional), and approximately how far from today's date the appointment should be scheduled in weeks (see Data Format 6.10) [E2].  His/her mid is recorded with the appointment request.  The event is logged [UC5, S24].  
+  * [S5] The patient is notified on his/her appointment page if any requested appointments have been accepted or rejected.  The patient is also notified on the appointment page if an LHCP has requested an appointment.  When the patient chooses to schedule appointments, he/she can view a list of any requested appointments that have been accepted or rejected or if an LHCP has requested an appointment.  If an LHCP has requested an appointment, [S1]. Else, [S3].  
+  * [S6] The LHCP is notified on their appointment page of any newly accepted appointments.
+== 22.4  Alternative Flows: ==
+  * [E1] The appointment time conflicts with another appointment that the user previously scheduled.  The system asks if the user would like to schedule the appointment.  The user is permitted to schedule the appointment despite conflicts.\\
+  * [E2] The user inputs invalid information and is prompted to try again.
+  * [E3] The LHCP chooses to accept an appointment with his/her hospital, but another LHCP has already accepted. The system notifies the LHCP of this and does not allow the appointment to be scheduled.
+
+
+UC5 Update
+
+[S23] Schedule Appointments. The MID of the person logged in, transaction type=23, and the date are recorded.\\
+[S24] Request Appointment.  The MID of the person logged in, secondary MID = the person who the appointment is requested with (if applicable), transaction type=24, and the date are recorded.
+
+
+
+
+
+
+
+
+
+
+
+
+
+===== UC22 Acceptance Test ======
+^ ID ^ Description ^ Expected Results ^ Actual Results ^ 
+| LHCP Request Appt. | Preconditions:  LHCP 9000000000 and Patient 2 are in the database, and 9000000000 has authenticated successfully.  1. Choose to Request Appointments. 2.  Input the following:  Patient MID: 2; Reason for Visit:  Need to check the status of your rash.; and Weeks from Today: 2.  3. Submit.  4.  Logout.  5.  Login as patient 2.  6.  View Appointments Page. | The appointment request is logged.  A notification of the appointment request is displayed. | |
+| Patient Suggest Appt Dates | Preconditions:  LHCP Request Appt has passed.  LHCP 9000000000 and Patient 2 are in the database, and 2 has authenticated successfully. 1.  View Appointments Page.  2.  View the office visit request created in LHCP Request Appt.  3.  Input the following:  LHCP MID: 9000000000; Date & Time 1:  July 25, 2008 @ 10 am;  Date & Time 2:  July 25, 2008 @ 4:30 pm.  4.  Submit. | The event is logged. | |
+| LHCP Appt Notify | Preconditions:  Patient Suggest Appt Dates has passed.  LHCP 9000000000 and Patient 2 are in the database, and 9000000000 has authenticated successfully.  1. View Appointments Page.  | The LHCP is notified that a patient has requested an appointment with him and can view that patient 2 requested an appt on July 25, 2008 @ 10 pm and on July 25, 2008 @ 4:30 pm.| |
+| LHCP Schedule Appt | Preconditions:  Patient Suggest Appt Dates has passed.  LHCP 9000000000 and Patient 2 are in the database, and 9000000000 has authenticated successfully.  1. View Appointments Page.  2.  Select the visit request created in Patient Suggest Appt Dates.  3.  Choose to accept appointment request.  4.  Input the following:  Date & Time:  July 25, 2008 @ 4:30 pm.  5.  Submit.  | The event is logged.  The appointment information including LHCP MID (900000000), Patient MID (2), and July 25, 2008 @ 4:30 pm are recorded. | |
+| Patient Request Appt. | Preconditions:  LHCP 9000000000 and Patient 2 are in the database, and patient 2 has authenticated successfully. 1.  Choose to Request Appointments.  2.  Input the following:  Hosptial ID:  8181818181; Reason for Visit:  I feel sick; Date & Time 1:  July 24, 2008 @ 3 pm.  3. Submit. | The event is logged. | | 
+| LHCP Time Conflict | Preconditions:  Patient Request Appt has passed.  LHCP 9000000000 and Patient 2 are in the database, and 9000000000 has authenticated successfully.  LHCP 9000000000 has scheduled an appointment with patient 1 on July 24, 2008 @ 3 pm.  1. View Appointments Page.  2.  Select the appointment request created in Patient Request Appt.  3.  Choose to accept appointment request.  4.  Input the following:  Date & Time:  July 24, 2008 @ 3:00 pm.  5.  Submit.  6.  When system asks if he would like to schedule the appointment although he has another appointment scheduled for the same time, select yes. | The event is logged.  The appointment information including LHCP MID (900000000), Patient MID (2), and July 24, 2008 @ 3:00 pm are recorded. | |
+
+
+
+
+===== UC 22 Test Data =====
+
+**AppointmentRequests**
+^ ID ^ ReqesterMID ^ RequestedMID ^ Hospital ^ DateTime1 ^ DateTime2 ^ ReasonForVisit ^ WeeksUntilAppt ^ Status ^
+| 1 | 9000000000 | 2 | | | | Need to check the status of your rash. | 2 | Need Patient Confirm |
+| 2 | 2 | 9000000000 | | 2007-07-25 10:00:00| 2007-07-25 16:30:00 | | | Need LHCP Confirm |
+| 3 | 2 | 9000000000 | 8181818181 | 2007-07-24 15:00:00 | | I feel sick | | Need LHCP Confirm | 
+| 4 | 1 | 9000000000 | | 2007-07-22 11:35:00 | 2007-07-24 15:00:00 | Routine physical | | Scheduled | 
+| 5 | 1 | 9000000000 | | 2005-07-01 11:35:00 | | I feel deliriously happy | | Rejected | 
+
+**ScheduledAppointments**
+^ PatientMID ^ LHCPMid ^ DateTime ^
+| 2 | 9000000000 | 2007-07-25 16:30:00 |
+| 1 | 9000000000 | 2007-07-24 15:00:00 |
+
+
+Notes:\\
+RequesterMID is the person requesting the appointment (could be patient or LHCP).
+RequestedMID is the person who the appointment is being requested with (could be patient or LHCP or null).
+Status could have values: Scheduled, Need Patient Confirm, Need LHCP Confirm, Rejected.
+
+===== UCX Flow of Events for the View Appointments Use Case =====
+== X.1 Precondition: ==
+A patient and LHCP are registered users of the iTrust Medical Records system [UC1 and UC2]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3]. \\
+== X.2 Main Flow: ==
+Patients can view a list of all upcoming appointments.  Office visits within the current week are displayed on the patient's home page.  LHCPs can view a list of all their office visits for the current day or forever.  When users select an appointment, information in Data Format 5.X is displayed.
+
+
+UC11 could be modified so that documented office visits have an optional field for how long until next visit.
+
+
+
+
+
+
+
+===== Data Formats =====
+
+
+
+
+====6.10 Patient Appointment Request====
+
+^ Field ^ Format ^
+| Medical identification number | Unique 10-digit number |
+| Reason for the visit | up to 500 characters (optional) |
+| HCP Medical identification number | Unique 10-digit number *|
+| Hospital ID number | Unique 10-digit number *|
+| Date 1 | Date that is today or after (optional) |
+| Time 1 | Time (optional) |
+| Date 2 | Date that is today or after (optional) |
+| Time 2 | Time (optional) |
+| Status of the appointment request | "Scheduled", "Need Patient Confirm", "Need LHCP Confirm", "Rejected"|
+| Rejection Message | up to 500 characters (optional) |
+| Comments | up to 500 characters (optional) |
+| Number of Weeks to Visit | 2 digit number |
+ 
+Either the HCP Medical Identification Number OR the LHCP type and hospital is required.\\
+Note: Date/Time can be timestamps.
+
+
+
+
+
+
+===== Requirements from 326 that 712 didn't do =====
+  * UC 11 - Document phone consultation
+  * Ben and I didn't fix the whole "get the initial password thing"
+  * All of the discretionary access stuff UC 7
+  * Emergency Report should have emergency contact and phone number UC 21
+  * Lab procedure UC 22
+  * Take satisfaction survey UC 23
+  * View physician satisfaction report UC 24
+
+
+==== UC3 Authenticate Users Use Case ====
+
+== 3.2 Main Flow: ==
+A user enters their MID and their password to gain role-based entry into the iTrust Medical Records system [E1, S4] 
+
+== 3.3 Sub-flows: ==
+  * [S4]  A LHCP is presented with a screen of links to unviewed laboratory results [UC22] for laboratory procedures he/she ordered in office visits or phone consultations. A patient (or personal representative) is presented a screen of links to unviewed laboratory results. The LHCP can choose to view any unreviewed lab results or proceed into the iTrust system normally to the screen where there are links to available functionality. The transaction is logged [UC4].
+
+== 21.2 Main Flow: ==
+    * Emergency contact: Name and Phone number - **This may be a good bug fix as it would show how to move throughout the whole code base**
+
+
+==== UC5 Log Transaction Use Case ====
+
+== 5.3 Sub-flows: ==
+
+  * [S23] Document phone consultation. The MID of the editor and of the patient, the phone consultation id, transaction type = 23, and the date are recorded.
+
+  * [S24] View laboratory procedure report. The MID of the viewer and of the patient, laboratory procedure ID, transaction type = 24, and the date are recorded. 
+
+  * [S25] Edit laboratory procedure results. The MID of the editor and of the patient, laboratory procedure ID, transaction type = 25, and the date are recorded. 
+
+  * [S26] Take satisfaction survey. The MID of the patient, the office visit id, transaction type = 26, and the date are recorded. 
+
+  * [S27] View physician satisfaction report. The MID of the patient, transaction type = 27, and the date are recorded.      
+
+
+
+==== UC9 View records Use Case ====
+
+== 9.3 Sub-flows: ==
+  * [S1] The patient or personal health representative can see patient personal health information (including historical values) and office visit information (date, diagnoses, medication, name of attending physician but not notes, **laboratory procedures**) for (a) their own records and (b) the records for whom the user is a personal representative. **If a patient or personal health representative has not taken an office visit satisfaction survey for an office visit yet, the patient may choose to take the survey for an office visit (if the survey has already been taken, the patient or personal health representative will not have the ability to take the survey) [UC23].**
+
+
+
+==== UC11 Document office visit and/or phone consultation Use Case ====
+
+
+== 11.3 Sub-flows: ==
+
+  * [S1] The HCP enters a MID [E1] of a patient and confirms their input [E2].  The HCP document the notes (text) of an office visit, providing the date of the office visit, and their own medical identification number if they are a LHCP or the MID of the associated LHCP if it is an UAP. Additionally, the HCP can document one or more diagnoses (ICD-9CM code), one or more medical procedures (CPT-4/HCPCS code) performed, one or more medications (NDC, see Data Format 5.6) prescribed from appropriate pull-down lists, **and one or more lab procedures that are ordered (CPT-4/HCPCS code, see Data Format 5.10)**.  The HCP can view the prescription report [UC19, S3] of the selected office visit, which is the current office visit. The HCP can indicate if the patient is allowed to restrict access to the diagnosis information. HCPs can return to an office visit and alter the fields of the office visit [text, diagnoses, medical procedures, medications, **laboratory procedures**] **ONLY for their own office visits**. The event is logged [UC5, S8].
+
+  * **[S2] The HCP enters a MID [E1] of a patient and confirms their input [E2].  The HCP document the notes (text) of a phone consultation, providing the date of the phone consultation, and their own medical identification number if they are a LHCP or the MID of the associated LHCP if it is an UAP. Additionally, the HCP can document one or more diagnoses (ICD-9CM code), one or more medications (NDC, see Data Format 5.6) prescribed from appropriate pull-down lists, and one or more lab procedures that are ordered (CPT-4/HCPCS code, see Data Format 5.10).  The HCP can view the prescription report [UC19, S3] of the selected phone consultation, which is the current phone consultation. The HCP can indicate if the patient is allowed to restrict access to the diagnosis information. HCPs can return to an phone consultation and alter the fields of the phone consultation [text, diagnoses, medical procedures, medications, laboratory procedures]. The event is logged [UC5, S23].**
+
+
+==== UC15 Maintain standards lists Use Case ====
+
+== 15.2 Main Flow: ==
+An administrator chooses to maintain the standards list for immunizations [S1], diagnoses [S2], **medical procedure [S3]**, or allowable drugs [S4]. The event is logged [UC5]. 
+
+
+== 15.3 Sub-flows: ==
+
+  * **[S3] The administrator will maintain [add/update/delete] a listing of allowable physical services (including laboratory procedures) that an HCP can use. The administrator will store (1) the CPT-4/HCPCS code (CPT = Current Procedural Terms, reference American Medical Association, educational/fair use; HCPCS = Healthcare Common Procedure Coding System) [E1] and (2) up to 100 alpha characters giving the name/description [E2] of the procedure.**
+
+
+==== UC22 View/edit laboratory procedure report Use Case ====
+
+== 22.1 Precondition: ==
+A patient, LHCP, or UAP is a registered user of the iTrust Medical Records system [UC1 and UC2]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].
+
+== 22.2 Main Flow: ==
+A patient or personal health representative [S1] or LHCP [S2] chooses to view laboratory reports; or a LHCP or UAP chooses to edit a laboratory procedure [S3].
+
+== 22.3 Sub-flows: ==
+  * [S1] The patient can view a list of laboratory procedures and results for (a) their own records and (b) the records for which the user is a personal representative for which viewing access has been granted by a LHCP. The list is sorted by date. If no initially-viewed date has been previously set, the current date is recorded as the initially-viewed date. The event is logged [UC5, S24].
+
+  * [S2] The LHCP enters a MID [E1] of a patient and confirms their input [E2].  At this point, the LHCP can view  a list of laboratory procedures and results. The LHCP can choose to sort by dates (the later date is ranked earlier) or by CPT-4/HCPCS code ([UC15 S3], ascending order) and date (the later date is earlier). If the LHCP is the LHCP that ordered the laboratory procedure, the LHCP can allow or disallow viewing access to the laboratory results and is given the option to edit the office visit or phone consultation records (diagnosis, notes) in which the laboratory procedure was ordered. If no initially-viewed data has been previously set, the current date is recorded as the initially-viewed date. The event is logged [UC5, S24].
+
+  * [S3] The LHCP or UAP enters a MID [E1] of a patient and confirms their input [E2].  At this point, the LHCP/UAP can view  a list of laboratory procedures without results and can choose to edit the results and commentary (see Data Format 5.10).. The list is sorted by dates (the later date is ranked earlier). The event is logged [UC5, S25].
+
+== 22.4 Alternative Flows: ==
+  * [E1] The LHCP types an invalid medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient. The LHCP does not confirm the selection and is prompted to try again.
+
+==== UC23 Take satisfaction survey Use Case ====
+
+== 23.1 Precondition: ==
+A patient is a registered user of the iTrust Medical Records system [UC1]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].   
+
+== 23.2 Main Flow: ==
+A patient or personal health representative can answer any of the following questions relative to a previously-chosen (in UC9) office visit.
+  * How many minutes did you wait in the waiting room?
+  * How many minutes did you wait in the examination room before seeing your physician?
+  * On a scale from 1 (very unhappy) to 5 (very satisfied): How satisfied were you with your office visit?
+  * On a scale from 1 (very unhappy) to 5 (very satisfied): How satisfied were you with the treatment or information you received?
+
+The answers to the survey are stored. The event is logged [UC5, S26]
+
+== 23.3 Sub-flows: ==
+None.
+
+== 23.4 Alternative Flows: ==
+None.
+
+
+
+
+==== UC24 View physician satisfaction report Use Case ====
+
+== 24.1 Precondition: ==
+A user is a registered user of the iTrust Medical Records system [UC1]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].
+
+== 24.2 Main Flow: ==
+A user chooses to view a physician satisfaction report. The patient provides a zip code [E1] and a physician type (from a pull-down list: general, surgeon, heart specialist, pediatrician, OB/GYN). The patient is provided with the following for each physician of that type that practices in a zip code (based upon the address/zipcode provided in UC2) that match the first three digits of the provided zip code:
+    * Name
+    * Address
+    * Average number of minutes patients wait in waiting room
+    * Average number of minutes patiens wait in examination room prior to seeing physician
+    * Average office visit satisfaction
+    * Average satisfaction with treatment/information
+    * % of office visits for which satisfaction information is available
+
+The event is logged [UC5, S27].
+
+== 24.3 Sub-flows: ==
+
+== 24.4 Alternative Flows: ==
+  * [E1] The input is not a valid zip code.
+
+
+
+==== 5.10 Laboratory History ==== 
+
+^ Field ^ Format ^
+| Patient MID | Unique 10-digit number that does not start with 9 |
+| Laboratory Procedure ID | Unique identifier associate with laboratory procedure |
+| Laboratory Procedure Type | CPT-4/HCPCS code |
+| Results | Up to 20 alphanumeric characters |
+| Commentary | Up to 50 alphanumeric characters |
+| Office Visit/Phone Consultation ID | Identifier that specifies the office visit/phone consultation in which the laboratory procedure was ordered |
+| Date Procedure Performed | Date |
+| Date Initially Viewed by LHCP | null or Date |
+| Date Initially Viewed by Patient/Personal Health Representative| null or Date |
+
+===== 5. Constraints =====
+
+== 5.1 Language ==
+The system shall be implemented as a Java Server Page web application.
+
+== 5.2 Coding Standards ==
+The implementation shall adhere to the Java Coding Standards.
+
+== 5.3 Documentation ==
+    * All new code shall be documented using the Javadoc documentation system.
+    * **The system must have a Privacy Policy that adheres to this Privacy Policy template.**
+
+== 5.4 Environment ==
+The implementation shall run on the Windows platform in the Eclipse 3.3 environment.
+
+== 5.5 Testing ==
+**Each use case must have at least three automated tests.  These tests must pass. **All non-GUI classes must have at least 80% unit testing/JUnit coverage of tests that pass.
+
+== 5.6 Database ==
+To control open connections to the database, all database access should be done through an object that uses the Singleton pattern.  
+
+== 5.7 Patterns ==
+The implementation must use the Strategy pattern for epidemic detection and cause-of-death trends, the Singleton pattern for database connections, the Factory Method pattern for the View emergency report functionality, **and one additional pattern (other than the singleton and strategy patterns) of the team's choice.**
+
+== 5.8 Static Analysis ==
+The application should have no true positive Severe or Medium FindBugs errors.
+
+== 5.9  Bug Fixing ==
+**The system should have no open bugs. All bugs should be closed.**
+
+
+
+
+----
+
+
+=====Requirements that are not currently implemented but sound like great features=====
+
+
+Change Appointments Use Case to involve representatives
+
+====UC1 Create and Disable Patients Use Case====
+1.1 Preconditions:
+
+The iTrust HCP has authenticated himself or herself in the iTrust Medical Records system [UC3].
+1.2 Main Flow:
+
+An HCP creates patients [S1] and disables patients [S2].
+1.3 Sub-flows:
+
+    * [S1] The HCP enters a patient as a new user of iTrust Medical Records system according to data format 5.4 with all initial values (except patient MID) defaulting to null and/or 0 as appropriate. Patient MID should be the number assigned when the patient is added to the system and cannot be edited. For a new baby (just born), the HCP enters the **mother’s MID (mandatory)** and the father’s MID (as available). **The mother (mandatory) and father (as available) are automatically declared personal representatives of a baby. The HCP who added the new user is automatically a DLHCP [UC5] of the new user. If the new user is added by an UAP, the UAP is prompted to supply a MID of a LHCP with which the UAP is associated with [S3, E1].** The HCP does not have the ability to enter/edit/view the patient’s security question/password.
+    * [S2] **The HCP provides a deceased date (data format 5.4), which automatically disables the password of a patient when a patient passes away. Henceforth, only HCP and personal representatives of the patient can access the patient’s medical records. An optional diagnosis code is entered as the cause of death. [S3]**
+    * [S3] The create/disable patients and HCP transaction is logged [UC4].
+
+
+
+
+==== UC2 Create, Disable, and Edit Personnel Use Case ====
+
+== 2.1 Preconditions: ==
+The iTrust Admin has authenticated himself or herself in the iTrust Medical Records system [UC3].
+
+== 2.2 Main Flow: ==
+An admin creates [S1] **or disables** [S7] a LHCP. A LHCP creates [S3] **said something about disabling and reactivating here** UAPs. Once entered, the enterer/editor is presented a screen of the input to approve [E2]. 
+
+== 2.3 Sub-flows: ==
+  * [S1] An administrator enters a LHCP as a user of iTrust Medical Records system according to Data Format 5.2 (all fields mandatory except for associated MID and Street Address 2) [S6, E1]. The administrator shall be allowed to assign a LHCP to multiple hospitals, and the administrator can choose among only the hospitals provided in the hospital list pull down menu. The hospital ID numbers for a LHCP are stored in the Medical Care Personnel Affiliation database (data format 5.11).
+  * **[S2] The administrator disables a LHCP when their employment discontinues or the LHCP license is suspended or revoked. [S6]  The LHCP is deleted from the records of all UAP, and the UAP is disabled if he/she now has no associated LHCP. **
+  * [S3] A LHCP enters an UAP as a user of iTrust Medical Records system according to data format 5.2 (all fields mandatory; the medical identification number of the licensed health care professional entering the personnel is recorded as the associated medical identification number) [S6, E1].
+  * **[S4] A LHCP reactivates/re-enables a UAP by entering his or her existing MID [S6,E3].
+  * [S5] The LHCP disables an UAP when their employment discontinues. [S6]**
+  * [S6] The create/disable patients and HCP transaction is logged [UC4].    
+== 2.4 Alternative Flows: ==
+  * [E1] The system prompts the enterer/editor to correct the format of a required data field because the input of that data field does not match that specified in data format 5.2, for HCPs,.
+  * [E2] The enterer/editor is presented with the name of the user and determines if it is invalid or not the right person. The enterer/editor is prompted to try again.
+
+
+
+==== UC11 Document office visit and/or phone consultation Use Case ====
+
+== 11.1 Precondition: == 
+An HCP is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].
+
+== 11.2 Main Flow: == 
+An HCP chooses to document an office visit [S1]. 
+
+== 11.3 Sub-flows: ==
+  * [S1] The HCP enters a MID [E1] of a patient and confirms their input [E2].  The HCP document the notes (text) of an office visit, providing the date of the office visit, and their own medical identification number if they are a LHCP **or the MID of the associated LHCP if it is an UAP**. Additionally, the HCP can document one or more diagnoses (ICD-9CM code), one or more medical procedures (CPT-4/HCPCS code) performed, and one or more medications (NDC, see Data Format 5.6) prescribed from appropriate pull-down lists.  The HCP can view the prescription report [UC19, S3] of the selected office visit, which is the current office visit. The HCP can indicate if the patient is allowed to restrict access to the diagnosis information. HCPs can return to an office visit and alter the fields of the office visit [text, diagnoses, medical procedures, medications]. The event is logged [UC5, S8].
+
+
+== 11.4 Alternative Flows: ==
+  * [E1] The HCP types an invalid medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient.  The health care personnel does not confirm the selection and is prompted to try again.
+
+
+
+
+
+==== 6.2 Medical Care Personnel ==== 
+^ Field ^ Format ^
+| Medical identification number (MID) | Unique 10-digit number that begins with 9 |
+| Associated medical identification number | Required for unlicensed authorized personnel:  10-digit number that begins with 9 of the set of LHCPs he or she is associated with [editable only by LHCP] |
+| Role | "Administrator", "Licensed health care professional", "Unlicensed authorized personnel" (admin, hcp, uap) |
+| **LHCP Type** | **For LHCP only: "General" "Surgeon" "Heart Specialist" "Pediatrician" "OB/GYN"** |
+| Last Name | Up to 20 alpha characters and symbol - and ' |
+| First Name | Up to 20 alpha characters and symbol - and ' |
+| Security question | Up to 50 alphanumeric characters, blankspace, and symbols: ? [move to users table] |
+| Security answer | Up to 30 alphanumeric characters [move to users table] |
+| Street Address 1 | Up to 30 alphanumeric characters and symbol: . |
+| Street Address 2 | Up to 30 alphanumeric characters and symbol: . (optional field) |
+| City | Up to 15 alphanumeric characters |
+| State | Approved 2-letter state abbreviation |
+| Zip Code | 5 integers - 4 integers (the latter part -- 4 integers -- is optional) |
+| Phone | 3 integers - 3 integers - 4 integers |
+| Password | 8-20 alphanumeric characters |
+
+
+**Table 5.4.2**
+^ Field ^ Format ^
+| Height | Up to 2-digit number+ up to 1 decimal place (inches).|
+| Weight | Up to 4-digit number + up to 1 decimal place  (pounds). |
+| **Marital Status | Choose from Married, Single, Divorced, Separated. **|
+| Blood pressure | Up to 3-digit number / Up to 3-digit number |
+| Cholesterol | HDL [integer less than 90], triglyceride [integer between 100 and 600], LDL [integer between 0 and 600] and the total cholesterol [integer between 100 and 600]. |
+| Smoker | (Yes/No) |

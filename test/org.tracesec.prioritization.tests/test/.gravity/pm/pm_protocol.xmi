@@ -1,0 +1,2737 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org.moflon.tgg.runtime:PrecedenceStructure xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.moflon.tgg.runtime="platform:/plugin/org.moflon.tgg.runtime/model/Runtime.ecore">
+  <tripleMatches children="//@tripleMatches.25 //@tripleMatches.18 //@tripleMatches.15 //@tripleMatches.14 //@tripleMatches.13 //@tripleMatches.11 //@tripleMatches.8 //@tripleMatches.6 //@tripleMatches.5 //@tripleMatches.4 //@tripleMatches.3 //@tripleMatches.2 //@tripleMatches.1" ruleName="ModelToPg" number="30">
+    <sourceElements href="../modisco.xmi#/"/>
+    <nodeMappings nodeName="mModelToTPG">
+      <node href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tPG">
+      <node href="pm.xmi#/"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mModel">
+      <node href="../modisco.xmi#/"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="../modisco.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#/"/>
+    <correspondenceElements href="#//@tripleMatches.0/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <correspondenceElements href="#//@tripleMatches.0/@containedEdges.1"/>
+    <createdElements href="pm.xmi#/"/>
+    <createdElements href="../modisco.xmi#/"/>
+    <createdElements href="#//@tripleMatches.0/@containedEdges.0"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <createdElements href="#//@tripleMatches.0/@containedEdges.1"/>
+  </tripleMatches>
+  <tripleMatches children="//@tripleMatches.7" ruleName="MethodName" number="31">
+    <sourceElements href="../modisco.xmi#//@mMethodNames.0"/>
+    <sourceElements href="#//@tripleMatches.1/@containedEdges.7"/>
+    <sourceElements href="../modisco.xmi#/"/>
+    <contextElements href="pm.xmi#/"/>
+    <contextElements href="../modisco.xmi#/"/>
+    <contextElements href="#//@tripleMatches.1/@containedEdges.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <contextElements href="#//@tripleMatches.1/@containedEdges.1"/>
+    <nodeMappings nodeName="modelToPg">
+      <node href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mNameToTName">
+      <node href="pm_correspondence_model.xmi#//@correspondences.1"/>
+    </nodeMappings>
+    <nodeMappings nodeName="pg">
+      <node href="pm.xmi#/"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tName">
+      <node href="pm.xmi#//@methods.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mName">
+      <node href="../modisco.xmi#//@mMethodNames.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mModel">
+      <node href="../modisco.xmi#/"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="../modisco.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="mMethodNames">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@mMethodNames.0"/>
+    </containedEdges>
+    <containedEdges name="model">
+      <src href="pm.xmi#//@methods.0"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="methods">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@methods.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.1"/>
+      <trg href="pm.xmi#//@methods.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.1"/>
+      <trg href="../modisco.xmi#//@mMethodNames.0"/>
+    </containedEdges>
+    <containedEdges name="mMethodNames">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@mMethodNames.0"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#/"/>
+    <targetElements href="#//@tripleMatches.1/@containedEdges.3"/>
+    <targetElements href="#//@tripleMatches.1/@containedEdges.4"/>
+    <targetElements href="pm.xmi#//@methods.0"/>
+    <correspondenceElements href="#//@tripleMatches.1/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.1"/>
+    <correspondenceElements href="#//@tripleMatches.1/@containedEdges.1"/>
+    <correspondenceElements href="#//@tripleMatches.1/@containedEdges.6"/>
+    <correspondenceElements href="#//@tripleMatches.1/@containedEdges.5"/>
+    <createdElements href="../modisco.xmi#//@mMethodNames.0"/>
+    <createdElements href="#//@tripleMatches.1/@containedEdges.2"/>
+    <createdElements href="#//@tripleMatches.1/@containedEdges.3"/>
+    <createdElements href="#//@tripleMatches.1/@containedEdges.4"/>
+    <createdElements href="pm.xmi#//@methods.0"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.1"/>
+    <createdElements href="#//@tripleMatches.1/@containedEdges.5"/>
+    <createdElements href="#//@tripleMatches.1/@containedEdges.6"/>
+  </tripleMatches>
+  <tripleMatches ruleName="PrimitiveTypeIsFloat" number="32">
+    <sourceElements href="../modisco.xmi#//@orphanTypes.2"/>
+    <sourceElements href="../modisco.xmi#/"/>
+    <sourceElements href="#//@tripleMatches.2/@containedEdges.8"/>
+    <contextElements href="pm.xmi#/"/>
+    <contextElements href="../modisco.xmi#/"/>
+    <contextElements href="#//@tripleMatches.2/@containedEdges.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <contextElements href="#//@tripleMatches.2/@containedEdges.1"/>
+    <nodeMappings nodeName="ePrimitiveType">
+      <node href="../modisco.xmi#//@orphanTypes.2"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModelToTypeGraph">
+      <node href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeGraph">
+      <node href="pm.xmi#/"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeToTAbstractType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.2"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tPrimitiveClass">
+      <node href="pm.xmi#//@ownedTypes.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModel">
+      <node href="../modisco.xmi#/"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="../modisco.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.2"/>
+      <trg href="pm.xmi#//@ownedTypes.0"/>
+    </containedEdges>
+    <containedEdges name="model">
+      <src href="pm.xmi#//@ownedTypes.0"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="classes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.0"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.2"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.2"/>
+      <trg href="../modisco.xmi#//@orphanTypes.2"/>
+    </containedEdges>
+    <containedEdges name="ownedTypes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.0"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.2"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#/"/>
+    <targetElements href="#//@tripleMatches.2/@containedEdges.3"/>
+    <targetElements href="pm.xmi#//@ownedTypes.0"/>
+    <targetElements href="#//@tripleMatches.2/@containedEdges.4"/>
+    <targetElements href="#//@tripleMatches.2/@containedEdges.7"/>
+    <correspondenceElements href="#//@tripleMatches.2/@containedEdges.2"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.2"/>
+    <correspondenceElements href="#//@tripleMatches.2/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <correspondenceElements href="#//@tripleMatches.2/@containedEdges.1"/>
+    <correspondenceElements href="#//@tripleMatches.2/@containedEdges.6"/>
+    <createdElements href="../modisco.xmi#//@orphanTypes.2"/>
+    <createdElements href="#//@tripleMatches.2/@containedEdges.2"/>
+    <createdElements href="#//@tripleMatches.2/@containedEdges.3"/>
+    <createdElements href="pm.xmi#//@ownedTypes.0"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.2"/>
+    <createdElements href="#//@tripleMatches.2/@containedEdges.4"/>
+    <createdElements href="#//@tripleMatches.2/@containedEdges.5"/>
+    <createdElements href="#//@tripleMatches.2/@containedEdges.6"/>
+    <createdElements href="#//@tripleMatches.2/@containedEdges.7"/>
+  </tripleMatches>
+  <tripleMatches ruleName="PrimitiveTypeIsInt" number="33">
+    <sourceElements href="../modisco.xmi#//@orphanTypes.0"/>
+    <sourceElements href="../modisco.xmi#/"/>
+    <sourceElements href="#//@tripleMatches.3/@containedEdges.8"/>
+    <contextElements href="pm.xmi#/"/>
+    <contextElements href="../modisco.xmi#/"/>
+    <contextElements href="#//@tripleMatches.3/@containedEdges.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <contextElements href="#//@tripleMatches.3/@containedEdges.1"/>
+    <nodeMappings nodeName="ePrimitiveType">
+      <node href="../modisco.xmi#//@orphanTypes.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModelToTypeGraph">
+      <node href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeGraph">
+      <node href="pm.xmi#/"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeToTAbstractType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.3"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tPrimitiveClass">
+      <node href="pm.xmi#//@ownedTypes.1"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModel">
+      <node href="../modisco.xmi#/"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="../modisco.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="classes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.1"/>
+    </containedEdges>
+    <containedEdges name="model">
+      <src href="pm.xmi#//@ownedTypes.1"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.3"/>
+      <trg href="../modisco.xmi#//@orphanTypes.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.3"/>
+      <trg href="pm.xmi#//@ownedTypes.1"/>
+    </containedEdges>
+    <containedEdges name="ownedTypes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.1"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.0"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.0"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#/"/>
+    <targetElements href="pm.xmi#//@ownedTypes.1"/>
+    <targetElements href="#//@tripleMatches.3/@containedEdges.2"/>
+    <targetElements href="#//@tripleMatches.3/@containedEdges.3"/>
+    <targetElements href="#//@tripleMatches.3/@containedEdges.6"/>
+    <correspondenceElements href="#//@tripleMatches.3/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <correspondenceElements href="#//@tripleMatches.3/@containedEdges.4"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.3"/>
+    <correspondenceElements href="#//@tripleMatches.3/@containedEdges.5"/>
+    <correspondenceElements href="#//@tripleMatches.3/@containedEdges.1"/>
+    <createdElements href="../modisco.xmi#//@orphanTypes.0"/>
+    <createdElements href="pm.xmi#//@ownedTypes.1"/>
+    <createdElements href="#//@tripleMatches.3/@containedEdges.2"/>
+    <createdElements href="#//@tripleMatches.3/@containedEdges.3"/>
+    <createdElements href="#//@tripleMatches.3/@containedEdges.4"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.3"/>
+    <createdElements href="#//@tripleMatches.3/@containedEdges.5"/>
+    <createdElements href="#//@tripleMatches.3/@containedEdges.6"/>
+    <createdElements href="#//@tripleMatches.3/@containedEdges.7"/>
+  </tripleMatches>
+  <tripleMatches ruleName="PrimitiveTypeIsShort" number="34">
+    <sourceElements href="../modisco.xmi#/"/>
+    <sourceElements href="../modisco.xmi#//@orphanTypes.7"/>
+    <sourceElements href="#//@tripleMatches.4/@containedEdges.8"/>
+    <contextElements href="pm.xmi#/"/>
+    <contextElements href="../modisco.xmi#/"/>
+    <contextElements href="#//@tripleMatches.4/@containedEdges.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <contextElements href="#//@tripleMatches.4/@containedEdges.1"/>
+    <nodeMappings nodeName="ePrimitiveType">
+      <node href="../modisco.xmi#//@orphanTypes.7"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModelToTypeGraph">
+      <node href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeGraph">
+      <node href="pm.xmi#/"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeToTAbstractType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.4"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tPrimitiveClass">
+      <node href="pm.xmi#//@ownedTypes.2"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModel">
+      <node href="../modisco.xmi#/"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="../modisco.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="ownedTypes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.2"/>
+    </containedEdges>
+    <containedEdges name="model">
+      <src href="pm.xmi#//@ownedTypes.2"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="classes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.2"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.4"/>
+      <trg href="../modisco.xmi#//@orphanTypes.7"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.7"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.4"/>
+      <trg href="pm.xmi#//@ownedTypes.2"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.7"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#//@ownedTypes.2"/>
+    <targetElements href="pm.xmi#/"/>
+    <targetElements href="#//@tripleMatches.4/@containedEdges.2"/>
+    <targetElements href="#//@tripleMatches.4/@containedEdges.3"/>
+    <targetElements href="#//@tripleMatches.4/@containedEdges.4"/>
+    <correspondenceElements href="#//@tripleMatches.4/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.4"/>
+    <correspondenceElements href="#//@tripleMatches.4/@containedEdges.5"/>
+    <correspondenceElements href="#//@tripleMatches.4/@containedEdges.7"/>
+    <correspondenceElements href="#//@tripleMatches.4/@containedEdges.1"/>
+    <createdElements href="pm.xmi#//@ownedTypes.2"/>
+    <createdElements href="#//@tripleMatches.4/@containedEdges.2"/>
+    <createdElements href="../modisco.xmi#//@orphanTypes.7"/>
+    <createdElements href="#//@tripleMatches.4/@containedEdges.3"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.4"/>
+    <createdElements href="#//@tripleMatches.4/@containedEdges.4"/>
+    <createdElements href="#//@tripleMatches.4/@containedEdges.5"/>
+    <createdElements href="#//@tripleMatches.4/@containedEdges.6"/>
+    <createdElements href="#//@tripleMatches.4/@containedEdges.7"/>
+  </tripleMatches>
+  <tripleMatches ruleName="PrimitiveTypeIsChar" number="35">
+    <sourceElements href="../modisco.xmi#//@orphanTypes.6"/>
+    <sourceElements href="../modisco.xmi#/"/>
+    <sourceElements href="#//@tripleMatches.5/@containedEdges.8"/>
+    <contextElements href="pm.xmi#/"/>
+    <contextElements href="../modisco.xmi#/"/>
+    <contextElements href="#//@tripleMatches.5/@containedEdges.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <contextElements href="#//@tripleMatches.5/@containedEdges.1"/>
+    <nodeMappings nodeName="ePrimitiveType">
+      <node href="../modisco.xmi#//@orphanTypes.6"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModelToTypeGraph">
+      <node href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeGraph">
+      <node href="pm.xmi#/"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeToTAbstractType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.5"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tPrimitiveClass">
+      <node href="pm.xmi#//@ownedTypes.3"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModel">
+      <node href="../modisco.xmi#/"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="../modisco.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.5"/>
+      <trg href="../modisco.xmi#//@orphanTypes.6"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.5"/>
+      <trg href="pm.xmi#//@ownedTypes.3"/>
+    </containedEdges>
+    <containedEdges name="ownedTypes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.3"/>
+    </containedEdges>
+    <containedEdges name="model">
+      <src href="pm.xmi#//@ownedTypes.3"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="classes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.3"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.6"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.6"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#//@ownedTypes.3"/>
+    <targetElements href="pm.xmi#/"/>
+    <targetElements href="#//@tripleMatches.5/@containedEdges.4"/>
+    <targetElements href="#//@tripleMatches.5/@containedEdges.5"/>
+    <targetElements href="#//@tripleMatches.5/@containedEdges.6"/>
+    <correspondenceElements href="#//@tripleMatches.5/@containedEdges.2"/>
+    <correspondenceElements href="#//@tripleMatches.5/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <correspondenceElements href="#//@tripleMatches.5/@containedEdges.3"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.5"/>
+    <correspondenceElements href="#//@tripleMatches.5/@containedEdges.1"/>
+    <createdElements href="pm.xmi#//@ownedTypes.3"/>
+    <createdElements href="../modisco.xmi#//@orphanTypes.6"/>
+    <createdElements href="#//@tripleMatches.5/@containedEdges.2"/>
+    <createdElements href="#//@tripleMatches.5/@containedEdges.3"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.5"/>
+    <createdElements href="#//@tripleMatches.5/@containedEdges.4"/>
+    <createdElements href="#//@tripleMatches.5/@containedEdges.5"/>
+    <createdElements href="#//@tripleMatches.5/@containedEdges.6"/>
+    <createdElements href="#//@tripleMatches.5/@containedEdges.7"/>
+  </tripleMatches>
+  <tripleMatches children="//@tripleMatches.16 //@tripleMatches.12 //@tripleMatches.9 //@tripleMatches.7" ruleName="PrimitiveTypesIsVoid" number="36">
+    <sourceElements href="../modisco.xmi#/"/>
+    <sourceElements href="../modisco.xmi#//@orphanTypes.5"/>
+    <sourceElements href="#//@tripleMatches.6/@containedEdges.8"/>
+    <contextElements href="pm.xmi#/"/>
+    <contextElements href="../modisco.xmi#/"/>
+    <contextElements href="#//@tripleMatches.6/@containedEdges.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <contextElements href="#//@tripleMatches.6/@containedEdges.1"/>
+    <nodeMappings nodeName="ePrimitiveType">
+      <node href="../modisco.xmi#//@orphanTypes.5"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModelToTypeGraph">
+      <node href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeGraph">
+      <node href="pm.xmi#/"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeToTAbstractType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.6"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tPrimitiveClass">
+      <node href="pm.xmi#//@ownedTypes.4"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModel">
+      <node href="../modisco.xmi#/"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="../modisco.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="model">
+      <src href="pm.xmi#//@ownedTypes.4"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="classes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.4"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.6"/>
+      <trg href="pm.xmi#//@ownedTypes.4"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.6"/>
+      <trg href="../modisco.xmi#//@orphanTypes.5"/>
+    </containedEdges>
+    <containedEdges name="ownedTypes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.4"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.5"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.5"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#/"/>
+    <targetElements href="#//@tripleMatches.6/@containedEdges.2"/>
+    <targetElements href="pm.xmi#//@ownedTypes.4"/>
+    <targetElements href="#//@tripleMatches.6/@containedEdges.3"/>
+    <targetElements href="#//@tripleMatches.6/@containedEdges.6"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.6"/>
+    <correspondenceElements href="#//@tripleMatches.6/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <correspondenceElements href="#//@tripleMatches.6/@containedEdges.4"/>
+    <correspondenceElements href="#//@tripleMatches.6/@containedEdges.5"/>
+    <correspondenceElements href="#//@tripleMatches.6/@containedEdges.1"/>
+    <createdElements href="#//@tripleMatches.6/@containedEdges.2"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.6"/>
+    <createdElements href="pm.xmi#//@ownedTypes.4"/>
+    <createdElements href="../modisco.xmi#//@orphanTypes.5"/>
+    <createdElements href="#//@tripleMatches.6/@containedEdges.3"/>
+    <createdElements href="#//@tripleMatches.6/@containedEdges.4"/>
+    <createdElements href="#//@tripleMatches.6/@containedEdges.5"/>
+    <createdElements href="#//@tripleMatches.6/@containedEdges.6"/>
+    <createdElements href="#//@tripleMatches.6/@containedEdges.7"/>
+  </tripleMatches>
+  <tripleMatches children="//@tripleMatches.9 //@tripleMatches.23" ruleName="MethodSignature" number="37">
+    <sourceElements href="../modisco.xmi#//@mMethodNames.0"/>
+    <sourceElements href="#//@tripleMatches.7/@containedEdges.13"/>
+    <sourceElements href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    <sourceElements href="../modisco.xmi#//@orphanTypes.5"/>
+    <sourceElements href="#//@tripleMatches.7/@containedEdges.14"/>
+    <contextElements href="../modisco.xmi#//@mMethodNames.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.6"/>
+    <contextElements href="pm.xmi#//@ownedTypes.4"/>
+    <contextElements href="../modisco.xmi#//@orphanTypes.5"/>
+    <contextElements href="#//@tripleMatches.7/@containedEdges.0"/>
+    <contextElements href="#//@tripleMatches.7/@containedEdges.1"/>
+    <contextElements href="pm.xmi#//@methods.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.1"/>
+    <contextElements href="#//@tripleMatches.7/@containedEdges.2"/>
+    <contextElements href="#//@tripleMatches.7/@containedEdges.3"/>
+    <nodeMappings nodeName="tSignature">
+      <node href="pm.xmi#//@methods.0/@signatures.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tAbstractType">
+      <node href="pm.xmi#//@ownedTypes.4"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mTypeToTType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.6"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mNameToTName">
+      <node href="pm_correspondence_model.xmi#//@correspondences.1"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tName">
+      <node href="pm.xmi#//@methods.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mFlowElementToTFlowElement">
+      <node href="pm_correspondence_model.xmi#//@correspondences.7"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mName">
+      <node href="../modisco.xmi#//@mMethodNames.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mSignatureToTSignature">
+      <node href="pm_correspondence_model.xmi#//@correspondences.8"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mSignature">
+      <node href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mType">
+      <node href="../modisco.xmi#//@orphanTypes.5"/>
+    </nodeMappings>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.6"/>
+      <trg href="pm.xmi#//@ownedTypes.4"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.6"/>
+      <trg href="../modisco.xmi#//@orphanTypes.5"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.1"/>
+      <trg href="pm.xmi#//@methods.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.1"/>
+      <trg href="../modisco.xmi#//@mMethodNames.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.8"/>
+      <trg href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.8"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.7"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0"/>
+    </containedEdges>
+    <containedEdges name="method">
+      <src href="pm.xmi#//@methods.0/@signatures.0"/>
+      <trg href="pm.xmi#//@methods.0"/>
+    </containedEdges>
+    <containedEdges name="signatures">
+      <src href="pm.xmi#//@methods.0"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0"/>
+    </containedEdges>
+    <containedEdges name="returnType">
+      <src href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+      <trg href="../modisco.xmi#//@orphanTypes.5"/>
+    </containedEdges>
+    <containedEdges name="mSignatures">
+      <src href="../modisco.xmi#//@mMethodNames.0"/>
+      <trg href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.7"/>
+      <trg href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="returnType">
+      <src href="pm.xmi#//@methods.0/@signatures.0"/>
+      <trg href="pm.xmi#//@ownedTypes.4"/>
+    </containedEdges>
+    <containedEdges name="returnType">
+      <src href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+      <trg href="../modisco.xmi#//@orphanTypes.5"/>
+    </containedEdges>
+    <containedEdges name="mSignatures">
+      <src href="../modisco.xmi#//@mMethodNames.0"/>
+      <trg href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    </containedEdges>
+    <targetElements href="#//@tripleMatches.7/@containedEdges.8"/>
+    <targetElements href="pm.xmi#//@methods.0/@signatures.0"/>
+    <targetElements href="pm.xmi#//@ownedTypes.4"/>
+    <targetElements href="pm.xmi#//@methods.0"/>
+    <targetElements href="#//@tripleMatches.7/@containedEdges.12"/>
+    <targetElements href="#//@tripleMatches.7/@containedEdges.7"/>
+    <correspondenceElements href="#//@tripleMatches.7/@containedEdges.4"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.6"/>
+    <correspondenceElements href="#//@tripleMatches.7/@containedEdges.5"/>
+    <correspondenceElements href="#//@tripleMatches.7/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.7"/>
+    <correspondenceElements href="#//@tripleMatches.7/@containedEdges.6"/>
+    <correspondenceElements href="#//@tripleMatches.7/@containedEdges.1"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.8"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.1"/>
+    <correspondenceElements href="#//@tripleMatches.7/@containedEdges.11"/>
+    <correspondenceElements href="#//@tripleMatches.7/@containedEdges.3"/>
+    <correspondenceElements href="#//@tripleMatches.7/@containedEdges.2"/>
+    <createdElements href="#//@tripleMatches.7/@containedEdges.4"/>
+    <createdElements href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    <createdElements href="#//@tripleMatches.7/@containedEdges.5"/>
+    <createdElements href="pm.xmi#//@methods.0/@signatures.0"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.7"/>
+    <createdElements href="#//@tripleMatches.7/@containedEdges.6"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.8"/>
+    <createdElements href="#//@tripleMatches.7/@containedEdges.7"/>
+    <createdElements href="#//@tripleMatches.7/@containedEdges.8"/>
+    <createdElements href="#//@tripleMatches.7/@containedEdges.9"/>
+    <createdElements href="#//@tripleMatches.7/@containedEdges.10"/>
+    <createdElements href="#//@tripleMatches.7/@containedEdges.11"/>
+    <createdElements href="#//@tripleMatches.7/@containedEdges.12"/>
+  </tripleMatches>
+  <tripleMatches ruleName="PrimitiveTypeIsByte" number="38">
+    <sourceElements href="../modisco.xmi#/"/>
+    <sourceElements href="../modisco.xmi#//@orphanTypes.8"/>
+    <sourceElements href="#//@tripleMatches.8/@containedEdges.8"/>
+    <contextElements href="pm.xmi#/"/>
+    <contextElements href="../modisco.xmi#/"/>
+    <contextElements href="#//@tripleMatches.8/@containedEdges.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <contextElements href="#//@tripleMatches.8/@containedEdges.1"/>
+    <nodeMappings nodeName="ePrimitiveType">
+      <node href="../modisco.xmi#//@orphanTypes.8"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModelToTypeGraph">
+      <node href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeGraph">
+      <node href="pm.xmi#/"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeToTAbstractType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.9"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tPrimitiveClass">
+      <node href="pm.xmi#//@ownedTypes.5"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModel">
+      <node href="../modisco.xmi#/"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="../modisco.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.9"/>
+      <trg href="pm.xmi#//@ownedTypes.5"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.9"/>
+      <trg href="../modisco.xmi#//@orphanTypes.8"/>
+    </containedEdges>
+    <containedEdges name="ownedTypes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.5"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.8"/>
+    </containedEdges>
+    <containedEdges name="model">
+      <src href="pm.xmi#//@ownedTypes.5"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="classes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.5"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.8"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#//@ownedTypes.5"/>
+    <targetElements href="pm.xmi#/"/>
+    <targetElements href="#//@tripleMatches.8/@containedEdges.4"/>
+    <targetElements href="#//@tripleMatches.8/@containedEdges.6"/>
+    <targetElements href="#//@tripleMatches.8/@containedEdges.7"/>
+    <correspondenceElements href="#//@tripleMatches.8/@containedEdges.2"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.9"/>
+    <correspondenceElements href="#//@tripleMatches.8/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <correspondenceElements href="#//@tripleMatches.8/@containedEdges.3"/>
+    <correspondenceElements href="#//@tripleMatches.8/@containedEdges.1"/>
+    <createdElements href="pm.xmi#//@ownedTypes.5"/>
+    <createdElements href="#//@tripleMatches.8/@containedEdges.2"/>
+    <createdElements href="../modisco.xmi#//@orphanTypes.8"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.9"/>
+    <createdElements href="#//@tripleMatches.8/@containedEdges.3"/>
+    <createdElements href="#//@tripleMatches.8/@containedEdges.4"/>
+    <createdElements href="#//@tripleMatches.8/@containedEdges.5"/>
+    <createdElements href="#//@tripleMatches.8/@containedEdges.6"/>
+    <createdElements href="#//@tripleMatches.8/@containedEdges.7"/>
+  </tripleMatches>
+  <tripleMatches children="//@tripleMatches.10 //@tripleMatches.24 //@tripleMatches.23" ruleName="MethodDefinition" number="39">
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@returnType"/>
+    <sourceElements href="#//@tripleMatches.9/@containedEdges.18"/>
+    <sourceElements href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    <sourceElements href="#//@tripleMatches.9/@containedEdges.19"/>
+    <sourceElements href="../modisco.xmi#//@orphanTypes.5"/>
+    <sourceElements href="#//@tripleMatches.9/@containedEdges.20"/>
+    <sourceElements href="#//@tripleMatches.9/@containedEdges.21"/>
+    <sourceElements href="#//@tripleMatches.9/@containedEdges.22"/>
+    <contextElements href="#//@tripleMatches.9/@containedEdges.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.6"/>
+    <contextElements href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    <contextElements href="#//@tripleMatches.9/@containedEdges.1"/>
+    <contextElements href="pm.xmi#//@ownedTypes.4"/>
+    <contextElements href="pm.xmi#//@methods.0/@signatures.0"/>
+    <contextElements href="../modisco.xmi#//@orphanTypes.5"/>
+    <contextElements href="#//@tripleMatches.9/@containedEdges.2"/>
+    <contextElements href="#//@tripleMatches.9/@containedEdges.3"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.8"/>
+    <nodeMappings nodeName="tType">
+      <node href="pm.xmi#//@ownedTypes.4"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mTypeToTType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.6"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mDefinitionToTMember">
+      <node href="pm_correspondence_model.xmi#//@correspondences.10"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tMethodSignature">
+      <node href="pm.xmi#//@methods.0/@signatures.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mSignatureToTMethodSignature">
+      <node href="pm_correspondence_model.xmi#//@correspondences.8"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tDefinition">
+      <node href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mDefinition">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mBodyToTAnnotation">
+      <node href="pm_correspondence_model.xmi#//@correspondences.11"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mFlowElementToTFlowElement">
+      <node href="pm_correspondence_model.xmi#//@correspondences.12"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mTypeAccess">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@returnType"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mType">
+      <node href="../modisco.xmi#//@orphanTypes.5"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mSignature">
+      <node href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.8"/>
+      <trg href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.8"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.6"/>
+      <trg href="pm.xmi#//@ownedTypes.4"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.6"/>
+      <trg href="../modisco.xmi#//@orphanTypes.5"/>
+    </containedEdges>
+    <containedEdges name="mDefinitions">
+      <src href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.11"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.11"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="usagesInTypeAccess">
+      <src href="../modisco.xmi#//@orphanTypes.5"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@returnType"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.12"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.10"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </containedEdges>
+    <containedEdges name="mSignature">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+      <trg href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="definitions">
+      <src href="pm.xmi#//@methods.0/@signatures.0"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.10"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="returnType">
+      <src href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+      <trg href="pm.xmi#//@ownedTypes.4"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.12"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="returnType">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@returnType"/>
+    </containedEdges>
+    <containedEdges name="type">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@returnType"/>
+      <trg href="../modisco.xmi#//@orphanTypes.5"/>
+    </containedEdges>
+    <containedEdges name="signature">
+      <src href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0"/>
+    </containedEdges>
+    <containedEdges name="mSignature">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+      <trg href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="mDefinitions">
+      <src href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </containedEdges>
+    <containedEdges name="returnType">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@returnType"/>
+    </containedEdges>
+    <containedEdges name="type">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@returnType"/>
+      <trg href="../modisco.xmi#//@orphanTypes.5"/>
+    </containedEdges>
+    <containedEdges name="usagesInTypeAccess">
+      <src href="../modisco.xmi#//@orphanTypes.5"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@returnType"/>
+    </containedEdges>
+    <targetElements href="#//@tripleMatches.9/@containedEdges.11"/>
+    <targetElements href="pm.xmi#//@ownedTypes.4"/>
+    <targetElements href="pm.xmi#//@methods.0/@signatures.0"/>
+    <targetElements href="#//@tripleMatches.9/@containedEdges.13"/>
+    <targetElements href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    <targetElements href="#//@tripleMatches.9/@containedEdges.17"/>
+    <correspondenceElements href="#//@tripleMatches.9/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.6"/>
+    <correspondenceElements href="#//@tripleMatches.9/@containedEdges.1"/>
+    <correspondenceElements href="#//@tripleMatches.9/@containedEdges.5"/>
+    <correspondenceElements href="#//@tripleMatches.9/@containedEdges.2"/>
+    <correspondenceElements href="#//@tripleMatches.9/@containedEdges.6"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.8"/>
+    <correspondenceElements href="#//@tripleMatches.9/@containedEdges.8"/>
+    <correspondenceElements href="#//@tripleMatches.9/@containedEdges.9"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.11"/>
+    <correspondenceElements href="#//@tripleMatches.9/@containedEdges.12"/>
+    <correspondenceElements href="#//@tripleMatches.9/@containedEdges.14"/>
+    <correspondenceElements href="#//@tripleMatches.9/@containedEdges.3"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.10"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.12"/>
+    <createdElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@returnType"/>
+    <createdElements href="#//@tripleMatches.9/@containedEdges.4"/>
+    <createdElements href="#//@tripleMatches.9/@containedEdges.5"/>
+    <createdElements href="#//@tripleMatches.9/@containedEdges.6"/>
+    <createdElements href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    <createdElements href="#//@tripleMatches.9/@containedEdges.7"/>
+    <createdElements href="#//@tripleMatches.9/@containedEdges.8"/>
+    <createdElements href="#//@tripleMatches.9/@containedEdges.9"/>
+    <createdElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    <createdElements href="#//@tripleMatches.9/@containedEdges.10"/>
+    <createdElements href="#//@tripleMatches.9/@containedEdges.11"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.11"/>
+    <createdElements href="#//@tripleMatches.9/@containedEdges.12"/>
+    <createdElements href="#//@tripleMatches.9/@containedEdges.13"/>
+    <createdElements href="#//@tripleMatches.9/@containedEdges.14"/>
+    <createdElements href="#//@tripleMatches.9/@containedEdges.15"/>
+    <createdElements href="#//@tripleMatches.9/@containedEdges.16"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.10"/>
+    <createdElements href="#//@tripleMatches.9/@containedEdges.17"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.12"/>
+  </tripleMatches>
+  <tripleMatches children="//@tripleMatches.20 //@tripleMatches.17" ruleName="MethodInvocation" number="40">
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+    <sourceElements href="#//@tripleMatches.10/@containedEdges.9"/>
+    <contextElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    <contextElements href="#//@tripleMatches.10/@containedEdges.0"/>
+    <contextElements href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.10"/>
+    <contextElements href="#//@tripleMatches.10/@containedEdges.1"/>
+    <nodeMappings nodeName="invocation">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mMemberToTMember">
+      <node href="pm_correspondence_model.xmi#//@correspondences.10"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tMember">
+      <node href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tAccess">
+      <node href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mMember">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mFlowElementToTFlowElement">
+      <node href="pm_correspondence_model.xmi#//@correspondences.13"/>
+    </nodeMappings>
+    <nodeMappings nodeName="invocationToTAccess">
+      <node href="pm_correspondence_model.xmi#//@correspondences.14"/>
+    </nodeMappings>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.10"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.10"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.13"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.13"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.14"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="accessing">
+      <src href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.14"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+    </containedEdges>
+    <containedEdges name="mMethodInvocations">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+    </containedEdges>
+    <containedEdges name="mMethodInvocations">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+    </containedEdges>
+    <targetElements href="#//@tripleMatches.10/@containedEdges.5"/>
+    <targetElements href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+    <targetElements href="#//@tripleMatches.10/@containedEdges.6"/>
+    <targetElements href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    <correspondenceElements href="#//@tripleMatches.10/@containedEdges.2"/>
+    <correspondenceElements href="#//@tripleMatches.10/@containedEdges.3"/>
+    <correspondenceElements href="#//@tripleMatches.10/@containedEdges.4"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.13"/>
+    <correspondenceElements href="#//@tripleMatches.10/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.14"/>
+    <correspondenceElements href="#//@tripleMatches.10/@containedEdges.7"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.10"/>
+    <correspondenceElements href="#//@tripleMatches.10/@containedEdges.1"/>
+    <createdElements href="#//@tripleMatches.10/@containedEdges.2"/>
+    <createdElements href="#//@tripleMatches.10/@containedEdges.3"/>
+    <createdElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+    <createdElements href="#//@tripleMatches.10/@containedEdges.4"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.13"/>
+    <createdElements href="#//@tripleMatches.10/@containedEdges.5"/>
+    <createdElements href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+    <createdElements href="#//@tripleMatches.10/@containedEdges.6"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.14"/>
+    <createdElements href="#//@tripleMatches.10/@containedEdges.7"/>
+    <createdElements href="#//@tripleMatches.10/@containedEdges.8"/>
+  </tripleMatches>
+  <tripleMatches children="//@tripleMatches.12" ruleName="MethodName" number="41">
+    <sourceElements href="../modisco.xmi#//@mMethodNames.1"/>
+    <sourceElements href="../modisco.xmi#/"/>
+    <sourceElements href="#//@tripleMatches.11/@containedEdges.7"/>
+    <contextElements href="pm.xmi#/"/>
+    <contextElements href="../modisco.xmi#/"/>
+    <contextElements href="#//@tripleMatches.11/@containedEdges.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <contextElements href="#//@tripleMatches.11/@containedEdges.1"/>
+    <nodeMappings nodeName="modelToPg">
+      <node href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mNameToTName">
+      <node href="pm_correspondence_model.xmi#//@correspondences.15"/>
+    </nodeMappings>
+    <nodeMappings nodeName="pg">
+      <node href="pm.xmi#/"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tName">
+      <node href="pm.xmi#//@methods.1"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mName">
+      <node href="../modisco.xmi#//@mMethodNames.1"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mModel">
+      <node href="../modisco.xmi#/"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="../modisco.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.15"/>
+      <trg href="pm.xmi#//@methods.1"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.15"/>
+      <trg href="../modisco.xmi#//@mMethodNames.1"/>
+    </containedEdges>
+    <containedEdges name="methods">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@methods.1"/>
+    </containedEdges>
+    <containedEdges name="model">
+      <src href="pm.xmi#//@methods.1"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="mMethodNames">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@mMethodNames.1"/>
+    </containedEdges>
+    <containedEdges name="mMethodNames">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@mMethodNames.1"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#/"/>
+    <targetElements href="#//@tripleMatches.11/@containedEdges.4"/>
+    <targetElements href="pm.xmi#//@methods.1"/>
+    <targetElements href="#//@tripleMatches.11/@containedEdges.5"/>
+    <correspondenceElements href="#//@tripleMatches.11/@containedEdges.2"/>
+    <correspondenceElements href="#//@tripleMatches.11/@containedEdges.3"/>
+    <correspondenceElements href="#//@tripleMatches.11/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.15"/>
+    <correspondenceElements href="#//@tripleMatches.11/@containedEdges.1"/>
+    <createdElements href="../modisco.xmi#//@mMethodNames.1"/>
+    <createdElements href="#//@tripleMatches.11/@containedEdges.2"/>
+    <createdElements href="#//@tripleMatches.11/@containedEdges.3"/>
+    <createdElements href="#//@tripleMatches.11/@containedEdges.4"/>
+    <createdElements href="pm.xmi#//@methods.1"/>
+    <createdElements href="#//@tripleMatches.11/@containedEdges.5"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.15"/>
+    <createdElements href="#//@tripleMatches.11/@containedEdges.6"/>
+  </tripleMatches>
+  <tripleMatches children="//@tripleMatches.21 //@tripleMatches.16" ruleName="MethodSignature" number="42">
+    <sourceElements href="../modisco.xmi#//@mMethodNames.1"/>
+    <sourceElements href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    <sourceElements href="../modisco.xmi#//@orphanTypes.5"/>
+    <sourceElements href="#//@tripleMatches.12/@containedEdges.13"/>
+    <sourceElements href="#//@tripleMatches.12/@containedEdges.14"/>
+    <contextElements href="../modisco.xmi#//@mMethodNames.1"/>
+    <contextElements href="#//@tripleMatches.12/@containedEdges.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.6"/>
+    <contextElements href="#//@tripleMatches.12/@containedEdges.1"/>
+    <contextElements href="pm.xmi#//@methods.1"/>
+    <contextElements href="pm.xmi#//@ownedTypes.4"/>
+    <contextElements href="../modisco.xmi#//@orphanTypes.5"/>
+    <contextElements href="#//@tripleMatches.12/@containedEdges.2"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.15"/>
+    <contextElements href="#//@tripleMatches.12/@containedEdges.3"/>
+    <nodeMappings nodeName="tSignature">
+      <node href="pm.xmi#//@methods.1/@signatures.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tAbstractType">
+      <node href="pm.xmi#//@ownedTypes.4"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mTypeToTType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.6"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mNameToTName">
+      <node href="pm_correspondence_model.xmi#//@correspondences.15"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tName">
+      <node href="pm.xmi#//@methods.1"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mFlowElementToTFlowElement">
+      <node href="pm_correspondence_model.xmi#//@correspondences.16"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mName">
+      <node href="../modisco.xmi#//@mMethodNames.1"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mSignatureToTSignature">
+      <node href="pm_correspondence_model.xmi#//@correspondences.17"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mSignature">
+      <node href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mType">
+      <node href="../modisco.xmi#//@orphanTypes.5"/>
+    </nodeMappings>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.15"/>
+      <trg href="pm.xmi#//@methods.1"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.15"/>
+      <trg href="../modisco.xmi#//@mMethodNames.1"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.6"/>
+      <trg href="pm.xmi#//@ownedTypes.4"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.6"/>
+      <trg href="../modisco.xmi#//@orphanTypes.5"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.16"/>
+      <trg href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.17"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0"/>
+    </containedEdges>
+    <containedEdges name="signatures">
+      <src href="pm.xmi#//@methods.1"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.17"/>
+      <trg href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="mSignatures">
+      <src href="../modisco.xmi#//@mMethodNames.1"/>
+      <trg href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="returnType">
+      <src href="pm.xmi#//@methods.1/@signatures.0"/>
+      <trg href="pm.xmi#//@ownedTypes.4"/>
+    </containedEdges>
+    <containedEdges name="returnType">
+      <src href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+      <trg href="../modisco.xmi#//@orphanTypes.5"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.16"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0"/>
+    </containedEdges>
+    <containedEdges name="method">
+      <src href="pm.xmi#//@methods.1/@signatures.0"/>
+      <trg href="pm.xmi#//@methods.1"/>
+    </containedEdges>
+    <containedEdges name="returnType">
+      <src href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+      <trg href="../modisco.xmi#//@orphanTypes.5"/>
+    </containedEdges>
+    <containedEdges name="mSignatures">
+      <src href="../modisco.xmi#//@mMethodNames.1"/>
+      <trg href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#//@methods.1/@signatures.0"/>
+    <targetElements href="#//@tripleMatches.12/@containedEdges.9"/>
+    <targetElements href="pm.xmi#//@methods.1"/>
+    <targetElements href="pm.xmi#//@ownedTypes.4"/>
+    <targetElements href="#//@tripleMatches.12/@containedEdges.6"/>
+    <targetElements href="#//@tripleMatches.12/@containedEdges.12"/>
+    <correspondenceElements href="#//@tripleMatches.12/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.6"/>
+    <correspondenceElements href="#//@tripleMatches.12/@containedEdges.4"/>
+    <correspondenceElements href="#//@tripleMatches.12/@containedEdges.5"/>
+    <correspondenceElements href="#//@tripleMatches.12/@containedEdges.1"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.16"/>
+    <correspondenceElements href="#//@tripleMatches.12/@containedEdges.2"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.15"/>
+    <correspondenceElements href="#//@tripleMatches.12/@containedEdges.11"/>
+    <correspondenceElements href="#//@tripleMatches.12/@containedEdges.3"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.17"/>
+    <correspondenceElements href="#//@tripleMatches.12/@containedEdges.7"/>
+    <createdElements href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    <createdElements href="pm.xmi#//@methods.1/@signatures.0"/>
+    <createdElements href="#//@tripleMatches.12/@containedEdges.4"/>
+    <createdElements href="#//@tripleMatches.12/@containedEdges.5"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.16"/>
+    <createdElements href="#//@tripleMatches.12/@containedEdges.6"/>
+    <createdElements href="#//@tripleMatches.12/@containedEdges.7"/>
+    <createdElements href="#//@tripleMatches.12/@containedEdges.8"/>
+    <createdElements href="#//@tripleMatches.12/@containedEdges.9"/>
+    <createdElements href="#//@tripleMatches.12/@containedEdges.10"/>
+    <createdElements href="#//@tripleMatches.12/@containedEdges.11"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.17"/>
+    <createdElements href="#//@tripleMatches.12/@containedEdges.12"/>
+  </tripleMatches>
+  <tripleMatches ruleName="PrimitiveTypeIsLong" number="43">
+    <sourceElements href="../modisco.xmi#//@orphanTypes.1"/>
+    <sourceElements href="../modisco.xmi#/"/>
+    <sourceElements href="#//@tripleMatches.13/@containedEdges.8"/>
+    <contextElements href="pm.xmi#/"/>
+    <contextElements href="../modisco.xmi#/"/>
+    <contextElements href="#//@tripleMatches.13/@containedEdges.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <contextElements href="#//@tripleMatches.13/@containedEdges.1"/>
+    <nodeMappings nodeName="ePrimitiveType">
+      <node href="../modisco.xmi#//@orphanTypes.1"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModelToTypeGraph">
+      <node href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeGraph">
+      <node href="pm.xmi#/"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeToTAbstractType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.18"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tPrimitiveClass">
+      <node href="pm.xmi#//@ownedTypes.6"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModel">
+      <node href="../modisco.xmi#/"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="../modisco.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.18"/>
+      <trg href="pm.xmi#//@ownedTypes.6"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.18"/>
+      <trg href="../modisco.xmi#//@orphanTypes.1"/>
+    </containedEdges>
+    <containedEdges name="classes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.6"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.1"/>
+    </containedEdges>
+    <containedEdges name="model">
+      <src href="pm.xmi#//@ownedTypes.6"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="ownedTypes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.6"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.1"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#/"/>
+    <targetElements href="pm.xmi#//@ownedTypes.6"/>
+    <targetElements href="#//@tripleMatches.13/@containedEdges.4"/>
+    <targetElements href="#//@tripleMatches.13/@containedEdges.6"/>
+    <targetElements href="#//@tripleMatches.13/@containedEdges.7"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.18"/>
+    <correspondenceElements href="#//@tripleMatches.13/@containedEdges.2"/>
+    <correspondenceElements href="#//@tripleMatches.13/@containedEdges.3"/>
+    <correspondenceElements href="#//@tripleMatches.13/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <correspondenceElements href="#//@tripleMatches.13/@containedEdges.1"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.18"/>
+    <createdElements href="#//@tripleMatches.13/@containedEdges.2"/>
+    <createdElements href="#//@tripleMatches.13/@containedEdges.3"/>
+    <createdElements href="../modisco.xmi#//@orphanTypes.1"/>
+    <createdElements href="pm.xmi#//@ownedTypes.6"/>
+    <createdElements href="#//@tripleMatches.13/@containedEdges.4"/>
+    <createdElements href="#//@tripleMatches.13/@containedEdges.5"/>
+    <createdElements href="#//@tripleMatches.13/@containedEdges.6"/>
+    <createdElements href="#//@tripleMatches.13/@containedEdges.7"/>
+  </tripleMatches>
+  <tripleMatches ruleName="PrimitiveTypeIsDouble" number="44">
+    <sourceElements href="#//@tripleMatches.14/@containedEdges.8"/>
+    <sourceElements href="../modisco.xmi#//@orphanTypes.3"/>
+    <sourceElements href="../modisco.xmi#/"/>
+    <contextElements href="pm.xmi#/"/>
+    <contextElements href="../modisco.xmi#/"/>
+    <contextElements href="#//@tripleMatches.14/@containedEdges.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <contextElements href="#//@tripleMatches.14/@containedEdges.1"/>
+    <nodeMappings nodeName="ePrimitiveType">
+      <node href="../modisco.xmi#//@orphanTypes.3"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModelToTypeGraph">
+      <node href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeGraph">
+      <node href="pm.xmi#/"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeToTAbstractType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.19"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tPrimitiveClass">
+      <node href="pm.xmi#//@ownedTypes.7"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModel">
+      <node href="../modisco.xmi#/"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="../modisco.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="classes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.7"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.19"/>
+      <trg href="pm.xmi#//@ownedTypes.7"/>
+    </containedEdges>
+    <containedEdges name="model">
+      <src href="pm.xmi#//@ownedTypes.7"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.3"/>
+    </containedEdges>
+    <containedEdges name="ownedTypes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.7"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.19"/>
+      <trg href="../modisco.xmi#//@orphanTypes.3"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.3"/>
+    </containedEdges>
+    <targetElements href="#//@tripleMatches.14/@containedEdges.2"/>
+    <targetElements href="#//@tripleMatches.14/@containedEdges.4"/>
+    <targetElements href="pm.xmi#/"/>
+    <targetElements href="#//@tripleMatches.14/@containedEdges.6"/>
+    <targetElements href="pm.xmi#//@ownedTypes.7"/>
+    <correspondenceElements href="#//@tripleMatches.14/@containedEdges.3"/>
+    <correspondenceElements href="#//@tripleMatches.14/@containedEdges.7"/>
+    <correspondenceElements href="#//@tripleMatches.14/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.19"/>
+    <correspondenceElements href="#//@tripleMatches.14/@containedEdges.1"/>
+    <createdElements href="#//@tripleMatches.14/@containedEdges.2"/>
+    <createdElements href="#//@tripleMatches.14/@containedEdges.3"/>
+    <createdElements href="#//@tripleMatches.14/@containedEdges.4"/>
+    <createdElements href="#//@tripleMatches.14/@containedEdges.5"/>
+    <createdElements href="#//@tripleMatches.14/@containedEdges.6"/>
+    <createdElements href="../modisco.xmi#//@orphanTypes.3"/>
+    <createdElements href="#//@tripleMatches.14/@containedEdges.7"/>
+    <createdElements href="pm.xmi#//@ownedTypes.7"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.19"/>
+  </tripleMatches>
+  <tripleMatches children="//@tripleMatches.18" ruleName="PackageToPGPackage" number="45">
+    <sourceElements href="#//@tripleMatches.15/@containedEdges.8"/>
+    <sourceElements href="../modisco.xmi#/"/>
+    <sourceElements href="../modisco.xmi#//@ownedElements.0"/>
+    <sourceElements href="#//@tripleMatches.15/@containedEdges.9"/>
+    <contextElements href="pm.xmi#/"/>
+    <contextElements href="../modisco.xmi#/"/>
+    <contextElements href="#//@tripleMatches.15/@containedEdges.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <contextElements href="#//@tripleMatches.15/@containedEdges.1"/>
+    <nodeMappings nodeName="mPackageToTPackage">
+      <node href="pm_correspondence_model.xmi#//@correspondences.20"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tPackage">
+      <node href="pm.xmi#//@packages.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mPackage">
+      <node href="../modisco.xmi#//@ownedElements.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeGraph">
+      <node href="pm.xmi#/"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mModel">
+      <node href="../modisco.xmi#/"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mModelToTypeGraph">
+      <node href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="../modisco.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="packages">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@packages.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.20"/>
+      <trg href="../modisco.xmi#//@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="model">
+      <src href="../modisco.xmi#//@ownedElements.0"/>
+      <trg href="../modisco.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="model">
+      <src href="pm.xmi#//@packages.0"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.20"/>
+      <trg href="pm.xmi#//@packages.0"/>
+    </containedEdges>
+    <containedEdges name="ownedElements">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="model">
+      <src href="../modisco.xmi#//@ownedElements.0"/>
+      <trg href="../modisco.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="ownedElements">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@ownedElements.0"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#/"/>
+    <targetElements href="#//@tripleMatches.15/@containedEdges.2"/>
+    <targetElements href="pm.xmi#//@packages.0"/>
+    <targetElements href="#//@tripleMatches.15/@containedEdges.5"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.20"/>
+    <correspondenceElements href="#//@tripleMatches.15/@containedEdges.3"/>
+    <correspondenceElements href="#//@tripleMatches.15/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <correspondenceElements href="#//@tripleMatches.15/@containedEdges.6"/>
+    <correspondenceElements href="#//@tripleMatches.15/@containedEdges.1"/>
+    <createdElements href="#//@tripleMatches.15/@containedEdges.2"/>
+    <createdElements href="pm.xmi#//@packages.0"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.20"/>
+    <createdElements href="#//@tripleMatches.15/@containedEdges.3"/>
+    <createdElements href="#//@tripleMatches.15/@containedEdges.4"/>
+    <createdElements href="#//@tripleMatches.15/@containedEdges.5"/>
+    <createdElements href="../modisco.xmi#//@ownedElements.0"/>
+    <createdElements href="#//@tripleMatches.15/@containedEdges.6"/>
+    <createdElements href="#//@tripleMatches.15/@containedEdges.7"/>
+  </tripleMatches>
+  <tripleMatches children="//@tripleMatches.21 //@tripleMatches.17 //@tripleMatches.22" ruleName="MethodDefinition" number="46">
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1/@returnType"/>
+    <sourceElements href="#//@tripleMatches.16/@containedEdges.18"/>
+    <sourceElements href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    <sourceElements href="../modisco.xmi#//@orphanTypes.5"/>
+    <sourceElements href="#//@tripleMatches.16/@containedEdges.19"/>
+    <sourceElements href="#//@tripleMatches.16/@containedEdges.20"/>
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    <sourceElements href="#//@tripleMatches.16/@containedEdges.21"/>
+    <sourceElements href="#//@tripleMatches.16/@containedEdges.22"/>
+    <contextElements href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    <contextElements href="pm.xmi#//@methods.1/@signatures.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.6"/>
+    <contextElements href="#//@tripleMatches.16/@containedEdges.0"/>
+    <contextElements href="pm.xmi#//@ownedTypes.4"/>
+    <contextElements href="../modisco.xmi#//@orphanTypes.5"/>
+    <contextElements href="#//@tripleMatches.16/@containedEdges.1"/>
+    <contextElements href="#//@tripleMatches.16/@containedEdges.2"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.17"/>
+    <contextElements href="#//@tripleMatches.16/@containedEdges.3"/>
+    <nodeMappings nodeName="tType">
+      <node href="pm.xmi#//@ownedTypes.4"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mTypeToTType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.6"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mDefinitionToTMember">
+      <node href="pm_correspondence_model.xmi#//@correspondences.21"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tMethodSignature">
+      <node href="pm.xmi#//@methods.1/@signatures.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mSignatureToTMethodSignature">
+      <node href="pm_correspondence_model.xmi#//@correspondences.17"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tDefinition">
+      <node href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mDefinition">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mBodyToTAnnotation">
+      <node href="pm_correspondence_model.xmi#//@correspondences.22"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mFlowElementToTFlowElement">
+      <node href="pm_correspondence_model.xmi#//@correspondences.23"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mTypeAccess">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1/@returnType"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mType">
+      <node href="../modisco.xmi#//@orphanTypes.5"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mSignature">
+      <node href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    </nodeMappings>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.17"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.6"/>
+      <trg href="pm.xmi#//@ownedTypes.4"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.6"/>
+      <trg href="../modisco.xmi#//@orphanTypes.5"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.17"/>
+      <trg href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.23"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.21"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.21"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.22"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <containedEdges name="returnType">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1/@returnType"/>
+    </containedEdges>
+    <containedEdges name="returnType">
+      <src href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+      <trg href="pm.xmi#//@ownedTypes.4"/>
+    </containedEdges>
+    <containedEdges name="usagesInTypeAccess">
+      <src href="../modisco.xmi#//@orphanTypes.5"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1/@returnType"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.22"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.23"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <containedEdges name="signature">
+      <src href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0"/>
+    </containedEdges>
+    <containedEdges name="type">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1/@returnType"/>
+      <trg href="../modisco.xmi#//@orphanTypes.5"/>
+    </containedEdges>
+    <containedEdges name="mSignature">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+      <trg href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="definitions">
+      <src href="pm.xmi#//@methods.1/@signatures.0"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="mDefinitions">
+      <src href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <containedEdges name="usagesInTypeAccess">
+      <src href="../modisco.xmi#//@orphanTypes.5"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1/@returnType"/>
+    </containedEdges>
+    <containedEdges name="type">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1/@returnType"/>
+      <trg href="../modisco.xmi#//@orphanTypes.5"/>
+    </containedEdges>
+    <containedEdges name="mSignature">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+      <trg href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="returnType">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1/@returnType"/>
+    </containedEdges>
+    <containedEdges name="mDefinitions">
+      <src href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <targetElements href="#//@tripleMatches.16/@containedEdges.9"/>
+    <targetElements href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    <targetElements href="pm.xmi#//@methods.1/@signatures.0"/>
+    <targetElements href="#//@tripleMatches.16/@containedEdges.13"/>
+    <targetElements href="pm.xmi#//@ownedTypes.4"/>
+    <targetElements href="#//@tripleMatches.16/@containedEdges.16"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.6"/>
+    <correspondenceElements href="#//@tripleMatches.16/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.22"/>
+    <correspondenceElements href="#//@tripleMatches.16/@containedEdges.4"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.21"/>
+    <correspondenceElements href="#//@tripleMatches.16/@containedEdges.5"/>
+    <correspondenceElements href="#//@tripleMatches.16/@containedEdges.6"/>
+    <correspondenceElements href="#//@tripleMatches.16/@containedEdges.1"/>
+    <correspondenceElements href="#//@tripleMatches.16/@containedEdges.7"/>
+    <correspondenceElements href="#//@tripleMatches.16/@containedEdges.3"/>
+    <correspondenceElements href="#//@tripleMatches.16/@containedEdges.11"/>
+    <correspondenceElements href="#//@tripleMatches.16/@containedEdges.12"/>
+    <correspondenceElements href="#//@tripleMatches.16/@containedEdges.2"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.23"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.17"/>
+    <createdElements href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.22"/>
+    <createdElements href="#//@tripleMatches.16/@containedEdges.4"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.21"/>
+    <createdElements href="#//@tripleMatches.16/@containedEdges.5"/>
+    <createdElements href="#//@tripleMatches.16/@containedEdges.6"/>
+    <createdElements href="#//@tripleMatches.16/@containedEdges.7"/>
+    <createdElements href="#//@tripleMatches.16/@containedEdges.8"/>
+    <createdElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1/@returnType"/>
+    <createdElements href="#//@tripleMatches.16/@containedEdges.9"/>
+    <createdElements href="#//@tripleMatches.16/@containedEdges.10"/>
+    <createdElements href="#//@tripleMatches.16/@containedEdges.11"/>
+    <createdElements href="#//@tripleMatches.16/@containedEdges.12"/>
+    <createdElements href="#//@tripleMatches.16/@containedEdges.13"/>
+    <createdElements href="#//@tripleMatches.16/@containedEdges.14"/>
+    <createdElements href="#//@tripleMatches.16/@containedEdges.15"/>
+    <createdElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.23"/>
+    <createdElements href="#//@tripleMatches.16/@containedEdges.16"/>
+    <createdElements href="#//@tripleMatches.16/@containedEdges.17"/>
+  </tripleMatches>
+  <tripleMatches createdElements="//@tripleMatches.17/@containedEdges.4 //@tripleMatches.17/@containedEdges.5 //@tripleMatches.17/@containedEdges.6 //@tripleMatches.17/@containedEdges.7" ruleName="MethodInvocationTarget" number="47">
+    <sourceElements href="#//@tripleMatches.17/@containedEdges.8"/>
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+    <sourceElements href="#//@tripleMatches.17/@containedEdges.9"/>
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    <contextElements href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    <contextElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+    <contextElements href="#//@tripleMatches.17/@containedEdges.0"/>
+    <contextElements href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.21"/>
+    <contextElements href="#//@tripleMatches.17/@containedEdges.1"/>
+    <contextElements href="#//@tripleMatches.17/@containedEdges.2"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.14"/>
+    <contextElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    <contextElements href="#//@tripleMatches.17/@containedEdges.3"/>
+    <nodeMappings nodeName="invocation">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mInvokedMember">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tAccess">
+      <node href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tInvokedMember">
+      <node href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mInvokedMemberToTInvokedMember">
+      <node href="pm_correspondence_model.xmi#//@correspondences.21"/>
+    </nodeMappings>
+    <nodeMappings nodeName="invocationToTAccess">
+      <node href="pm_correspondence_model.xmi#//@correspondences.14"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.14"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.21"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.21"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.14"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+    </containedEdges>
+    <containedEdges name="method">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <containedEdges name="usages">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="accessedBy">
+      <src href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+    </containedEdges>
+    <containedEdges name="method">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <containedEdges name="usages">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    <targetElements href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+    <targetElements href="#//@tripleMatches.17/@containedEdges.6"/>
+    <targetElements href="#//@tripleMatches.17/@containedEdges.7"/>
+    <correspondenceElements href="#//@tripleMatches.17/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.21"/>
+    <correspondenceElements href="#//@tripleMatches.17/@containedEdges.1"/>
+    <correspondenceElements href="#//@tripleMatches.17/@containedEdges.2"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.14"/>
+    <correspondenceElements href="#//@tripleMatches.17/@containedEdges.3"/>
+  </tripleMatches>
+  <tripleMatches children="//@tripleMatches.21 //@tripleMatches.20 //@tripleMatches.19 //@tripleMatches.24 //@tripleMatches.23 //@tripleMatches.22" ruleName="ClassInPackage" number="48">
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    <sourceElements href="../modisco.xmi#//@ownedElements.0"/>
+    <sourceElements href="#//@tripleMatches.18/@containedEdges.15"/>
+    <sourceElements href="#//@tripleMatches.18/@containedEdges.16"/>
+    <contextElements href="pm.xmi#/"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.20"/>
+    <contextElements href="pm.xmi#//@packages.0"/>
+    <contextElements href="#//@tripleMatches.18/@containedEdges.0"/>
+    <contextElements href="#//@tripleMatches.18/@containedEdges.1"/>
+    <contextElements href="../modisco.xmi#//@ownedElements.0"/>
+    <contextElements href="#//@tripleMatches.18/@containedEdges.2"/>
+    <nodeMappings nodeName="mPackageToTPackage">
+      <node href="pm_correspondence_model.xmi#//@correspondences.20"/>
+    </nodeMappings>
+    <nodeMappings nodeName="annotatable2Annotatable">
+      <node href="pm_correspondence_model.xmi#//@correspondences.24"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tPackage">
+      <node href="pm.xmi#//@packages.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tType">
+      <node href="pm.xmi#//@ownedTypes.8"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mPackage">
+      <node href="../modisco.xmi#//@ownedElements.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="pg">
+      <node href="pm.xmi#/"/>
+    </nodeMappings>
+    <nodeMappings nodeName="type2Type">
+      <node href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mType">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.20"/>
+      <trg href="../modisco.xmi#//@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="model">
+      <src href="pm.xmi#//@packages.0"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.20"/>
+      <trg href="pm.xmi#//@packages.0"/>
+    </containedEdges>
+    <containedEdges name="classes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.8"/>
+    </containedEdges>
+    <containedEdges name="ownedTypes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.8"/>
+    </containedEdges>
+    <containedEdges name="ownedTypes">
+      <src href="pm.xmi#//@packages.0"/>
+      <trg href="pm.xmi#//@ownedTypes.8"/>
+    </containedEdges>
+    <containedEdges name="package">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.24"/>
+      <trg href="pm.xmi#//@ownedTypes.8"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.24"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="classes">
+      <src href="pm.xmi#//@packages.0"/>
+      <trg href="pm.xmi#//@ownedTypes.8"/>
+    </containedEdges>
+    <containedEdges name="package">
+      <src href="pm.xmi#//@ownedTypes.8"/>
+      <trg href="pm.xmi#//@packages.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.25"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="model">
+      <src href="pm.xmi#//@ownedTypes.8"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="ownedElements">
+      <src href="../modisco.xmi#//@ownedElements.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.25"/>
+      <trg href="pm.xmi#//@ownedTypes.8"/>
+    </containedEdges>
+    <containedEdges name="ownedElements">
+      <src href="../modisco.xmi#//@ownedElements.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="package">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#/"/>
+    <targetElements href="#//@tripleMatches.18/@containedEdges.10"/>
+    <targetElements href="pm.xmi#//@ownedTypes.8"/>
+    <targetElements href="pm.xmi#//@packages.0"/>
+    <targetElements href="#//@tripleMatches.18/@containedEdges.3"/>
+    <targetElements href="#//@tripleMatches.18/@containedEdges.12"/>
+    <targetElements href="#//@tripleMatches.18/@containedEdges.4"/>
+    <targetElements href="#//@tripleMatches.18/@containedEdges.1"/>
+    <targetElements href="#//@tripleMatches.18/@containedEdges.5"/>
+    <targetElements href="#//@tripleMatches.18/@containedEdges.9"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.20"/>
+    <correspondenceElements href="#//@tripleMatches.18/@containedEdges.11"/>
+    <correspondenceElements href="#//@tripleMatches.18/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    <correspondenceElements href="#//@tripleMatches.18/@containedEdges.2"/>
+    <correspondenceElements href="#//@tripleMatches.18/@containedEdges.7"/>
+    <correspondenceElements href="#//@tripleMatches.18/@containedEdges.8"/>
+    <correspondenceElements href="#//@tripleMatches.18/@containedEdges.14"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.24"/>
+    <createdElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    <createdElements href="#//@tripleMatches.18/@containedEdges.3"/>
+    <createdElements href="#//@tripleMatches.18/@containedEdges.4"/>
+    <createdElements href="#//@tripleMatches.18/@containedEdges.5"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    <createdElements href="#//@tripleMatches.18/@containedEdges.6"/>
+    <createdElements href="#//@tripleMatches.18/@containedEdges.7"/>
+    <createdElements href="#//@tripleMatches.18/@containedEdges.8"/>
+    <createdElements href="#//@tripleMatches.18/@containedEdges.9"/>
+    <createdElements href="#//@tripleMatches.18/@containedEdges.10"/>
+    <createdElements href="pm.xmi#//@ownedTypes.8"/>
+    <createdElements href="#//@tripleMatches.18/@containedEdges.11"/>
+    <createdElements href="#//@tripleMatches.18/@containedEdges.12"/>
+    <createdElements href="#//@tripleMatches.18/@containedEdges.13"/>
+    <createdElements href="#//@tripleMatches.18/@containedEdges.14"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.24"/>
+  </tripleMatches>
+  <tripleMatches ruleName="TypesVisibility" number="49">
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@modifier"/>
+    <sourceElements href="#//@tripleMatches.19/@containedEdges.7"/>
+    <sourceElements href="#//@tripleMatches.19/@containedEdges.8"/>
+    <contextElements href="pm.xmi#//@ownedTypes.8"/>
+    <contextElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    <contextElements href="#//@tripleMatches.19/@containedEdges.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    <contextElements href="#//@tripleMatches.19/@containedEdges.1"/>
+    <nodeMappings nodeName="mTypeToTType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tType">
+      <node href="pm.xmi#//@ownedTypes.8"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mModifierToTModifier">
+      <node href="pm_correspondence_model.xmi#//@correspondences.26"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tModifier">
+      <node href="pm.xmi#//@ownedTypes.8/@tModifier"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mModifier">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@modifier"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mType">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.25"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.25"/>
+      <trg href="pm.xmi#//@ownedTypes.8"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.26"/>
+      <trg href="pm.xmi#//@ownedTypes.8/@tModifier"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.26"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@modifier"/>
+    </containedEdges>
+    <containedEdges name="tModifier">
+      <src href="pm.xmi#//@ownedTypes.8"/>
+      <trg href="pm.xmi#//@ownedTypes.8/@tModifier"/>
+    </containedEdges>
+    <containedEdges name="bodyDeclaration">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@modifier"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="modifier">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@modifier"/>
+    </containedEdges>
+    <containedEdges name="bodyDeclaration">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@modifier"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="modifier">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@modifier"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#//@ownedTypes.8"/>
+    <targetElements href="pm.xmi#//@ownedTypes.8/@tModifier"/>
+    <targetElements href="#//@tripleMatches.19/@containedEdges.4"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.26"/>
+    <correspondenceElements href="#//@tripleMatches.19/@containedEdges.0"/>
+    <correspondenceElements href="#//@tripleMatches.19/@containedEdges.2"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    <correspondenceElements href="#//@tripleMatches.19/@containedEdges.3"/>
+    <correspondenceElements href="#//@tripleMatches.19/@containedEdges.1"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.26"/>
+    <createdElements href="pm.xmi#//@ownedTypes.8/@tModifier"/>
+    <createdElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@modifier"/>
+    <createdElements href="#//@tripleMatches.19/@containedEdges.2"/>
+    <createdElements href="#//@tripleMatches.19/@containedEdges.3"/>
+    <createdElements href="#//@tripleMatches.19/@containedEdges.4"/>
+    <createdElements href="#//@tripleMatches.19/@containedEdges.5"/>
+    <createdElements href="#//@tripleMatches.19/@containedEdges.6"/>
+  </tripleMatches>
+  <tripleMatches createdElements="//@tripleMatches.20/@containedEdges.4 //@tripleMatches.20/@containedEdges.5" ruleName="MethodInvocationStaticType" number="50">
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+    <sourceElements href="#//@tripleMatches.20/@containedEdges.6"/>
+    <contextElements href="pm.xmi#//@ownedTypes.8"/>
+    <contextElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    <contextElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+    <contextElements href="#//@tripleMatches.20/@containedEdges.0"/>
+    <contextElements href="#//@tripleMatches.20/@containedEdges.1"/>
+    <contextElements href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.14"/>
+    <contextElements href="#//@tripleMatches.20/@containedEdges.2"/>
+    <contextElements href="#//@tripleMatches.20/@containedEdges.3"/>
+    <nodeMappings nodeName="invocation">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tStaticType">
+      <node href="pm.xmi#//@ownedTypes.8"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tAccess">
+      <node href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mStaticType">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mStaticTypeTotStaticType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    </nodeMappings>
+    <nodeMappings nodeName="invocationToTAccess">
+      <node href="pm_correspondence_model.xmi#//@correspondences.14"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.25"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.14"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.14"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.25"/>
+      <trg href="pm.xmi#//@ownedTypes.8"/>
+    </containedEdges>
+    <containedEdges name="mStaticType">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="staticType">
+      <src href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+      <trg href="pm.xmi#//@ownedTypes.8"/>
+    </containedEdges>
+    <containedEdges name="mStaticType">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@body/@statements.0/@expression"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#//@ownedTypes.8"/>
+    <targetElements href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+    <targetElements href="#//@tripleMatches.20/@containedEdges.5"/>
+    <correspondenceElements href="#//@tripleMatches.20/@containedEdges.0"/>
+    <correspondenceElements href="#//@tripleMatches.20/@containedEdges.1"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.14"/>
+    <correspondenceElements href="#//@tripleMatches.20/@containedEdges.2"/>
+    <correspondenceElements href="#//@tripleMatches.20/@containedEdges.3"/>
+  </tripleMatches>
+  <tripleMatches createdElements="//@tripleMatches.21/@containedEdges.10 //@tripleMatches.21/@containedEdges.11 //@tripleMatches.21/@containedEdges.12 //@tripleMatches.21/@containedEdges.13 //@tripleMatches.21/@containedEdges.14" children="//@tripleMatches.22" ruleName="LinkDefinitionToType" number="51">
+    <sourceElements href="#//@tripleMatches.21/@containedEdges.15"/>
+    <sourceElements href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    <sourceElements href="#//@tripleMatches.21/@containedEdges.16"/>
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    <sourceElements href="#//@tripleMatches.21/@containedEdges.17"/>
+    <sourceElements href="#//@tripleMatches.21/@containedEdges.18"/>
+    <contextElements href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    <contextElements href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    <contextElements href="pm.xmi#//@methods.1/@signatures.0"/>
+    <contextElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    <contextElements href="#//@tripleMatches.21/@containedEdges.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.21"/>
+    <contextElements href="#//@tripleMatches.21/@containedEdges.1"/>
+    <contextElements href="#//@tripleMatches.21/@containedEdges.2"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    <contextElements href="#//@tripleMatches.21/@containedEdges.3"/>
+    <contextElements href="pm.xmi#//@ownedTypes.8"/>
+    <contextElements href="#//@tripleMatches.21/@containedEdges.4"/>
+    <contextElements href="#//@tripleMatches.21/@containedEdges.5"/>
+    <contextElements href="#//@tripleMatches.21/@containedEdges.6"/>
+    <contextElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.17"/>
+    <contextElements href="#//@tripleMatches.21/@containedEdges.7"/>
+    <contextElements href="#//@tripleMatches.21/@containedEdges.8"/>
+    <contextElements href="#//@tripleMatches.21/@containedEdges.9"/>
+    <nodeMappings nodeName="tSignature">
+      <node href="pm.xmi#//@methods.1/@signatures.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tType">
+      <node href="pm.xmi#//@ownedTypes.8"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mTypeToTType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mDefinitionToTMember">
+      <node href="pm_correspondence_model.xmi#//@correspondences.21"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mDefinition">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tDefinition">
+      <node href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mSignatureToTSignature">
+      <node href="pm_correspondence_model.xmi#//@correspondences.17"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mType">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mSignature">
+      <node href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    </nodeMappings>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.17"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.21"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.21"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.17"/>
+      <trg href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.25"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="signature">
+      <src href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0"/>
+    </containedEdges>
+    <containedEdges name="mSignature">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+      <trg href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="definitions">
+      <src href="pm.xmi#//@methods.1/@signatures.0"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="mDefinitions">
+      <src href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.25"/>
+      <trg href="pm.xmi#//@ownedTypes.8"/>
+    </containedEdges>
+    <containedEdges name="bodyDeclarations">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <containedEdges name="definedBy">
+      <src href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+      <trg href="pm.xmi#//@ownedTypes.8"/>
+    </containedEdges>
+    <containedEdges name="abstractTypeDeclaration">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="signature">
+      <src href="pm.xmi#//@ownedTypes.8"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0"/>
+    </containedEdges>
+    <containedEdges name="defines">
+      <src href="pm.xmi#//@ownedTypes.8"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="bodyDeclarations">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <containedEdges name="mSignature">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+      <trg href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="abstractTypeDeclaration">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="mDefinitions">
+      <src href="../modisco.xmi#//@mMethodNames.1/@mSignatures.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#//@ownedTypes.8"/>
+    <targetElements href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    <targetElements href="pm.xmi#//@methods.1/@signatures.0"/>
+    <targetElements href="#//@tripleMatches.21/@containedEdges.11"/>
+    <targetElements href="#//@tripleMatches.21/@containedEdges.5"/>
+    <targetElements href="#//@tripleMatches.21/@containedEdges.13"/>
+    <targetElements href="#//@tripleMatches.21/@containedEdges.7"/>
+    <targetElements href="#//@tripleMatches.21/@containedEdges.14"/>
+    <correspondenceElements href="#//@tripleMatches.21/@containedEdges.4"/>
+    <correspondenceElements href="#//@tripleMatches.21/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.21"/>
+    <correspondenceElements href="#//@tripleMatches.21/@containedEdges.1"/>
+    <correspondenceElements href="#//@tripleMatches.21/@containedEdges.2"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.17"/>
+    <correspondenceElements href="#//@tripleMatches.21/@containedEdges.3"/>
+    <correspondenceElements href="#//@tripleMatches.21/@containedEdges.9"/>
+  </tripleMatches>
+  <tripleMatches ruleName="MemberInClassVisibility" number="52">
+    <sourceElements href="#//@tripleMatches.22/@containedEdges.13"/>
+    <sourceElements href="#//@tripleMatches.22/@containedEdges.14"/>
+    <sourceElements href="#//@tripleMatches.22/@containedEdges.15"/>
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1/@modifier"/>
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    <sourceElements href="#//@tripleMatches.22/@containedEdges.16"/>
+    <contextElements href="#//@tripleMatches.22/@containedEdges.0"/>
+    <contextElements href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    <contextElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.21"/>
+    <contextElements href="#//@tripleMatches.22/@containedEdges.1"/>
+    <contextElements href="#//@tripleMatches.22/@containedEdges.2"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    <contextElements href="#//@tripleMatches.22/@containedEdges.3"/>
+    <contextElements href="#//@tripleMatches.22/@containedEdges.4"/>
+    <contextElements href="pm.xmi#//@ownedTypes.8"/>
+    <contextElements href="#//@tripleMatches.22/@containedEdges.5"/>
+    <contextElements href="#//@tripleMatches.22/@containedEdges.6"/>
+    <contextElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    <contextElements href="#//@tripleMatches.22/@containedEdges.7"/>
+    <nodeMappings nodeName="tClass">
+      <node href="pm.xmi#//@ownedTypes.8"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mTypeToTType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tMember">
+      <node href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mModifierToTModifier">
+      <node href="pm_correspondence_model.xmi#//@correspondences.27"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tModifier">
+      <node href="pm.xmi#//@methods.1/@signatures.0/@definitions.0/@tModifier"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mModifier">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1/@modifier"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mClass">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="defToMember">
+      <node href="pm_correspondence_model.xmi#//@correspondences.21"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mDefinition">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </nodeMappings>
+    <containedEdges name="bodyDeclarations">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.21"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.21"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <containedEdges name="abstractTypeDeclaration">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="defines">
+      <src href="pm.xmi#//@ownedTypes.8"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.25"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="definedBy">
+      <src href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+      <trg href="pm.xmi#//@ownedTypes.8"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.25"/>
+      <trg href="pm.xmi#//@ownedTypes.8"/>
+    </containedEdges>
+    <containedEdges name="modifier">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1/@modifier"/>
+    </containedEdges>
+    <containedEdges name="bodyDeclaration">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1/@modifier"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.27"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1/@modifier"/>
+    </containedEdges>
+    <containedEdges name="tModifier">
+      <src href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0/@definitions.0/@tModifier"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.27"/>
+      <trg href="pm.xmi#//@methods.1/@signatures.0/@definitions.0/@tModifier"/>
+    </containedEdges>
+    <containedEdges name="bodyDeclarations">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <containedEdges name="modifier">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1/@modifier"/>
+    </containedEdges>
+    <containedEdges name="bodyDeclaration">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1/@modifier"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+    </containedEdges>
+    <containedEdges name="abstractTypeDeclaration">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#//@ownedTypes.8"/>
+    <targetElements href="pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+    <targetElements href="#//@tripleMatches.22/@containedEdges.6"/>
+    <targetElements href="#//@tripleMatches.22/@containedEdges.11"/>
+    <targetElements href="pm.xmi#//@methods.1/@signatures.0/@definitions.0/@tModifier"/>
+    <targetElements href="#//@tripleMatches.22/@containedEdges.4"/>
+    <correspondenceElements href="#//@tripleMatches.22/@containedEdges.5"/>
+    <correspondenceElements href="#//@tripleMatches.22/@containedEdges.10"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.21"/>
+    <correspondenceElements href="#//@tripleMatches.22/@containedEdges.1"/>
+    <correspondenceElements href="#//@tripleMatches.22/@containedEdges.2"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    <correspondenceElements href="#//@tripleMatches.22/@containedEdges.12"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.27"/>
+    <correspondenceElements href="#//@tripleMatches.22/@containedEdges.7"/>
+    <createdElements href="#//@tripleMatches.22/@containedEdges.8"/>
+    <createdElements href="#//@tripleMatches.22/@containedEdges.9"/>
+    <createdElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.1/@modifier"/>
+    <createdElements href="#//@tripleMatches.22/@containedEdges.10"/>
+    <createdElements href="#//@tripleMatches.22/@containedEdges.11"/>
+    <createdElements href="pm.xmi#//@methods.1/@signatures.0/@definitions.0/@tModifier"/>
+    <createdElements href="#//@tripleMatches.22/@containedEdges.12"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.27"/>
+  </tripleMatches>
+  <tripleMatches createdElements="//@tripleMatches.23/@containedEdges.10 //@tripleMatches.23/@containedEdges.11 //@tripleMatches.23/@containedEdges.12 //@tripleMatches.23/@containedEdges.13 //@tripleMatches.23/@containedEdges.14" children="//@tripleMatches.24" ruleName="LinkDefinitionToType" number="53">
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    <sourceElements href="#//@tripleMatches.23/@containedEdges.15"/>
+    <sourceElements href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    <sourceElements href="#//@tripleMatches.23/@containedEdges.16"/>
+    <sourceElements href="#//@tripleMatches.23/@containedEdges.17"/>
+    <sourceElements href="#//@tripleMatches.23/@containedEdges.18"/>
+    <contextElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    <contextElements href="#//@tripleMatches.23/@containedEdges.0"/>
+    <contextElements href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    <contextElements href="#//@tripleMatches.23/@containedEdges.1"/>
+    <contextElements href="#//@tripleMatches.23/@containedEdges.2"/>
+    <contextElements href="pm.xmi#//@methods.0/@signatures.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    <contextElements href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.8"/>
+    <contextElements href="#//@tripleMatches.23/@containedEdges.3"/>
+    <contextElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    <contextElements href="pm.xmi#//@ownedTypes.8"/>
+    <contextElements href="#//@tripleMatches.23/@containedEdges.4"/>
+    <contextElements href="#//@tripleMatches.23/@containedEdges.5"/>
+    <contextElements href="#//@tripleMatches.23/@containedEdges.6"/>
+    <contextElements href="#//@tripleMatches.23/@containedEdges.7"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.10"/>
+    <contextElements href="#//@tripleMatches.23/@containedEdges.8"/>
+    <contextElements href="#//@tripleMatches.23/@containedEdges.9"/>
+    <nodeMappings nodeName="tSignature">
+      <node href="pm.xmi#//@methods.0/@signatures.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tType">
+      <node href="pm.xmi#//@ownedTypes.8"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mTypeToTType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mDefinitionToTMember">
+      <node href="pm_correspondence_model.xmi#//@correspondences.10"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mDefinition">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tDefinition">
+      <node href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mSignatureToTSignature">
+      <node href="pm_correspondence_model.xmi#//@correspondences.8"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mType">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mSignature">
+      <node href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.8"/>
+      <trg href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.8"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0"/>
+    </containedEdges>
+    <containedEdges name="mDefinitions">
+      <src href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.10"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.25"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="mSignature">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+      <trg href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="definitions">
+      <src href="pm.xmi#//@methods.0/@signatures.0"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.10"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="signature">
+      <src href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.25"/>
+      <trg href="pm.xmi#//@ownedTypes.8"/>
+    </containedEdges>
+    <containedEdges name="defines">
+      <src href="pm.xmi#//@ownedTypes.8"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="abstractTypeDeclaration">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="bodyDeclarations">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </containedEdges>
+    <containedEdges name="signature">
+      <src href="pm.xmi#//@ownedTypes.8"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0"/>
+    </containedEdges>
+    <containedEdges name="definedBy">
+      <src href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+      <trg href="pm.xmi#//@ownedTypes.8"/>
+    </containedEdges>
+    <containedEdges name="mSignature">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+      <trg href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+    </containedEdges>
+    <containedEdges name="mDefinitions">
+      <src href="../modisco.xmi#//@mMethodNames.0/@mSignatures.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </containedEdges>
+    <containedEdges name="abstractTypeDeclaration">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="bodyDeclarations">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#//@ownedTypes.8"/>
+    <targetElements href="#//@tripleMatches.23/@containedEdges.10"/>
+    <targetElements href="#//@tripleMatches.23/@containedEdges.6"/>
+    <targetElements href="pm.xmi#//@methods.0/@signatures.0"/>
+    <targetElements href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    <targetElements href="#//@tripleMatches.23/@containedEdges.13"/>
+    <targetElements href="#//@tripleMatches.23/@containedEdges.8"/>
+    <targetElements href="#//@tripleMatches.23/@containedEdges.14"/>
+    <correspondenceElements href="#//@tripleMatches.23/@containedEdges.0"/>
+    <correspondenceElements href="#//@tripleMatches.23/@containedEdges.4"/>
+    <correspondenceElements href="#//@tripleMatches.23/@containedEdges.1"/>
+    <correspondenceElements href="#//@tripleMatches.23/@containedEdges.7"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.8"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.10"/>
+    <correspondenceElements href="#//@tripleMatches.23/@containedEdges.9"/>
+    <correspondenceElements href="#//@tripleMatches.23/@containedEdges.3"/>
+  </tripleMatches>
+  <tripleMatches ruleName="MemberInClassVisibility" number="54">
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@modifier"/>
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    <sourceElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    <sourceElements href="#//@tripleMatches.24/@containedEdges.13"/>
+    <sourceElements href="#//@tripleMatches.24/@containedEdges.14"/>
+    <sourceElements href="#//@tripleMatches.24/@containedEdges.15"/>
+    <sourceElements href="#//@tripleMatches.24/@containedEdges.16"/>
+    <contextElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    <contextElements href="#//@tripleMatches.24/@containedEdges.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    <contextElements href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    <contextElements href="#//@tripleMatches.24/@containedEdges.1"/>
+    <contextElements href="#//@tripleMatches.24/@containedEdges.2"/>
+    <contextElements href="#//@tripleMatches.24/@containedEdges.3"/>
+    <contextElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    <contextElements href="pm.xmi#//@ownedTypes.8"/>
+    <contextElements href="#//@tripleMatches.24/@containedEdges.4"/>
+    <contextElements href="#//@tripleMatches.24/@containedEdges.5"/>
+    <contextElements href="#//@tripleMatches.24/@containedEdges.6"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.10"/>
+    <contextElements href="#//@tripleMatches.24/@containedEdges.7"/>
+    <nodeMappings nodeName="tClass">
+      <node href="pm.xmi#//@ownedTypes.8"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mTypeToTType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tMember">
+      <node href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mModifierToTModifier">
+      <node href="pm_correspondence_model.xmi#//@correspondences.28"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tModifier">
+      <node href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@tModifier"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mModifier">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@modifier"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mClass">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="defToMember">
+      <node href="pm_correspondence_model.xmi#//@correspondences.10"/>
+    </nodeMappings>
+    <nodeMappings nodeName="mDefinition">
+      <node href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </nodeMappings>
+    <containedEdges name="defines">
+      <src href="pm.xmi#//@ownedTypes.8"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="bodyDeclarations">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </containedEdges>
+    <containedEdges name="definedBy">
+      <src href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+      <trg href="pm.xmi#//@ownedTypes.8"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.10"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.25"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.10"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    </containedEdges>
+    <containedEdges name="abstractTypeDeclaration">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.25"/>
+      <trg href="pm.xmi#//@ownedTypes.8"/>
+    </containedEdges>
+    <containedEdges name="tModifier">
+      <src href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@tModifier"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.28"/>
+      <trg href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@tModifier"/>
+    </containedEdges>
+    <containedEdges name="modifier">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@modifier"/>
+    </containedEdges>
+    <containedEdges name="bodyDeclaration">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@modifier"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.28"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@modifier"/>
+    </containedEdges>
+    <containedEdges name="modifier">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@modifier"/>
+    </containedEdges>
+    <containedEdges name="bodyDeclaration">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@modifier"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </containedEdges>
+    <containedEdges name="abstractTypeDeclaration">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+    </containedEdges>
+    <containedEdges name="bodyDeclarations">
+      <src href="../modisco.xmi#//@ownedElements.0/@ownedElements.0"/>
+      <trg href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#//@ownedTypes.8"/>
+    <targetElements href="#//@tripleMatches.24/@containedEdges.8"/>
+    <targetElements href="#//@tripleMatches.24/@containedEdges.0"/>
+    <targetElements href="pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+    <targetElements href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@tModifier"/>
+    <targetElements href="#//@tripleMatches.24/@containedEdges.2"/>
+    <correspondenceElements href="#//@tripleMatches.24/@containedEdges.4"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.28"/>
+    <correspondenceElements href="#//@tripleMatches.24/@containedEdges.9"/>
+    <correspondenceElements href="#//@tripleMatches.24/@containedEdges.12"/>
+    <correspondenceElements href="#//@tripleMatches.24/@containedEdges.5"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.25"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.10"/>
+    <correspondenceElements href="#//@tripleMatches.24/@containedEdges.7"/>
+    <correspondenceElements href="#//@tripleMatches.24/@containedEdges.3"/>
+    <createdElements href="../modisco.xmi#//@ownedElements.0/@ownedElements.0/@bodyDeclarations.0/@modifier"/>
+    <createdElements href="#//@tripleMatches.24/@containedEdges.8"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.28"/>
+    <createdElements href="#//@tripleMatches.24/@containedEdges.9"/>
+    <createdElements href="#//@tripleMatches.24/@containedEdges.10"/>
+    <createdElements href="#//@tripleMatches.24/@containedEdges.11"/>
+    <createdElements href="#//@tripleMatches.24/@containedEdges.12"/>
+    <createdElements href="pm.xmi#//@methods.0/@signatures.0/@definitions.0/@tModifier"/>
+  </tripleMatches>
+  <tripleMatches ruleName="PrimitiveTypeIsBoolean" number="55">
+    <sourceElements href="#//@tripleMatches.25/@containedEdges.8"/>
+    <sourceElements href="../modisco.xmi#//@orphanTypes.4"/>
+    <sourceElements href="../modisco.xmi#/"/>
+    <contextElements href="pm.xmi#/"/>
+    <contextElements href="../modisco.xmi#/"/>
+    <contextElements href="#//@tripleMatches.25/@containedEdges.0"/>
+    <contextElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <contextElements href="#//@tripleMatches.25/@containedEdges.1"/>
+    <nodeMappings nodeName="ePrimitiveType">
+      <node href="../modisco.xmi#//@orphanTypes.4"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModelToTypeGraph">
+      <node href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeGraph">
+      <node href="pm.xmi#/"/>
+    </nodeMappings>
+    <nodeMappings nodeName="typeToTAbstractType">
+      <node href="pm_correspondence_model.xmi#//@correspondences.29"/>
+    </nodeMappings>
+    <nodeMappings nodeName="tPrimitiveClass">
+      <node href="pm.xmi#//@ownedTypes.9"/>
+    </nodeMappings>
+    <nodeMappings nodeName="eModel">
+      <node href="../modisco.xmi#/"/>
+    </nodeMappings>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="../modisco.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.0"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.4"/>
+    </containedEdges>
+    <containedEdges name="classes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.9"/>
+    </containedEdges>
+    <containedEdges name="ownedTypes">
+      <src href="pm.xmi#/"/>
+      <trg href="pm.xmi#//@ownedTypes.9"/>
+    </containedEdges>
+    <containedEdges name="model">
+      <src href="pm.xmi#//@ownedTypes.9"/>
+      <trg href="pm.xmi#/"/>
+    </containedEdges>
+    <containedEdges name="source">
+      <src href="pm_correspondence_model.xmi#//@correspondences.29"/>
+      <trg href="../modisco.xmi#//@orphanTypes.4"/>
+    </containedEdges>
+    <containedEdges name="target">
+      <src href="pm_correspondence_model.xmi#//@correspondences.29"/>
+      <trg href="pm.xmi#//@ownedTypes.9"/>
+    </containedEdges>
+    <containedEdges name="orphanTypes">
+      <src href="../modisco.xmi#/"/>
+      <trg href="../modisco.xmi#//@orphanTypes.4"/>
+    </containedEdges>
+    <targetElements href="pm.xmi#/"/>
+    <targetElements href="#//@tripleMatches.25/@containedEdges.3"/>
+    <targetElements href="#//@tripleMatches.25/@containedEdges.4"/>
+    <targetElements href="#//@tripleMatches.25/@containedEdges.5"/>
+    <targetElements href="pm.xmi#//@ownedTypes.9"/>
+    <correspondenceElements href="#//@tripleMatches.25/@containedEdges.6"/>
+    <correspondenceElements href="#//@tripleMatches.25/@containedEdges.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.0"/>
+    <correspondenceElements href="pm_correspondence_model.xmi#//@correspondences.29"/>
+    <correspondenceElements href="#//@tripleMatches.25/@containedEdges.1"/>
+    <correspondenceElements href="#//@tripleMatches.25/@containedEdges.7"/>
+    <createdElements href="#//@tripleMatches.25/@containedEdges.2"/>
+    <createdElements href="#//@tripleMatches.25/@containedEdges.3"/>
+    <createdElements href="#//@tripleMatches.25/@containedEdges.4"/>
+    <createdElements href="#//@tripleMatches.25/@containedEdges.5"/>
+    <createdElements href="#//@tripleMatches.25/@containedEdges.6"/>
+    <createdElements href="../modisco.xmi#//@orphanTypes.4"/>
+    <createdElements href="pm.xmi#//@ownedTypes.9"/>
+    <createdElements href="pm_correspondence_model.xmi#//@correspondences.29"/>
+    <createdElements href="#//@tripleMatches.25/@containedEdges.7"/>
+  </tripleMatches>
+</org.moflon.tgg.runtime:PrecedenceStructure>

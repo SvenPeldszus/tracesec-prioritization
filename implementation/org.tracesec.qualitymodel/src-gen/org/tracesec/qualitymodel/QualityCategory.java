@@ -27,6 +27,7 @@ public interface QualityCategory extends AbstractQualityNode {
 	 * Returns the value of the '<em><b>Owned Nodes</b></em>' reference list.
 	 * The list contents are of type {@link org.tracesec.qualitymodel.AbstractQualityNode}.
 	 * It is bidirectional and its opposite is '{@link org.tracesec.qualitymodel.AbstractQualityNode#getOwner <em>Owner</em>}'.
+	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Nodes</em>' reference list isn't clear,
@@ -36,7 +37,7 @@ public interface QualityCategory extends AbstractQualityNode {
 	 * @return the value of the '<em>Owned Nodes</em>' reference list.
 	 * @see org.tracesec.qualitymodel.QualityModelPackage#getQualityCategory_OwnedNodes()
 	 * @see org.tracesec.qualitymodel.AbstractQualityNode#getOwner
-	 * @model opposite="owner" transient="true" changeable="false" volatile="true"
+	 * @model opposite="owner" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="union"
 	 * @generated
 	 */

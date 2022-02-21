@@ -1,0 +1,132 @@
+====== How to Deploy iTrust to Agile for the Demo ======
+
+===== Credentials =====
+
+^ Description ^ Access Mode ^ Site ^ Username ^ Password ^
+| MySQL account for dropping/adding tables, etc | MySQL | classdb.csc.ncsu.edu | itrust-admin | tPCa7JRcbPUcE5dJ |
+| MySQL account for iTrust to use | MySQL | classdb.csc.ncsu.edu | itrust-demo | itrustinagile |
+| Tomcat Manager App | Browser | [[http://agile.csc.ncsu.edu:8081/manager/html]] | tomcat | t0mc4t!2013 |
+| MySQL account for administering PairEval | MySQL | classdb.csc.ncsu.edu | paireval-admin | FQ28M3xmKm6EFQAq |
+
+
+
+
+
+===== Source Code Modification =====
+
+
+At a high-level, the steps are:
+  * Make sure the latest version is in the SourceForge repository.
+  * Start with newest, refactored, clean, fully passing code for this semester.
+     * Remember to modify the footer to contain the latest version number.
+  * Modify the footer to replace "Test Data Generator" with "Reset Database" and point it to ''/util/demodata.jsp''.  Source for that file:
+<code>
+<%@page import="edu.ncsu.csc.itrust.datagenerators.TestDataGenerator"%>
+<%@page import="java.lang.reflect.Method"%>
+<%@page import="edu.ncsu.csc.itrust.dao.DAOFactory"%>
+<%@page import="edu.ncsu.csc.itrust.DBUtil"%>
+<%@page import="edu.ncsu.csc.itrust.dao.ProductionConnectionDriver"%>
+<%@page import="edu.ncsu.csc.itrust.DemoData"%><html>
+
+<head>
+<title>FOR TESTING PURPOSES ONLY</title>
+<style type="text/css">
+.message {
+	border-style: solid;
+	border-width: 1px;
+	background-color: #AAFFAA;
+}
+</style>
+</head>
+<body>
+<div align=center>
+<h1>Test Utilities</h1>
+<%
+	if ("resetdb".equals(request.getParameter("reset"))) {
+		DemoData.resetDemoData(out);
+%><h2>Database has been reset to standard data</h2>
+<%
+	}
+%> Please click this to reset all data in the database to the standard
+data. <a href="demodata.jsp?reset=resetdb">Reset Database</a> <br>
+<br>
+<h1><a href="/iTrust">Back to iTrust</a></h1>
+</div>
+</body>
+</html>
+
+</code>
+  * Point blackbox test plan ''/util/blackbox.jsp'' and associated Java class to point to the correct location of blackbox.xml (port number and server name).
+  * Add the file ''src/edu/ncsu/csc/itrust/DemoData.java'' to the source tree.  Source code for DemoData.java:
+<code>
+package edu.ncsu.csc.itrust;
+
+import java.io.IOException;
+import java.util.Arrays;
+import javax.servlet.jsp.JspWriter;
+import edu.ncsu.csc.itrust.dao.DAOFactory;
+
+public class DemoData {
+
+          public static String[] list = new String[] {
+          /* See next bullet for more information on the contents of this Array. */
+
+	  public static void resetDemoData(JspWriter out) {
+		        try {
+		            new DBBuilder(DAOFactory.getProductionInstance()).executeSQL(Arrays.asList(list));
+		            out.println(Arrays.toString(list));
+		        } catch (Exception e) {
+		            e.printStackTrace();
+		        }
+		    }
+		
+}
+
+</code>
+  * Execute TestDataGenerator and extract the MySQL output that appears in the console.  Make each SQL statement a String in the string array defined in the code above.
+  * Test that the Reset Database link works from your running copy of iTrust.
+  * Comment out the printlns in DemoData.
+  * Modify ''context.xml'' to point to the following:
+
+<code>
+	username="itrust-admin" 
+	password="tPCa7JRcbPUcE5dJ"
+	url="jdbc:mysql://classdb.csc.ncsu.edu:3306/itrustdemo?createDatabaseIfNotExist=true"		
+</code>
+  * Run DBBuilder.java to build new tables for the demo database. Also run TestDataGenerator.java.
+
+  * Modify ''context.xml'' to point to the following:
+
+<code>
+	username="itrust-demo" 
+	password="itrustinagile"
+	url="jdbc:mysql://classdb.csc.ncsu.edu:3306/itrustdemo?createDatabaseIfNotExist=true"		
+</code>
+
+  * Create a patch by going to Team -> Create Patch... -> Save as a file -> Project root...
+  * Email the patch to someone else so that if you die it is saved somewhere.
+
+
+===== Deploy It =====
+
+
+  * Right-click the project.
+  * Go to Export -> Project as WAR file...
+  * Make sure you know where you put it, else wise the defaults are fine on that screen.
+  * Go to [[http://agile.csc.ncsu.edu:8081/manager/html]], login with the credentials up above.
+  * Find the application named iTrust, click "Undeploy".  Click OK for "Are you sure?"
+  * Now go to where it say WAR file to deploy, and upload the WAR from wherever you saved it.
+  * Browse to [[http://agile.csc.ncsu.edu:8081/iTrust]], and pray that it worked!
+
+
+===== Troubleshooting Deployment =====
+  * If Tomcat Manager uploads the file, but does not deploy it (says "OK" but iTrust is not listed in the deployed web applications), then the Eclipse project settings for the iTrust project are not compatible with the version of Tomcat installed. For Tomcat 6, the **org.eclipse.wst.common.project.facet.core.xml** settings file should look like:
+<code><?xml version="1.0" encoding="UTF-8"?>
+<faceted-project>
+  <runtime name="Apache Tomcat v6.0"/>
+  <fixed facet="jst.java"/>
+  <fixed facet="jst.web"/>
+  <installed facet="jst.web" version="2.4"/>
+  <installed facet="jst.java" version="5.0"/>
+</faceted-project></code>
+If the above configuration does not work, try downloading an older version if iTrust (such as v13) and check the .settings for the iTrust project and compare to see what may be incompatible in the new version.

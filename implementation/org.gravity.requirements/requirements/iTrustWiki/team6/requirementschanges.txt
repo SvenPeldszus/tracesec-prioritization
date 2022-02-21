@@ -1,0 +1,99 @@
+This page is a list of the changes made to the requirements document. Items in bold have been added while items struck through have been removed.
+
+Note: All references to any logging were removed and replaced. 
+
+=====Glossary=====
+**ORC: The override reason code. A set of reasons for ignoring a reaction warning and prescribing a medication anyways.Override Reason Codes**
+
+====UC1 Create and Disable Patients Use Case====
+==1.2 Main Flow:==
+An HCP creates patients [S1] <del>and disables patients [S2]</del>. The create/disable patients and HCP transaction is logged [UC5].
+==1.3 Sub-Flows:==
+[S2] <del>The HCP provides the MID of a patient for whom he/she wants to disable [E2]</del>. The HCP provides a deceased date (data format 6.4). An optional diagnosis code is entered as the cause of death.
+====UC3 Authenticate Users Use Case====
+==3.3 Sub-flows:==
+* [S4] A LHCP is presented with a screen of links to the following:
+      * Recent Laboratory Results: recent (within the last month) laboratory results [UC26] for laboratory procedures he/she ordered in office visits.
+      * Any upcoming appointments<del> within the next week</del> **for the day (In the notification center)**
+  * [S5] A patient is presented with a screen of links to the following:
+      * <del>Recent Laboratory Results: recent (within the last month) laboratory results [UC26] for laboratory procedures that the patient (or a patient he/she represents), that the patient has access.</del>
+      * Any upcoming appointments <del> within the next week</del>
+      * <del>Comprehensive report requested/generated of the patient, including patients that he/she represents</del>
+==3.4 Alternative Flows:==
+[E2] <del>If the patient has never stored a security question/answer, the user is not provided the ability to change the password.</del> If the patient has never stored a security question/answer, the user is asked for the random password assigned on creation of the account.
+====UC4 Enter/edit Demographics Use Case====
+==4.2 Main Flow:==
+Demographic information is entered and/or edited [S1, S2]. <del>Once entered, the enterer/editor is presented a screen of the input to approve [E2].</del> **The enterer/editor is presented with a success or failure message and the form is updated so that the enterer/editor may correct the form or add more information.**
+==4.4 Alternative Flows:==
+<del>[E2] The enter/editor reviews the input and finds an error, he or she does not confirm the selection. He/She provides the correct input and submits again.</del>
+
+====UC5 Log Transaction Use Case====
+Everything was removed and re-factored
+====UC12 Determine operational profile Use Case====
+Updated the table to reflect changes in iTrust
+
+====UC13====
+==13.4 Alternative Flows:==
+<del>[E2] The patient chosen is not the desired patient. The health care personnel does not confirm the selection and is prompted to try again.</del>
+====UC14 Request Biosurveillance Use Case====
+This use case was removed. It has likewise been removed from our requirements document.
+====UC17 Proactively Determine Needed Patient Care Use Case====
+==17.2 Main Flow:==
+An HCP chooses **Office Visit Reminders and then** to identify chronic patients who need an office visit [S1], older patients who need a flu shot [S2],...
+====UC18 Maintain a hospital listing Use Case====
+==18.2 Main Flow:==
+An administrator chooses to maintain  the hospital<del>s</del> listing<del> that a health care professional belongs to (a health care professional can belong to multiple hospitals [UC2, S3]])</del> [S1]**(Note: A personnel may be assigned to more than one [UC 2, S1])**
+
+====UC19 View prescription report Use Case====
+==19.3 Sub-flows:==
+S2] The user (LHCP) <del>enters a MID of a patient [E1] and confirms their input [E2]</del>**selects a patient from the list of requested reports**. At this point, the LHCP can view a prescription list for that patient [S3], sorted by start date (the later date is ranked earlier).
+==19.4 Alternative Flows:==
+  * <del>[E1] The LHCP types an invalid medical identification number and is prompted to try again.</del>
+  * <del>[E2] The patient chosen is not the desired patient. The LHCP does not confirm the selection and is prompted to try again.</del>
+
+====UC20 View cause-of-death trends report Use Case====
+This use case was removed. It has likewise been removed from our requirements document.
+
+====UC21 View emergency electronic health record Use Case====
+==21.2 Main Flow:==
+...<del>A notification and email notify the patient of the viewing [S2]. A notification is also sent to all of the patient's DLHCP's [S3].</del>
+==21.3 Sub-flows:==
+  * <del>[S3] All of the DLHCP's of the patient whose emergency electronic health record was viewed are notified of the viewing on their notification area upon logging into iTrust [the name of the LHCP or ER and the date of access is also included]. This notification remains on the DLHCP's notification screen for a period of 30 days. A fake email is also sent to all of the DLHCP's telling them that one of their patient's records has been viewed in an emergency situation.</del>
+====UC22 Flow of Events for the Schedule Appointments Use Case====
+==22.2 Main Flow==
+**...LHCP’s can edit or delete future appointments. [S4]**
+==22.3 Sub-flows:==
+[S3] A user (an LHCP or patient) ...** When viewing the calendar,** the user selects an appointment ...
+**[S4] [S4] When an LHCP views a list of his or her upcoming appointments, they are presented with an option to edit or remove the appointment. [E3]**
+==22.4 Alternative Flows:==
+**[E3] The date for the appointment is in the past, an error message is displayed and the appointment is not edited.**
+
+====UC25 View Physician Satisfaction Survey Results Use Case====
+==25.2 Main Flow:==
+A user chooses to view physician satisfaction survey results. The user provides a zip code [E1] **Or a hospital code** and an (optional)...
+==25.4 Alternative Flows:==
+[E1] The input is not a valid zip code <del>and/or a valid physician type</del> (see Data Format 6.2). The user is asked to try again.
+====UC26 View/Edit Laboratory Procedure Status Use Case====
+==26.3 Sub-flows:==
+  * [S1] The patient can view a list of laboratory procedures and status for (a) their own records and (b) the records for which the user is a personal representative.** The reports are viewed under the “View My Records” tab.** Only laboratory procedures for which the HCP has allowed viewing access are shown.
+  * [S2] The HCP enters a MID [E1] of a patient and confirms their input [E2]. The HCP can view a list of laboratory procedures and results, sorted by the date of the last status update, most recent first. <del>The HCP can choose to sort by date of the last status update or by LOINC code ([UC15 S4], ascending order).</del> If the HCP...
+====UC27 Alert Users by Email Use Case====
+==27.2 Main Flow:==
+An email alert is sent out to the iTrust user in the event of a changed password [S1], status change in laboratory procedure [S2], <del>accepted scheduled appointment [S3]</del>, comprehensive report
+==27.3 Sub-flows:==
+  * <del>[S3] The patient or LHCP has accepted an appointment as scheduled [UC22, S6] and both users are notified of the date, time, length, and comment via email.</del>
+  * <del>[S4] The admin has approved the comprehensive report generation [UC23, S2] or the LHCP generates the report. The patient is notified via email that a comprehensive report was generated, and the MID of the LHCP and the approving Admin are included.</del>
+====UC32 Proactively Confirm Prescription-Renewal Needs Use Case====
+==32.2 Main Flow:==
+The HCP chooses “**Potential Prescription-Renewals**<del> My Patients with Potential Prescription-Renewal Needs</del>” and is presented with a list of patients...
+====UC33 Refer and Provide Consultations Use Case====
+*Note: All references to an HCP has been changed to LHCP to make the documents uniform.
+==33.3 Sub-flows:==
+  * <del>[S3] An LHCP chooses to review patient consultations referred by the LHCP and already entered by the receiving LHCPs. The LHCP is presented with a list of referrals that were sent by him and whose statuses are “finish” or “decline”. Each referral includes the patient MID, receiving LHCP MID, referral details, and consultation details.</del>
+====UC36 Monitor Adverse Event Use Case====
+==36.3 Sub-flows:==
+  * <del>[S4] The public health agent chooses a time period and a drug (NDC). The public health agent is presented with a bar chart giving the quantity of non-removed drug-related adverse events for this drug by month.</del>
+  * <del>[S5] The public health agent chooses a time period and an immunization (CPT). The public health agent is presented with a bar chart giving the quantity of non-removed drug-related adverse events for this drug by month.</del>
+====6.4 Patient Personal Health Record====
+Tables reorganized 
+====6.4 Patient Personal Health Record====

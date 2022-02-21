@@ -1,0 +1,13 @@
+====Data Format 6.11: Logical Observation Identifiers Names and Codes (LOINC)====
+^Field^Format^
+|Laboratory Procedure Code  |(Unique [[http://www.regenstrief.org/medinformatics/loinc/|LOINC Number]] Digits of the format nnnnn-n|
+|Component  |Up to 100 characters|
+|Kind of Property  |Up to 100 characters|
+|Time Aspect  |Up to 100 characters (optional)|
+|System  |Up to 100 characters (optional)|
+|Scale Type  |Up to 100 characters (optional)|
+|Method Type  |Up to 100 characters (optional)|
+
+See [[http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=test_data|test data]] for examples
+
+

@@ -1,0 +1,30 @@
+====UC15 Maintain standards lists Use Case====
+The medical industry uses a variety of standard codes to enable communication with other medical institutions and with insurance companies.  In this use case, the administrator can maintain (add/update) these codes that are used in a variety of use cases in the application.  
+==15.1 Preconditions:==
+The administrator has authenticated himself or herself in the iTrust Medical Records system [[requirements:uc2|(UC2)]].
+==15.2 Main Flow:==
+An administrator chooses to maintain the standards list for immunizations and medical procedures [S1], diagnoses [S2], allowable drugs [S3], or allowable physical services [S4].
+==15.3 Sub-flows:==
+  * [S1] The administrator will maintain [add/update] a listing of allowable immunizations and medical procedures that an HCP can use. The administrator will store (1) the CPT code (The [[https://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cpt|CPT code]] set accurately describes medical, surgical, and diagnostic services and is designed to communicate uniform information about medical services and procedures among physicians, coders, patients, accreditation organizations, and payers for administrative, financial, and analytical purposes.) [E1](2) up to 30 alpha characters giving the name [E1] of the immunization or medical procedure.
+  * [S2] The administrator will maintain [add/update] a listing of allowable diagnoses that an LHCP can use. The administrator will store (1) the ICD-10CM code (The International Statistical Classification of Diseases and Related Health Problems (most commonly known by the abbreviation ICD) provides codes to classify diseases and a wide variety of signs, symptoms, abnormal findings, complaints, social circumstances and external causes of injury or disease. [[https://www.hcup-us.ahrq.gov/toolssoftware/chronic_icd10/chronic_icd10.jsp#download|NHCS Classification of Diseases, Functioning and Disability with Chronic Disease Indicator]]) for the diagnosis [E1]; (2) up to 30 alphanumeric characters giving the name [E1] of the diagnosis; and (3) an indicator for Chronic Disease.  Use the 2017 release of the codes.
+  * [S3] The administrator will maintain [add/update] a listing of allowable drugs that an HCP can use. The administrator will store (1) the National Drug Code (The National Drug Code (NDC) is a universal product identifier used in the United States for drugs intended for human use. [[http://www.fda.gov/Drugs/InformationOnDrugs/ucm142438.htm|National Drug Code Directory]]); and (2) up to 40 alphanumeric characters giving the name [E1] of the drug.
+  * [S4] The administrator will maintain [add/update] a listing of allowable physical services (including laboratory procedures) that an HCP can use. The administrator will store information of a LOINC code (Logical Observation Identifiers Names and Codes (LOINC) is a database and universal standard for identifying medical laboratory observations. [[http://loinc.org/|LOINC c/o Medical Informatics]]) [E1] according to [[requirements:df11|Data Format 6.11]].  
+==15.4 Alternative Flows:==
+  * [E1] The administrator types an invalid code information and is prompted to try again.
+==15.5 Logging==
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 1500 |  Add Medical Procedure Code  |  Admin  |  [empty]  |  15  |  Create  |  The Medical Procedure Code  |  No  |
+| 1501 |  View Medical procedure code  |  Admin  |  [empty]  |  15  |  View  |  The Medical Procedure Code  |  No  |
+| 1502 |  Edit Medical procedure code  |  Admin  |  [empty]  |  15  |  Edit  |  The Medical Procedure Code  |  No  |
+| 1510 |  Add Immunization Code  |  Admin  |  [empty]  |  15  |  Create  |  The Immunization Code  |  No  |
+| 1511 |  View Immunization code  |  Admin  |  [empty]  |  15  |  View  |  The Immunization Code  |  No  |
+| 1512 |  Edit Immunization code  |  Admin  |  [empty]  |  15  |  Edit  |  The Immunization Code  |  No  |
+| 1520 |  Add Diagnosis Code  |  Admin  |  [empty]  |  15  |  Create  |  The Diagnosis Code  |  No  |
+| 1521 |  View Diagnosis code  |  Admin  |  [empty]  |  15  |  View  |  The Diagnosis Code  |  No  |
+| 1522 |  Edit Diagnosis code  |  Admin  |  [empty]  |  15  |  Edit  |  The Diagnosis Code  |  No  |
+| 1530 |  Add Drug Code  |  Admin  |  [empty]  |  15  |  Create  |  The Drug Code  |  No  |
+| 1531 |  View Drug code  |  Admin  |  [empty]  |  15  |  View  |  The Drug Code  |  No  |
+| 1532 |  Edit Drug code  |  Admin  |  [empty]  |  15  |  Edit  |  The Drug Code  |  No  |
+| 1540 |  Add Physical Services Code  |  Admin  |  [empty]  |  15  |  Create  |  The Physical Services Code  |  No  |
+| 1541 |  View Physical Services code  |  Admin  |  [empty]  |  15  |  View  |  The Physical Services Code  |  No  |
+| 1542 |  Edit Physical Services code  |  Admin  |  [empty]  |  15  |  Edit  |  The Physical Services Code  |  No  |

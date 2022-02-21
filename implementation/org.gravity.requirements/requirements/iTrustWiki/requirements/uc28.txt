@@ -1,0 +1,15 @@
+====UC28 View Patients====
+==28.1 Preconditions:==
+The iTrust user (LCHP) has been authenticated in the iTrust Medical Records system [[requirements:uc3|(UC3)]].
+==28.2 Main Flow:==
+The LHCP chooses to view all patients with which he or she has ever had an office visit with. The patient’s name (clickable to view PHR), address, and date of last office visit are displayed. The list is sorted by the date of the last office visit (most recent first).
+==28.3 Sub-flows:==
+None
+==28.4 Alternative Flows:==
+None
+==28.5 Logging==
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 2800 |  View Patient List  |  HCP  |  [empty]  |  28  |  View  |  None  |  Yes  |
+
+==28.6 Reference document:==
+Office of the National Coordinator for [[http://www.hhs.gov/healthit/usecases/consumeraccess.html|Health Information Technology (ONC) Consumer Empowerment: Consumer Access to Clinical Information Prototype]] Use Case Scenario 2

@@ -1,0 +1,6 @@
+|Field|Format|
+|Date|mm/dd/yy. Required|
+|Number of weeks pregnant|2 digits - 1 digit, where the first is number of weeks between [0,42] and the second is the number of days between [0,6]. Required.|
+|Blood pressure|Systolic /Diastolic where systolic and diastolic are positive integers and the units are millimeters of mercury (mm Hg). Required|
+|Fetal heart rate (FHR)|Zero or positive integer with the units of beats per minute. Required.|
+|Fundal height of the uterus (FHU)|Positive double with the units of centimeters. Required.|

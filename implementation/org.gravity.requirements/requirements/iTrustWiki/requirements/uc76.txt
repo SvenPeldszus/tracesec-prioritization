@@ -1,0 +1,39 @@
+**UC76 Categorize Food Diaries**
+
+**76.1 Preconditions**
+
+A Patient and HCP is a registered user of the iTrust Medical
+Records System (UC1) (UC2). The iTrust Patient or HCP user
+has authenticated himself or herself in the iTrust Medical
+Records System (UC3).
+
+**76.2 Main Flow**
+
+Any patient [E1] may select a date [S1] or range of dates [S2]
+[E2] to view diaries for that date.
+
+Upon selecting a specific date, food diary entries shall appear
+for that date (UC68)(UC69).
+
+Users can go back to select a different date or range of dates.
+
+**76.3 Sub-flows**
+
+  * [S1] Only the Food Diary entries for that date shall be shown.
+  * [S2] All Food Diary entries in that range of dates (inclusive) shall be shown.
+
+**76.4 Alternative Flows**
+
+  * [E1] Instead of a patient, a nutritionist HCP may select a date or range of dates to search.
+  * [E2] Invalid dates are flagged and an appropriate message isprinted.
+
+**76.5 Logging**
+
+Transaction Code: ​7600
+Verbose Description: ​Patient searches for diary entries
+LoggedInMID: ​Patient
+Secondary MID: ​N/A
+Use Case Involved: ​76
+Type of Transaction: ​Create
+Additional Information: ​None
+Patient Viewable: ​Yes

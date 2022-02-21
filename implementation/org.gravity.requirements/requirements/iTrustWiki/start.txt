@@ -1,0 +1,80 @@
+====== iTrust: Role-Based Healthcare ======
+
+Welcome to the iTrust wiki!! iTrust was founded as a class project for [[http://openseminar.org/se/|Software Engineering]] at [[http://www.csc.ncsu.edu/|North Carolina State University]], and is now maintained by the [[http://realsearchgroup.org|Realsearch Research Group]].  iTrust was aimed to teach various testing methods and automatic testing techniques in the curriculum of the course. iTrust is a medical application that provides patients with a means to keep up with their medical history and records as well as communicate with their doctors, including selecting which doctors to be their primary caregiver, seeing and sharing satisfaction results, and other tasks. iTrust is also an interface for medical staff from various locations. iTrust allows the staff to keep track of their patients through messaging capabilities, scheduling of office visits, diagnoses, prescribing medication, ordering and viewing lab results, among other funtions. Privacy and security of patient records are ensured, as protected by the [[http://www.hhs.gov/ocr/hipaa/|HIPAA statute]].
+
+
+
+
+
+
+
+
+
+===== Demo: v21.0 =====
+
+[[http://152.46.18.10:8080/iTrust/|Try iTrust for yourself!]]  This demo is for iTrust v21.0, built from requirements v27.0.  The [[roadmap]] explains the versions.
+
+
+Also, there is an image titled "iTrust 12.0" that you can check out from NC State's [[http://vcl.ncsu.edu|VCL]] if you belong to the EHR User's group.
+
+
+
+
+
+===== Source Code: v23.0 =====
+iTrust is open source!
+
+NC State Students can download v23.0 as a starting point for developing v23 during the Spring 2017 semester from https://github.ncsu.edu/engr-csc326-staff/iTrust-v23 [NCSU Login Required]
+
+The Spring 2015 version is still available on SourceForge.
+
+[[https://sourceforge.net/projects/itrust/|{{sflogo.png}}]]
+
+Visit our [[https://sourceforge.net/projects/itrust/|project page]] on SourceForge.
+
+
+ 
+
+===== Deployment =====
+After you have the source, learn how to deploy it:
+  * **[[lab deployment instructions|Lab instructions]]** 
+  * **[[home deployment instructions|Home instructions]]**
+
+
+
+===== Requirements: v27 =====
+The most current version of the requirements can be found at the [[requirements]] page.
+
+
+
+
+
+
+
+
+
+
+
+
+===== Other artifacts: v21.0 =====
+  * [[http://152.46.18.10:8080/iTrust/util/blackbox/blackbox.jsp|Black Box Test Plan]]
+  * The [[how do i|How do I...?]] page contains straightforward answers to common things you may want to do when developing.
+  * The [[design notes]] page contains some explanations of the archetypal classes in the design.
+
+
+
+
+
+===== For Administrators and TAs =====
+
+  * Between semesters, iTrust also goes through [[housekeeping]].
+  * The [[developing requirements]] page is a password-protected section where new ideas, requirements, and other artifacts are developed by instructors and stakeholders.
+  * [[admitrust|Information]] on how to administer the demo deployment of iTrust and more are also password-protected.
+  * Administrators may also want to [[serverdeploy|deploy]] an instance of iTrust to a Linux server.
+
+
+----
+//Copyright ©2004-2017. North Carolina State University, Dr. Laurie Williams, Andy Meneely, Sarah Heckman, Lauren Hayward, Ben Smith, Jason King//
+----
+[[http://realsearchgroup.org|{{se-realsearch-bar-2.jpg}}]]
+

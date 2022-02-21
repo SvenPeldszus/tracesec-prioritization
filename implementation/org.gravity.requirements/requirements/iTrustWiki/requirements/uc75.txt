@@ -1,0 +1,45 @@
+**UC75 Using labels for multiple food diaries**
+
+**75.1 Preconditions**
+
+A Patient is a registered user of the iTrust Medical Records
+System (UC1). The iTrust Patient user has authenticated
+himself or herself in the iTrust Medical Records System (UC3).
+
+**75.2 Main Flow**
+
+Any patient may create a new label for food diary entries [S1].
+The patient may view and manage multiple food diaries under
+different labels they have created [S2].
+
+Upon selecting a specific diary label, the patient may add
+entries to that label (UC68) or manage food diary entries
+(UC70).
+
+All Food Diary entries for a given day shall have the same
+label. The labels for an entire day shall be updated when a
+Patient updates the label for an individual Food Diary entry on
+that day.
+
+A patient may move a diary entry to a different label by editing
+the entry and choosing a new label.
+
+**75.3 Sub-flows**
+
+  * [S1] A patient shall be presented with a drop down box containing the available diary labels they have created as well as the “default” label.
+  * [S2] A patient may create a new food diary entry under the selected label.
+
+**75.4 Alternative flows**
+
+ * [E1] A patient may change the entry label by editing the entry, the patient may choose from the drop down list of labels he has created.
+
+**75.5 Logging**
+
+Transaction Code: ​7500
+Verbose Description: ​Patient manages multiple diary labels
+LoggedInMID: ​Patient
+Secondary MID: ​N/A
+Use Case Involved: ​75
+Type of Transaction: ​Select
+Additional Information: ​None
+Patient Viewable: ​Yes

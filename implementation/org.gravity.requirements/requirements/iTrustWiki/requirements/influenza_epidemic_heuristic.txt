@@ -1,0 +1,13 @@
+====== Influenza Epidemic Detection Heuristic ======
+
+Influenza ((loosely) based on http://rods.health.pitt.edu/LIBRARY/AMIA2001Tsui.pdf)
+  * Influenza is ICD-9cm code is 487.x 
+  * An epidemic can be "declared" if the defined threshold is exceeded for 2 or more consecutive weeks.
+  * The defined threshold is exceeded when the number of incidents in a week exceeds the threshold given by the formula below.
+  * The threshold for influenza is defined in the following formula where **weekNumber = week number of the current year**
+<code>
+    double calcThreshold(double weekNumber) {
+        return 5.34 + 0.271 * weekNumber + 3.45 * Math.sin(2 * Math.PI * weekNumber / 52.0)
+                + 8.41 * Math.cos(2 * Math.PI * weekNumber / 52.0);
+    } 
+</code>   

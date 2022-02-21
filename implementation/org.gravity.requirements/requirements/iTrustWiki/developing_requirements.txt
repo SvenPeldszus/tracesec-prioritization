@@ -1,0 +1,30 @@
+
+
+
+
+===== Ideas for New Assignments =====
+
+  * Expand the epidemic detection algorithms for a deeper functionality
+  * Expand the idea of a "feed" in the application so you can track specific patients
+  * Move the comprehensive report into a data migration toolkit
+  * Add a messaging system for answering questions
+  * Expand the risk factors to be a generalized query engine
+     * Add new factors for all patients, including various ways to search 
+     * Maybe one patient's threshold is different than another patient's threshold - customize?
+  * Figure out a way to include more charts in the system
+     * Satisfaction surveys
+     * Usage (for the admin)
+     * Operational profile (for the tester)
+     * Cause-of-death trends
+     * Risk factors
+  * Add support for RSS feeds or something.
+  * "Find-an-expert" feature - look for an HCP in your area with a specific expertise, rank by # of office visits, patients, diagnoses, etc.
+  * A photo upload feature. Andy's got this mostly written, so we can provide boilerplate code for uploading images and the students can work out the details.
+
+  * [[Fall10DR | Fall 10 Developing Requirements]]
+  * [[Spring11DR | Spring 11 Developing Requirements]]
+
+
+===== Archives =====
+Archives: [[Developing Requirements Sp08]]
+

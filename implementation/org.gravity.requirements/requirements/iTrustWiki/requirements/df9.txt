@@ -1,0 +1,33 @@
+=====6.9 Chronic Disease Risks=====
+====6.9.1 Diabetes risk factors====
+===6.9.1.1 Type 1 diabetes (11 years old or younger)===
+[[http://www.webmd.com/hw/diabetes_1_2/uq1456.asp|Source]]
+  * Family history of type 1 diabetes (mother, father, sister, brother)
+  * Ethnicity: Increase risk for Caucasian people.
+  * Viral infections during childhood (less than 18 years old): echovirus (ICD9cm 079.1) and Coxsackie B (ICD9cm 079.2)
+===6.9.1.2 Type 2 diabetes===
+[[http://www.webmd.com/content/article/59/66831|Source]]
+  * Age over 45.
+  * Ethnicity. The risk of diabetes is greater in Hispanics, African American, American Indians, and Asians.
+  * Being overweight. If you are overweight, defined as a body mass index (BMI) greater than 25.
+    * Assume any height and weight are in inches and pounds, respectively.
+    * With the English system, calculate BMI by dividing weight in pounds (lbs) by height in inches (in) squared and multiplying by a conversion factor of 703.
+  * Hypertension. High blood pressure increases the risk of developing diabetes.
+    * Systolic blood pressure over 240 mmHg and/or a diastolic blood pressure over 120 mmHg.
+  * Abnormal cholesterol levels. HDL (“good”) cholesterol levels under 35 mg/dL (milligrams per deciliter) and/or a triglyceride level over 250 mg/dL increases your risk.
+  * Prior diagnoses. History of gestational diabetes, polycystic ovary disease (PCOS) or vascular disease
+  * Family history of type 2 diabetes (mother, father, sister, brother)
+====6.9.2 Heart disease risk factors====
+[[http://www.webmd.com/content/pages/9/1675_57840|Source]]
+  * Gender. Men have greater risk than women.
+  * Age. Over 45
+  * Ethnicity. The risk of heart disease is greater in African American, American Indians and Hispanic Americans.
+  * Obesity. If you are overweight, defined as a body mass index (BMI) greater than 30.
+    * Assume any height and weight are in inches and pounds, respectively.
+    * With the English system, calculate BMI by dividing weight in pounds (lbs) by height in inches (in) squared and multiplying by a conversion factor of 703.
+  * Hypertension. High blood pressure increases the risk of developing diabetes.
+    * Systolic blood pressure over 240 mmHg and/or a diastolic blood pressure over 120 mmHg.
+  * Abnormal cholesterol levels. HDL (“good”) cholesterol levels under 35 mg/dL (milligrams per deciliter) and/or a triglyceride level over 250 mg/dL increases your risk.
+  * Smoking. Current or prior smoker
+  * Prior diagnoses. Diabetes.
+  * Family history of heart disease (mother, father, sister, brother)

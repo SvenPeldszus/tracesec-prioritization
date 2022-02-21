@@ -1,0 +1,57 @@
+====== Housekeeping Requisites ======
+
+This is a list of things which //absolutely// must be done between semesters.
+
+===== Push the code to SourceForge =====
+
+  * SVN DELETE current iTrust code from the [[https://sourceforge.net/scm/?type=svn&group_id=205719|SourceForge repository]].
+  * SVN IMPORT the newer iTrust code to the SourceForge repository.  It's recommended that you do it this way (DELETE/IMPORT rather than update) because there's no telling how many classes and packages were changed from semester to semester, and Subversion will get really confused unless you wipe any record of the old iTrust before continuing on.
+
+===== Basic Code Checks =====
+
+From here on, the source can be collaborated upon by the teaching staff.  Here are some things that should be done to the source every semester, no matter what:
+
+  * Anonymize the code.  This means you take out any reference to the students who were in the team whose code was chosen.  This can be in the Javadoc, in the code itself, in the readmes that they have to use to turn their project in, and so on.  Check EVERYWHERE.
+  * Check that the tests (and by this, we mean unit and HTTP and whatever other kinds of tests there are) run //and pass//.  This is a key point.  Students hate it when we give them code that doesn't work.  And to this point, the code should be checked out and run //on a lab machine//.  Historically, there have been issues with newer versions of code having particularities that cause issues on the lab machines.
+  * Change the version number.  It seems obvious, but it's been forgotten more times than not.
+
+
+===== Testing and Deployment =====
+
+After these essential checks to the code are finished, there are some final clean-up things that must be done.
+
+  * Deploy a demo instance of iTrust to the server with [[admitrust|these]] instructions.
+  * Test deploying an instance of iTrust on as many environments as you can get your hands on... students are becoming more heterogeneous amongst Mac/PC/Linux.
+  * Test deploying an instance of iTrust **in the lab**.  This is absolutely imperative.  See earlier note on why.
+  * Download and ZIP up the project from the SVN repository and submit it as a SourceForge release.
+  * Update the [[start]] page to reflect all of these changes.
+
+===== Updating iTrust Javadoc =====
+
+  * Project -> Generate Javadoc
+  * The javadoc command should be wherever your JDK is stored on your local machine (if it didn't load automatically)
+  * Select all the way to private visibility (yes, we have some Jdoc at that level). Click Next.
+  * Set a title of the Javadoc pages (a menu option) as ''iTrust Javadoc v?''.  Where ? is the version number.
+  * The rest of the defaults should be fine.
+  * Login to agile with an SSH/SCP connection so you can upload the produced Javadoc folder.
+  * The folder where we keep Javadoc is ''/local/www/html/iTrust/doc''
+  * Create a subfolder called ''javadocV'' where V is the version number.
+
+
+
+
+===== Updating iTrust Coverage Results =====
+
+This requires a working copy of [[http://www.eclemma.org/|EclEmma]], the plugin for Eclipse.
+
+  * In Eclipse, in the iTrust root folder, right click the ''iTrust Unit Tests.launch'' and go to Coverage As -> iTrust Unit Tests.launch.
+  * Wait for the unit tests to execute.
+  * Open the Coverage tab, find the Element named ''iTrust''.
+  * Right click the ''iTrust'' element and go to Export Report.
+  * In the view that comes up, make sure you select the execution of the unit tests you just completed.
+  * Choose ''HTML Report'' and save it somewhere you can find it again in the Destination option.
+  * You must pick a filename for the root page of the coverage results.  We recommend ''index.html''.
+  * Establish an SSH/SCP connection to agile.
+  * Just like Javadoc, we keep the coverage results in ''/local/www/html/iTrust/doc''.
+  * Create a new folder called ''coverageX'' where X is the version number.
+  * Upload the report to this folder, and update the link on the [[start]] page.

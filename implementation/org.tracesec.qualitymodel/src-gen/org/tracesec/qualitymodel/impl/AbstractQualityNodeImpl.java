@@ -21,6 +21,7 @@ import org.tracesec.qualitymodel.QualityModelPackage;
  * <ul>
  *   <li>{@link org.tracesec.qualitymodel.impl.AbstractQualityNodeImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.tracesec.qualitymodel.impl.AbstractQualityNodeImpl#getTitle <em>Title</em>}</li>
+ *   <li>{@link org.tracesec.qualitymodel.impl.AbstractQualityNodeImpl#getPriority <em>Priority</em>}</li>
  * </ul>
  *
  * @generated
@@ -45,6 +46,28 @@ public abstract class AbstractQualityNodeImpl extends MinimalEObjectImpl.Contain
 	 * @ordered
 	 */
 	protected String title = TITLE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriority()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PRIORITY_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriority()
+	 * @generated
+	 * @ordered
+	 */
+	protected int priority = PRIORITY_EDEFAULT;
+
+	private QualityCategory owner;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -78,22 +101,24 @@ public abstract class AbstractQualityNodeImpl extends MinimalEObjectImpl.Contain
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public QualityCategory basicGetOwner() {
-		return (QualityCategory) eContainer();
+		return this.owner;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void setOwner(final QualityCategory newOwner) {
-		// TODO: implement this method to set the 'Owner' reference
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		final QualityCategory oldOwner = this.owner;
+		this.owner = newOwner;
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, QualityModelPackage.ABSTRACT_QUALITY_NODE__OWNER, oldOwner, this.owner));
+		}
 	}
 
 	/**
@@ -126,6 +151,30 @@ public abstract class AbstractQualityNodeImpl extends MinimalEObjectImpl.Contain
 	 * @generated
 	 */
 	@Override
+	public int getPriority() {
+		return this.priority;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setPriority(final int newPriority) {
+		final int oldPriority = this.priority;
+		this.priority = newPriority;
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, QualityModelPackage.ABSTRACT_QUALITY_NODE__PRIORITY, oldPriority, this.priority));
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
 		switch (featureID) {
 		case QualityModelPackage.ABSTRACT_QUALITY_NODE__OWNER:
@@ -135,6 +184,8 @@ public abstract class AbstractQualityNodeImpl extends MinimalEObjectImpl.Contain
 			return basicGetOwner();
 		case QualityModelPackage.ABSTRACT_QUALITY_NODE__TITLE:
 			return getTitle();
+		case QualityModelPackage.ABSTRACT_QUALITY_NODE__PRIORITY:
+			return getPriority();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -152,6 +203,9 @@ public abstract class AbstractQualityNodeImpl extends MinimalEObjectImpl.Contain
 			return;
 		case QualityModelPackage.ABSTRACT_QUALITY_NODE__TITLE:
 			setTitle((String)newValue);
+			return;
+		case QualityModelPackage.ABSTRACT_QUALITY_NODE__PRIORITY:
+			setPriority((Integer)newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -171,6 +225,9 @@ public abstract class AbstractQualityNodeImpl extends MinimalEObjectImpl.Contain
 		case QualityModelPackage.ABSTRACT_QUALITY_NODE__TITLE:
 			setTitle(TITLE_EDEFAULT);
 			return;
+		case QualityModelPackage.ABSTRACT_QUALITY_NODE__PRIORITY:
+			setPriority(PRIORITY_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -187,6 +244,8 @@ public abstract class AbstractQualityNodeImpl extends MinimalEObjectImpl.Contain
 			return basicGetOwner() != null;
 		case QualityModelPackage.ABSTRACT_QUALITY_NODE__TITLE:
 			return TITLE_EDEFAULT == null ? this.title != null : !TITLE_EDEFAULT.equals(this.title);
+		case QualityModelPackage.ABSTRACT_QUALITY_NODE__PRIORITY:
+			return this.priority != PRIORITY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -205,6 +264,8 @@ public abstract class AbstractQualityNodeImpl extends MinimalEObjectImpl.Contain
 		final StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (title: ");
 		result.append(this.title);
+		result.append(", priority: ");
+		result.append(this.priority);
 		result.append(')');
 		return result.toString();
 	}

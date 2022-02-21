@@ -1,0 +1,22 @@
+**UC87: Schedule Ophthalmology Appointment**
+
+**87.1 Preconditions**
+
+An HCP is a registered user of the iTrust Medical Records system ([[uc2|UC2]]). The patient must be a registered patient in the iTrust Medical Records system. The iTrust user has authenticated himself or herself in the iTrust Medical Records system.
+
+**87.2 Main Flow**
+
+A patient may request[S1] an Ophthalmology appointment with a registered Ophthalmologist or Optometrist by specifying a date and time. The HCP Optometrist or Ophthalmologist may then either accept[S2] or reject[S3] the appointment request after seeing it on the appointment request list [S4]. A patient can see if the HCP accepted or rejected their proposed appointment[S5].
+
+**87.3 Sub Flows**
+
+  * [S1] A registered patient may request an Ophthalmology appointment with a registered Optometrist or Ophthalmologist by specifying a date or time and some optional comments.
+  * [S2] A Optometrist or Ophthalmologist may accept an appointment request.
+  * [S3] A Optometrist or Ophthalmologist may decline an appointment request.
+  * [S4] A Optometrist or Ophthalmologist can see a list of all appointment requests for them
+  * [S5] A patient can see all requests for appointments they created along with their status.
+
+**87.4 Alternative Flows**
+
+  * [E1] If the HCP is not a Optometrist or Ophthalmologist the system shall not allow them to interact with Ophthalmology appointment requests.
+  * [E2] The system shall stop a patient from requesting an Ophthalmology appointment with a HCP who is not a Optometrist or Ophthalmologist.

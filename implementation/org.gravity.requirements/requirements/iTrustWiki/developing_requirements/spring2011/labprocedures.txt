@@ -1,0 +1,31 @@
+====UC26 Manage Lab Procedures Use Case====
+==26.1 Preconditions:==
+A Lab Technician, patient, and HCP are registered users of the iTrust Medical Records system [UC2]. The iTrust user has been authenticated in the iTrust Medical Records system [UC3].
+==26.2 Main Flow:==
+An HCP can create a lab procedure for a given office visit [S1]. An HCP can view a previously created lab procedure for a given office visit [S2]. An HCP can reassign a previously created lab procedure [S3]. An HCP can remove a previously created lab procedure [S4]. An HCP can add commentary to a pending lab procedure and update the lab procedure status to completed [S5]. A patient may view his or her own lab procedure results [S6]. A Lab Technician can view his or her priority queue of lab procedures [S7]. A Lab Technician can record the results of a lab procedure [S8]. All events are logged [UC5].
+==26.3 Sub-flows:==
+  * [S1] An HCP can create a lab procedure for a given office visit. The HCP selects a procedure code, a priority from 1 to 3 (1=most important, 3=not as important), and Lab Technician (listed with his/her specialty and the number of pending lab procedures in his/her priority queue, grouped by priority). The HCP saves the new lab procedure, or cancels the lab procedure creation [E1], [E2]. The status of the lab procedure is marked as in transit.
+  * [S2] An HCP can view a previously created lab procedure for a given office visit. The HCP can view patient name, lab procedure code, current lab procedure status, timestamp, and Lab Technician name.
+  * [S3] An HCP can reassign a previously created lab procedure to a different Lab Technician if the lab procedure is not yet in the testing state. The HCP selects a different Lab Technician from the list of available Lab Technicians (displayed with Lab Technician specialty and the number of pending lab procedures in his/her priority priority queue, grouped by priority). The HCP confirms the reassignment, or cancels the reassignment [E2].
+  * [S4] An HCP can remove a previously created lab procedure for a given office visit. The HCP chooses to remove the lab procedure as long as the status is either in transit or received. The HCP is prompted to confirm that he/she wishes to remove the lab procedure.
+  * [S5] An HCP can add commentary to a pending lab procedure. The HCP enters a comment for a lab procedure with status as pending. Upon entering a comment, the lab procedure status is updated to completed.
+  * [S6] A patient may view his or her own lab procedure. On the associated office visit page, the patient can see the current status of the lab procedure, the HCP name, and the timestamp. If the lab procedure status is marked as completed, the patient can see the results and the HCP-provided comments.
+  * [S7] A Lab Technician can view his or her priority queue of lab procedures. The Lab Technician sees a list of all lab procedures assigned to him/her. The list of lab procedures is sorted by priority (from most important to least important), with a secondary sort by timestamp (oldest to newest). The first lab procedure in the list is marked with a status of testing, and all other lab procedures have a status of received .
+  * [S8] A Lab Technician can record the results of a lab procedure. The Lab Procedure enters the lab procedure numerical result and confidence interval for the lab procedure with status of testing.
+==26.4 Alternative Flows:==
+  * [E1] The lab procedure code is not the intended lab procedure code. The HCP selects a different procedure code.
+  * [E2] The selected Lab Technician is not the intended Lab Technician. The HCP selects a different Lab Technician.
+==26.5 Logging==
+  * Create a Lab Procedure [UC5, S2601]
+  * View a Lab Procedure [UC5, S2602]
+  * Reassign a Lab Procedure [UC5, S2603]
+  * Remove a Lab Procedure [UC5, S2604]
+  * Add Result Commentary to Lab Procedure [UC5, S2605]
+  * View Lab Procedure Queue [UC5, S2606]
+  * Record Lab Procedure Results [UC5, S2607]
+
+
+=====Other things to be updated=====
+  * LHCP should see a number of pending lab procedures in the notification center
+  * Patient should see number of newly completed lab procedures in the notification center
+  * Activity Feed

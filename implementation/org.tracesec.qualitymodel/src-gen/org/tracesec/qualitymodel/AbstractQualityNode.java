@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.tracesec.qualitymodel.AbstractQualityNode#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.tracesec.qualitymodel.AbstractQualityNode#getTitle <em>Title</em>}</li>
+ *   <li>{@link org.tracesec.qualitymodel.AbstractQualityNode#getPriority <em>Priority</em>}</li>
  * </ul>
  *
  * @see org.tracesec.qualitymodel.QualityModelPackage#getAbstractQualityNode()
@@ -35,7 +36,7 @@ public interface AbstractQualityNode extends EObject {
 	 * @see #setOwner(QualityCategory)
 	 * @see org.tracesec.qualitymodel.QualityModelPackage#getAbstractQualityNode_Owner()
 	 * @see org.tracesec.qualitymodel.QualityCategory#getOwnedNodes
-	 * @model opposite="ownedNodes" required="true" transient="true"
+	 * @model opposite="ownedNodes" required="true" transient="true" derived="true"
 	 * @generated
 	 */
 	QualityCategory getOwner();
@@ -75,5 +76,31 @@ public interface AbstractQualityNode extends EObject {
 	 * @generated
 	 */
 	void setTitle(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Priority</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Priority</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Priority</em>' attribute.
+	 * @see #setPriority(int)
+	 * @see org.tracesec.qualitymodel.QualityModelPackage#getAbstractQualityNode_Priority()
+	 * @model
+	 * @generated
+	 */
+	int getPriority();
+
+	/**
+	 * Sets the value of the '{@link org.tracesec.qualitymodel.AbstractQualityNode#getPriority <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Priority</em>' attribute.
+	 * @see #getPriority()
+	 * @generated
+	 */
+	void setPriority(int value);
 
 } // AbstractQualityNode

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="ASCII"?>
+<tracegraph:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:tracegraph="http://www.tracesec.org/tracegraph">
+  <edges src="//@nodes.0" trg="//@nodes.1" capacity="2"/>
+  <edges src="//@nodes.2" trg="//@nodes.3" capacity="3"/>
+  <edges src="//@nodes.4" trg="//@nodes.5" capacity="3"/>
+  <edges src="//@nodes.6" trg="//@nodes.7" capacity="9"/>
+  <edges src="//@nodes.8" trg="//@nodes.1" capacity="2"/>
+  <edges src="//@nodes.9" trg="//@nodes.10" capacity="3"/>
+  <edges src="//@nodes.11" trg="//@nodes.12" capacity="9"/>
+  <edges src="//@nodes.13" trg="//@nodes.14" capacity="2"/>
+  <edges src="//@nodes.15" trg="//@nodes.16" capacity="3"/>
+  <edges src="//@nodes.17" trg="//@nodes.1"/>
+  <edges src="//@nodes.18" trg="//@nodes.19" capacity="3"/>
+  <edges src="//@nodes.20" trg="//@nodes.21" capacity="3"/>
+  <edges src="//@nodes.22" trg="//@nodes.23" capacity="6"/>
+  <edges src="//@nodes.24" trg="//@nodes.25" capacity="3"/>
+  <edges src="//@nodes.26" trg="//@nodes.27" capacity="3"/>
+  <edges src="//@nodes.28" trg="//@nodes.29" capacity="3"/>
+  <edges src="//@nodes.30" trg="//@nodes.1" capacity="2"/>
+  <edges src="//@nodes.0" trg="//@nodes.31" capacity="20"/>
+  <edges src="//@nodes.0" trg="//@nodes.32" capacity="12"/>
+  <edges src="//@nodes.1" trg="//@nodes.14"/>
+  <edges src="//@nodes.1" trg="//@nodes.33"/>
+  <edges src="//@nodes.1" trg="//@nodes.34"/>
+  <edges src="//@nodes.1" trg="//@nodes.21" capacity="2"/>
+  <edges src="//@nodes.1" trg="//@nodes.19" capacity="2"/>
+  <edges src="//@nodes.1" trg="//@nodes.27" capacity="2"/>
+  <edges src="//@nodes.1" trg="//@nodes.16" capacity="2"/>
+  <edges src="//@nodes.1" trg="//@nodes.29" capacity="2"/>
+  <edges src="//@nodes.1" trg="//@nodes.3" capacity="2"/>
+  <edges src="//@nodes.1" trg="//@nodes.5" capacity="2"/>
+  <edges src="//@nodes.1" trg="//@nodes.25" capacity="2"/>
+  <edges src="//@nodes.1" trg="//@nodes.23" capacity="2"/>
+  <edges src="//@nodes.1" trg="//@nodes.10" capacity="2"/>
+  <edges src="//@nodes.2" trg="//@nodes.17" capacity="12"/>
+  <edges src="//@nodes.3" trg="//@nodes.1"/>
+  <edges src="//@nodes.4" trg="//@nodes.17" capacity="12"/>
+  <edges src="//@nodes.5" trg="//@nodes.1"/>
+  <edges src="//@nodes.6" trg="//@nodes.35" capacity="16"/>
+  <edges src="//@nodes.6" trg="//@nodes.22" capacity="20"/>
+  <edges src="//@nodes.6" trg="//@nodes.28" capacity="4"/>
+  <edges src="//@nodes.7" trg="//@nodes.36" capacity="99999"/>
+  <edges src="//@nodes.7" trg="//@nodes.23"/>
+  <edges src="//@nodes.7" trg="//@nodes.12"/>
+  <edges src="//@nodes.7" trg="//@nodes.37"/>
+  <edges src="//@nodes.7" trg="//@nodes.38"/>
+  <edges src="//@nodes.7" trg="//@nodes.29"/>
+  <edges src="//@nodes.8" trg="//@nodes.32" capacity="12"/>
+  <edges src="//@nodes.9" trg="//@nodes.17" capacity="12"/>
+  <edges src="//@nodes.10" trg="//@nodes.1"/>
+  <edges src="//@nodes.11" trg="//@nodes.39" capacity="16"/>
+  <edges src="//@nodes.11" trg="//@nodes.22" capacity="20"/>
+  <edges src="//@nodes.11" trg="//@nodes.28" capacity="4"/>
+  <edges src="//@nodes.12" trg="//@nodes.40" capacity="99999"/>
+  <edges src="//@nodes.12" trg="//@nodes.23"/>
+  <edges src="//@nodes.12" trg="//@nodes.41"/>
+  <edges src="//@nodes.12" trg="//@nodes.42"/>
+  <edges src="//@nodes.12" trg="//@nodes.43"/>
+  <edges src="//@nodes.12" trg="//@nodes.29"/>
+  <edges src="//@nodes.13" trg="//@nodes.22" capacity="20"/>
+  <edges src="//@nodes.13" trg="//@nodes.30" capacity="12"/>
+  <edges src="//@nodes.14" trg="//@nodes.23" capacity="2"/>
+  <edges src="//@nodes.14" trg="//@nodes.1"/>
+  <edges src="//@nodes.15" trg="//@nodes.17" capacity="12"/>
+  <edges src="//@nodes.16" trg="//@nodes.1"/>
+  <edges src="//@nodes.17" trg="//@nodes.20" capacity="20"/>
+  <edges src="//@nodes.17" trg="//@nodes.24" capacity="20"/>
+  <edges src="//@nodes.17" trg="//@nodes.28" capacity="20"/>
+  <edges src="//@nodes.17" trg="//@nodes.26" capacity="20"/>
+  <edges src="//@nodes.17" trg="//@nodes.4" capacity="20"/>
+  <edges src="//@nodes.17" trg="//@nodes.15" capacity="20"/>
+  <edges src="//@nodes.17" trg="//@nodes.2" capacity="20"/>
+  <edges src="//@nodes.17" trg="//@nodes.9" capacity="20"/>
+  <edges src="//@nodes.17" trg="//@nodes.18" capacity="20"/>
+  <edges src="//@nodes.17" trg="//@nodes.30" capacity="12"/>
+  <edges src="//@nodes.18" trg="//@nodes.17" capacity="12"/>
+  <edges src="//@nodes.19" trg="//@nodes.1"/>
+  <edges src="//@nodes.20" trg="//@nodes.17" capacity="12"/>
+  <edges src="//@nodes.21" trg="//@nodes.1"/>
+  <edges src="//@nodes.22" trg="//@nodes.6" capacity="20"/>
+  <edges src="//@nodes.22" trg="//@nodes.11" capacity="20"/>
+  <edges src="//@nodes.22" trg="//@nodes.13" capacity="12"/>
+  <edges src="//@nodes.23" trg="//@nodes.1"/>
+  <edges src="//@nodes.23" trg="//@nodes.14"/>
+  <edges src="//@nodes.23" trg="//@nodes.43"/>
+  <edges src="//@nodes.23" trg="//@nodes.38"/>
+  <edges src="//@nodes.23" trg="//@nodes.12"/>
+  <edges src="//@nodes.23" trg="//@nodes.7"/>
+  <edges src="//@nodes.23" trg="//@nodes.44"/>
+  <edges src="//@nodes.24" trg="//@nodes.17" capacity="12"/>
+  <edges src="//@nodes.25" trg="//@nodes.1"/>
+  <edges src="//@nodes.26" trg="//@nodes.17" capacity="12"/>
+  <edges src="//@nodes.27" trg="//@nodes.1"/>
+  <edges src="//@nodes.28" trg="//@nodes.17" capacity="12"/>
+  <edges src="//@nodes.29" trg="//@nodes.1"/>
+  <edges src="//@nodes.30" trg="//@nodes.17" capacity="20"/>
+  <edges src="//@nodes.30" trg="//@nodes.13" capacity="20"/>
+  <edges src="//@nodes.30" trg="//@nodes.32" capacity="12"/>
+  <edges src="//@nodes.31" trg="//@nodes.45" capacity="8"/>
+  <edges src="//@nodes.31" trg="//@nodes.0" capacity="12"/>
+  <edges src="//@nodes.32" trg="//@nodes.30" capacity="20"/>
+  <edges src="//@nodes.32" trg="//@nodes.0" capacity="20"/>
+  <edges src="//@nodes.32" trg="//@nodes.8" capacity="20"/>
+  <edges src="//@nodes.33" trg="//@nodes.38"/>
+  <edges src="//@nodes.33" trg="//@nodes.1"/>
+  <edges src="//@nodes.34" trg="//@nodes.43"/>
+  <edges src="//@nodes.34" trg="//@nodes.1"/>
+  <edges src="//@nodes.35" trg="//@nodes.6" capacity="12"/>
+  <edges src="//@nodes.35" trg="//@nodes.28" capacity="4"/>
+  <edges src="//@nodes.36" trg="//@nodes.7"/>
+  <edges src="//@nodes.38" trg="//@nodes.7"/>
+  <edges src="//@nodes.38" trg="//@nodes.33"/>
+  <edges src="//@nodes.38" trg="//@nodes.29"/>
+  <edges src="//@nodes.39" trg="//@nodes.11" capacity="12"/>
+  <edges src="//@nodes.39" trg="//@nodes.28" capacity="4"/>
+  <edges src="//@nodes.40" trg="//@nodes.12"/>
+  <edges src="//@nodes.41" trg="//@nodes.12"/>
+  <edges src="//@nodes.41" trg="//@nodes.7"/>
+  <edges src="//@nodes.41" trg="//@nodes.23"/>
+  <edges src="//@nodes.43" trg="//@nodes.12"/>
+  <edges src="//@nodes.43" trg="//@nodes.34"/>
+  <edges src="//@nodes.43" trg="//@nodes.29"/>
+  <edges src="//@nodes.45" trg="//@nodes.31" capacity="4"/>
+  <edges src="//@nodes.45" trg="//@nodes.22" capacity="16"/>
+  <edges src="//@nodes.46" trg="//@nodes.47" capacity="2"/>
+  <edges src="//@nodes.46" trg="//@nodes.48" capacity="6"/>
+  <edges src="//@nodes.47" trg="//@nodes.6"/>
+  <edges src="//@nodes.48" trg="//@nodes.49" capacity="5"/>
+  <edges src="//@nodes.48" trg="//@nodes.50" capacity="4"/>
+  <edges src="//@nodes.49" trg="//@nodes.22"/>
+  <edges src="//@nodes.50" trg="//@nodes.11"/>
+  <nodes out="//@edges.0 //@edges.17 //@edges.18" in="//@edges.97 //@edges.99" id="org.eclipse.uml2.uml.internal.impl.ModelImpl@4b1a43d8 (name: source references, visibility: &lt;unset>) (URI: null) (viewpoint: &lt;unset>)">
+    <represents href="uml/classdiagram.uml#_ahmAM5MiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.19 //@edges.20 //@edges.21 //@edges.22 //@edges.23 //@edges.24 //@edges.25 //@edges.26 //@edges.27 //@edges.28 //@edges.29 //@edges.30 //@edges.31" in="//@edges.0 //@edges.4 //@edges.9 //@edges.16 //@edges.33 //@edges.35 //@edges.47 //@edges.60 //@edges.62 //@edges.74 //@edges.76 //@edges.80 //@edges.88 //@edges.90 //@edges.92 //@edges.102 //@edges.104" id="org.gravity.typegraph.basic.impl.TypeGraphImpl@3ad4a7d6">
+    <represents href="pm/pm.xmi#/"/>
+  </nodes>
+  <nodes out="//@edges.1 //@edges.32" in="//@edges.69" id="org.eclipse.uml2.uml.internal.impl.PrimitiveTypeImpl@2015b2cd (name: byte, visibility: &lt;unset>) (isLeaf: false, isAbstract: false, isFinalSpecialization: false)">
+    <represents href="uml/classdiagram.uml#_ahB_gZMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.33" in="//@edges.1 //@edges.27" id="org.gravity.typegraph.basic.impl.TClassImpl@3414a8c3 (tLib: true, tName: byte, name: byte)">
+    <represents href="pm/pm.xmi#//@ownedTypes.5"/>
+  </nodes>
+  <nodes out="//@edges.2 //@edges.34" in="//@edges.67" id="org.eclipse.uml2.uml.internal.impl.PrimitiveTypeImpl@240f6c41 (name: long, visibility: &lt;unset>) (isLeaf: false, isAbstract: false, isFinalSpecialization: false)">
+    <represents href="uml/classdiagram.uml#_ahBYc5MiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.35" in="//@edges.2 //@edges.28" id="org.gravity.typegraph.basic.impl.TClassImpl@36cc9385 (tLib: true, tName: long, name: long)">
+    <represents href="pm/pm.xmi#//@ownedTypes.6"/>
+  </nodes>
+  <nodes out="//@edges.3 //@edges.36 //@edges.37 //@edges.38" in="//@edges.77 //@edges.105 //@edges.124" id="org.eclipse.uml2.uml.internal.impl.OperationImpl@451882b2 (name: a, visibility: public) (isLeaf: false, isStatic: false, concurrency: sequential, isAbstract: false) (isQuery: false)">
+    <represents href="uml/classdiagram.uml#_ahf5kJMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.39 //@edges.40 //@edges.41 //@edges.42 //@edges.43 //@edges.44" in="//@edges.3 //@edges.85 //@edges.107 //@edges.108 //@edges.115" id="org.gravity.typegraph.basic.impl.TMethodDefinitionImpl@3d904e9, name: a)">
+    <represents href="pm/pm.xmi#//@methods.0/@signatures.0/@definitions.0"/>
+  </nodes>
+  <nodes out="//@edges.4 //@edges.45" in="//@edges.100" id="org.eclipse.uml2.uml.internal.impl.ModelImpl@6ae3fb94 (name: externals, visibility: &lt;unset>) (URI: null) (viewpoint: &lt;unset>)">
+    <represents href="uml/classdiagram.uml#_ah-asJMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.5 //@edges.46" in="//@edges.70" id="org.eclipse.uml2.uml.internal.impl.PrimitiveTypeImpl@3bdb2c78 (name: boolean, visibility: &lt;unset>) (isLeaf: false, isAbstract: false, isFinalSpecialization: false)">
+    <represents href="uml/classdiagram.uml#_ahB_gpMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.47" in="//@edges.5 //@edges.31" id="org.gravity.typegraph.basic.impl.TClassImpl@68d651f2 (tLib: true, tName: boolean, name: boolean)">
+    <represents href="pm/pm.xmi#//@ownedTypes.9"/>
+  </nodes>
+  <nodes out="//@edges.6 //@edges.48 //@edges.49 //@edges.50" in="//@edges.78 //@edges.111 //@edges.128" id="org.eclipse.uml2.uml.internal.impl.OperationImpl@45bb2aa1 (name: b, visibility: private) (isLeaf: false, isStatic: false, concurrency: sequential, isAbstract: false) (isQuery: false)">
+    <represents href="uml/classdiagram.uml#_ahmAMZMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.51 //@edges.52 //@edges.53 //@edges.54 //@edges.55 //@edges.56" in="//@edges.6 //@edges.41 //@edges.84 //@edges.113 //@edges.114 //@edges.117" id="org.gravity.typegraph.basic.impl.TMethodDefinitionImpl@1229a2b, name: b)">
+    <represents href="pm/pm.xmi#//@methods.1/@signatures.0/@definitions.0"/>
+  </nodes>
+  <nodes out="//@edges.7 //@edges.57 //@edges.58" in="//@edges.79 //@edges.94" id="org.eclipse.uml2.uml.internal.impl.PackageImpl@1c758545 (name: dummy, visibility: &lt;unset>) (URI: null)">
+    <represents href="uml/classdiagram.uml#_ahB_hJMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.59 //@edges.60" in="//@edges.7 //@edges.19 //@edges.81" id="org.gravity.typegraph.basic.impl.TPackageImpl@e5cbff2 (tName: dummy)">
+    <represents href="pm/pm.xmi#//@packages.0"/>
+  </nodes>
+  <nodes out="//@edges.8 //@edges.61" in="//@edges.68" id="org.eclipse.uml2.uml.internal.impl.PrimitiveTypeImpl@3659d7b1 (name: char, visibility: &lt;unset>) (isLeaf: false, isAbstract: false, isFinalSpecialization: false)">
+    <represents href="uml/classdiagram.uml#_ahB_gJMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.62" in="//@edges.8 //@edges.25" id="org.gravity.typegraph.basic.impl.TClassImpl@2133661d (tLib: true, tName: char, name: char)">
+    <represents href="pm/pm.xmi#//@ownedTypes.3"/>
+  </nodes>
+  <nodes out="//@edges.9 //@edges.63 //@edges.64 //@edges.65 //@edges.66 //@edges.67 //@edges.68 //@edges.69 //@edges.70 //@edges.71 //@edges.72" in="//@edges.32 //@edges.34 //@edges.46 //@edges.61 //@edges.73 //@edges.75 //@edges.87 //@edges.89 //@edges.91 //@edges.93" id="org.eclipse.uml2.uml.internal.impl.PackageImpl@624a24f6 (name: Common Java datatypes, visibility: &lt;unset>) (URI: null)">
+    <represents href="uml/classdiagram.uml#_agksgZMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.10 //@edges.73" in="//@edges.71" id="org.eclipse.uml2.uml.internal.impl.PrimitiveTypeImpl@64693226 (name: int, visibility: &lt;unset>) (isLeaf: false, isAbstract: false, isFinalSpecialization: false)">
+    <represents href="uml/classdiagram.uml#_ahB_g5MiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.74" in="//@edges.10 //@edges.23" id="org.gravity.typegraph.basic.impl.TClassImpl@304d0259 (tLib: true, tName: int, name: int)">
+    <represents href="pm/pm.xmi#//@ownedTypes.1"/>
+  </nodes>
+  <nodes out="//@edges.11 //@edges.75" in="//@edges.63" id="org.eclipse.uml2.uml.internal.impl.PrimitiveTypeImpl@2cec704c (name: float, visibility: &lt;unset>) (isLeaf: false, isAbstract: false, isFinalSpecialization: false)">
+    <represents href="uml/classdiagram.uml#_ag3AYJMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.76" in="//@edges.11 //@edges.22" id="org.gravity.typegraph.basic.impl.TClassImpl@71978f46 (tLib: true, tName: float, name: float)">
+    <represents href="pm/pm.xmi#//@ownedTypes.0"/>
+  </nodes>
+  <nodes out="//@edges.12 //@edges.77 //@edges.78 //@edges.79" in="//@edges.37 //@edges.49 //@edges.57 //@edges.121 //@edges.127" id="org.eclipse.uml2.uml.internal.impl.ClassImpl@4016ccc1 (name: Test, visibility: public) (isLeaf: false, isAbstract: false, isFinalSpecialization: false) (isActive: false)">
+    <represents href="uml/classdiagram.uml#_ahTFQJMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.80 //@edges.81 //@edges.82 //@edges.83 //@edges.84 //@edges.85 //@edges.86" in="//@edges.12 //@edges.30 //@edges.40 //@edges.52 //@edges.59 //@edges.116" id="org.gravity.typegraph.basic.impl.TClassImpl@7915bca3 (tLib: false, tName: Test, name: Test)">
+    <represents href="pm/pm.xmi#//@ownedTypes.8"/>
+  </nodes>
+  <nodes out="//@edges.13 //@edges.87" in="//@edges.64" id="org.eclipse.uml2.uml.internal.impl.PrimitiveTypeImpl@771cbb1a (name: double, visibility: &lt;unset>) (isLeaf: false, isAbstract: false, isFinalSpecialization: false)">
+    <represents href="uml/classdiagram.uml#_ahBYcJMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.88" in="//@edges.13 //@edges.29" id="org.gravity.typegraph.basic.impl.TClassImpl@cf518cf (tLib: true, tName: double, name: double)">
+    <represents href="pm/pm.xmi#//@ownedTypes.7"/>
+  </nodes>
+  <nodes out="//@edges.14 //@edges.89" in="//@edges.66" id="org.eclipse.uml2.uml.internal.impl.PrimitiveTypeImpl@6b2e0f78 (name: short, visibility: &lt;unset>) (isLeaf: false, isAbstract: false, isFinalSpecialization: false)">
+    <represents href="uml/classdiagram.uml#_ahBYcpMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.90" in="//@edges.14 //@edges.24" id="org.gravity.typegraph.basic.impl.TClassImpl@1d23ff23 (tLib: true, tName: short, name: short)">
+    <represents href="pm/pm.xmi#//@ownedTypes.2"/>
+  </nodes>
+  <nodes out="//@edges.15 //@edges.91" in="//@edges.38 //@edges.50 //@edges.65 //@edges.106 //@edges.112" id="org.eclipse.uml2.uml.internal.impl.PrimitiveTypeImpl@2416498e (name: void, visibility: &lt;unset>) (isLeaf: false, isAbstract: false, isFinalSpecialization: false)">
+    <represents href="uml/classdiagram.uml#_ahBYcZMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.92" in="//@edges.15 //@edges.26 //@edges.44 //@edges.56 //@edges.110 //@edges.119" id="org.gravity.typegraph.basic.impl.TClassImpl@6c9320c2 (tLib: true, tName: void, name: void)">
+    <represents href="pm/pm.xmi#//@ownedTypes.4"/>
+  </nodes>
+  <nodes out="//@edges.16 //@edges.93 //@edges.94 //@edges.95" in="//@edges.58 //@edges.72 //@edges.98" id="org.eclipse.uml2.uml.internal.impl.ModelImpl@7aa9e414 (name: Test, visibility: &lt;unset>) (URI: null) (viewpoint: &lt;unset>)">
+    <represents href="uml/classdiagram.uml#_agksgJMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.96 //@edges.97" in="//@edges.17 //@edges.120" id="org.eclipse.uml2.uml.internal.impl.ArtifactImpl@74db12c2 (name: Test.java, visibility: &lt;unset>) (isLeaf: false, isAbstract: false, isFinalSpecialization: false) (fileName: /home/speldszus/workspace/runtime-workspaces/GRaViTY-runtime/Test/src/dummy/Test.java)">
+    <represents href="uml/classdiagram.uml#_ahxmYJMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.98 //@edges.99 //@edges.100" in="//@edges.18 //@edges.45 //@edges.95" id="org.eclipse.uml2.uml.internal.impl.ModelImpl@3d6a6bee (name: root model, visibility: &lt;unset>) (URI: null) (viewpoint: &lt;unset>)">
+    <represents href="uml/classdiagram.uml#_agcwsJMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.101 //@edges.102" in="//@edges.20 //@edges.109" id="org.gravity.typegraph.basic.impl.TMethodImpl@d109c4f (tName: a)">
+    <represents href="pm/pm.xmi#//@methods.0"/>
+  </nodes>
+  <nodes out="//@edges.103 //@edges.104" in="//@edges.21 //@edges.118" id="org.gravity.typegraph.basic.impl.TMethodImpl@3968bc60 (tName: b)">
+    <represents href="pm/pm.xmi#//@methods.1"/>
+  </nodes>
+  <nodes out="//@edges.105 //@edges.106" in="//@edges.36" id="org.eclipse.uml2.uml.internal.impl.ParameterImpl@67d86804 (name: &lt;unset>, visibility: &lt;unset>) (isOrdered: false, isUnique: true, direction: return, effect: &lt;unset>, isException: false, isStream: false)">
+    <represents href="uml/classdiagram.uml#_ahmAMJMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.107" in="//@edges.39" id="org.gravity.hulk.sonarlint.sonarlint.impl.SonarlintFindingImpl@7a0e7ecd(type = null) on org.gravity.typegraph.basic.impl.TMethodDefinitionImpl@3d904e9, name: a) (changed: false) (rulekey: java:S1186, kind: CODE_SMELL, severity: 0, rulename: Methods should not be empty, description: Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation., creationdate: 1644933618415, marker: null)">
+    <represents href="pm/pm.xmi#//@methods.0/@signatures.0/@definitions.0/@tAnnotation.0"/>
+  </nodes>
+  <nodes in="//@edges.42" id="org.gravity.typegraph.basic.impl.TModifierImpl@5f7989fa (tVisibility: TPublic, isStatic: false)">
+    <represents href="pm/pm.xmi#//@methods.0/@signatures.0/@definitions.0/@tModifier"/>
+  </nodes>
+  <nodes out="//@edges.108 //@edges.109 //@edges.110" in="//@edges.43 //@edges.83 //@edges.101" id="org.gravity.typegraph.basic.impl.TMethodSignatureImpl@4a67b4e, name: a)">
+    <represents href="pm/pm.xmi#//@methods.0/@signatures.0"/>
+  </nodes>
+  <nodes out="//@edges.111 //@edges.112" in="//@edges.48" id="org.eclipse.uml2.uml.internal.impl.ParameterImpl@3e84111a (name: &lt;unset>, visibility: &lt;unset>) (isOrdered: false, isUnique: true, direction: return, effect: &lt;unset>, isException: false, isStream: false)">
+    <represents href="uml/classdiagram.uml#_ahmAMpMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.113" in="//@edges.51" id="org.gravity.hulk.sonarlint.sonarlint.impl.SonarlintFindingImpl@55e42449(type = null) on org.gravity.typegraph.basic.impl.TMethodDefinitionImpl@1229a2b, name: b) (changed: false) (rulekey: java:S1186, kind: CODE_SMELL, severity: 0, rulename: Methods should not be empty, description: Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation., creationdate: 1644933618415, marker: null)">
+    <represents href="pm/pm.xmi#//@methods.1/@signatures.0/@definitions.0/@tAnnotation.0"/>
+  </nodes>
+  <nodes out="//@edges.114 //@edges.115 //@edges.116" in="//@edges.53" id="org.gravity.typegraph.basic.impl.TCallImpl@646c0a67">
+    <represents href="pm/pm.xmi#//@methods.0/@signatures.0/@definitions.0/@accessing.0"/>
+  </nodes>
+  <nodes in="//@edges.54" id="org.gravity.typegraph.basic.impl.TModifierImpl@e57e5d6 (tVisibility: TPrivate, isStatic: false)">
+    <represents href="pm/pm.xmi#//@methods.1/@signatures.0/@definitions.0/@tModifier"/>
+  </nodes>
+  <nodes out="//@edges.117 //@edges.118 //@edges.119" in="//@edges.55 //@edges.82 //@edges.103" id="org.gravity.typegraph.basic.impl.TMethodSignatureImpl@1e43e32, name: b)">
+    <represents href="pm/pm.xmi#//@methods.1/@signatures.0"/>
+  </nodes>
+  <nodes in="//@edges.86" id="org.gravity.typegraph.basic.impl.TModifierImpl@6cd64ee8 (tVisibility: TPublic, isStatic: false)">
+    <represents href="pm/pm.xmi#//@ownedTypes.8/@tModifier"/>
+  </nodes>
+  <nodes out="//@edges.120 //@edges.121" in="//@edges.96" id="org.eclipse.uml2.uml.internal.impl.ManifestationImpl@45e22def (name: &lt;unset>, visibility: &lt;unset>)">
+    <represents href="uml/classdiagram.uml#_ah9zoJMiEeyMnolXf9IRTQ"/>
+  </nodes>
+  <nodes out="//@edges.122 //@edges.123" id="org.tracesec.qualitymodel.impl.QualityCategoryImpl@5679e96b (title: null, priority: 0)">
+    <represents href="QualityModel.xmi#/"/>
+  </nodes>
+  <nodes out="//@edges.124" in="//@edges.122" id="org.tracesec.qualitymodel.impl.QualityAspectImpl@3ed7821 (title: UnimportantAspect, priority: 1) (description: null)">
+    <represents href="QualityModel.xmi#//@aspects.0"/>
+  </nodes>
+  <nodes out="//@edges.125 //@edges.126" in="//@edges.123" id="org.tracesec.qualitymodel.impl.QualityCategoryImpl@3bbf841e (title: ImportantQualityAspects, priority: 5)">
+    <represents href="QualityModel.xmi#//@subcategories.0"/>
+  </nodes>
+  <nodes out="//@edges.127" in="//@edges.125" id="org.tracesec.qualitymodel.impl.QualityAspectImpl@79b84841 (title: ImportantAspect, priority: 4) (description: null)">
+    <represents href="QualityModel.xmi#//@subcategories.0/@aspects.0"/>
+  </nodes>
+  <nodes out="//@edges.128" in="//@edges.126" id="org.tracesec.qualitymodel.impl.QualityAspectImpl@4d41ba0f (title: MediumAspect, priority: 3) (description: null)">
+    <represents href="QualityModel.xmi#//@subcategories.0/@aspects.1"/>
+  </nodes>
+</tracegraph:Graph>

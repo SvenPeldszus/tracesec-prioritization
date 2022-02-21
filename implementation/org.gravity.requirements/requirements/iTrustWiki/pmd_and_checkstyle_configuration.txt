@@ -1,0 +1,29 @@
+=====PMD and CheckStyle Settings=====
+
+[[home_deployment_instructions|Back to home deployment]]
+
+PMD and CheckStyle can notify you about many potential anomalies in your code. With all notifications turned on, you could receive hundreds of reports and some of those reports would be duplicate between PMD and CheckStyle. Instead, we will use custom configurations for PMD and CheckStyle.
+
+Download the [[http://courses.ncsu.edu/csc216/common/tutorials/eclipse-install/assets/csc_pmd.xml | PMD]] and [[http://courses.ncsu.edu/csc216/common/tutorials/eclipse-install/assets/csc_checkstyle.xml | CheckStyle]] configuration files. These are the configuration files that we use for automated grading. By having a copy of these configuration files locally in Eclipse and running PMD and CheckStyle on your code, there should be no surprises during grading.
+
+===PMD Configuration File===
+Follow these steps to install the PMD configuration file:
+
+  - Select
+    * **Windows users: Window > Preferences > PMD > Rules Configuration.**
+    * **Mac users: Eclipse > Preferences > PMD > Rules Configuration.**
+  - Select all the rules, and click the red X button.  This will remove all of the current rules.
+  - Click the **Clear all** button. This will remove all of the current rules.
+  - Click the Import rule set... button (right below the red X button on the right) and **Browse** for the [[http://courses.ncsu.edu/csc216/common/tutorials/eclipse-install/assets/csc_pmd.xml | csc_pmd.xml]] file. You can leave the **Import by Reference** check box selected. Click **OK**.
+  - The rules will be listed. Click **OK** to apply the rules. If prompted to complete a full build of your workspace, click **OK**.
+
+===CheckStyle Configuration File===
+Follow these steps to install the CheckStyle configuration file:
+
+  - Select
+    * **Windows users: Window > Preferences > CheckStyle.**
+    * **Mac users: Eclipse > Preferences > CheckStyle.**
+  - Click the **New...** button.
+  - Select the **Type** to be **External Configuration File**. Give the configuration a name, like **CSC326**.  Browse to the location of [[http://courses.ncsu.edu/csc216/common/tutorials/eclipse-install/assets/csc_checkstyle.xml | csc_checkstyle.xml]]. Click the **OK** button.
+  - Select the configuration you just created in the **Global Check Configuration** table. Click the **Set as Default** button.
+  - Click the **OK** button. If prompted to complete a full build of your workspace, click **OK**.

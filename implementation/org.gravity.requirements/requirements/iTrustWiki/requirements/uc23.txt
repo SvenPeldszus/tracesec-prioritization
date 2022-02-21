@@ -1,0 +1,21 @@
+====UC23 View Comprehensive Patient Report Use Case====
+==23.1 Preconditions:==
+An LHCP has authenticated him or herself in the iTrust Medical Records system [[requirements:uc2|(UC2)]].
+==23.2 Main Flow:==
+The LHCP requests a comprehensive patient report for a particular patient [S1]. The LHCP is able to view the comprehensive patient report [S2] from a list of his/her previous requests [S3].
+==23.3 Sub-flows:==
+  * [S1] The LHCP enters a patient medical identification number (MID) [E1] and confirms his/her input [E2].
+  * [S2] The LHCP can view the comprehensive patient report for the specified patient, which includes the information below.
+       * All patient demographic information (address, phone, etc.), see [[requirements:uc4|(UC4)]] and [[requirements:df1|Data Format 6.1]]
+       * All designated HCPs (MIDs and Names), see [[requirements:uc6|(UC6)]]
+       * All allergies, office visits, and known relatives, see [[requirements:uc11|(UC11)]] and [[requirements:df5|Data Format 6.5]], [[requirements:df6|6.6]]
+       * All MIDs and names of people that this person is representing, see [[requirements:uc13|(UC13)]]
+       * All MIDs and names of people that this person is represented by, see [[requirements:uc13|(UC13)]]
+   * [S3] The LHCP views a list of requests he/she has made for reports, with the status and pertinent information about the requests.
+==23.4 Alternative Flows:==
+  * [E1] The LHCP types an invalid MID and is prompted to try again.
+  * [E2] The chosen patient is not the desired patient. The LHCP does not confirm the selection and can try again.
+==23.5 Logging==
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 2300 |  View Comprehensive Report  |  LHCP  |  Patient  |  23  |  View  |  None  |  Yes  |
+

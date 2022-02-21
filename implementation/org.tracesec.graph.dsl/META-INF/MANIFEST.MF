@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.tracesec.graph.dsl
+Bundle-ManifestVersion: 2
+Bundle-Name: org.tracesec.graph.dsl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.tracesec.graph.dsl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: org.tracesec.graph.dsl.graphConfiguration.impl,
+ org.tracesec.graph.dsl.parser.antlr,
+ org.tracesec.graph.dsl.serializer,
+ org.tracesec.graph.dsl,
+ org.tracesec.graph.dsl.scoping,
+ org.tracesec.graph.dsl.services,
+ org.tracesec.graph.dsl.graphConfiguration,
+ org.tracesec.graph.dsl.parser.antlr.internal,
+ org.tracesec.graph.dsl.validation,
+ org.tracesec.graph.dsl.graphConfiguration.util,
+ org.tracesec.graph.dsl.generator
+Import-Package: org.apache.log4j

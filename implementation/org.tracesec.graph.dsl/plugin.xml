@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package
+			uri = "http://www.tracesec.org/graph/dsl/GraphConfiguration"
+			class = "org.tracesec.graph.dsl.graphConfiguration.GraphConfigurationPackage"
+			genModel = "model/generated/GraphConfiguration.genmodel" />
+	</extension>
+</plugin>

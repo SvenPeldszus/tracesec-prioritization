@@ -1,0 +1,37 @@
+**UC73 Introduce a Designated Nutritionist **
+
+**73.1 Preconditions**
+
+A Patient is a registered user of the iTrust Medical Records
+System (UC1). The iTrust Patient user has authenticated
+himself or herself in the iTrust Medical Records System (UC3).
+
+**73.2 Main Flow**
+
+Any Patient may choose to select a designated Nutritionist
+[S1]. He will then submit the form [E1], and his nutritionist
+will be updated. A Patient may choose to have no designated
+Nutritionist [S2]. This Nutritionist will be an HCP and will have
+the specialty of “Nutritionist.” Only the designated Nutritionist
+for a Patient will be able to view any of their Nutritional
+Information, including UC71 (Calories and Macronutrients) and
+UC68 (Food Diary).
+
+**73.3 Sub-flows**
+
+  * [S1] A Patient shall be presented through a drop down box all of the potential designated Nutritionists.
+  * [S2] The Patient shall select “None” as his designated Nutritionist from his list of options.
+
+**73.4 Alternative Flows**
+  * [E1] The Patient chooses to change his/her designated Nutritionists to his current designated Nutritionist. The Patient will be presented with a message saying he already has this HCP as his designated Nutritionist.
+
+**73.5 Logging**
+
+Transaction Code: ​7300
+Verbose Description: ​Patient changes designated Nutritionist
+LoggedInMID: ​Editor (HCP)
+Secondary MID: ​N/A
+Use Case Involved: ​73
+Type of Transaction: ​Edit
+Additional Information: ​None
+Patient Viewable: ​Yes

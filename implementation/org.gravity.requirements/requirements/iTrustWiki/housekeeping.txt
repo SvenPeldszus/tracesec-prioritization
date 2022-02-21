@@ -1,0 +1,26 @@
+====== iTrust Houskeeping ======
+
+Between each semeseter, a bit of effort is needed to clean up the iTrust code and evaluate the state of the project. Among the types of actions are:
+
+  * Updating automated tests
+  * Fixing or clarifying the document
+  * Discussions of the future of the project
+  * Minor features
+  * Cosmetic changes
+  * Refactoring
+  * Changing technologies (IDE, etc.)
+
+
+===== History =====
+
+This wiki contains somewhat of a record of the housekeeping changes made to iTrust between semesters, for posterity.
+
+  * [[Summer12Housekeeping|Summer 12]]
+  * [[Summer09Housekeeping|Summer 09 (v8.0)]] 
+  * [[Winter09Housekeeping|Winter 09 (v7.0)]] 
+  * [[Summer08Housekeeping|Summer 08 (v6.0)]]
+ 
+
+===== Requisite Housekeeping =====
+
+Some things just need to absolutely be done each semester.  We call these [[housekeeping requisites]].

@@ -1,0 +1,33 @@
+namespace "http://www.eclipse.org/uml2/5.0.0/UML" { 
+	default = 2 
+	consider = ALL
+}
+
+namespace "http://www.gravity-tool.org/typegraph/antipatterngraph/sonarlint" {}
+
+namespace "http://www.gravity-tool.org/typegraph/basic" {
+	default=1
+	consider=ALL
+	include {
+		type TMember {
+			include {
+				reference accessing -- TAccess -- target -> 1
+			}
+		}
+		type TAnnotatable {
+			include {
+				reference tAnnotation -- SonarlintFinding -> 99999
+			}
+		}
+	}
+}
+
+namespace "http://www.tracesec.org/qualitymodel" {
+	include{
+		type QualityCategory {
+			include {
+				reference ownedNodes -> priority
+			}
+		}
+	}
+}

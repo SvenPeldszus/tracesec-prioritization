@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="qualitymodel" nsURI="http://www.tracesec.org/qualitymodel" nsPrefix="org.tracesec.qualitymodel">
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractQualityNode" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//QualityCategory"
+        transient="true" derived="true" eOpposite="#//QualityCategory/ownedNodes"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="priority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="QualityCategory" eSuperTypes="#//AbstractQualityNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedNodes" upperBound="-1"
         eType="#//AbstractQualityNode" changeable="false" volatile="true" transient="true"
@@ -21,11 +27,6 @@
       </eAnnotations>
       <eAnnotations source="subsets" references="#//QualityCategory/ownedNodes"/>
     </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AbstractQualityNode" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//QualityCategory"
-        transient="true" derived="true" eOpposite="#//QualityCategory/ownedNodes"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="QualityAspect" eSuperTypes="#//AbstractQualityNode">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

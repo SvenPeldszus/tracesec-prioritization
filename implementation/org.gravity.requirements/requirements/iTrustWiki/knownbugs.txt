@@ -1,0 +1,5 @@
+===== Known Bugs in Spring 2011 iTrust =====
+
+  * Notification area: # unread messages displays total number of messages, not number of UNREAD messages
+  * Activity feed
+    * Typo: "Kelly Doctor **viwed** your basic health information today at 7:10PM."

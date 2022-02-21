@@ -1,0 +1,6 @@
+====Data Format 6.0: User====
+^Field^Format^
+|Username|Up to 20 alphanumeric characters.   |
+|Security Question  |Up to 50 alphanumeric characters and symbols: <space> ? - '  |
+|Security Answer  |Up to 50 alphanumeric characters and symbols: <space> ? - '  |
+|Password  |8-20 alphanumeric characters. **In production, password should be encrypted in the database.** During development, password can be in plain text.  |

@@ -1,0 +1,32 @@
+====UC5 Log Transaction Use Case====
+Medical information is highly personal.  Maintaining confidentiality and integrity of patient data is paramount.  Complete log files are critical for performing forensics on inappropriate access (create, read, update, delete) of patient data and on the inappropriate granting of system privileges to users.   
+
+==5.1 Preconditions:==
+None
+==5.2 Main Flow:==
+Any event which creates, views, edits, or deletes information is logged [S1]. Login failures, valid authentication, and log outs are also logged [S2]. 
+
+Note: 
+
+==5.3 Sub-flows:==
+  * [S1] For creating, viewing, modifying, or deleting information, the following information is recorded: the MID of the logged in user, any appropriate secondary MID of the user whose information is being accessed, a transaction type corresponding to the given action, and the current timestamp.  Individual audit codes related to specific use cases are presented within each Use Case description.  The subflow and transaction values are based on Use Case. For example, any in the range of 100-199 are for UC1, any in the range of 200-299 are in UC2, etc.
+  * [S2] The values from range 1-99 are logging events which do not exist in any use case but are concerned with the system as a whole. Miscellaneous transaction codes 1-99 are presented in Section 5.5 below.  For Login Failures, the IP Address of the machine, transaction type = 1, and timestamp are recorded.
+==5.4 Alternative Flows:==
+None
+==5.5 Logging:==
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^Timestamp?  ^
+| 1 |  Login Failures  |  IP Address  |  [empty]  |  N/A  |  Other  |  None  |  No  |Timestamp  |
+| 2 |  Login  |  User  |  MID  |  N/A  |  [empty]  |  None  |  No  |Timestamp  |
+| 3 |  Logout  |  User  |  MID  |  N/A  |  [empty]  |  None  |  No  |Timestamp  |
+| 10 |  View Home Page  |  User  |  [empty]  |  N/A  |  View  |  None  |  No  |Timestamp  |
+| 20 |  Uncaught Exception  |  User  |  [empty]  |  N/A  |  Other  |  None  |  No  |Timestamp  |
+| 30 |  View Global Preferences  |  User  |  [empty]  |  N/A  |  View  |  None  |  No  |Timestamp  |
+| 31 |  Edit Global Preferences  |  User  |  [empty]  |  N/A  |  Edit  |  None  |  No  |Timestamp  |
+| 32 |  View Preferences  |  User  |  [empty]  |  N/A  |  View  |  None  |  No  |Timestamp  |
+| 33 |  Edit Preferences  |  User  |  [empty]  |  N/A  |  Edit  |  None  |  No  |Timestamp  |
+
+
+
+
+
+

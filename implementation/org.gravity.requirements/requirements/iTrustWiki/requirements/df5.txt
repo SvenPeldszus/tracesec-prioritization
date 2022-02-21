@@ -1,0 +1,8 @@
+====Data Format 6.5: Diagnosis Information====
+^Field^Format^
+|Patient MID  |Unique 10-digit number that does not start with 9|
+|Diagnosis number  |Unique (to that patient) up to 10-digit number|
+|Diagnosis  |ICD9cm code|
+|Discretionary Access  |Yes/no, specifies whether or not the patient has the ability to hide this diagnosis|
+|Privacy Level  |Privacy level of the diagnosis set by the patient: all, none, designated HCP only|
+|Office Visit ID  |Integer identifier that specifies the office visit.|

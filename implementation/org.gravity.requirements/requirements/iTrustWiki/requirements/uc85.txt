@@ -1,0 +1,20 @@
+**85.1 Preconditions**
+An HCP is a registered user of the iTrust Medical Records system ([[uc2|UC2]]). The iTrust HCP user has authenticated himself or herself in the iTrust Medical Records system and is an Optometrist or Ophthalmologist([[uc3|UC3]]). The patient must be a registered patient in the iTrust Medical Records system.
+
+**85.2 Main Flow**
+An optometrist on ophthalmologist may add [S1] or remove [S2] Diagnosis for a patient for diseases related to eye health when documenting or editing a patient ophthalmology visit ([[uc83|UC83]]). Ophthalmology office visit interaction is logged according to ([[uc83|UC83]]).
+
+**85.3 Sub Flows**
+
+  * [S1] The optometrist or ophthalmologist [E1] chooses to create an ophthalmology office visit. During the creation process they may diagnosis a patient with one or more diseases.
+     * Cataracts (H26.8, H26.9)
+     * Age-Related Macular Degeneration (AMD) (H35.30, H35.31, H35.32)
+     * Amblyopia (H53.001, H53.002, H53.003, H53.009)
+     * Glaucoma (H40.89, H40.9)
+  * [S2] An optometrist edits an ophthalmology office visit [E1]. While editing they may choose to remove a   patient's diagnosis or diagnoses.
+  * [S3] Any HCP may view an existing ophthalmology office visit. When they do they are presented with the Disease Diagnoses that have been assigned to a patient.
+
+**85.4 Alternative (Error) Flows**
+
+  * [E1] If the HCP is not an optometrist or ophthalmologist the system shall not let them modify an ophthalmology office visit
+

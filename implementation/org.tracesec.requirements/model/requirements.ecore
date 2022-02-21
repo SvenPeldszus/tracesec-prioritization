@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="requirements" nsURI="http://www.tracesec.org/requirements" nsPrefix="requirements">
+  <eClassifiers xsi:type="ecore:EClass" name="RequirementsSet" eSuperTypes="#//AbstractRequirement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ordered" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"
+        eType="#//AbstractRequirement" containment="true" eOpposite="#//AbstractRequirement/set"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Requirement" eSuperTypes="#//AbstractRequirement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractRequirement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wording" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="set" lowerBound="1" eType="#//RequirementsSet"
+        eOpposite="#//RequirementsSet/requirements"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingReferences" ordered="false"
+        upperBound="-1" eType="#//RequirementRelation" containment="true" eOpposite="#//RequirementRelation/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingReferences" ordered="false"
+        upperBound="-1" eType="#//RequirementRelation" eOpposite="#//RequirementRelation/target"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RequirementRelation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//AbstractRequirement" eOpposite="#//AbstractRequirement/outgoingReferences"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//AbstractRequirement"
+        eOpposite="#//AbstractRequirement/incomingReferences"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//ReferenceType"
+        defaultValueLiteral="USAGE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ReferenceType">
+    <eLiterals name="PRECONDITION"/>
+    <eLiterals name="COMPLEMENT" value="1"/>
+    <eLiterals name="REFINEMENT" value="2"/>
+    <eLiterals name="USAGE" value="3"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,57 @@
+====== Weekly Progress Report & Risk Assessment ======
+
+Date:\\
+Project Name:\\
+Team Members:\\
+
+
+===== “Burn Down” Data =====
+
+==== Estimate of Hours Remaining ====
+
+^ ^ Status [Done, Started, Not Started] ^ Iteration 0 ^ Iteration 1 ^ Iteration 2 ^
+|UC1 | | | | |
+|UC2 | | | | |  	  	  	 
+|UC4 | | | | |
+|UC6 | | | | |
+|UC8 | | | | |
+|UC9 | | | | |
+|UC10 | | | | |
+|Non Func. 4.2 | | | | |
+|Constraint 5.7 | | | | |
+|Other items . . . | | | | |  	  	  	 
+
+==== Burn Down Chart ====
+
+(use excel to graph the history of how much more work you feel you have left on the project using data from the above table)\\
+{{image002.gif|}}
+ 
+
+===== Planning =====
+
+^ Work Accomplished Last Week ^ Who ^ Estimated Hours To Complete ^ Actual Hours To Complete ^
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+
+^ Work Item for Next Week ^ Criticality (high/med/low) ^ Who ^ Estimated Hours To Complete ^
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+
+Need Faculty Intervention to Address Team Problems? _____ NO _____ YES
+
+===== Risk Management =====
+
+(see course pack for directions)
+
+^ Rank ^ Risk ^ Probability ^ Impact ^ Rank Last Week/Weeks on list ^ Action ^
+| | | | | | |
+| | | | | | |
+| | | | | | |
+| | | | | | |
+| | | | | | |

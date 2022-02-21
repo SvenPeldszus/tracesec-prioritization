@@ -1,0 +1,40 @@
+==== UC23 View Comprehensive Patient Report Use Case ====
+
+== 23.1 Precondition: ==
+
+An LHCP and Admin have authenticated themselves in the iTrust Medical Records system [UC2].
+
+== 23.2 Main Flow: ==
+
+The LHCP requests a comprehensive patient report for a particular patient [S1]. The Admin can either approve [S2] or reject [E3] the report. Upon approval, the LHCP chooses to view the approved comprehensive patient report [S3] from a list of his/her requests. The events of requesting, approving/rejecting, and viewing are logged [UC4].
+
+== 23.3 Sub-flows: ==
+  * [S1] The LHCP enters a medical identification number (MID) [E1] and confirms his/her input [E2]. 
+  * [S2] The Admin views the Names and MIDs of the requesting LHCP and the requested patient, and approves the report [E3]. 
+  * [S3] The LHCP is allowed a one-time only view of the comprehensive patient report for the specified patient, including the following information:
+    * All patient demographic information (address, phone, etc.)
+    * The entire history of personal health records
+    * All diagnoses viewable by the viewer (LHCP)
+    * All designated HCPs (MIDs and Names)
+    * All allergies, procedures, medications, office visits, and known relatives
+    * All MIDs and names of people that this person is representing
+    * All MIDs and names of people that this person is represented by
+    * The date/time in which the report was generated
+    * The MID and name of the LHCP who requested the report
+    * The MID and name of the Admin who approved the report
+
+== 23.4 Alternative Flows: ==
+  * [E1] The LHCP types an invalid MID and is prompted to try again.
+  * [E2] The chosen patient is not the desired patient. The LHCP does not confirm the selection and is prompted to try again.  
+  * [E3] The Admin rejects the request for a comprehensive patient report, providing justification for the rejection. The LHCP can view rejection justification in his/her list of report requests.
+
+
+=== Other Changes for UC23 ===
+  * Add a transaction type
+  * Add what the meaning of a report is in the non-functional requirements. The definition would be:
+A **report** is a page which opens in a separate window and contains minimal decoration. The format is printer-friendly in that the background is white and the information does not exceed the width of 7.5 inches, that is upon printing, no information is lost due to the data being too wide.
+
+
+
+
+

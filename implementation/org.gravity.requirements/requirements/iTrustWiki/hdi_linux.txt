@@ -1,0 +1,204 @@
+====== Deploying iTrust v15 (Spring 2013) to Linux ======
+{{linux_logo.png?50x50|}} These deployment instructions are for **Linux**, [[home_deployment_instructions|Go here]] if you want to deploy on a different operating system.
+
+**NOTE**: These instructions were developed using OpenSUSE 64-bit.  Package names and configuration file locations may vary depending on your distribution of Linux.
+
+[[start|Back to start]]
+
+
+
+===== Downloads =====
+
+To install iTrust on your home system, download and install the following packages.  You can use whatever package manager you'd like.  If you prefer, you can install each package by manually downloading it rather than using a package manager.  This tutorial was written using OpenSUSE 64-bit, so some of the package names may be different on your distribution.
+
+Assuming your package manager is zypper, the following command will install the latest version of the Java JDK and the latest version of MySQL.
+<code>
+sudo zypper install java-1_6_0-sun-devel mysql-community-server mysql-community-server-tools
+</code>
+
+^ Program/Package ^ Details ^ Linux Package Name ^
+| [[http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/keplerr|Eclipse v4.3]] | Unzip the program files to a permanent location. Be sure you download the Eclipse IDE for Java EE Developers. | None. Download from the Eclipse website. |
+| [[http://www.oracle.com/technetwork/java/javase/downloads/index.html|JDK v1.6]] | Download the Java JDK and not the JRE package. Also, do not confuse this with the Java EE SDK.  Any update for version 1.5 (eg v5) will do; you do not need NetBeans nor the Source Code (though the source can be helpful).| java-1_6_0-sun-devel |
+| [[http://tomcat.apache.org/download-60.cgi|Apache Tomcat v6.0]] | Download the core zip, unzip into desired location. **Don't forget this! Download the [[http://dev.mysql.com/downloads/connector/j/#downloads|MySQL JDBC Driver]].  Select the platform independent option and download the zip or tar.  Open the archive file and place the mysql-connector-java-5.1.*-bin.jar file into the following directory:** ''<your tomcat folder>/lib/''  | There is typically a Linux package for Tomcat, but since you will be running Tomcat through Eclipse, you should not install it as a daemon or service.  Download from the Tomcat website. |
+| [[http://dev.mysql.com/downloads/mysql/|MySQL v5.6.*]] | Select and install the distribution for your operating system. Note that you do not need to obtain a username for download. **Note that you should not check ''Disable networking'' when configuring the server and to disable strict mode checking!** | mysql-community-server |
+| [[http://dev.mysql.com/downloads/tools/workbench/|MySQL Workbench (optional)]] | These can be useful for tweaking your local database and testing your queries. Install for your operating system. | varies |
+| [[http://sourceforge.net/projects/itrust/|iTrust Source]] | Download the zip to desired location. Do not extract.| None. Download from SourceForge. |
+
+
+===== Getting Started =====
+
+From here on, the rest of the deployment instructions for Linux will take place within the Eclipse development environment.  Open Eclipse to continue.
+
+Then, open the Java perspective by going to ''Window -> Open Perspective - Other''.
+
+{{openjavaperspective-linux.png}}
+
+And select ''Java'' and click ''Finish''.
+
+{{selectjava-linux.png}}
+
+===== Apache Tomcat =====
+Once you unzip Tomcat into a directory on your machine (don't forget the MySQL driver!), you will need to set up the Web Tools environment to deploy projects. To do this, complete the following steps in Rational Team Concert or Eclipse:
+  * Go to ''Window > Show View > Other...'' Select ''Server > Servers...''
+
+{{selectserversview.png}}
+
+  * In the ''Servers'' view, right click and select "New"
+
+{{createnewserver.png}}
+
+  * Select ''Apache > Tomcat v6.0 Server''. Hit next.
+  * Select the folder where you previously unzipped Tomcat (your version number might not match the screenshot - that's okay as long as it's 6.0). 
+
+{{findtimecat.png}}
+
+  * Hit ''Finish''
+
+
+
+
+===== Starting the Server=====
+
+  * In the servers view, you should see your new runtime below. Click on the "Play" button to start the server.
+
+{{startingserver.png}}
+  * If you see the text ''Server startup in xxxxx ms'' in the ''Console'' view, and the ''Servers'' view shows that your status is "Synchronized", then your server is properly configured. If the Console view isn't open, go to ''Window > Show View... > Console''
+
+
+
+
+
+===== MySQL =====
+
+The MySQL Daemon needs to be started.  Typically, this can be achieved with the command:
+<code>
+sudo /etc/init.d/mysqld start
+</code>
+Or, with the command
+<code>
+sudo /etc/init.d/mysql start
+</code>
+
+After starting the server, execute the command ''mysql_secure_installation'' which is typically located in ''/usr/bin/''.
+
+Follow the prompts that come up on the screen.  Typically, mysql_secure_installation will ask for your root MySQL password, which should be blank.  Leave the root password blank.  We recommend taking the suggestions that mysql_secure_installation provides:
+
+  * Remove the anonymous users. 
+  * Disallow root login remotely. 
+  * Remove test database and access to it.
+  * Then reload the privilege tables.
+
+
+You will also want to disable the MySQL variable ''lower_case_table_names''.  This can be a complex process.  Typically, the configuration settings for MySQL are located in ''/etc/my.cnf''.  Using your favorite editor, edit ''/etc/my.cnf'' with the following command (or similar):
+<code>
+sudo vi /etc/my.cnf
+</code>
+Find the section of the file that configures ''mysqld'', which should look something like this:
+<code>
+# The MySQL server
+[mysqld]
+port            = 3306
+socket          = /var/run/mysql/mysql.sock
+# Change following line if you want to store your database elsewhere
+datadir = /var/lib/mysql
+skip-locking
+key_buffer_size = 16M
+max_allowed_packet = 1M
+table_open_cache = 64
+sort_buffer_size = 512K
+net_buffer_length = 8K
+read_buffer_size = 256K
+read_rnd_buffer_size = 512K
+myisam_sort_buffer_size = 8M
+</code>
+Add the following line add the end of this section:
+<code>
+lower_case_table_names=1
+</code>
+
+After you have completed mysql_secure_installation, test your connection to the mysql server with the following command:
+<code>
+mysql -u root -p
+</code>
+You will be asked for your root password.  After you enter it, you should get a ''mysql>'' prompt.  At the prompt, create the itrust database by typing:
+<code>
+create database itrust;
+</code>
+
+Also, check that ''lower_case_table_names'' is enabled using this command:
+<code>
+select @@GLOBAL.lower_case_table_names;
+</code>
+The server should return the following:
+<code>
++---------------------------------+
+| @@GLOBAL.lower_case_table_names |
++---------------------------------+
+|                               1 |
++---------------------------------+
+1 row in set (0.00 sec)
+</code>
+Type ''quit'' to exit the mysql client. Congratulations!  You have successfully configured MySQL.
+
+===== Troubleshooting MySQL Installation =====
+
+If MySQL does not install properly and you wish to re-install, be sure to remove the log files and the data tables. For example, if you originally installed MySQL into c:\Program Files\MySQL\My SQL Server 5.0, then delete the MySQL folder before re-installing.
+
+MySQL has a large community and extensive documentation, so if you can't find the answer to your question here, consult the MySQL website.
+
+
+
+
+
+
+
+
+
+
+===== Importing and Deploying the Project =====
+The source files will need to be imported as an Eclipse project, and deployed as a Tomcat application. To do this, follow these steps:
+
+  * Download the source (see link at the top) and save it to a location you can remember.
+  * From within Eclipse, switch to the Java perspective. (use Window >  Open Perspective..., or use the icons in the upper-right corner)
+  * To import the project files, go to ''File -> Import'' ... and select ''Existing Projects Into Workspace''. Click Next.
+
+{{importexistingprojects.png}}
+
+  * Check the radio button ''Select Archive File'' and select ''Browse''.
+  * Select the archive of your source code.
+  * Make sure that iTrust is checked in the projects selector and click Finish. The files are now in your workspace. The Package Explorer should look like this:
+
+{{packageexplorer-linux.png}}
+
+  * Now you need to deploy the project to your Tomcat server. In the Servers view, right-click on your Tomcat installation and select Add and Remove Projects...
+
+{{addandremove.png}}
+
+  * iTrust should show up on the list, move it over to the "Configured Projects" pane, hit Finish.
+
+{{addandremovedone.png}}
+
+  * If you click on the plus sign in your server configuration, you should see "iTrust" deployed (published) there.
+  
+
+
+
+===== Configuring the Project =====
+  * Now that iTrust is set up to be deployed on Tomcat, you need to set the database parameters. In the Package Explorer, Open up iTrust > WebRoot > META-INF > context.xml
+  * If the file is opened in "Design" mode, switch to the "Source" mode at the bottom of the editor.
+  * Follow the comments in the context.xml file to properly set up your database parameters. **If you have a username, password, and URL for a database provided by the instructor or TA, or if you have a local database, please use those parameters**.
+
+  * To test your parameters, go to ''iTrust > unittests>  edu.ncsu.csc.itrust''. Right-click on ''DBBuilder.java'', select ''Run as... > Java Application''
+(to view your packages easier, click on the triangle in the package explorer view, Package Presentation > "Hierarchical") 
+
+{{dbbuilder-better-linux.png}}
+
+  * The console view should show many lines beginning with ''Executing:'' , then end with ''Operation Completed''
+  * To populate your database with test data, go to ''unittests'', and in the datagenerators package, run the ''TestDataGenerator.java'' program. You should also get a lot of ''Executing:'' , followed by an ''Operation Completed''.
+
+{{testdatagenerator.png}}
+
+
+===== Running the Application =====
+   *  Start the Tomcat Server in the ''Servers'' view as before.  **NOTE:** This step is ''required''.  Because you have made changes to the Tomcat and iTrust configurations, you must restart Tomcat.
+   * Open your internet browser and surf to [[http://localhost:8080/iTrust/]]. You should be able to log in and use the application as normal.

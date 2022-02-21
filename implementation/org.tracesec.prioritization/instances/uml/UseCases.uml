@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_JOuOMBYaEeuf7IFG9-cvXA" name="UseCases">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_l5nsYBYaEeuf7IFG9-cvXA" name="ResetPassword" node="_4ehK8BYaEeuf7IFG9-cvXA _BKuGEBYbEeuf7IFG9-cvXA _KRxxMBYbEeuf7IFG9-cvXA _OODZgBYbEeuf7IFG9-cvXA _QonXcBYbEeuf7IFG9-cvXA _RnZT4BYbEeuf7IFG9-cvXA" group="_umLM0BYaEeuf7IFG9-cvXA _x3HZIBYaEeuf7IFG9-cvXA _uRLnYBoDEeucMterGOA24Q">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_E6cgIBYbEeuf7IFG9-cvXA" target="_QonXcBYbEeuf7IFG9-cvXA" source="_4ehK8BYaEeuf7IFG9-cvXA"/>
+    <edge xmi:type="uml:ObjectFlow" xmi:id="_iXfckBoDEeucMterGOA24Q" inPartition="_x3HZIBYaEeuf7IFG9-cvXA" target="_OODZgBYbEeuf7IFG9-cvXA" source="_iXif4BoDEeucMterGOA24Q">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_iZUokBoDEeucMterGOA24Q" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_iZVPoBoDEeucMterGOA24Q" value="1"/>
+    </edge>
+    <edge xmi:type="uml:ObjectFlow" xmi:id="_F-rXcBoEEeucMterGOA24Q" inPartition="_x3HZIBYaEeuf7IFG9-cvXA" target="_F-vB0BoEEeucMterGOA24Q" source="_F-tMoBoEEeucMterGOA24Q">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_F_G1QBoEEeucMterGOA24Q" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_F_G1QRoEEeucMterGOA24Q" value="1"/>
+    </edge>
+    <edge xmi:type="uml:ObjectFlow" xmi:id="_J5-vYBoEEeucMterGOA24Q" inPartition="_x3HZIBYaEeuf7IFG9-cvXA" target="_J6E2ABoEEeucMterGOA24Q" source="_J6CZwBoEEeucMterGOA24Q">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_J67xoBoEEeucMterGOA24Q" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_J68YsBoEEeucMterGOA24Q" value="1"/>
+    </edge>
+    <edge xmi:type="uml:ObjectFlow" xmi:id="_Z9--gBoEEeucMterGOA24Q" target="_OODZgBYbEeuf7IFG9-cvXA" source="_Z-CB0BoEEeucMterGOA24Q">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_Z-ps4BoEEeucMterGOA24Q" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_Z-qT8BoEEeucMterGOA24Q" value="1"/>
+    </edge>
+    <edge xmi:type="uml:ObjectFlow" xmi:id="_dQUR8BoEEeucMterGOA24Q" inPartition="_x3HZIBYaEeuf7IFG9-cvXA" target="_dQX8UBoEEeucMterGOA24Q" source="_dQWHIBoEEeucMterGOA24Q">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_dQ12YBoEEeucMterGOA24Q" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_dQ2dcBoEEeucMterGOA24Q" value="1"/>
+    </edge>
+    <edge xmi:type="uml:ObjectFlow" xmi:id="_gvcrQBoEEeucMterGOA24Q" inPartition="_x3HZIBYaEeuf7IFG9-cvXA" target="_gvfukBoEEeucMterGOA24Q" source="_gvd5YBoEEeucMterGOA24Q">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_gwDvQBoEEeucMterGOA24Q" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_gwEWUBoEEeucMterGOA24Q" value="1"/>
+    </edge>
+    <group xmi:type="uml:ActivityPartition" xmi:id="_umLM0BYaEeuf7IFG9-cvXA" name="registered user" node="_4ehK8BYaEeuf7IFG9-cvXA"/>
+    <group xmi:type="uml:ActivityPartition" xmi:id="_x3HZIBYaEeuf7IFG9-cvXA" name="iTrust" node="_BKuGEBYbEeuf7IFG9-cvXA _QonXcBYbEeuf7IFG9-cvXA _RnZT4BYbEeuf7IFG9-cvXA" edge="_iXfckBoDEeucMterGOA24Q _F-rXcBoEEeucMterGOA24Q _J5-vYBoEEeucMterGOA24Q _dQUR8BoEEeucMterGOA24Q _gvcrQBoEEeucMterGOA24Q"/>
+    <group xmi:type="uml:ActivityPartition" xmi:id="_uRLnYBoDEeucMterGOA24Q" name="Server" node="_OODZgBYbEeuf7IFG9-cvXA"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_4ehK8BYaEeuf7IFG9-cvXA" name="" outgoing="_E6cgIBYbEeuf7IFG9-cvXA" inPartition="_umLM0BYaEeuf7IFG9-cvXA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_BKuGEBYbEeuf7IFG9-cvXA" name="resetPassword" inPartition="_x3HZIBYaEeuf7IFG9-cvXA">
+      <inputValue xmi:type="uml:InputPin" xmi:id="_dQX8UBoEEeucMterGOA24Q" name="InputPin2" incoming="_dQUR8BoEEeucMterGOA24Q">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_dQZKcBoEEeucMterGOA24Q" value="1"/>
+      </inputValue>
+      <inputValue xmi:type="uml:InputPin" xmi:id="_gvfukBoEEeucMterGOA24Q" name="InputPin3" incoming="_gvcrQBoEEeucMterGOA24Q">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_gvgVoBoEEeucMterGOA24Q" value="1"/>
+      </inputValue>
+      <outputValue xmi:type="uml:OutputPin" xmi:id="_Z-CB0BoEEeucMterGOA24Q" name="OutputPin1" outgoing="_Z9--gBoEEeucMterGOA24Q">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_Z-D3ABoEEeucMterGOA24Q" value="1"/>
+      </outputValue>
+    </node>
+    <node xmi:type="uml:DataStoreNode" xmi:id="_KRxxMBYbEeuf7IFG9-cvXA" name="database">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_KRzmYBYbEeuf7IFG9-cvXA" value="1"/>
+    </node>
+    <node xmi:type="uml:DataStoreNode" xmi:id="_OODZgBYbEeuf7IFG9-cvXA" name="database" incoming="_iXfckBoDEeucMterGOA24Q _Z9--gBoEEeucMterGOA24Q" inPartition="_uRLnYBoDEeucMterGOA24Q">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_OOEAkBYbEeuf7IFG9-cvXA" value="1"/>
+    </node>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_QonXcBYbEeuf7IFG9-cvXA" name="changePassword" incoming="_E6cgIBYbEeuf7IFG9-cvXA" inPartition="_x3HZIBYaEeuf7IFG9-cvXA">
+      <outputValue xmi:type="uml:OutputPin" xmi:id="_F-tMoBoEEeucMterGOA24Q" name="OutputPin1" outgoing="_F-rXcBoEEeucMterGOA24Q">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_F-uawBoEEeucMterGOA24Q" value="1"/>
+      </outputValue>
+      <outputValue xmi:type="uml:OutputPin" xmi:id="_J6CZwBoEEeucMterGOA24Q" name="OutputPin2" outgoing="_J5-vYBoEEeucMterGOA24Q">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_J6EO8BoEEeucMterGOA24Q" value="1"/>
+      </outputValue>
+      <outputValue xmi:type="uml:OutputPin" xmi:id="_dQWHIBoEEeucMterGOA24Q" name="OutputPin3" outgoing="_dQUR8BoEEeucMterGOA24Q">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_dQXVQBoEEeucMterGOA24Q" value="1"/>
+      </outputValue>
+      <outputValue xmi:type="uml:OutputPin" xmi:id="_gvd5YBoEEeucMterGOA24Q" name="OutputPin4" outgoing="_gvcrQBoEEeucMterGOA24Q">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_gvfHgBoEEeucMterGOA24Q" value="1"/>
+      </outputValue>
+    </node>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_RnZT4BYbEeuf7IFG9-cvXA" name="authentificatepassword" inPartition="_x3HZIBYaEeuf7IFG9-cvXA">
+      <inputValue xmi:type="uml:InputPin" xmi:id="_F-vB0BoEEeucMterGOA24Q" name="InputPin2" incoming="_F-rXcBoEEeucMterGOA24Q">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_F-wP8BoEEeucMterGOA24Q" value="1"/>
+      </inputValue>
+      <inputValue xmi:type="uml:InputPin" xmi:id="_J6E2ABoEEeucMterGOA24Q" name="InputPin3" incoming="_J5-vYBoEEeucMterGOA24Q">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_J6GEIBoEEeucMterGOA24Q" value="1"/>
+      </inputValue>
+      <outputValue xmi:type="uml:OutputPin" xmi:id="_iXif4BoDEeucMterGOA24Q" name="OutputPin1" outgoing="_iXfckBoDEeucMterGOA24Q">
+        <upperBound xmi:type="uml:LiteralInteger" xmi:id="_iXjuABoDEeucMterGOA24Q" value="1"/>
+      </outputValue>
+    </node>
+  </packagedElement>
+</uml:Model>

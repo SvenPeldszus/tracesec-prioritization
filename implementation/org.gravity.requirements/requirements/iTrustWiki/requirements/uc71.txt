@@ -1,0 +1,50 @@
+**UC71 Calculate Daily Calories and Macronutrients and Generate Graph**
+
+**71.1 Preconditions**
+
+A Patient is a registered user of the iTrust Medical Records
+System (UC1). The iTrust Patient user has authenticated
+himself or herself in the iTrust Medical Records System (UC3).
+
+**71.2 Main Flow**
+
+Any Patient may select to enter the percentage of their daily
+calories [S1] and calculate their optimal daily calories [S2] and
+submit the form [E1]. If the Patient has already calculated
+his/her optimal daily calories and macronutrients they may
+select to generate a graph comparing their optimal
+macronutrients and daily calories vs. the actual macronutrients
+and daily calories for a given day for which they have an entry
+in his/her Food Diary [S3].
+
+**71.3 Sub-flows**
+  * [S1] The acceptable ranges for the different macronutients are:
+    * Carbohydrate: 45-65%
+    * Protein: 10-35%
+    * Fat: 20-35%
+  * [S2] The Patient shall enter in their Weight (lbs), Height (feet) age (years).
+  * [S3] The Patient shall select a date for which they have a Food Diary entry and a graph comparing the actual calories and macronutrients for that day against their optimal calories and macronutrients shall be generated.
+
+**71.4 Alternative Flows**
+
+  * [E1] Invalid inputs are flagged and an error message appropriate to the input is printed.
+
+**71.5 Logging**
+
+Transaction Code: ​7100
+Verbose Description: ​Generate graph for specific day
+LoggedInMID: ​Viewer (Patient)
+Secondary MID: ​N/A
+Use Case Involved: ​71
+Type of Transaction: ​View
+Additional Information: ​None
+Patient Viewable: ​Yes
+
+Transaction Code: ​7101
+Verbose Description: ​Calculate calories and macronutrients
+LoggedInMID: ​Creator (Patient)
+Secondary MID: ​N/A
+Use Case Involved: ​71
+Type of Transaction: ​Create
+Additional Information: ​None
+Patient Viewable: ​Yes

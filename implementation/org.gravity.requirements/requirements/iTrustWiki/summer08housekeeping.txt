@@ -1,0 +1,70 @@
+[[housekeeping|Back to main housekeeping page]]
+
+==== Stuff we did ====
+  * Try to get rid of the DAOFactory “doubleton”. If anything, remove the DAOFactory.getTestInstance() part and move it into a test util. This should make using the EvilTestConnectionDriver more intuitive to use. 
+  * Combine or otherwise organize the test data
+  * Fix the date-sensitive unit tests
+  * Make sure removeCODTrends bug in the sql file is not there
+  * Update the developer notes, no new details, just make sure everything is okay
+  * Update the Use Case diagram
+    * Done. LJH
+  * Clean up the test plan
+      * All tests are up-to-date
+      * All tests are organized into a logical location (by use-case?)
+      * More links throughout the entire document
+  * Get the code coverage up very high (if it isn't already)
+  * Refactor the tests for bad testing
+      * For improving some of the tests, write concrete mock objects (I think the good students will "get it" and the others will ignore the mock objects) (didn't do this, but it's still a good idea, I think).
+  * Add the MaxWait and the MaxActive properties to TestConnection driver so that folks can catch their connections not being closed much easier
+
+==== Stuff that didn't get done ====
+  * Name HTML fields to make iTrust more HTTPUnit-friendly
+  * Refactor COD trends
+  * Maybe also limit the number of queries per second? Or at least document how to do that in MySQL somewhere
+  * Work on Epidemic Detection more - make it work better, better tests, refactor it. Add a ticket system for the extra request for an image. The idea is that, when an image is made, we take the parameters for the image and put them in a DiagnosisGraphTicket table, with a primary key being an MD5’d random number. That primary key gets sent back to the page in the <img> tag, which makes another request back to a servlet. The servlet looks up the primary key, removes the ticket (so it can only be used once), and then returns the image. This should be done in the requirements
+  * Add the ability to upload a picture, store it in the database
+      * Need to upload the file
+      * Somehow validate the file
+      * Store in the database
+      * Retrieve from database to display (use ticketing system again - make a table for this?)
+  * Remove discretionary access completely
+  * Add user-based authorization
+      * Can limit to designated?
+      * Can limit to originators of records?
+        * I think further discussion with Aaron about this is necessary.  From what I understand, any health care professional (doctor or nurse) should be able to access any and all files.  However, health care professionals should not be able to view notes and other specific information about themselves.  How is this handled in the system now?  Would a hcp have an additional mid if he were also a patient? LJH
+
+
+=== Speeding Up the Unit Tests ===
+I've spent some time working on how to speed up the unit tests, using Group 9's project as a code base. They have 701 unit tests at very high coverage, and on my (fast) computer the unit tests ran at 88 seconds initially. I did a few of the following things and got the tests down to 15 seconds. Here are the things we can either note in the developer notes for the next code base, or actually implement in the code base ourselves
+  * Configure your local database for non-transactional speed
+      * Switch to MyISAM for the default storage engine
+      * Bump up the key buffer size much higher (like 64M)
+      * Enable named piping and use it - it's a little involved, but we can provide online links for it
+  * Refactor iTrust for faster unit test performance
+      * Remove all calls to rebuildAll- dropping and creating is very slow!
+      * Remove all tearDowns - since we don't know the order of unit tests and we can't assume a particular starting state of the database, we have to rely on cleaning up in the setup only. This leaves the database in an unknown state after the unit tests are run, but that's okay.
+      * **All** setups begin with a clearTables call (that is, run a delete on all tables). This could be done by using a SHOW TABLES query, or it could be done by keeping a full list of the tables that needs to be maintained. Then, all sql files are **just** inserts and no deletes. This is (a) more maintainable, (b) probably faster as multiple deletes to the same table would not need to be dispatched (however we would be deleting from tables that would not need to be deleted from, so maybe not - we'll see).
+      * Switch DBBuilder to a singleton that caches queries being read from disk. This reading of files saves us 7 seconds on average - so it costs a lot!
+      * Make DBBuilder's executeSQL command (which is executed all the time!) use the Statement instead of PreparedStatement - since most queries are actually updates, this pre-compilation without binding variables is actually just hurting us
+
+===== Ideas for New Assignments =====
+
+  * Expand the epidemic detection algorithms for a deeper functionality
+  * Expand the idea of a "feed" in the application so you can track specific patients
+  * Move the comprehensive report into a data migration toolkit
+  * Add a messaging system for answering questions
+  * Expand the risk factors to be a generalized query engine
+     * Add new factors for all patients, including various ways to search 
+     * Maybe one patient's threshold is different than another patient's threshold - customize?
+  * Figure out a way to include more charts in the system
+     * Satisfaction surveys
+     * Usage (for the admin)
+     * Operational profile (for the tester)
+     * Cause-of-death trends
+     * Risk factors
+  * Add support for RSS feeds or something.
+  * "Find-an-expert" feature - look for an HCP in your area with a specific expertise, rank by # of office visits, patients, diagnoses, etc.
+
+==== Course Technologies ====
+  * Continuous integration: get a report on the build server whenever the tests break
+  * Code coverage in Jazz: is this stable/good idea?

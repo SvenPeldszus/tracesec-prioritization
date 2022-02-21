@@ -1,0 +1,23 @@
+**Use Case 70: Editing and Deleting Patient Food Diary Entries**
+
+**70.1 Preconditions**
+
+A patient is a registered user of the iTrust Medical Records System (UC1). The iTrust patient user has authenticated himself or herself in the iTrust Medical Records System (UC3).
+
+**70.2 Main Flow**
+
+Any patient may select to view their food diary as defined in UC69. Once the food diary is displayed, a patient may either edit a food diary entry [S1] or delete a food diary entry [S2] directly from the page to view the food diary.
+
+**70.3 Sub-flows**
+
+  * [S1] The patient chooses to edit a specific food diary entry. The fields in that food diary entry become editable, and a submit button appears. The patient edits none, any, or all of the fields with updated, valid values and clicks submit [E1]. The entry is saved with the new values and the totals are updated.
+  * [S2] The patient chooses to delete a specific food diary entry. A confirmation message is displayed. If the patient does not confirm, the entry is not deleted. If the patient does confirm, the entry is deleted, removed from the view, and the totals are updated.
+
+**70.4 Alternative Flows**
+
+  * Unordered List Item[E1] Invalid inputs are flagged and an error message appropriate to the input is printed. The entry is not saved.
+
+**70.5 Logging**
+|Transaction Code|Verbose Description|Logged In MID|Secondary MID|Use Case(s) Involved|Type of Transaction|Additional Information|Patient Viewable|
+|7000|Edit Food Diary Entry|Editor (Patient)|N/A|70|Edit|None|Yes|
+|7001|Delete Food Diary|Deleter (Patient)|N/A|70|Delete|None|Yes|

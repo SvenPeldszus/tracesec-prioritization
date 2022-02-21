@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org.gravity.typegraph.basic:TypeGraph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.gravity.typegraph.basic="http://www.gravity-tool.org/typegraph/basic" xmlns:org.gravity.hulk.antipatterngraph.sonarlint="http://www.gravity-tool.org/typegraph/antipatterngraph/sonarlint" classes="//@ownedTypes.0 //@ownedTypes.1 //@ownedTypes.2 //@ownedTypes.3 //@ownedTypes.4 //@ownedTypes.5 //@ownedTypes.6 //@ownedTypes.7 //@ownedTypes.8 //@ownedTypes.9" tName="Test">
+  <packages classes="//@ownedTypes.8" ownedTypes="//@ownedTypes.8" model="/" tName="dummy"/>
+  <methods tName="a">
+    <signatures returnType="//@ownedTypes.4">
+      <definitions xsi:type="org.gravity.typegraph.basic:TMethodDefinition" definedBy="//@ownedTypes.8" returnType="//@ownedTypes.4">
+        <tAnnotation xsi:type="org.gravity.hulk.antipatterngraph.sonarlint:SonarlintFinding" rulekey="java:S1186" kind="CODE_SMELL" severity="0" rulename="Methods should not be empty" description="Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation." creationdate="1644933618415"/>
+        <accessing xsi:type="org.gravity.typegraph.basic:TCall" target="//@methods.1/@signatures.0/@definitions.0" staticType="//@ownedTypes.8"/>
+        <tModifier tVisibility="TPublic"/>
+      </definitions>
+    </signatures>
+  </methods>
+  <methods tName="b">
+    <signatures returnType="//@ownedTypes.4">
+      <definitions xsi:type="org.gravity.typegraph.basic:TMethodDefinition" definedBy="//@ownedTypes.8" accessedBy="//@methods.0/@signatures.0/@definitions.0/@accessing.0" returnType="//@ownedTypes.4">
+        <tAnnotation xsi:type="org.gravity.hulk.antipatterngraph.sonarlint:SonarlintFinding" rulekey="java:S1186" kind="CODE_SMELL" severity="0" rulename="Methods should not be empty" description="Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation." creationdate="1644933618415"/>
+        <tModifier/>
+      </definitions>
+    </signatures>
+  </methods>
+  <ownedTypes xsi:type="org.gravity.typegraph.basic:TClass" tLib="true" tName="float"/>
+  <ownedTypes xsi:type="org.gravity.typegraph.basic:TClass" tLib="true" tName="int"/>
+  <ownedTypes xsi:type="org.gravity.typegraph.basic:TClass" tLib="true" tName="short"/>
+  <ownedTypes xsi:type="org.gravity.typegraph.basic:TClass" tLib="true" tName="char"/>
+  <ownedTypes xsi:type="org.gravity.typegraph.basic:TClass" tLib="true" tName="void"/>
+  <ownedTypes xsi:type="org.gravity.typegraph.basic:TClass" tLib="true" tName="byte"/>
+  <ownedTypes xsi:type="org.gravity.typegraph.basic:TClass" tLib="true" tName="long"/>
+  <ownedTypes xsi:type="org.gravity.typegraph.basic:TClass" tLib="true" tName="double"/>
+  <ownedTypes xsi:type="org.gravity.typegraph.basic:TClass" package="//@packages.0" signature="//@methods.1/@signatures.0 //@methods.0/@signatures.0" defines="//@methods.1/@signatures.0/@definitions.0 //@methods.0/@signatures.0/@definitions.0" tName="Test">
+    <tModifier tVisibility="TPublic"/>
+  </ownedTypes>
+  <ownedTypes xsi:type="org.gravity.typegraph.basic:TClass" tLib="true" tName="boolean"/>
+</org.gravity.typegraph.basic:TypeGraph>

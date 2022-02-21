@@ -1,0 +1,23 @@
+**Use Case 69: View Patient Food Diary**
+
+**69.1 Preconditions**
+
+An HCP is a registered user of the iTrust Medical Records system (UC2). The HCP has authenticated himself or herself in the iTrust Medical Records system (UC3).
+
+**69.2 Main Flow**
+
+Any HCP may search for the patient by MID or patient name [E1][E2]. After selecting the patient, their complete (each entry) food diary is displayed according to [S1]. Only HCP's with a specialization of "Nutritionist" may view a patient's food diary.
+
+**69.3 Sub-flows**
+
+  * [S1] Each day in the food diary has its own totals for each column calculated.
+
+**69.4 Alternative Flows**
+
+  * [E1] The HCP types an invalid medical identification number or name or a medical identification number or name of a patient not in the system and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient. The HCP does not confirm the selection and is prompted to try again.
+
+**69.5 Logging**
+
+|Transaction Code|Verbose Description|Logged In MID|Secondary MID|Use Case(s) Involved|Type of Transaction|Additional Information|Patient Viewable|
+|6900|Patient's Food Diary Viewed by HCP|Viewer (HCP)|Patient|69|View|None|Yes|

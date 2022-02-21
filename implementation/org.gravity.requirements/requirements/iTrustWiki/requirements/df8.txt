@@ -1,0 +1,4 @@
+====Data Format 6.8: Medical Care Personnel Affiliation====
+^Field^Format^
+|Medical identification number (MID)  |10-digit number that begins with 9 and with 5 for LT|
+|Hospital ID number  |A 10-digit integer|

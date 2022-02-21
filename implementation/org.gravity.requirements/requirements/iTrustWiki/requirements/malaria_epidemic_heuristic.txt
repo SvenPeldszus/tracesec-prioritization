@@ -1,0 +1,9 @@
+====== Malaria Epidemic Detection Heuristic ======
+
+
+Malaria (based on http://www.cdc.gov/NCIDOD/eid/vol10no7/03-0722.htm)
+  * Malaria is ICD-9cm code 084.x
+  * An epidemic can be "declared" if the defined threshold is exceeded for 2 or more consecutive weeks.
+  * We will use the weekly percentile threshold (discussed below). The article referenced above indicated that "The alert threshold algorithm based on percentile performed as well as or better than the other algorithms over the range of number of alerts triggered that we examined. For a given number of alerts triggered, it prevented a greater %PPC compared to other methods." [PPC = potentially prevented cases] Also, it's the easiest to compute! 
+  * Weekly Percentile. The threshold was defined as a given percentile of **the average of the number of cases** obtained in the same week of all years other than the one under consideration. **Begin counting years with the year of the earliest incident of Malaria in the database, and include all years up to the year prior to the current year**. The use of percentile as alert threshold is straightforward, and the method is relatively insensitive to extreme observations.
+  * Allow the license health care professional to input the threshold (e.g. for a threshold of 110%, an alert will signal if the current week is 110% of the **average** number of malaria cases in that same week for all prior years data.).

@@ -65,6 +65,7 @@ public class QualityAspectImpl extends AbstractQualityNodeImpl implements Qualit
 	 * @generated
 	 */
 	protected QualityAspectImpl() {
+		super();
 	}
 
 	/**
@@ -84,7 +85,7 @@ public class QualityAspectImpl extends AbstractQualityNodeImpl implements Qualit
 	 */
 	@Override
 	public String getDescription() {
-		return this.description;
+		return description;
 	}
 
 	/**
@@ -93,12 +94,11 @@ public class QualityAspectImpl extends AbstractQualityNodeImpl implements Qualit
 	 * @generated
 	 */
 	@Override
-	public void setDescription(final String newDescription) {
-		final String oldDescription = this.description;
-		this.description = newDescription;
-		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, QualityModelPackage.QUALITY_ASPECT__DESCRIPTION, oldDescription, this.description));
-		}
+	public void setDescription(String newDescription) {
+		String oldDescription = description;
+		description = newDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QualityModelPackage.QUALITY_ASPECT__DESCRIPTION, oldDescription, description));
 	}
 
 	/**
@@ -108,10 +108,10 @@ public class QualityAspectImpl extends AbstractQualityNodeImpl implements Qualit
 	 */
 	@Override
 	public EList<EObject> getRelevantElements() {
-		if (this.relevantElements == null) {
-			this.relevantElements = new EObjectResolvingEList<>(EObject.class, this, QualityModelPackage.QUALITY_ASPECT__RELEVANT_ELEMENTS);
+		if (relevantElements == null) {
+			relevantElements = new EObjectResolvingEList<EObject>(EObject.class, this, QualityModelPackage.QUALITY_ASPECT__RELEVANT_ELEMENTS);
 		}
-		return this.relevantElements;
+		return relevantElements;
 	}
 
 	/**
@@ -120,12 +120,12 @@ public class QualityAspectImpl extends AbstractQualityNodeImpl implements Qualit
 	 * @generated
 	 */
 	@Override
-	public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QualityModelPackage.QUALITY_ASPECT__DESCRIPTION:
-			return getDescription();
-		case QualityModelPackage.QUALITY_ASPECT__RELEVANT_ELEMENTS:
-			return getRelevantElements();
+			case QualityModelPackage.QUALITY_ASPECT__DESCRIPTION:
+				return getDescription();
+			case QualityModelPackage.QUALITY_ASPECT__RELEVANT_ELEMENTS:
+				return getRelevantElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -137,15 +137,15 @@ public class QualityAspectImpl extends AbstractQualityNodeImpl implements Qualit
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public void eSet(final int featureID, final Object newValue) {
+	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QualityModelPackage.QUALITY_ASPECT__DESCRIPTION:
-			setDescription((String)newValue);
-			return;
-		case QualityModelPackage.QUALITY_ASPECT__RELEVANT_ELEMENTS:
-			getRelevantElements().clear();
-			getRelevantElements().addAll((Collection<? extends EObject>)newValue);
-			return;
+			case QualityModelPackage.QUALITY_ASPECT__DESCRIPTION:
+				setDescription((String)newValue);
+				return;
+			case QualityModelPackage.QUALITY_ASPECT__RELEVANT_ELEMENTS:
+				getRelevantElements().clear();
+				getRelevantElements().addAll((Collection<? extends EObject>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -156,14 +156,14 @@ public class QualityAspectImpl extends AbstractQualityNodeImpl implements Qualit
 	 * @generated
 	 */
 	@Override
-	public void eUnset(final int featureID) {
+	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QualityModelPackage.QUALITY_ASPECT__DESCRIPTION:
-			setDescription(DESCRIPTION_EDEFAULT);
-			return;
-		case QualityModelPackage.QUALITY_ASPECT__RELEVANT_ELEMENTS:
-			getRelevantElements().clear();
-			return;
+			case QualityModelPackage.QUALITY_ASPECT__DESCRIPTION:
+				setDescription(DESCRIPTION_EDEFAULT);
+				return;
+			case QualityModelPackage.QUALITY_ASPECT__RELEVANT_ELEMENTS:
+				getRelevantElements().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -174,12 +174,12 @@ public class QualityAspectImpl extends AbstractQualityNodeImpl implements Qualit
 	 * @generated
 	 */
 	@Override
-	public boolean eIsSet(final int featureID) {
+	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QualityModelPackage.QUALITY_ASPECT__DESCRIPTION:
-			return DESCRIPTION_EDEFAULT == null ? this.description != null : !DESCRIPTION_EDEFAULT.equals(this.description);
-		case QualityModelPackage.QUALITY_ASPECT__RELEVANT_ELEMENTS:
-			return (this.relevantElements != null) && !this.relevantElements.isEmpty();
+			case QualityModelPackage.QUALITY_ASPECT__DESCRIPTION:
+				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+			case QualityModelPackage.QUALITY_ASPECT__RELEVANT_ELEMENTS:
+				return relevantElements != null && !relevantElements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -191,13 +191,11 @@ public class QualityAspectImpl extends AbstractQualityNodeImpl implements Qualit
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) {
-			return super.toString();
-		}
+		if (eIsProxy()) return super.toString();
 
-		final StringBuilder result = new StringBuilder(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (description: ");
-		result.append(this.description);
+		result.append(description);
 		result.append(')');
 		return result.toString();
 	}
@@ -205,5 +203,6 @@ public class QualityAspectImpl extends AbstractQualityNodeImpl implements Qualit
 	@Override
 	public void setOwner(final QualityCategory newOwner) {
 		newOwner.getAspects().add(this);
+		super.setOwner(newOwner);
 	}
 } //QualityAspectImpl

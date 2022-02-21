@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.tracesec.qualitymodel:QualityCategory
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:org.tracesec.qualitymodel="http://www.tracesec.org/qualitymodel"
+    xsi:schemaLocation="http://www.tracesec.org/qualitymodel ../../org.tracesec.qualitymodel/model/qualitymodel.ecore"
+    xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <aspects title="UnimportantAspect"
+      priority="1">
+    <relevantElements href="uml/classdiagram.uml#//Test/dummy/Test/a"/>
+  </aspects>
+  <subcategories
+      title="ImportantQualityAspects"
+      priority="5">
+    <aspects
+        title="ImportantAspect"
+        priority="4">
+      <relevantElements xsi:type="uml:Class" href="uml/classdiagram.uml#//Test/dummy/Test"/>
+    </aspects>
+    <aspects
+        title="MediumAspect"
+        priority="3">
+    <relevantElements href="uml/classdiagram.uml#//Test/dummy/Test/b"/>
+    </aspects>
+  </subcategories>
+</org.tracesec.qualitymodel:QualityCategory>

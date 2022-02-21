@@ -1,0 +1,82 @@
+=====Developing Requirements for Fall 2010=====
+
+=== Team Project ===
+  * Formula for BMI should be (weight*703)/(height^2)
+  * 
+
+
+==== UC42 Homepage Alert Center Use Case ====
+
+== 42.1 Precondition: ==
+
+An LHCP or patient is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has been authenticated in the iTrust Medical Records system [UC3]. 
+
+== 42.2 Main Flow: ==     
+An LHCP [S2] views his or her iTrust homepage. On the LHCP homepage, the LHCP views an alert center with a list of his or her upcoming appointments for the current date [S1], number of physiologic data monitoring reports of his or her patients for the current date [S3], number of weight/pedometer data monitoring reports of his or her patients for the current date [S4], number of unread messages from his or her message inbox [S5]. The event is logged [UC5]. 
+
+A patient or personal health representative [S1] views his or her iTrust homepage. On the patient homepage, the Patient views an alert center. The alert center displays, "You haven't entered remote monitoring information for today yet!" if the patient or personal health representative hasn't entered remote monitoring information for the current date yet. The alert center also displays a list of the patient and patient representee upcoming appointments [S2], the information of his or her designated HCP [S6], and the number of unread messages from his or her message inbox [S5]. The event is logged [UC5].
+
+== 42.3 Sub-flows: ==
+  * [S1] An LHCP views a list of his or her upcoming appointments for the current date (sorted by time, soonest upcoming first), with each appointment displayed in the format "HH:MM AM/PM - AppointmentType". The LHCP clicks an appointment to view more details. The appointment details display the appointment type, appointment date and start time, duration, the name of the patient, and appointment comments [E1].
+
+  * [S2] A user (a patient or personal health representative) can choose to view a list of his or her upcoming appointments (i.e., a list including appointments whose appointment date and start time is equal or later than the current date/time, sorted by time with soonest upcoming first). The appointments are listed in the format "HH:MM AM/PM - AppointmentType". The patient or personal health representative clicks an appointment to view more details. The appointment details include the appointment type, appointment date and start time, duration, the name of the LHCP, and appointment comments [E1].
+
+   * [S3] An LHCP views the number of submitted physiologic data monitoring reports of his or her patients for the current date. The LHCP clicks this number to view the physiologic data monitoring details of his or her patients for the current date. The LHCP is presented with a listing of all his or her patients to view physiologic data reported during the current date. Each row in the list includes their blood pressure and glucose levels, recording timestamp, and whom reported the data (patient, UAP name, personal representative name).
+
+   * [S4] An LHCP views the number of submitted weight/pedometer data monitoring reports of his or her patients for the current date. The LHCP clicks this number to view the weight/pedometer monitoring details of his or her patients for the current date. The LHCP is presented with a listing of all his or her patients to view weight/pedometer data reported during the current date. Each row in the list includes their weight and pedometer reading numbers levels, recording timestamp, and whom reported the data (patient, UAP name, personal representative name).
+
+   * [S5] A user (a patient, patient representative, or LHCP) views the number of unread messages from his or her message inbox. The user clicks this number to view his or her message inbox. The user is presented with a list of his or her messages in the message inbox. Each row in the list includes the message subject, the name of the sender, and timestamp. By default, the messages in the list should be ordered by timestamp, the most recent first. The user selects a message from the list to read by clicking the “Read” link beside the row for the message, and then the message subject, the name of the sender, the name of the the recipient, timestamp, and the message text shall be displayed in a new page. 
+
+   * [S6] A user (a patient or personal health representative) views basic information about his or her designated LHCPs, including the name, phone number, and contact email information.
+
+== 42.4 Alternative Flows: ==
+
+* [E1] The comment is empty and the text “No Comment” (without link) is displayed instead of the “Read Comment” link.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+==== UC34 Remotely monitor patient measurements ====
+
+== 34.1 Precondition: ==
+An LHCP, UAP, or patient is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has been authenticated in the iTrust Medical Records system [UC3].
+
+== 34.2 Main Flow: ==
+An LHCP or UAP creates a list of patients (by MID) for which he or she will monitor remotely [E1, S1]. A patient either chooses to input his or her physiologic measurements (blood pressure and/or glucose levels) [S2], **or to input his or her weight and/or pedometer readings [S7]**. An LHCP can see the blood pressure and glucose levels [S3], or **weight and pedometer readings [S8]** for the patients he or she is monitoring, **with two separate lists for physiologic and weight/pedometer readings** [S3].  **An LHCP can view a line chart displaying weight charted against time for the preceding 30 days [S11], or a line chart displaying pedometer readings charted against time for the preceding 30 days [S12].** A UAP [S5 & S9] or patient representative [S6 & S10] can input the blood pressure, glucose levels, **weight, or pedometer readings** for a patient. A patient may have up to 10 physiologic data points in any one day, reported by him/herself, a UAP, or a personal representative [E4]. **A patient may have at most one weight data point and one pedometer data point in any one day, reported by him/herself, a UAP, or a personal representative [E6].**  All events are logged [UC5,S35].
+
+== 34.3 Sub-flows: ==
+  * [S1] An LHCP or UAP can add and delete patients from his or her monitoring list.  A patient is added to the list by the LHCP or UAP typing in the patient's MID [E1] or name.  An LHCP can delete a patient from his or her monitoring list by the LHCP typing the the patient's MID [E1].  In both cases, the LHCP is presented the name of the patient and must confirm the add/delete.
+     
+  * [S2] A patient chooses to report their physiologic data.  He or she can report his or her blood pressure (systolic and diastolic) [E2] and/or glucose levels [E3]. The input data, a timestamp, and the fact that the status is "self-reported" are saved.  
+  * [S3] An LHCP chooses to view the physiologic data monitoring details.  The LHCP is presented with a listing of all his or her patients with their blood pressure and glucose levels, recording timestamp, and whom reported the data (patient, UAP name, personal representative name).  Patients with no information for the current day are highlighted.  Patients with blood pressure or glucose level out of range are highlighted (normal blood pressure:  systolic 90-140; diastolic 60-90; normal glucose 70-150). The LHCP can select a patient to obtain additional information about a patient [S4].
+  * [S4]  An LHCP selects to view additional information for a patient.  The LHCP is presented with a screen upon which he/she can choose a date range.  Once the date range is selected, the LHCP can see the patient name; patient phone number; personal representative (name and phone number), if applicable; and the blood pressure, glucose levels, **weight, and pedometer readings** as well as whom reported the data (patient, UAP name, personal representative name) for that date range.  
+  * [S5]  A UAP can select to report physiologic measurements.  He/she is presented with a list of the patients for which he/she is allowed to report measurements.  He she can select a patient and then enter data.   He or she can report the blood pressure (systolic and diastolic) [E2] and/or glucose levels [E3] for the patient.  The input data, a timestamp, and the fact the the status was reported by "case manager" and their MID are saved.
+  * [S6]  A patient can select to report physiologic measurements for those for whom he/she is a patient representative.  He/she is presented with a list of the patients for which he/she is allowed to report measurements.  He she can select a patient and then enter data.   He or she can report the blood pressure (systolic and diastolic) [E2] and/or glucose levels [E3] for the patient.  The input data and a timestamp and the fact that the status was reported by "patient representative" and their MID are saved.
+  * **[S7] A patient chooses to report his/her weight/pedometer data.  He or she can report his or her daily weight and/or pedometer readings [E5]. The input data, a timestamp, and the fact that the status is "self-reported" are saved.**
+  * **[S8] An LHCP chooses to view the weight/pedometer data monitoring details.  The LHCP is presented with a listing of all his or her patients with their weight and pedometer reading numbers, recording timestamp, and who reported the data (patient name, UAP name, or personal representative name).  Patients with no information for the current day are highlighted.  Patients with a weight value 5% more or less than the immediate previously recorded weight value are highlighted (if the new weight value exceeds 105% of the previous weight value, the entry should be highlighted red; if the new weight value is below 95% of the previous weight value, the entry should be highlighted green). The LHCP can select a patient to obtain additional information about a patient [S4].**
+  * **[S9]  A UAP can select to report weight/pedometer measurements.  He/she is presented with a list of the patients for which he/she is allowed to report measurements.  He or she can select a patient and then enter data.   He or she can report the weight and/or pedometer reading [E5] for the patient.  The input data, a timestamp, and the fact that the status was reported by "case manager" and his/her MID are saved.**
+  * **[S10]  A patient can select to report weight and/or pedometer readings for those for whom he/she is a patient representative.  He/she is presented with a list of the patients for which he/she is allowed to report measurements.  He or she can select a patient and then enter data.   He or she can report the weight and/or pedometer readings [E5] for the patient.  The input data, a timestamp, and the fact that the status was reported by "patient representative" and his/her MID are saved.**
+  * **[S11] An LHCP selects to view weight charts for the preceding 30 days of remote monitoring data. A line chart is displayed with time plotted along the x-axis and weight plotted along the y-axis [E7].**
+  * **[S12] An LHCP selects to view pedometer reading charts for the preceding 30 days of remote monitoring data. A line chart is displayed with time plotted along the x-axis and pedometer reading plotted along the y-axis [E7].**
+
+== 34.4 Alternative Flows: ==
+  * [E1] The patient chosen is not the desired patient. The HCP does not confirm the selection and is prompted to try again.
+  * [E2] The patient, UAP, or personal representative enters a systolic blood pressure outside the range 40-240 or a diastolic blood pressure outside the range 40-150.  He/she is notified of an error and is prompted to try again.
+  * [E3] The patient, UAP, or personal representative enters a glucose level outside the range 0-250. He/she is notified of an error and is prompted to try again.
+  * [E4] The patient, UAP, or personal representative tries to enter more than ten physiologic data points for one day and is told additional data cannot be entered.
+  * **[E5] The patient, UAP, or personal representative enters an alpha value for weight and/or pedometer reading and is notified of an error and prompted to try again.**
+  * **[E6] The patient, UAP, or personal representative tries to enter more than one weight data point or more than one pedometer data point for the day and is told additional data cannot be entered. **
+  * **[E7] If there is no available remote monitoring information for the preceding 30 days, the LHCP is told there is no data available for charting.**
+
+== 34.5 Reference Documents: ==
+US Department of Health and Human Services Remote Monitoring Use Case: http://healthit.hhs.gov/portal/server.pt/gateway/PTARGS_0_10731_848114_0_0_18/RMonDetailed.pdf

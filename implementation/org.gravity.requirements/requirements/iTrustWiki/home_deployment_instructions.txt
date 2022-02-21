@@ -1,0 +1,383 @@
+====== Deploying iTrust v23 (Spring 2017) at Home ======
+
+[[start|Back to start]]
+
+===== Overview =====
+To successfully deploy iTrust, complete each numbered phase (e.g. Phase 1) below **IN ORDER**. Each Phase includes information about downloading, unpacking, installing, and configuring the components necessary to run iTrust, as well as the iTrust source code. The phases are not of equal size or complexity.
+
+''A Note on Checksum'' below provides helpful background on the checksum utilities we will be using throughout the deployment process.
+
+
+
+
+==== Note on Checksum ====
+
+One of the easiest ways to verify the integrity of the files we download is to use a checksum. When software developers, such as those working on Apache Tomcat, complete a program and package it for release they often compute what is known as a "checksum" by inputting the bit values of the package into a formula and computing the result. There are tools such as the [[https://technet.microsoft.com/en-us/library/cc732443(v=ws.11).aspx|CertUtil]] utility packaged with most Windows OS and [[https://www.openssl.org/docs/manmaster/apps/openssl.html|Openssl]], which is available on most Mac OS X and *nix devices that can be used re-compute the checksum of a downloaded file. If the checksum of the downloaded file matches the checksum produced by the program's original authors, it is less likely that the program has been tampered with (and therefore less likely to contain malware), or otherwise corrupted. In the phases below we verify the checksum of many of the files we download. For more information on Checksum see the [[https://en.wikipedia.org/wiki/Checksum | Wikipedia page]].
+
+----
+
+===== Phase 1: Development Directory Setup =====
+
+To keep all of your CSC326 development resources together, we recommend creating a ''development'' directory on your workstation where we will unpackage most of our tools
+
+----
+===== Phase 2:  Install Java Development Kit =====
+
+==== (2.1) Background ====
+Java libraries are required to run the Eclipse platform. There are two Java installs: the JDK and JRE.  The JDK, or Java Development Kit, has both the ''java'' and ''javac'' commands and allows for Java development.  The JRE, or Java Runtime, has just the ''java'' command, and runs Java applications.  While Eclipse only requires the JRE, we will use the JDK so that you can also do command line development on your machine.  
+==== (2.2) Download in All OS ====
+If you are running a version of OS X lower than 10.7 (Lion), you can skip the following instructions. Java is already installed for you.
+
+If you are running any other Operating System (including OS X 10.7 or later), 
+    - Download [[http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html|Java SE Development Kit 8u112]]. As of 1/6/2017 it was the second table on the screen. Operating systems are listed in the "Product/File Description" column, which correspond with the download links are found in the "Download" column.
+    - Accept the licensing agreement by clicking the appropriate radio button
+    - Click on the appropriate download link for your operating system. 
+==== (2.3w) Install in Windows====
+
+    - Double-click on the downloaded file to start the installation
+    - Use the wizard to install the JDK. Make note of the directory where the JDK is installed (this is usually ''C:\Program Files\Java\jdk1.8.0_112'', but can be edited if there is another directory you prefer)
+    - Open your Control Panel, and select System.
+      -  On Windows 7, Windows 8, and Windows 10, click the Start button, search for System Environment Variables and select the link to Edit the system environment variables.
+      - On Windows Vista, select the Advanced System Settings task. In the resulting window, select the Environment Variables button.
+      - On Windows XP, select the Advanced tab.
+    - On the Environment Variables window under System variables section, select the Path variable and select Edit. Move your cursor to the end of the text field for entering the value. Add a semi-colon (;) and add the full path to the bin directory of your Java installation. Select OK.
+    - On the same window, select the CLASSPATH variable and select Edit. Move your cursor to the end of the text field for entering the value. Add a semi-colon (;) and put a period (.). Select OK. The period represents your current working directory, and means that all files in your current working directory will be on the classpath when compiling and running Java applications. If you do not have a CLASSPATH variable, select the New button, and create one. The name of the variable should be CLASSPATH, in all capital letters.
+    - Restart the machine
+
+See http://courses.ncsu.edu/csc116/common/java_install/ for a video on how to install the Java SE Development Kit on Windows.
+==== (2.3m) Install in Mac OS X 10.7 or later====
+
+If you are running a version of OS X lower than 10.7 (Lion), you can skip the following instructions. Java is already installed for you. If you are running Mac OS X 10.7 (Lion) or later, Java is NOT preinstalled. After you complete the download (described previously), click on the dmg file and follow the installation prompts. Answers to frequently asked questions about Mac and Java are available at [[https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_install_faq.html]].
+
+----
+===== Phase 3: Download and Extract Apache Tomcat =====
+
+==== (3.1) Download ====
+**For Windows**: 
+    - Go to [[https://tomcat.apache.org/download-90.cgi|Apache Tomcat 9]]. 
+    - Under ''9.0.0.M15>BinaryDistributions>Core'' download the 64-bit Windows zip file (if you are running a 32-bit machine, download the 32-bit Windows zip file). Leave the file zipped.
+    - Open up the command prompt. Use [[https://technet.microsoft.com/en-us/library/cc732443(v=ws.11).aspx|CertUtil]] to verify the checksum using the command: ''certUtil -hashfile [path-to-file] md5''. Verify the output against the md5 checksum provided at the [[https://tomcat.apache.org/download-90.cgi|Apache Website]] (click on the link next to the ''.zip'' file download link).  They should be the same.
+
+**For Mac OS X and *nix **: 
+    - Go to [[https://tomcat.apache.org/download-90.cgi|Apache Tomcat 9]]. 
+    - Under ''9.0.0.M15>BinaryDistributions>Core'' download the first tar file labeled ''tar.gz''. Note: OS X may attempt to automatically unpackage the file, leaving a directory in your downloads file and putting the original ''.tar.gz'' file in the Trash. In this case, you will need to retrieve the original ''.tar.gz'' file from the ''Trash'' folder since the checksum (which we will examine in the next step) is only valid for the original file.
+    - Open up the terminal. Use [[https://www.openssl.org/docs/manmaster/apps/openssl.html|openssl]] to verify the checksum using the command: ''openssl md5 [path-to-file]''. Compare the output to the md5 checksum provided at the [[https://tomcat.apache.org/download-90.cgi|Apache Website]] (click on the link next to the ''.tar.gz'' file you just downloaded). They should be the same.
+==== (3.2) Extract ====
+Once the checksum has been verified, extract the file into the ''development'' directory created in Phase 1. The directory structure should now be:
+
+  * ''development/''
+    * ''apache-tomcat-9.0.0.M15/''
+
+----
+
+===== Phase 4: Install MySQL =====
+
+MySQL Community Edition is an open source database.  
+
+==== (4.1w) Windows MySQL Download & Install Guide ====
+
+=== (4.1w.1) Download in Windows ===
+Download [[https://dev.mysql.com/downloads/installer/ | MySQL Installer]]. 
+    - Click the link above
+    - Select the 32-bit msi file. The label is confusing since 32-bit installer can be used to install the 32-bit and 64-bit versions. The smaller MSI file requires an internet connection during the entire installation. If you will be performing the install in a setting where the internet connection is limited or sporadic, download the larger file. 
+    - Note that you do not need to obtain a username for download. On the next screen There's a link to "No thanks, just start my download." underneath the larger buttons
+    - Once the download is complete, use the [[https://technet.microsoft.com/en-us/library/cc732443(v=ws.11).aspx|CertUtil]] utility packaged with most Windows OS to verify the checksum. Open a command prompt and enter ''certUtil -hashfile [path-to-file] md5''. Verify the output against the checksum listed at the MySQL like above for the file you downloaded. They should be the same.
+
+
+=== (4.1w.2) Install in Windows ===
+
+== (4.1w.2.1) Install in Windows: MySQL Server and Connector ==
+If you prefer to install the program interactively (i.e. you have not done the command prompt install in the previous subsection):
+    - Click on the Downloaded installer. 
+    - Grant the installer administrative privileges when appropriate
+    - Read and accept the license agreement. Click "Next"
+    - Under "Choosing a Setup Type" select "Custom". Click "Next"
+    - Under "Select Products and Features" add the 64-bit version of MySQL Server 5.7.* under "MySQL Server" and the Connector/J connector under "MySQL Connectors". MySQL may limit the number of items you can install at one time, so we will install that later. Click "Next". {{ :mysqlselectproducts.jpg?500 |}}
+    - On the "Installation" screen click "Execute". If the products do not successfully download and execute on the first attempt, you may need to retry. If the installation does not progress after several consecutive attempts, you may need to start over.
+    - Once the installation is complete, click "Next".
+    -  On the Product Configuration screen, click "Next". This will start the configuration process.
+      - On the "Type and Networking" screen, you may leave the default values. Click "Next".
+      - On the "Accounts and Roles" screen, leave the root password blank if possible. If not, enter a password you will remember. We will remove it later. Click "Next".{{ :accountsandroles.jpg?500 |}}
+      - On the "Windows Service" screen you may leave the default values. Click "Next"
+      - On the "Plugins and Extensions" screen you may leave the default values. Click "Next"
+      - On the "Apply Server Configuration" screen, click "Execute". When all steps on the "Apply Server Configuration" screen have successfully executed, click "Finish. You will be returned to the "Product Configuration" screen.
+    - On the "Product Configuration" screen, click "Next"
+    - On the "Installation Complete" screen, click "Finish"
+
+== (4.1w.2.2) Install in Windows: MySQL Workbench ==
+To install workbench after completing the above steps:
+    - Click on the windows menu and search for "MySQL Installer". Select the "MYSQL Installer - Community" desktop app.
+    - Grant the installer administrative privileges when appropriate
+    - On the "MySQL Installer" main screen, click "Add
+    - On the "Select Products and Features" screen select the 64-bit version of MySQL Workbench under "Applications". Click "Next".
+    - On the "Installation" screen click "Execute". Once the Installation is complete, click "Next".
+    - On the "Installation Complete" screen click "Finish"
+
+
+
+
+==== (4.1m) Mac OS X MySQL Download & Install Guide ====
+=== (4.1m.1) Download in Mac OS X ===
+ 
+ Download [[http://dev.mysql.com/downloads/mysql/|MySQL Community Server v5.7.17]]
+    - Click the link above
+    - Select the DMG archive. 
+    - On the next screen, click the link to "No thanks, just start my download." in smaller print underneath the two larger buttons (you do not have to sign in)
+    - Once the download is complete up the terminal and navigate to the directory where the ''.dmg'' archive was downloaded. Usually this is the ''Downloads'' directory in your home folder.
+    - Enter ''openssl md5 [filename]'' and compare the output with the md5 checksum for the file you just downloaded (available at the link above)
+
+ Download [[http://dev.mysql.com/downloads/connector/j/|MySQL JDBC Driver]]. 
+     - Click the link above
+     - Select the platform independent option and download the tar file. 
+     - On the next screen, click the link to "No thanks, just start my download." in smaller print underneath the two larger buttons (you do not have to sign in)
+    - Once the download is complete up the terminal and navigate to the directory where the ''.tar'' archive was downloaded. Usually this is the ''Downloads'' directory in your home folder. Note: OS X may attempt to automatically unpackage the file, leaving a directory in your downloads file and putting the original ''.tar'' file in the Trash. In this case, you will need to retrieve the original ''.tar'' file from the ''Trash'' folder since the checksum is only valid for the original file. Navigate to whichever directory the ''.tar'' file is in
+    - Enter ''openssl md5 [filename]'' and compare the output with the md5 checksum for the file you just downloaded (available at the link above) 
+
+ Download[[http://dev.mysql.com/downloads/workbench/|MySQL Workbench v6.3]]. 
+    - Click the link above 
+    - Select the DMG archive for OS X. 
+    - On the next screen, click the link to "No thanks, just start my download." in smaller print underneath the two larger buttons (you do not have to sign in)
+    - Once the download is complete up the terminal and navigate to the directory where the ''.dmg'' archive was downloaded. Usually this is the ''Downloads'' directory in your home folder.
+    - Enter ''openssl md5 [filename]'' and compare the output with the md5 checksum for the file you just downloaded (available at the link above)
+
+== Reference Materials ==
+
+For more information on verifying the integrity of MySQL packages is available on the [[http://dev.mysql.com/doc/refman/5.7/en/verifying-package-integrity.html|MySQL Website]]. For more information on OpenSSL see the [[https://www.openssl.org/docs/manmaster/apps/openssl.html|man page]].
+
+=== (4.1m.2) Install in Mac OS X ===
+
+== (4.1m.2.1) Install in Mac OS X: MySQL Community Server ==
+Once the DMG Archive downloads, double click to mount and open it. You should see a package installer for MySQL. Double click the package installer and proceed with the installation. Towards the end of the installation you will be provided with the root password. **Remember the root password provided!** You will need it when you first login to MySQL. For additional details see: [[http://dev.mysql.com/doc/refman/5.7/en/osx-installation-pkg.html | Installing MySQL on OS X Using Native Packages]].
+
+== (4.1m.2.2) Install in Mac OS X: JDBC Connectors ==
+We need a library to allow our Java code to interact with the database. Extract the downloaded tar file ''mysql-connector-java-5.1.40'' into your ''development'' directory. After you have extracted the connector file, the directory structure should be:
+
+  * ''development/''
+    * ''apache-tomcat-9.0.0.M15/''
+    * ''mysql-connector-java-5.1.40/''
+
+
+== (4.1m.2.3) Install in Mac OS X: MySQL Workbench ==
+Once the DMG Archive downloads, double click to mount and open it. You should see a package installer for Workbench. Double click the package installer and follow the instructions for installation (drag-and-drop the specified file into ''Applications'')
+==== (4.1n) Debian and Ubuntu Linux MySQL Install Guide ====
+When installing MySQL, MySQL Workbench, and the JDBC Connectors on Debian, Ubuntu, or any other platform using Apt, follow the instructions found at [[https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/|A Quick Guide to Using the MySQL APT Repository]]
+
+
+==== (4.2) Update MySQL Root Password in All OS====
+
+=== (4.2.1) Background ====
+Jenkins expects that the database's root password will be blank.  To minimize password sharing when using version control on team assignments, we recommend that everyone uses a blank root password. [NOTE: This is a VERY bad practice in production.  Since we are developing locally using test data, we are ok with using a blank root password.]
+
+
+=== (4.2.2) Password Update in All OS === 
+During the MySQL install, you either specified or were provided with either a temporary or non-temporary password.  There are separate instruction sets for temporary passwords and non-temporary passwords.  **You only need to update the root password using ONE of the instruction sets below**. Instruction Set 1 pertains to temporary passwords, Instruction Set 2 pertains to non-temporary passwords. If you are not sure whether your password is a temporary password, review the instructions for the temporary password, paying attention to the final note.
+
+== Instruction Set 1: Update Temporary Password ==
+  - In Finder, go to ''Applications'' and click on ''MySQLWorkbench''. The following screen will show up {{ :mysqlworkbenchstart.png?400 |}}
+  - Click on the ''Local Instance 3306''. A popup will display requesting your username (root) and the password (provided during the install).
+    - Note: If you do NOT see the ''Local Instance 33066'', try restarting MySQL. Instructions for restarting MySQL are in section **4.4**
+  - Once you submit the initial password you will be prompted to enter a new password. Enter a blank password for the new password and submit. 
+  - Note: If you are NOT prompted to change your password immediately, change your password using the steps below for ''All Other Password Updates'' in the next instruction set - ''Update Non-Temporary Password'' starting at step 2
+
+
+== Instruction Set 2: Update Non-Temporary Password  ==
+  - Go to MySQL Workbench and connect to your local database using the password you previously specified.  
+  - Under MANAGEMENT, select Users and Privileges
+  - Select root from host localhost and set the passwords to blank.  Click Apply. (The workbench may fill in * characters in the password fields, but look for the "No password is set for this account." notice at the bottom of the screen."
+  - Select root (there should only be one root user, which will either be at host 127.0.0.1 or localhost) and set the passwords to blank.  Click Apply.
+  - Any other user account can be deleted to lock down your MySQL installation.
+==== (4.3) Troubleshooting MySQL Installation ====
+
+If MySQL does not install properly and you wish to re-install, be sure to remove the log files and the data tables. For example, if you originally installed MySQL into ''c:\Program Files\MySQL\My SQL Server 5.7'', then delete the MySQL folder before re-installing.
+
+You may need to copy the ''mysql-connector-java-5.1.*-bin.jar'' (in ''mysql-connector-java-5.1.*/'') into ''apache-tomcat-9.*/lib/''. However, on some systems this has caused iTrust to crash and is only recommended if other options do not work.
+
+
+MySQL has a large community and extensive documentation, so if you can't find the answer to your question here, consult the MySQL website.
+
+==== (4.4) Starting MySQL ====
+**For Windows:** Open the start menu and search for the Services App (shown on the left below). On older versions of Windows this is a Control Panel option. In the Services Panel, find MySQL, and press start (shown on the right below).
+
+{{::servicesapp.jpg?250|}}{{ :startmysql1.jpg?500|}}
+
+**For OS X:** To view the status and Start (or Stop) MySQL, open the System Preferences and click on MySQL (below left). A popup will display with the status of the service  (below right). If the service is stopped, click "Start MySQL Server" to start MySQL.
+
+{{system_preferences_mysql.png?250 | | }}{{ :: osx_startmysql.png?500 }}
+
+
+**For most *nix and alternative for OS X:** To start MySQL, issue the following commands in the terminal:
+
+  shell> sudo /usr/local/mysql/bin/mysqld_safe
+  (Enter your password, if necessary)
+  (Press Control-Z)
+  shell> bg
+  (Press Control-D or enter "exit" to exit the shell)
+  
+  
+  
+==== (4.5) Removing Case-Sensitivity in MySQL====
+
+If you are installing on Windows you may skip these instructions, returning to them at the end of the deployment (Phase 6) if case-sensitivity in the database appears to be an issue at that time (e.g. some database queries are unable to connect). If you are installing on Mac OS X or *Nix, please follow the instructions below during your initial install.
+
+To remove case-sensitivity we must set the System Variable ''lower_case_table_names'' to 1.
+
+    - Drop the iTrust schema if it exists (if you have not yet completed Phase 6, it should not exist)
+    - Stop the MySQL database
+    - Find the location in the file where ''lower_case_table_names'' variable is set, and verify that it is set to 1 (if not, update the file so that ''lower_case_table_names=1''). On *nix systems this is usually ''my.cnf'' and is found in the ''/etc/mysql/'' directory. However, the file name and location can vary between systems. Additional details on the file location and name can be found [[http://dev.mysql.com/doc/refman/5.7/en/option-files.html|here]]
+      - If you do not see the ''lower_case_table_names'' in the file, review the information [[http://dev.mysql.com/doc/refman/5.7/en/option-files.html|here]]. There can be multiple option files and they are loaded in a specific order. Hence you may not be looking at the correct file and should review ALL available option files on your system to ensure that if you set the variable in one file, it is not re-set in another file that is subsequently loaded (essentially nullifying your update).
+      - If you are unable to find the my.cnf file in OS X (or any other operating system), it may not exist. You may be able to create one using the following commands in the terminal: ''cd /usr/local/mysql/support-files/'' and ''sudo cp my-default.cnf /etc/my.cnf''. See the thread [[http://forums.mysql.com/read.php?11,366143,376017 | here]]
+      - If ''lower_case_table_names'' does not exist in any of the files or if you have to create a new configuration file, you may add ''lower_case_table_names=1'' to the ''sqld'' section of the newly created or most appropriate file (you may need to use sudo to edit the my.cnf file).
+    - Restart the MySQL service
+
+
+  
+
+----
+===== Phase 5: Eclipse Setup =====
+
+You will need to download [[http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/neon2|Eclipse "Neon" for Java EE Developers]].  The regular, non-EE version that you may already have from other classes **will not work.**  You //must// use this version, or you //will// encounter issues.
+When you first start Eclipse, create a new workspace just for your CSC326 development activities.  The workspace should be in a different location than your development directory.
+
+Install the following Eclipse plug-ins.  Some are available via the Eclipse MarketPlace and some are available at the listed update sites.  For a review of installing Eclipse plug-ins, check out the [[http://courses.ncsu.edu/csc216/common/tutorials/eclipse-install/eclipse-install.html|CSC216 Install Tutorial]]. 
+==== Eclipse MarketPlace Plug-ins ====
+  * FindBugs
+  * EclEmma
+
+
+
+----
+
+===== Note: Directory Setup =====
+At this point (after Phase 5), your directory structure in the ''development'' directory should look like:
+
+==== Windows ====
+
+  * ''development/''
+    * ''eclipse/'' [consider renaming to ''eclipse-neon-jee'' if you want other eclipse installs in this directory]
+    * ''apache-tomcat-9.0.0.M15/''
+
+Since the mysql connector is installed via the main install file, it may not be in the same directory as the other tools.
+
+==== Mac OS X / *nix ====
+
+  * ''development/''
+    * ''eclipse/'' [consider renaming to ''eclipse-neon-jee'' if you want other eclipse installs in this directory]
+    * ''apache-tomcat-9.0.0.M15/''
+    * ''mysql-connector-java-5.1.40/''
+
+----
+
+===== Phase 6: iTrust Eclipse Project Deployment =====
+
+The screenshots are for Windows, but in this section the instructions are similar for all operating systems. Some screenshots display other versions of Tomcat and Eclipse, but the view should be similar for Tomcat 9.0 and Eclipse Neon. Tomcat 9.0 and Eclipse Neon should be used for iTrust v23. 
+==== (6.1) Getting Started ====
+
+    - Open Eclipse.
+    - Open the Java perspective by going to ''Window -> Open Perspective - Other''. {{ :openperspective-win.jpg | }}
+    - Select ''Java'' and click ''Finish''. {{ :javaperspective-win.jpg | }}
+
+==== (6.2) Apache Tomcat ====
+We will manage our Tomcat servers within Eclipse and only start them when needed.  We will use one Tomcat 
+  * Tomcat v9.0
+
+To configure the servers in Eclipse, do the following:
+    - Go to ''Window > Show View > Other...''
+    - Select ''Server > Servers...''{{ :server.png | }}
+    - {{ :: eclipsenoserversavailable2.png?400}}If it is the first time you have set up a server in eclipse, there may already be a link in the ''Servers'' view stating ''No servers are available. Click this link to create a new server''. If this link (shown at right) appears, click the link.
+    - If the link does NOT appear, in the ''Servers'' view, right click and select New (as shown below) {{ 2.png | }}
+    - Select ''Apache > Tomcat v9.0 Server''. Hit next. {{ :eclipsedefinenewserver.png |}}
+    - Select the folder where you previously unzipped Tomcat. {{ :eclipsetomcatserverlocation2.png |}}
+    - Hit ''Finish''
+==== (6.3) Starting the Tomcat Server ====
+
+    - In the servers view, you should see your new runtime below. Click on the Play button to start the server.{{ :eclipseserverwindowtomcat9.png |}}
+    - If you see the text ''Server startup in xxxxx ms'' in the ''Console'' view, and the ''Servers'' view shows that your status is Synchronized, then your server is properly configured. If the Console view isn't open, go to ''Window > Show View...>Console''
+
+==== (6.4) Getting iTrust ==== 
+Currently the latest version of iTrust is only available on NCSU's private Github. This section will be updated when the v23 is available elsewhere.
+
+=== (6.4.1g) iTrust from GitHub ===
+
+== (6.4.1g.1) Getting Started with GitHub ==
+
+To get started with GitHub, go through the [[http://courses.ncsu.edu/csc216/common/tutorials/eclipse-github/eclipse-github.html | GitHub Basics tutorial]] through Step 3.
+
+We highly recommend that you create an SSH key for working with GitHub.  See [[https://help.github.com/articles/generating-ssh-keys | GitHub Generating SSH Keys]] for information about generating an SSH key for your OS and connecting it to your GitHub account.
+
+== (6.4.1g.2) Cloning a Remote Repository and Importing iTrust into Eclipse ==
+//Background//
+Git (the version control system under GitHub) is a distributed version control system.  All folders that contain ''.git/'' directories are repositories.  You will have multiple remote repositories for the homework assignments.  To tie a local repository to a remote repository, we need to clone the remote repository locally.  Then we get all of the remote repo's files.
+
+//Instructions//
+    * See the [[http://courses.ncsu.edu/csc216/common/tutorials/eclipse-github/eclipse-github.html#cloning | GitHub Basics tutorial for instructions about how to clone a remote repository locally and import a project into Eclipse]].  The project can be found at [[https://github.ncsu.edu/engr-csc326-staff/iTrust-v23.git|NCSU's GitHub]] (restricted to NCSU faculty and students). 
+    * Use the Eclipse git client (or git bash, or another client of your choosing) to clone iTrust v23 from the link above.  Either way, then import the project into Eclipse and do a Maven update (right-click on the iTrust project and select Maven -> Update Project)
+    * Make sure that iTrust builds. This will take a while since all of the dependencies will need to be downloaded.  
+
+Here are some standard build issues:
+
+  * Compiler errors associated with database classes: make sure that Tomcat*/lib contains the MySQL J/Connector jar.  Refresh your project.
+  * Red explanation point on the project folder: something is wrong with the build path
+    * Right click on the project and select Maven > Update Project.
+  * Error in the pom.xml regarding the jacoco plugin
+    * Select the Eclipse recommendation of ignoring the prepare-agent goal in your Eclipse IDE. This goal is necessary for the project to run correctly on Jenkins, but not in Eclipse.
+
+== (6.5.1g.3) Pushing iTrust to Your Repo ==
+** Note: for CSC labs on 1/12, this step should be skipped until a future lab.**
+After you have the project imported into your workspace, you will need to [[https://courses.ncsu.edu/csc216/common/tutorials/eclipse-github/eclipse-github.html#commit|push the project to your provided class repository]].  Do the following:
+    - Disconnect the project from the staff repo by right clicking on the project name and selecting ''Team > Disconnect''.
+    - Clone your provided class repository.
+    - Share your project with your class repository by selecting Team > Share > Git.
+    - Uncheck the option to "Use or create repository in parent folder of project".  
+    - Use the drop down menu to select your provided class repository.
+    -  Check iTrust in the Project listing.
+    - Click Finish
+
+If your project doesn't build, right click your project and select Maven > Update Project.  You may also need to delete the target folder and select Maven > Update Project.  This will update the target folder to the new project location.
+
+Additional information on how to use GitHub is available in the NCSU students may access the latest version of the [[https://pages.github.ncsu.edu/engr-csc216-staff/CSC216-SE-Materials/git-tutorial/git.html|CSC 216 Git Guide]]
+==== (6.5) Deploying the Project to Tomcat====
+
+iTrust is deployed as a Tomcat application. To do this, follow these steps:
+    - In the Servers view, right-click on your Tomcat installation and select Add and Remove Projects... {{ :eclipsetomcat9addremoveb.png |}}
+    - iTrust should show up on the list, move it over to the Configured Projects pane (note that it should be the latest version of iTrust. Version 21 is shown in the screen below), hit Finish. {{ :eclipseadditrust_ct.png |}}
+    - If you click on the plus sign in your server configuration, you should see iTrust deployed (published) there.
+
+==== (6.6) Configuring the Project ====
+Now that iTrust is set up to be deployed on Tomcat, you need to set the database parameters. 
+    * In the Package Explorer, Open up ''iTrust > WebRoot > META-INF > context.xml''
+    * If the file is opened in the Design tab, switch to Source tab in the Editor.
+    * For CSC 326, your database username should be **root** and the password **blank**.
+
+We have provided several launch configurations for common iTrust launches:
+    * ''DBBuilder.launch'' - Creates the ''itrust'' database and tables (schema).
+    * ''TestDataGenerator.launch'' - Populates the database with data for testing a deployed iTrust via a browser.
+    * ''tests.launch'' - Runs all JUnit and Selenium tests in the ''tests/'' source folder.
+
+To run one of the launch configurations, right click on the file and select ''Run As > Launch configuration Name''.
+==== (6.7) Running the Application ====
+    - Start the Tomcat Server in the ''Servers'' view as before.  **NOTE:** This step is ''required''.  Because you have made changes to the Tomcat and iTrust configurations, you must restart Tomcat.
+    - Run ''TestDataGenerator.launch'' to reset any data that may have been changed from unit test runs.
+    - Open your internet browser and surf to [[http://localhost:8080/iTrust/]]. You should be able to log in and use the application as normal. Log in as any sample user by clicking. The ''users'' and ''personnel'' tables contain more test users.
+
+==== (6.8) Testing the Application ====
+
+Start by running ''DBBuilder.launch'', ''TestDataGenerator.launch'', and then ''tests.launch''.  The tests may take a 10-20 minutes to run depending on your machine's specs.
+
+If all the tests fail with database errors, check the following:
+
+  * Is Tomcat started and synchronized?
+  * Is your database running?  You may need to start the MySQL service.
+  * Did you update the MySQL root password or update context.xml with your database root password?  Make sure the username and password in ''WebRoot/META-INF/context.xml'' corresponds with the usename and password you use to login to MySQL.
+  * Particularly on Mac and *nix systems, is the MySQL database case-sensitive? You will need to turn off case-sensitivity in MySQL. See the instructions at the end of Phase 4.
+
+===== Summary: iTrust Software Requirements ======
+
+In summary, you will have installed the software listed below. ** This table is for reference. The exact download and install procedures for each are listed in the previous sections of this tutorial.** Make sure you're downloading the versions appropriate for your operating system.
+
+^ Program/Package ^ Details ^
+| [[http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html|Java SE Development Kit 8u112]] | Download the Java JDK and not the JRE package. You want Java SE JDK not Java EE SDK.  You do not need NetBeans nor the Source Code (though the source can be helpful).|
+| [[https://tomcat.apache.org/download-90.cgi|Apache Tomcat v9.0]] | Download the core zip for your operating system, unzip into a directory where you will store all related tools. We will use version 9.0 for deployment and acceptance testing of iTrust. | 
+| [[http://dev.mysql.com/downloads/mysql/|MySQL Community Server v5.7.*]] | Select and install the distribution for your operating system. Note that you do not need to obtain a username for download.  There's a link to "No thanks, just start my download." at the bottom of the page. If you're on Windows, use the Installer for the Server and Workbench. | 
+| [[http://dev.mysql.com/downloads/connector/j/|MySQL JDBC Driver]] | Select the platform independent option and download the zip or tar. Unzip the file into the directory where tomcat was unzipped | 
+| [[http://dev.mysql.com/downloads/workbench/|MySQL Workbench v6.3.*]] | The Workbench provides a GUI for interacting with your databases. Install for your operating system. |
+| [[http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/neon2|Eclipse Neon]] | Unzip the program files to a permanent location. Be sure you download the **Eclipse IDE for Java EE Developers**. |

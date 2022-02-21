@@ -1,0 +1,54 @@
+====== What we want to do ======
+
+^ Task ^ Person ^ Status ^
+| Talk to Trey about getting SVN set up, and the lab | Andy & Jason  | Open |
+| Update the lab deployment instructions for Eclipse 3.5 and current lab setup |  | Open |
+| Get mock objects started: test utilities, a variety of examples | Andy | Open |
+| Write the mock object tutorial | Andy | Open |
+| Get MySQL, wikis, Bugzilla running on the VCL 326 server | Andy  | Open |
+| Look for dead classes, dead JSPs, and dead tables |   | Open... On this note: [[http://eclipsenuggets.blogspot.com/2007/05/here-is-quick-way-to-eliminate-dead.html|Check out this cool nugget I found]] |
+| Go find specific tests that are slow and check it out | (anybody; do what you can)  | Open | 
+| Build a [[How Do I]]... section (already linked to) | (anybody; do what you can)  | Open | 
+| Form a [[list of bugs]] that we find along the way - keep them for the fall's first assignment | (anybody; do what you can) | Open |
+| //Update code coverage// |  Ben  | Open (ready-to-go) |
+| //Update Javadoc on the wiki// |   | Open (ready-to-go) |
+| //Update the demo version on Aramis/Agile or wherever we have it (use SVN branch//) |  | Open |
+| //Update the test data on the wiki// |   | Open (ready-to-go) |
+| //Release the product to SourceForge.NET// |   | Open (ready-to-go) |
+| //Release the product to student-downloadable location and run through the deployment instructions at home and in the lab // |   | Open (ready-to-go) |
+| Speed up the tests: Refactor all tests that don't touch the database to their own test classes that doesn't do any db setup |    | NaP -- Andy's impact was intense and got the units down to 9 sec |
+| Update the tutorials to have the correct screenshots for Eclipse 3.5 | Ben | Done.  Jason tested them.  Someone else should too. |
+| Take out Epidemic Detection, UC14 | Jason | Done (Before: R45; Major src, tests removed at R46; Completely Removed: R47) |
+| Take out Cause of death trends, UC20 | Jason  | Done (Before: R44; Major src, tests removed at R45; Completely Removed: R47) | 
+| Fix HCP/LHCP renaming issue everywhere in the system |  | NaP (Removed due to issues of time -- but be sure to remind the students) | 
+| Appointment scheduling, UC 22 | N/A | Already removed?  Yes, Ben removed it last spring.  Done. |
+| Find Traceability between the requirements and the actual entities they map to (e.g. DHHS stuff) |  Ben | Done (R80) | 
+| Add more Javadoc comments to the code | Ben | Done.  Though, feel free to add even more. | 
+| Remove all textual references to specific assignments or semesters |  Ben  | Done.  I think. |
+| MyISAM for the DB engine, no foreign keys, add comments about that | Andy  | Done |
+| Speed up the tests: Remove all instances where the tables are dropped and recreated when not necessary |  Jason  | Refactored to remove redundant calls to clearAllTables(); created setUp() methods for some test cases to call data generator instead of calling the same generators at the beginning of each test case |
+| Take out the "Real Email" thing | Andy  | Done. |
+| Make the standards test data be real data (just take out the silly ones, e.g. "Disco Fever") |  Ben  | Done, unless anybody sees something silly.  Disco Fever has been removed, and a few more standards data codes were added (sourced from the appropriate real world databases).  | 
+| Update that Use Case diagram |  Ben  | [[requirements|Done]] |
+| Remove the .jazzignore files everywhere |  Ben  | Done |
+| Use Eclipse's "Task" view to find the TODO's and deal with them as best you can (add big ones here) | (anybody; do what you can) | Done  |
+| Clean up the [[Acceptance Test Plan]] - this is way out of date. Remove striked out tests. Add newlines. | Jason | In Progress (Still Messy) |
+| Take out Photo upload support - would love to use it, just give it to them if they need it |  Ben  | Done (R49) |
+| Add some color or something to indicate the "test only" links throughout the system (make it yellow or something) |  Ben  | Done  |
+| Update the deployment instructions for Eclipse 3.5 |  Ben  | Done  |
+
+//Items in italics// are pre-release items that should be done right as we "ship".
+
+===== Lower Priority (but still helpful) =====
+  * Re-package removed features so they can be re-done
+    * Provide current implementations of the feature to TAs so they can look at feasibility
+    * Provide requirement drafts of removed features
+    * Any other notes that might be helpful to the TAs/Instructors
+  * Maybe reduce the project size by moving some jars to the Apache Tomcat directory? (Just like the MySQL driver). Yes, it's not the Tomcat Convention, but it would really help us out. Or the more complex (yet more "real") way is to just have them create libraries for their Eclipse.
+    * Not an issue if we do Subversion submissions
+  * Advice: when planning out this semester, show the students what PARTS of the system they need to know. iTrust is overwhelming - that's the point. You shouldn't NEED to know everything about the system to keep it going. If you can, get an idea of what all the assignments will be throughout the semester so that the students will know what they need to know. Tell them that they won't know the entire system. And understanding how much you can do without knowing everything really is the biggest lesson of the whole project.
+  * Take out Messaging Between LHCP and patient (possible re-implement later): UC 30
+  * Take out Comprehensive Report UC 23
+    * Possible re-implement as a data migration toolkit. Dump the entire contents of the database, or a hospital, etc into XML. Use a standard - look at what Google health can import and go with one of those standards. Maybe call this Use Case: Google Health Interoperability. Just a thought.
+  * Take out Find HCPs with a history of diagnosis, UC 29. Sounds like a good candidate for a re-implement.
+  * Re-organize consolidate that test data. We don't need THAT much!!

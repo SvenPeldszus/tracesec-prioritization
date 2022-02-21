@@ -1,0 +1,49 @@
+grammar org.tracesec.graph.dsl.GraphConfiguration with org.eclipse.xtext.common.Terminals
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+generate graphConfiguration "http://www.tracesec.org/graph/dsl/GraphConfiguration"
+
+Configuration:
+	("default" "=" default=INT)?
+	("consider" "=" consider=Consider)?
+	(namespaces+=Namespace)+;
+
+Namespace:
+	"namespace" package=STRING "{"
+	("default" "=" default=INT)?
+	("consider" "=" consider=Consider)?
+	("include" "{"
+	(include+=Type)*
+	"}")?
+	("exclude" "{"
+	(exclude+=[ecore::EClass])+
+	"}")?
+	"}";
+
+Type:
+	"type" type=[ecore::EClass] "{"
+	("consider" "=" consider=Consider)?
+	("default" "=" default=INT)?
+	("include" "{"
+	(inlcude+=Edge)+
+	"}")?
+	("exclude" "{"
+	(exclude+=[ecore::EReference])+
+	"}")?
+	"}";
+
+Edge:
+	"reference" reference=[ecore::EReference] ("--" type=[ecore::EClass] ("--" target=[ecore::EReference])?)?
+	direction=Direction weight=Weight;
+
+Weight: NumberWeight | AttributeWeight;
+
+NumberWeight: value=INT;
+
+AttributeWeight: value=[ecore::EAttribute];
+
+enum Consider:
+	ALL="ALL" | NONE="NONE";
+
+enum Direction:
+	FWD="->" | BWD="<-" | BI="<->";

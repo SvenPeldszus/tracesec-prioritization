@@ -1,0 +1,279 @@
+====== Deploying iTrust v23 in the EB2 1221 lab ======
+
+This tutorial will help you set up iTrust in the lab.
+
+
+
+
+
+
+
+===== Eclipse in the Lab =====
+
+**Start Eclipse**. The shortcut to Eclipse should be on the desktop as ''eclipse.bat''. This will create a ''workspace/'' directory for you in ''C:\Users\<unityid>\'' and copy in an IT created workspace with the Tomcat servers already set up.  If you already have a ''workspace/'' directory, then that workspace will be used as is (you can delete it or rename it to take advantage of the IT provided workspace.) //Note: the first time Eclipse loads on a machine in the lab at the beginning of the semester, it may take 5+ minutes for Eclipse to initialize and open to the workbench.//
+
+Note that the workspace is stored on the C:\ drive.  That means the workspace is only on the specific computer you're sitting at, but it is protected from others that may use the machine by your log in credentials.  The workspace will not roam.  As you move around the lab during the semester, you will need to set up iTrust each time you move to a new computer.  We have tested creating the workspace in AFS (or your K: drive).  There are known bugs in OpenAFS (used to connect to the K: drive) that lead to significant time delays  when running the workspace from the K: drive.  We have decided that the time delays are worse than the one time setup cost when moving to a new computer, so we encourage having local workspaces to a given computer.  All your code should live on the remote GitHub which allows for working on iTrust from any location.
+
+{{workspace.png|}} \\
+
+
+
+===== Setting up Tomcat ======
+
+Note: If you're using the IT provided workspace, this step is done!
+
+After Eclipse has started and you are in the default workspace, you should see a project called "Servers" already in the package explorer. This means already has Tomcat 6.0 set up for this workspace. If, for some reason, you need to set up Tomcat again, see the [[#troubleshooting]] section at the bottom.
+
+Check that Tomcat can start up by doing the following:
+
+  * Go to ''Window > Show View > Other... Select Server > Servers...''
+{{server.png|}}
+
+  * In the ''Servers'' view, Click on the "Play" button to start the server
+
+{{startserver.png|}}
+
+  * If you see the text ''Server startup in xxxxx ms'' in the ''Console'' view, and the ''Servers'' view shows that your status is "Synchronized", then your server is properly configured. Also, check the ''Console'' view for exception stacktraces - there should not be any.
+
+  * If the Console view isn't open, go to Window > Show View... > Console
+
+
+
+
+
+
+
+
+
+
+
+
+===== Setting up eGit for the Lab =====
+You need to set up eGit to work with GitHub.  See the [[http://courses.ncsu.edu/csc216/common/tutorials/eclipse-github/eclipse-github.html#settingUp|CSC216 GitHub Basics tutorial]].
+
+NOTE: You cannot create an SSH key on the lab machine.  Instead, you should create a SSH key in AFS and link to that.  Follow these instructions:
+
+  * ssh into remote-linux.eos.ncsu.edu
+  * Follow the [[https://help.github.com/articles/generating-ssh-keys#platform-linux|instructions for generating an SSH key in Linux]] and attach it to your GitHub account.
+  * In Eclipse Preferences, select ''General > Network Connections > SSH2'' and set the SSH2 Home to ''K:/.ssh'' (just type it in - don't browse).
+
+While using OpenAFS is slow and slows down more over time, using it to connect to your SSH key should not slow down your development significantly.  If you find that this connection is leading to delays, restart the computer.  
+
+===== Importing iTrust ======
+
+We will assume that you have already forked the iTrust repo and that you are preparing to clone from NC State's GitHub.
+
+==== Cloning a Remote Repository and Importing iTrust into Eclipse ====
+
+Git (the version control system under GitHub) is a distributed version control system.  All folders that contain ''.git/'' directories are repositories.  You will have multiple remote repositories for the homework assignments.  To tie a local repository to a remote repository, we need to clone the remote repository locally.  Then we get all of the remote repo's files.
+
+See the [[http://courses.ncsu.edu/csc216/common/tutorials/eclipse-github/eclipse-github.html#cloning | GitHub Basics tutorial for instructions about how to clone a remote repository locally and import a project into Eclipse]].
+
+Make sure that iTrust builds.  Here are some standard issues:
+
+  * Compiler errors associated with database classes: make sure that Tomcat*/lib contains the MySQL J/Connector jar.  Refresh your project.
+  * Red explanation point on the project folder: something is wrong with the build path
+    * The project should contain the following referenced libraries:
+      * Web App Libraries
+      * Referenced Libraries - the jars in testing-libs
+      * JRE System Library - Java 1.6 or greater
+      * Apache Tomcat v6.0 Libraries
+      * JUnit (optional - the jar is also in the testing-libs directory and may be in Referenced Libraries)
+    * Right click on the project, and select Build Path > Configure Build Path.
+    * Go through each of the libraries and do the following:
+      * Select the library and click Remove.
+      * Select Add Library
+        * If you removed Apache Tomcat v6.0, select Server Runtime and select the appropriate library
+        * If you removed JRE System Library, select JRE System Library and choose the appropriate Java
+        * If you removed Web Apps Library, select Web App Libraries and select iTrust.  This will pull all libraries that are in WEB-INF/lib and WEB_INF/classes.
+      * Check that the jars in testing-libs/ are listed.
+
+==== Deploying the Project ====
+
+iTrust is deployed as a Tomcat application. To do this, follow these steps:
+
+  * In the Servers view, right-click on your Tomcat installation and select Add and Remove Projects...
+
+{{click-add-remove.jpg}}
+
+  * iTrust should show up on the list, move it over to the Configured Projects pane, hit Finish.
+
+{{add-and-remove-done.jpg}}
+
+  * If you click on the plus sign in your server configuration, you should see iTrust deployed (published) there.
+
+==== Configuring the Project ====
+
+  * Now that iTrust is set up to be deployed on Tomcat, you need to set the database parameters. In the Package Explorer, Open up ''iTrust > WebRoot > META-INF > context.xml''
+  * If the file is opened in the Design tab, switch to Source tab in the Editor.
+  * Follow the comments in the ''context.xml'' file to properly set up your database parameters. **If you have a username, password, and URL for a database provided by the instructor or TA, or if you have a local database, please use those parameters**.
+
+We have provided several launch configurations for common iTrust launches:
+  * ''DBBuilder.launch'' - Creates the ''itrust'' database and tables.
+  * ''TestDataGenerator.launch'' - Populates the database with data for testing a deployed iTrust via a browser.
+  * ''unittests.launch'' - Runs the JUnit tests in the ''unittest/'' source folder.
+  * ''httptests.launch'' - Runs the HttpUnit tests in the ''httptests/'' source folder.  The application must be deployed to a server and the server must be started for HttpUnit tests to run.
+
+To run one of the launch configurations, right click on the file and select ''Run As > Launch configuration Name''.
+
+Start by running ''DBBuilder.launch'' and then ''unittests.launch''.  Unit tests may take 5 minutes to run.
+
+If all the tests fail with database errors, check the following:
+
+  * Is your database running?  Start the MySQL service.
+  * Did you update context.xml with your database root password?  Update ''WebRoot/META-INF/context.xml''.
+
+==== Running the Application ====
+  *  Start the Tomcat Server in the ''Servers'' view as before.  **NOTE:** This step is ''required''.  Because you have made changes to the Tomcat and iTrust configurations, you must restart Tomcat.
+  * Open your internet browser and surf to [[http://localhost:8080/iTrust/]]. You should be able to log in and use the application as normal.
+  * You can now run your httptests.launch configuration.  HttpUnit tests may take up to 30 minutes to run depending on computer hardware.
+
+
+==== Importing from a Zip =====
+
+The source files will need to be imported as an Eclipse project, and deployed as a Tomcat application. To do this, follow these steps:
+
+  * Download the [[http://agile.csc.ncsu.edu/iTrust/|source]] and save it to a location you can remember. **Do not extract**.
+  * From within Eclipse, switch to the {{javaperspective.png|Java}} perspective. (use Window > Open Perspective..., or use the icons in the upper-right corner)
+  * To import the project files, go to File -> Import ... and select ''Existing Projects Into Workspace''. Click ''Next''.  **Be sure to select "existing projects"!**
+{{existingprojects.png|}}
+
+  * In the Import window (shown below), check the radio button ''Select Archive File'' and select ''Browse''.
+  * Select the archive file for the source code within the browser that comes up.
+  * Make sure that iTrust is checked in the projects selector and click ''Finish''.
+{{import.png?500}}
+
+  * The files are now in your workspace. The Package Explorer should look like this:
+{{packageexplorer.png|}}
+
+
+
+
+
+
+==== Importing from Subversion =====
+
+NOTE: The first time you use your repository, you will need to upload your project. (See: [[http://www.realsearchgroup.org/SEMaterials/tutorials/subversive/]])
+
+To import a project from a Subversion repository:
+  - **File -> Import**
+  - Select the **SVN** folder in the **Import** window.
+  - Choose the **Checkout Projects from SVN** option, then click **Next**.
+  - If the repository information is listed in the **Checkout from SVN** window, then select your repository and click **Next**. Otherwise, you will need to select the **Create a new repository location** radio button, then click **Next**. Input the SVN URL provided by your TA, then click **Next**.
+  - Your repository directory structure should now be displayed, as shown in the example image below.\\ {{repositorystructure.png?400|}}
+  - Inside the **Trunk** folder, choose your **iTrust** project folder, then click **Next**.
+  - Select the **Check out as a project in the workspace** radio button, then click **Finish**.
+
+
+For more information on using Subversive, checkout the Subversive tutorial: [[http://www.realsearchgroup.org/SEMaterials/tutorials/subversive/]]
+
+
+
+
+
+
+
+
+
+
+===== Deploying on Tomcat ======
+
+  * Now you need to deploy the project to your Tomcat server. Switch to the ''Servers'' view along the bottom of the screen (if you don't see the Servers view, use ''Window > Show View... > Server > Servers''), right-click on your Tomcat installation and select ''Add and Remove Projects''...
+  * iTrust should show up on the list, move it over to the "Configured Projects" pane by selecting the iTrust project and clicking the ''Add'' button. Once iTrust is listed under the ''Configured'' column, click ''Finish''
+{{addremove.png?500}}
+
+  * If you click on the plus sign in your server configuration, you should see "iTrust" deployed (published) there.
+  * Now that iTrust is set up to be deployed on Tomcat, you need to set the database parameters. In the Package Explorer, Open up ''iTrust > WebRoot > META-INF > context.xml''
+  * If the file is opened in "Design" mode, switch to the "Source" mode at the bottom of the editor.
+  * Follow the comments in the context.xml file to properly set up your database parameters. If you are using a local database (Fall 2011 CSC 326 lab is), your parameters are the following:
+
+   username="root" 
+   password=""
+   url="jdbc:mysql://localhost:3306/iTrust?createDatabaseIfNotExist=true"
+
+  * To test your parameters, go to ''iTrust > unittests > edu.ncsu.csc.itrust''. Right-click on ''DBBuilder.java'', select ''Run as... > Java Application''
+(to view your packages easier, click on the triangle in the package explorer view, Package Presentation > "Hierarchical") 
+
+{{dbbuilder.png|}}
+
+  * The console view should show many lines beginning with ''Executing:'' , then end with ''Operation Completed''
+  * To populate your database with test data, go to ''unittests'', and in the ''datagenerators'' package, run the ''TestDataGenerator.java'' program. You should also get a lot of ''Executing:'' , followed by an ''Operation Completed''
+  * **//Note: You MUST run DBBuilder and TestDataGenerator before running iTrust in Tomcat//**
+
+
+===== Running the Application =====
+   * Start the Tomcat Server in the "Servers" view as before.
+   * Open your internet browser and surf to http://localhost:8080/iTrust/. You should be able to log in and use the application as normal.
+
+   * If you receive the **iTrust is Down** error page, your database connection may not be configured correctly. Double-check your context.xml file, and also try the steps in the [[#setting_up_mysql | Setting up MySQL]] section below to manually create your database.
+
+
+===== Troubleshooting =====
+
+
+
+
+
+==== Setting up Tomcat 6.0 ====
+
+Tomcat is already unzipped into the c:\tomcat directory on the lab machines, so you will need to set up Eclipse to deploy projects to Tomcat. To do this, complete the following steps: 
+
+**//Note: The screenshots show Tomcat 5.5, but Fall 2011 CSC326 will now be using Tomcat 6.0//**
+
+  * Go to ''Window > Show View > Other... Select Server > Servers...''
+{{server.png|}}
+
+  * In the ''Servers view'', right click and select "New"
+{{serverview.png|}}
+
+  * Select ''Apache > Tomcat 6.0''. Hit next.
+  * Select ''c:\tomcat_6'' as the installation directory (if your version number might not match the screenshot - that's okay as long as it's **6.0**)
+{{runtime.png|}}
+
+  * Hit ''Finish''
+  * In the servers view, you should see your new runtime below. Click on the "Play" button to start the server
+
+{{startserver.png|}}
+
+  * If you see the text ''Server startup in xxxxx ms'' in the ''Console'' view, and the ''Servers'' view shows that your status is "Synchronized", then your server is properly configured. Also, check the ''Console'' view for exception stacktraces - there should not be any.
+
+  * If the Console view isn't open, go to ''Window > Show View... > Console''
+
+
+
+
+
+
+==== Setting up MySQL ====
+
+If iTrust cannot connect to the local database, you may need to create the database manually using MySQL.
+
+  * Browse the Start Menu to find ''MySQL Command Line Client'' in the ''MySQL > MySQL Server 5.1'' folder, as shown below:
+{{mysqlMenu.png|}}
+
+  * Enter your MySQL password (for lab installations, the password is ''root''). Hit enter to authenticate.
+  * Type the following command at the ''mysql>'' prompt: \\
+
+         create database XYZ;  
+
+where ''XYZ'' is the name of the database you wish to create. **Don't forget the semicolon!** \\
+{{mysqlCreate.png|}}
+
+  * Remember the name of your database, then return to your ''context.xml'' file within your project folder to update the information you may have changed.
+  * Restart your Tomcat server for the changes to take effect. Re-run ''DBBuilder.java'' and ''TestDataGenerator.java'' within iTrust.
+  * In your web browser, load http://localhost:8080/iTrust/ once again.
+
+
+==== Refresh, Rebuild, Clean ====
+
+If your project contains build problems, double-check that you have added your iTrust project to your Tomcat server.
+
+To clean your iTrust build directory, choose ''Project > Clean Project...'' -- this will remove all previously compiled Java class files and rebuild your project to generate new class files.
+
+If you add or edit a file outside of Eclipse (such as adding a new document to your ''docs'' folder through Notepad, you will need to refresh your Eclipse package explorer. Click on your iTrust project in Package Explorer, and hit F5 or right-click your iTrust project and choose ''Refresh''
+
+In your web browser, if iTrust does not seem to be loading recent changes to JSP pages or source code, right-click your Tomcat Server in the Servers view and choose ''Clean Tomcat Work Directory...''
+
+==== Other Common Issues ====
+We'll post common issues people have had or might have in this section.
+

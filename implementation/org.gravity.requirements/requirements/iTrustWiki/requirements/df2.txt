@@ -1,0 +1,17 @@
+====Data Format 6.2: Medical Care Personnel====
+^Field^Format^
+|Medical identification number (MID)  |Unique 10-digit number that begins with 9 for Admin, LHCP, and ER; and with an 8 for UAP; and with 5 for LT|
+|Username  | Unique, up to 20 alphanumeric characters|
+|Role  |“Administrator”, “Licensed health care professional”, “Unlicensed authorized personnel”, “Emergency responder”, “Public health agent”, "Lab Technician" (admin, LHCP, UAP, ER, PHA, LT)|
+|LHCP Type  |(for LHCP only) “General”, “Surgeon”, “Heart specialist”, “Pediatrician”, “OB/GYN”|
+|Last Name  |Up to 30 alpha characters and symbol - and '|
+|First Name  |Up to 20 alpha characters and symbol - and '|
+|Street Address 1  |Up to 50 alphanumeric characters and symbol: .|
+|Street Address 2  |Up to 50 alphanumeric characters and symbol: . (optional field)|
+|City  |Up to 15 alphanumeric characters|
+|State  |Approved 2-letter state abbreviation|
+|Zip Code  |5 integers - 4 integers (the latter part – 4 integers – is optional)|
+|Phone  |3 integers - 3 integers - 4 integers|
+|Contact Email  |Up to 30 alphanumeric characters and symbols . and _ @, <space>|
+
+

@@ -1,0 +1,39 @@
+====== Bug List ======
+
+===== RESOLVED: Laboratory Procedures NullPointer =====
+//Found while checking failing HTTPtests -> testInputLabResults in edu.ncsu.csc.itrust.http.LabProceduresTest//
+//PROBLEM: On my laptop, MySQL 5.1 and the result set getLong() command return (4294968251) instead of (955) for office visit ID.//
+
+  * Login as HCP.
+  * Click "Laboratory Procedures" link.
+  * Select Patient ID 2
+  * => NullPointerException, tossed back to HCP Home
+  ***Culprit**: Retrieving a particular office visit (ID 4294968251) returns null
+
+===== RESOLVED: Emergency Report Diagnosis List Bug =====
+//Found while checking failing HTTPtests -> EmergencyUseCaseTest in edu.ncsu.csc.itrust.http.EmergencyUseCaseTest//
+//PROBLEM: On my laptop, MySQL 5.1 and the result set getLong() command return (4294968251) instead of (955) for office visit ID.//
+  * Login as ER or HCP
+  * Click "Emergency Patient Report" link.
+  * Select Patient ID 2
+  * No diagnosis information ever displays.
+  ***Culprit**: Retrieving a particular office visit (ID 4294968251) returns null, so checking for office visit dates never works, and no diagnoses are found
+
+
+
+===== Transactions Logged Too Early =====
+In several places, such as LabProcUAPAction, the transaction is logged BEFORE the action is performed. This means that if there were a DB exception, the transaction would be logged incorrectly. We can make that explicit the requirements, but it is clearly a bug.  That'd be a good bugfix for the first assignment.
+
+
+===== Add a "Switch Patient" Link =====
+If you get the records of a patient, there's no way to take them out of the cache or session. If I want to look at multiple patients, that's impossible. We used to have this page - I don't know where it went. I would also like to see the homepage of the HCP say which patient is currently cached.
+
+===== Make the iTrust logo a link to the homepage =====
+More of a feature request that's not in the requirements, but most (good) websites do this now. It's just annoying to click on iTrust logo and not go to the homepage and have to remember to click on "Home".
+
+
+===== Logout can be accessed without a session =====
+http://agile.csc.ncsu.edu:8081/iTrust/logout.jsp will say "Goodbye, null!" if you just access it directly.
+
+
+

@@ -8,9 +8,9 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
 import org.tracesec.qualitymodel.AbstractQualityNode;
 import org.tracesec.qualitymodel.QualityAspect;
 import org.tracesec.qualitymodel.QualityCategory;
@@ -98,20 +98,10 @@ public class QualityCategoryImpl extends AbstractQualityNodeImpl implements Qual
 	@Override
 	public EList<QualityAspect> getAspects() {
 		if (this.aspects == null) {
-			this.aspects = new SubsetSupersetEObjectContainmentEList<>(QualityAspect.class, this, QualityModelPackage.QUALITY_CATEGORY__ASPECTS, ASPECTS_ESUPERSETS, null);
+			this.aspects = new EObjectContainmentEList<>(QualityAspect.class, this, QualityModelPackage.QUALITY_CATEGORY__ASPECTS);
 		}
 		return this.aspects;
 	}
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getAspects() <em>Aspects</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAspects()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] ASPECTS_ESUPERSETS = new int[] {QualityModelPackage.QUALITY_CATEGORY__OWNED_NODES};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,20 +111,10 @@ public class QualityCategoryImpl extends AbstractQualityNodeImpl implements Qual
 	@Override
 	public EList<QualityCategory> getSubcategories() {
 		if (this.subcategories == null) {
-			this.subcategories = new SubsetSupersetEObjectContainmentEList<>(QualityCategory.class, this, QualityModelPackage.QUALITY_CATEGORY__SUBCATEGORIES, SUBCATEGORIES_ESUPERSETS, null);
+			this.subcategories = new EObjectContainmentEList<>(QualityCategory.class, this, QualityModelPackage.QUALITY_CATEGORY__SUBCATEGORIES);
 		}
 		return this.subcategories;
 	}
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getSubcategories() <em>Subcategories</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSubcategories()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] SUBCATEGORIES_ESUPERSETS = new int[] {QualityModelPackage.QUALITY_CATEGORY__OWNED_NODES};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -240,6 +220,7 @@ public class QualityCategoryImpl extends AbstractQualityNodeImpl implements Qual
 	@Override
 	public void setOwner(final QualityCategory newOwner) {
 		newOwner.getSubcategories().add(this);
+		super.setOwner(newOwner);
 	}
 
 } //QualityCategoryImpl

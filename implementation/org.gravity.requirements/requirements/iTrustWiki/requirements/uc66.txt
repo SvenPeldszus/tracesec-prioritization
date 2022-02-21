@@ -1,0 +1,39 @@
+====== Use Case 66: Manage Pregnancy Flags ======
+
+===== 66.1: Preconditions =====
+
+UC 63, 64 must be fully implemented (including their pre-requisites) before UC 66 can be implemented.
+===== 66.2: Main Flow =====
+
+Flags will be either entered on a form [S4][S7] or calculated automatically based on form input
+[S1][S2][S3][S5][S6][S8][S9].
+==== 66.3: Subflows ====
+
+  * [S1] - High Blood Pressure - Automatically set if the blood pressure at any visit during the current pregnancy is greater than 140 mm Hg systolic or 90 mm Hg diastolic
+  * [S2] - Advanced Maternal Age - Automaticly set if the mother is greater than 35 years of age
+  * [S3] - Maternal allergies - Automatically retrieved from patient allergy records
+  * [S4] - Low-lying placenta - Manually set by the HCP during any obstetrics visit (See UC64)
+  * [S5] - High genetic potential for miscarriage - Automatically set if the patient has had at least 1 miscarriage during a previous pregnancy.
+  * [S6] - Abnormal fetal heart rate - Automatically set if the FHR during any visit is < 105 or > 170 bpm (see http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3678114/figure/fig-1/)
+  * [S7] - Twins - Set if the current pregnancy is marked as twins in the past pregnancy records
+  * [S8] - RH- flag - Set if the the mother has a negative blood type.
+  * [S9] - Atypical weight change - Automatically set if the patient’s weight ventures outside of the numbers outlined below (see http://www.mayoclinic.org/healthy-living/pregnancy-week-by-week/in-depth/pregnancy-weight-gain/art-20044360 )
+If standard pregnancy:
+^ Pre-pregnancy weight ^ Recommended weight gain ^
+| Underweight (BMI < 18.5) | 28 to 40 lbs. (about 13 to 18 kg) |
+| Normal weight (BMI 18.5 to 24.9) | 25 to 35 lbs. (about 11 to 16 kg) |
+| Overweight (BMI 25 to 29.9) | 15 to 25 lbs. (about 7 to 11 kg) |
+| Obese (BMI 30 or more) | 11 to 20 lbs. (about 5 to 9 kg) |
+If twins flag is set for current pregnancy:
+^ Pre-pregnancy weight ^ Recommended weight gain ^
+| Normal weight (BMI 18.5 to 24.9) | 37 to 54 lbs. (about 17 to 25 kg) |
+| Overweight (BMI 25 to 29.9) | 31 to 50 lbs. (about 14 to 23 kg) |
+| Obese (BMI 30 or more) | 25 to 42 lbs. (about 11 to 19 kg) |
+===== 66.3: Alternate Flows =====
+
+
+None
+===== 66.4: Logging =====
+
+^ Transaction Code ^ Verbose Description ^ Logged-In MID ^ Secondary MID ^ UseCase(s) Involved ^ Type of Transaction ^ Additional Information ^ Patient Viewable ^
+| 6600 | Set pregnancy flag | HCP MID | patient the flag is being set for | 66  | Create | The flag that is being set | True |

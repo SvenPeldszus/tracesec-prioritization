@@ -1,0 +1,204 @@
+====== Deploy iTrust to a Linux Server ======
+
+**NOTE:** These instructions were developed using a VMWare instance of CentOS5.5 32-bit checked out from VCL.  Certain specifics like configuration file locations, package names, and so on, may differ depending on your distribution of Linux.
+
+===== Prerequisites =====
+
+  * You will need SSH with root access to the server.
+  * Before you begin, switch to the root user by typing ''sudo su'' and typing your password.
+
+
+
+
+===== Install the necessary packages =====
+
+You will need the following packages installed on the server before you can begin to configure iTrust on the system.
+  * java-1.6.0-openjdk
+  * mysql-server
+  * tomcat6
+  * tomcat6-admin-webapps
+
+With yum for CentOS 5.5 and Red Hat Enterprise Linux 4, we had to issue the following commands so yum could find Tomcat 6.0.
+<code>
+cd /etc/yum.repos.d
+wget 'http://www.jpackage.org/jpackage50.repo'
+yum update
+</code>
+Note: CentOS 6 does not require this. 
+
+You will also need the iTrust WAR file from [[http://sourceforge.net/projects/itrust/files/itrust/12.0/iTrust.war/download|here]].
+
+
+
+===== MySQL =====
+
+The MySQL Daemon needs to be started.  Typically, this can be achieved with the command:
+<code>
+sudo /etc/init.d/mysqld start
+</code>
+Or, with the command
+<code>
+sudo /etc/init.d/mysql start
+</code>
+
+After starting the server, execute the command ''mysql_secure_installation'' which is typically located in ''/usr/bin/''.
+
+Follow the prompts that come up on the screen.  Typically, mysql_secure_installation will ask for your root MySQL password, which should be blank.  Set the root password to something you can remember. We recommend taking the suggestions that mysql_secure_installation provides:
+
+  * Remove the anonymous users. 
+  * Disallow root login remotely. 
+  * Remove test database and access to it.
+  * Then reload the privilege tables.
+
+
+You will also want to disable the MySQL variable ''lower_case_table_names''.  This can be a complex process.  Typically, the configuration settings for MySQL are located in ''/etc/my.cnf''.  Using your favorite editor, edit ''/etc/my.cnf'' with the following command (or similar):
+<code>
+sudo vi /etc/my.cnf
+</code>
+Find the section of the file that configures ''mysqld'', which should look something like this:
+<code>
+# The MySQL server
+[mysqld]
+port            = 3306
+socket          = /var/run/mysql/mysql.sock
+# Change following line if you want to store your database elsewhere
+datadir = /var/lib/mysql
+skip-locking
+key_buffer_size = 16M
+max_allowed_packet = 1M
+table_open_cache = 64
+sort_buffer_size = 512K
+net_buffer_length = 8K
+read_buffer_size = 256K
+read_rnd_buffer_size = 512K
+myisam_sort_buffer_size = 8M
+</code>
+Add the following line add the end of this section:
+<code>
+lower_case_table_names=1
+</code>
+
+
+The MySQL Daemon needs to be restarted.  Typically, this can be achieved with the command:
+<code>
+sudo /etc/init.d/mysqld restart
+</code>
+Or, with the command
+<code>
+sudo /etc/init.d/mysql restart
+</code>
+
+
+After you have completed configuration, test your connection to the mysql server with the following command:
+<code>
+mysql -u root -p
+</code>
+You will be asked for your root password.  After you enter it, you should get a ''mysql>'' prompt.  At the prompt, create the itrust database by typing:
+<code>
+create database itrust;
+</code>
+
+
+Type ''quit'' to exit the mysql client. Congratulations!  You have successfully configured MySQL.
+
+
+
+
+
+
+===== Configure Tomcat =====
+
+Next, you'll need to start the Tomcat Daemon.  When tomcat was installed, the package manager probably told Linux that it would need to run Tomcat using the user named ''tomcat''.  We'll need to change this.  Edit the file ''/etc/tomcat6/tomcat6.conf'' and find the section of the file that says:
+<code>
+TOMCAT_USER="tomcat"
+</code>
+and change it to 
+<code>
+TOMCAT_USER="root"
+</code>
+
+Next, you'll want to configure the users for Tomcat so that you can use the Manager interface.  Edit the file ''/etc/tomcat6/tomcat-users.xml''. Find the location in the file that looks like this:
+<code>
+<!-- The manager webapp is restricted to users with role "manager" -->  
+<!--<user name="tomcat" password="password" roles="manager" />-->
+</tomcat-users>
+</code>
+And uncomment the line that defines the user ''tomcat''.  Change the password to something memorable. Your file should now look like this:
+<code>
+<!-- The manager webapp is restricted to users with role "manager" -->
+<user name="tomcat" password="MYPASSWORD" roles="manager" />
+</tomcat-users>
+</code>
+
+You will also need to provide Tomcat with the MySQL JDBC connector, which you can find [[http://agile.csc.ncsu.edu/iTrust/deployment/mysql-connector-java-5.1.8-bin.jar|here]].  A quick way to do this is to go to your Tomcat home directory (''/usr/share/tomcat'') and go to ''/lib'' and just ''wget'' the file. Execute the following commands to do this:
+<code>
+cd /usr/share/tomcat6/lib
+wget http://agile.csc.ncsu.edu/iTrust/deployment/mysql-connector-java-5.1.8-bin.jar
+</code>
+
+Then start tomcat. You can achieve this with the command:
+<code>
+/etc/init.d/tomcat6 start
+</code>
+Tomcat should load on port 8080.
+
+You can first check that Tomcat is running by issuing the following command:
+<code>
+curl http://localhost:8080/
+</code>
+You then should check to see if you can connect to Tomcat from your local computer by browsing to ''http://YOURIP:8080'' where ''YOURIP'' is the IP address of the server.  If you cannot, then your firewall is configured incorrectly.
+
+
+
+===== Deploy the iTrust WAR file =====
+
+You will need to download [[http://sourceforge.net/projects/itrust/files/itrust/12.0/iTrust.war/download|the iTrust WAR]] from SourceForge to your local computer.  Then connect to the manager instance on your copy of Tomcat by browsing to ''http://YOURIP:8080/manager/html'' where ''YOURIP'' is the IP address of the server.  You will need to authenticate using the credentials you configured in ''tomcat-users.xml'' previously.
+
+
+After logging into the Tomcat Manager app, you'll want to upload the iTrust WAR file you downloaded.
+
+  * Scroll to the section of the manager app that says ''WAR file to deploy''.
+  * Click ''Choose File'' and select the iTrust.war file from your local computer.
+  * Click ''Deploy''.
+  * Wait for the file to upload.
+
+Browse to ''http://YOURIP:8080/iTrust'' where ''YOURIP'' is the IP address of the server to connect to iTrust.
+
+
+
+
+
+
+===== Configure your iTrust Deployment =====
+
+When you connect to ''http://YOURIP:8080/iTrust'', you should see a message that says //iTrust is Down//.  This is OK.
+
+From your SSH connection, edit the file ''/usr/share/tomcat6/conf/Catalina/localhost/iTrust.xml'' in your favorite text editor.  Type in the username and password from your configuration of MySQL in the above.
+
+You will then need to restart Tomcat, which you can achieve with the following command:
+<code>
+/etc/init.d/tomcat6 restart
+</code>
+
+You will need to load in the iTrust database schema and the initial demonstration data for iTrust to work properly.  From the SSH connection, browse to the folder that contains ''context.xml''.  This folder should also contain "db.sql", a database script for initializing the iTrust DB.  Execute it with the following command:
+<code>
+mysql -u root -p itrust < db.sql
+</code>
+Wait a few moments and the iTrust data will be initialized. Congratulations! You should now be able to browse to ''http://YOURIP:8080/iTrust'' and see the iTrust web application.
+
+===== Setting Services to Load at Boot =====
+
+Installing MySQL and Tomcat is great to get iTrust up and running, but typically we want servers to load these services at boot.  This varies from Linux distribution to Linux distribution.  To configure the linux distro to start MySQL and Tomcat6 at boot, issue the following commands:
+<code>
+/sbin/chkconfig --level 2345 tomcat6 on
+/sbin/chkconfig --level 2345 mysqld on
+</code>
+Then type ''/sbin/chkconfig --list'' to ensure that your changes went through.
+
+===== Clean-up =====
+
+For a server that will be publicly-accessible, you may want to disable access to the Tomcat manager app so that no one can modify the deployment without shell access.  Simply uninstall the app with the following command:
+<code>
+yum remove tomcat6-manager-apps
+</code>
+

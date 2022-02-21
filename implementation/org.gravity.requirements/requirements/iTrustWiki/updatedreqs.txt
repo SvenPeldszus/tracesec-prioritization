@@ -1,0 +1,1288 @@
+**[[team6:requirementschanges|Changes]]**
+
+
+======iTrust Medical Care Requirements Specification======
+Version 19 \\ 
+January 1, 2011 \\ 
+
+Document Authors:\\ 
+Laurie Williams \\ 
+Tao Xie \\ 
+Andy Meneely \\ 
+Lauren Hayward \\
+Jason King \\ 
+
+[[http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start|Return to iTrust Home page]] \\
+
+=====Introduction=====
+This project involves the development of an application through which doctors can obtain and share essential patient information and can view aggregate patient data. Currently, access to a patient's history regarding previous medical problems, previous surgery, medications, allergies and other factors is often difficult or obtainable only from a patient's recollection. Now, as more hospitals and doctor's offices are automated, this information is available electronically. However, it is not accessible by other doctors, and is often only viewed through some proprietary software so it can not be shared.
+
+The final product is a site where health care workers can access important patient information, the non-emergency access can be controlled, and all access would be tracked. Security and privacy of such a system is of paramount importance. HIPAA rules protect patients' information and also allow a patient to dictate who can access this information.
+
+=====Glossary=====
+Approved diagnostic information: The set of diagnostic information a patient allows a designated or other licensed health care professional to view. A patient is only given the choice to restrict viewing on selected diagnostic information, such as those related to mental illness, substance abuse, and cosmetic surgery. The licensed health care professional making a diagnosis determines if a patient is granted the ability to restrict viewing of the diagnosis. For the diagnostic information which a patient can restrict viewing, he or she can choose to enable designated licensed health care professionals, and/or other licensed health care professionals, and/or no one.
+
+There are eight roles in the iTrust Medical Records system. The role of a user determines their viewing and editing capabilities (role-based access control).
+  * **Health Care Personnel (HCP)**: All of designated licensed health care professionals, licensed health care professionals, and unlicensed authorized personnel, as defined below.
+  * **Patient**: When an American infant is born or a foreigner requests medical care, each is assigned a medical identification number and password. Then, this person's electronic records are accessible via the iTrust Medical Records system.
+  * **Administrator**: The administrator assigns medical identification numbers and passwords to LHCPs. [Note: for simplicity of the project, an administrator is added by directly entering the administrator into the database by an administrator that has access to the database.]
+  * **Licensed Health Care Professional (LHCP)**: A licensed health care professional that is allowed by a particular patient to view all approved medical records. In general, a patient does not know this non-designated health care professional, such as an emergency room doctor, and the set of approved records may be smaller than that granted to a designated licensed health care professional.
+  * **Designated Licensed Health Care Professional (DLHCP)**: A licensed health care professional that is allowed by a particular patient to view all approved medical records. Any LHCP can be a DLHCP to some patients (with whom he/she has an established relationship) and an LHCP to others (whom he/she has never/rarely seen before).
+  * **Emergency Responder (ER)**: Police, Fire, Emergency Medical Technicians (EMTs), and other medically trained emergency responders who provide care while at, or in transport from, the site of an emergency. [referred to as “on site care providers” by Department of Health and Human Services Emergency Responder Electronic Health Record Use Case [[http://www.dhhs.gov/healthit/usecases/documents/EmergencyRespEHRUseCase.pdf|Department of Health and Human Services]]
+  * **Unlicensed Authorized Personnel (UAP)**: A health care worker such as a medical secretary, laboratory technician, case manager, care coordinator, or other authorized clerical-type personnel. An unlicensed personnel can enter and edit demographic information, diagnosis, office visit notes and other medical information, and can view records.
+  * **Software Tester**: An information technology worker who tests the iTrust Medical Records system. Of particular interest to the software tester is the operational profile information which informs him/her of the frequency of use of the features of the system.
+  * **Personal Representative**: A person legally authorized to make health care decisions on an individual's behalf or to act for a deceased individual. When a person logs into iTrust, if he or she is a personal representative, they view their own records or those of the person/people they are representing. (For example, a mother could choose herself and any one of her children.)
+  * **Public Health Agent**: A person legally authorized view and respond to reports of adverse events.
+These are the standards codes used within iTrust:
+  * **ICD-9CM**: The International Statistical Classification of Diseases and Related Health Problems (most commonly known by the abbreviation ICD) provides codes to classify diseases and a wide variety of signs, symptoms, abnormal findings, complaints, social circumstances and external causes of injury or disease. [[http://www.cdc.gov/nchs/icd.htm|NHCS Classification of Diseases, Functioning and Disability]]
+  * **ND**: The National Drug Code (NDC) is a universal product identifier used in the United States for drugs intended for human use. [[http://www.fda.gov/Drugs/InformationOnDrugs/ucm142438.htm|National Drug Code Directory]]
+  * **LOINC**: Logical Observation Identifiers Names and Codes (LOINC) is a database and universal standard for identifying medical laboratory observations.[[http://loinc.org/|LOINC c/o Medical Informatics]]
+  * **CPT**: The CPT code set accurately describes medical, surgical, and diagnostic services and is designed to communicate uniform information about medical services and procedures among physicians, coders, patients, accreditation organizations, and payers for administrative, financial, and analytical purposes.[[http://www.ama-assn.org/ama/pub/physician-resources/solutions-managing-your-practice/coding-billing-insurance/cpt/about-cpt.shtml|About CPT]]
+  * **ORC**: The override reason code. A set of reasons for ignoring a reaction warning and prescribing a medication anyways.[[http://archinte.ama-assn.org/cgi/content/full/163/21/2625/TABLEIOI20692T4|Override Reason Codes]]
+
+
+=====Use Case Diagram and Flow of Events=====
+There are 43 Use Cases for the system, as indicated by the attached diagram: \\
+{{:team6:usecases_uml.jpg|}} \\
+Throughout this document MID = medical identification number. The MID is a unique number assigned to all roles.
+
+The following use cases document flows of events.
+
+
+====UC1 Create and Disable Patients Use Case====
+==1.1 Preconditions:==
+The iTrust HCP has authenticated himself or herself in the iTrust Medical Records system [UC3].
+==1.2 Main Flow:==
+An HCP creates patients [S1]. The create/disable patients and HCP transaction is logged [UC5].
+==1.3 Sub-flows:==
+  * [S1] The HCP enters a patient as a new user of iTrust Medical Records system. Only the name and email are is provided. The patient's assigned MID and a secret key (the initial password) is personally provided to the user, with which the user can reset his/her password. The HCP can edit the patient according to data format 6.4 [E1] with all initial values (except patient MID) defaulting to null and/or 0 as appropriate. Patient MID should be the number assigned when the patient is added to the system and cannot be edited. The HCP does not have the ability to enter/edit/view the patient's security question/password.
+  * [S2] The HCP provides a deceased date (data format 6.4). An optional diagnosis code is entered as the cause of death.
+==1.4 Alternative Flows:==
+  * [E1] The system prompts the enterer/editor to correct the format of a required data field because the input of that data field does not match that specified in data format 6.4 for patients.
+  * [E2] The enterer/editor is presented with the name of the user and determines if it is invalid or not the right person. The enterer/editor is prompted to try again.
+==1.5 Logging==
+  * Create a patient [UC 5, S100].
+  * Delete a patient [UC 5, S101].
+==1.6 Sub-flow Traces==
+  * [[http://localhost:8080/iTrust/auth/admin/addPatient.jsp]]
+  * None
+
+
+====UC2 Create, Disable, and Edit Personnel Use Case====
+==2.1 Preconditions:==
+The iTrust Admin has authenticated himself or herself in the iTrust Medical Records system [UC3].
+==2.2 Main Flow:==
+An admin creates a LHCP, an ER, or a public health agent [S1]. A LHCP creates [S2] UAPs. Once entered, the enterer/editor is presented a screen of the input to approve [E2].
+==2.3 Sub-flows:==
+  * [S1] An administrator enters a LHCP, ER, or public health agent as a user of iTrust Medical Records system, initially only the name and email are provided. A secret key is personally provided to the user, with which the user can reset his/her password. The data for personnel can be edited according to Data Format 6.2 (all fields mandatory except for associated MID and Street Address 2) [S6, E1]. The administrator shall be allowed to assign a LHCP to multiple hospitals, and the administrator can choose among only the hospitals provided in the hospital list pull down menu. The hospital ID numbers for a LHCP are stored in the Medical Care Personnel Affiliation database (data format 5.11).
+  * [S2] A LHCP enters an UAP as a user of iTrust Medical Records system according to data format 6.2 (all fields mandatory) [E1].
+==2.4 Alternative Flows:==
+  * [E1] The system prompts the enterer/editor to correct the format of a required data field because the input of that data field does not match that specified in data format 6.2, for HCPs.
+  * [E2] The enterer/editor is presented with the name of the user and determines if it is invalid or not the right person. The enterer/editor is prompted to try again.
+==2.5 Logging==
+  * Create an LHCP [UC 5, S200]
+  * Edit an LHCP [UC 5, S201]
+  * Disable an LHCP [UC 5, S202]
+  * Create an ER [UC 5, S210]
+  * Edit an ER [UC 5, S211]
+  * Disable an ER [UC 5, S212]
+  * Create an PHA [UC 5, S220]
+  * Edit an PHA [UC 5, S221]
+  * Disable an PHA [UC 5, S222]
+  * Assign an LHCP to a hospital [UC 5, S230]
+  * Remove an LHCP from a hospital [UC 5, S231]
+  * Create an UAP [UC 5, S240]
+  * Edit an UAP [UC 5, S241]
+  * Disable an UAP [UC 5, S242]
+  * View Personnel [UC 5, S250]
+==2.6 Reference document==
+The inclusion of the ER role was inspired by [[http://www.dhhs.gov/healthit/usecases/documents/EmergencyRespEHRUseCase.pdf|Department of Health and Human Services USA Emergency Responder]] Electronic Health Record Use Case 
+
+====UC3 Authenticate Users Use Case====
+==3.1 Preconditions:==
+UC1/UC2 has completed and a user has been created.
+==3.2 Main Flow:==
+A user enters their MID and their password to gain role-based entry into the iTrust Medical Records system [E1] or requests that their password be changed [S1]. A session that has been inactive for too long is terminated [S3]. An authenticated session ends when the user logs out or closes the iTrust application.
+==3.3 Sub-flows:==
+  * [S1] If the security question/answer has been set (it is not null) [E2], present security question and obtain answer [S2, E1].
+  * [S2] If answer to security question is correct, allow user to change their password. An email notification is sent [UC27, S1].
+  * [S3] Electronic sessions must terminate after a “pre-determined” period of inactivity. Allow the administrator to set the length of this period of time and ensure that all authorization is disabled after a period of inactivity that exceeds this length.
+  * [S4] A LHCP is presented with a screen of links to the following:
+      * Recent Laboratory Results: recent (within the last month) laboratory results [UC26] for laboratory procedures he/she ordered in office visits.
+      * Any upcoming appointments for the day. (In the notification center)
+      * Rejection/Acceptance of comprehensive report
+  * [S5] A patient is presented with a screen of links to the following:
+      * Any upcoming appointments
+==3.4 Alternative Flows:==
+  * [E1] The user may try three times. After three failed attempts with a userid in a given session, disallow attempts to log in via IP address for 15 minutes (see comments in the source code).
+  * [E2] If the patient has never stored a security question/answer, the user is asked for the random password assigned on creation of the account.
+==3.5 Logging==
+  * User authenticates [UC 5, S300]
+  * User logs out [UC 5, S301]
+  * User is inactive and is automatically logged out [UC 5, S302]
+  * Reset password [UC 5, S310]
+
+====UC4 Enter/edit Demographics Use Case====
+==4.1 Preconditions:==
+UC1 has completed and a patient has been created. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].
+==4.2 Main Flow:==
+Demographic information is entered and/or edited [S1, S2]. The enterer/editor is presented with a success or failure message and the form is updated so that the enterer/editor may correct the form or add more information.
+==43.3 Sub-flows:==
+  * [S1] A patient or personal health representative may enter or edit their own demographic information including their security question/answer according to data format 5.1. When answer to the security question is typed in, the answer should not appear on the screen (similar to how a password normally appears) and the answer should be confirmed (by the patient or personal health representative) before it is saved. [S4, E1].
+  * [S2] HCP must enter the MID of a patient and then enter or edit demographic information with the exception of the patient's security question/password according to data format 5.1 [S4, E1].
+  * [S3] An HCP may enter or edit their own demographic information according to data format 5.2 [S4, E1].
+==4.4 Alternative Flows:==
+  * [E1] The system prompts the patient or HCP to correct the format of a required data field because the input of that data field does not match that specified in data format 5.1 or data format 5.2, as appropriate.
+==4.5 Logging==
+  * View demographics [UC 5, S400]
+  * Edit demographics [UC 5, S410]
+
+
+====UC5 Log Transaction Use Case====
+==5.1 Preconditions:==
+None
+==5.2 Main Flow:==
+Any event which creates, views, edits or deletes information is logged. Loggin failures, valid authentication and log outs are also logged. These audit codes are summarized in the [[auditCodes|Audit & Transaction Code]] table.
+
+Note: The subflow and transaction values are done based on Use Case. For example, any in the range of 100-199 are for use case one, any in the range of 200-299 are in use case two. The values from range 1-99 are logging events which do not exist in any use case.
+==5.3 Sub-flows:==
+  * [S1] Login Failures. The IP Address of the machine, transaction type = 1, and timestamp are recorded.
+  * [S10] View Home Page. The MID of the logged in user, transaction type = 10, and timestamp are recorded.
+  * [S20] Uncaught Exception. The MID of the logged in user, transaction type = 20, and timestamp are recorded.
+  * [S30] View Global Preferences. The MID of the logged in user, transaction type = 30, and timestamp are recorded.
+  * [S31] Edit Global Preferences. The MID of the logged in user, transaction type = 31, and timestamp are recorded.
+  * [S32] View User Preferences. The MID of the logged in user, transaction type = 32, and timestamp are recorded.
+  * [S33] Edit User Preferences. The MID of the logged in user, transaction type = 33, and timestamp are recorded.
+  * [S100] Create patient. The MID of the HCP and of the new patient, transaction type = 100, and the date are recorded [UC 1].
+  * [S101] Disable patient. The MID of the HCP and of the patient, transaction type = 101, and the date are recorded [UC 1].
+  * [S200] Create  LHCP. The MID of the admin and of the new  LHCP, transaction type = 200, the date are recorded [UC 2].
+  * [S201] Edit  LHCP. The MID of the admin and of the  LHCP, transaction type = 201, the date are recorded [UC 2].
+  * [S202] Disable LHCP. The MID of the admin and of the  LHCP, transaction type =202, the date are recorded [UC 2].
+  * [S210] Create ER. The MID of the admin and of the new ER, transaction type = 210, the date are recorded [UC 2].
+  * [S211] Edit ER. The MID of the admin and of the ER, transaction type = 211, the date are recorded [UC 2].
+  * [S212] Disable ER. The MID of the admin and of the ER, transaction type =212, the date are recorded [UC 2].
+  * [S220] Create PHA. The MID of the admin and of the new PHA, transaction type = 220, the date are recorded [UC 2].
+  * [S221] Edit PHA. The MID of the admin and of the PHA, transaction type = 221, the date are recorded [UC 2].
+  * [S222] Disable PHA. The MID of the admin and of the PHA, transaction type =222, the date are recorded [UC 2].
+  * [S230] Assign LHCP to a hospital. The Admin MID, the LHCP, transaction type = 230,  the timestamp, and the Hospital type are recorded [UC 2].
+  * [S231] Remove an LHCP from a hospital. The Admin MID, the LHCP, transaction type = 231,  the timestamp, and the Hospital type are recorded [UC 2].
+  * [S240] Create UAP. An LHCP MID, the newly created UAP MID, transaction type 240, and the timestamp are recorded [UC 2].
+  * [S241] Edit UAP. An LHCP MID, the newly created UAP MID, transaction type 241, and the timestamp are recorded [UC 2].
+  * [S242] Disable UAP. An LHCP MID, the newly created UAP MID, transaction type 242, and the timestamp are recorded [UC 2].
+  * [S250] View Personnel. The MID of the viewer, the MID of the personnel, transaction type 242, the role of the personnel and the timestamp are recorded [UC 2].
+  * [S300] Authenticate users. The MID of the patient and/or the health care professional, transaction type= 300 an optional string of “authenticated” and the date are recorded. “Authenticated” should be logged when the user's home page is accessed [UC 3].
+  * [S301] User logs out. The MID of the user, transaction type = 301, and the date are recorded. [UC 3]
+  * [S302] User is inactive and is automatically logged out. The MID of the user, transaction type = 302, and the time are recorded. [UC 3]
+  * [S310] Reset password. The MID of the user, transaction type = 310 and the time are recorded. [UC 3]
+  * [S400] View demographics. The MID of the user (may be the patient) and of the patient, transaction type = 400, and the date are recorded [UC 4].
+  * [S410] Enter/edit demographics. The MID of the editor (may be the patient) and of the patient, transaction type = 410, and the date are recorded [UC 4].
+  * [S600] View LHCP. The MID of the editor (may be the patient), the patient, transaction type = 600,  the MID of the LHCP and the date recorded [UC 6]
+  * [S601] Declare LHCP as DLHCP. The MID of the editor (may be the patient), the patient, transaction type = 601,  the MID of the LHCP and the date recorded [UC 6]
+  * [S602] Undeclare LHCP as DLHCP. The MID of the editor (may be the patient), the patient, transaction type = 602,  the MID of the LHCP and the date recorded [UC 6]
+  * [S800] View access log. The MID of the viewer (must be patient), transaction type = 800, and the date are recorded [UC 8].
+  * [S900] View medical records. The MID of the viewer (may be patient) and of the patient, transaction type = 900,and the date are recorded [UC 9].
+  * [S1001] View personal health information. The MID of the viewer and of the patient, transaction type = 1000, and the date are recorded [UC 10].
+  * [S1001] Enter/edit personal health information. The MID of the editor and of the patient, transaction type = 1001, and the date are recorded [UC 10].
+  * [S1100] Create Office Visits. The MID of the user,  MID of the patient, transaction type = 1100, the office visit ID and the date are recorded.[UC 11].
+  * [S1101] View Office Visits. The MID of the user, [secondary MID = blank], transaction type = 1101, the office visit ID and the date are recorded. [UC 11].
+  * [S1102] Edit Office Visits. The MID of the user,  MID of the patient, transaction type = 1102, the office visit ID and the date are recorded.[UC 11].
+  * [S1300] Declare personal health representative. The MID of the editing HCP and of the patient, transaction type = 1300, and the MID of the personal representative, and the date are recorded.[UC 13].
+  * [S1301] Undeclare personal health representative. The MID of the editing HCP and of the patient, transaction type = 1301, and the MID of the personal representative, and the date are recorded.[UC 13].
+  * [S1400] Request biosurveillance. The MID of the administrator, [patient = blank], transaction type =1400, the diagnosis code, and the date are recorded. [UC 14]
+  * [S1500] Add Medical procedure code. The MID of the administrator, [patient = blank], transaction type =1500, the medical procedure code, and the date are recorded. [UC 15]
+  * [S1501] View Medical procedure code. The MID of the administrator, [patient = blank], transaction type =1501, the medical procedure code, and the date are recorded. [UC 15]
+  * [S1502] Edit Medical procedure code. The MID of the administrator, [patient = blank], transaction type =1502, the medical procedure code, and the date are recorded. [UC 15]
+  * [S1510]  Add Immunization code. The MID of the administrator, [patient = blank], transaction type =1510 the immunization code, and the date are recorded. [UC 15]
+  * [S1511]  View Immunization code. The MID of the administrator, [patient = blank], transaction type =1511 the immunization code, and the date are recorded. [UC 15]
+  * [S1512]  Edit Immunization code. The MID of the administrator, [patient = blank], transaction type =1512 the immunization code, and the date are recorded. [UC 15]
+  * [S1520] Add Diagnosis code. The MID of the administrator, [patient = blank], transaction type =1520, the diagnosis code, and the date are recorded. [UC 15]
+  * [S1521] View Diagnosis code. The MID of the administrator, [patient = blank], transaction type =1521, the diagnosis code, and the date are recorded. [UC 15]
+  * [S1522] Edit Diagnosis code. The MID of the administrator, [patient = blank], transaction type =1522, the diagnosis code, and the date are recorded. [UC 15]
+  * [S1530] Add Drug code. The MID of the administrator, [patient = blank], transaction type =1530, the drug code, and the date are recorded.[UC 15]
+  * [S1531] View Drug code. The MID of the administrator, [patient = blank], transaction type =1531, the drug code, and the date are recorded.[UC 15]
+  * [S1532] Edit Drug code. The MID of the administrator, [patient = blank], transaction type =1532, the drug code, and the date are recorded.[UC 15]
+  * [S1540] Add Physical Services code. The MID of the administrator, [patient = blank], transaction type =1540 the Physical Services code, and the date are recorded.  [UC 15]
+  * [S1541] View Physical Services code. The MID of the administrator, [patient = blank], transaction type =1541 the Physical Services code, and the date are recorded.  [UC 15]
+  * [S1542] Edit Physical Services code. The MID of the administrator, [patient = blank], transaction type =1542 the Physical Services code, and the date are recorded.  [UC 15]
+  * [S1600] Identify risk factors. The MID of the LHCP and of the patient, transaction type =1600, and the date are recorded .[UC 16]
+  * [S1700] Proactively determine necessary patient care. The MID of the HCP making the request, secondary MID = patient MID, transaction type = 1700,the date are recorded, and the category they fall under. Note that each patient in the presented patient list will have one log entry.[UC 17]	
+  * [S1800] Add a hospital listing. The MID of the administrator, [secondary MID = blank], transaction type = 1800; optional entry = hospital ID number, and the date are recorded. [UC 18]
+  * [S1801] View a hospital listing. The MID of the administrator, [secondary MID = blank], transaction type = 1801; optional entry = hospital ID number, and the date are recorded. [UC 18]
+  * [S1802] Edit a hospital listing. The MID of the administrator, [secondary MID = blank], transaction type = 1802; optional entry = hospital ID number, and the date are recorded. [UC 18]
+  * [S1900] View prescription report. The MID of the editor and of the patient, transaction type = 1900, and the date are recorded. [UC 19]
+  * [S2000] View Cause of Death Trends. The MID of the LHCP, transaction type = 2000, and the date are recorded. [UC 20]
+  * [S2100] View emergency report. The MID of the LHCP and of the patient, transaction type = 2100, and the date are recorded. [UC 21]
+  * [S2200] Add appointment type listing. The MID of the administrator, [secondary MID = blank], transaction type = 2200, and the date are recorded. [UC 22]
+  * [S2201] View appointment type listing. The MID of the administrator, [secondary MID = blank], transaction type = 2201, and the date are recorded. [UC 22]
+  * [S2202] Modify appointment type listing. The MID of the administrator, [secondary MID = blank], transaction type = 2202, and the date are recorded. [UC 22]
+  * [S2210] Schedule Appointments. The MID of the person logged in, secondary MID = the person who the appointment is scheduled with, transaction type = 2210, the appointment number, and the date are recorded. [UC 22]
+  * [S2211] View Scheduled Appointments. The MID of the person logged in, secondary MID = the person who the appointment is scheduled with, transaction type = 2211, the appointment number, and the date are recorded. [UC 22]
+  * [S2212] Edit Scheduled Appointments. The MID of the person logged in, secondary MID = the person who the appointment is scheduled with, transaction type = 2212, the appointment number, and the date are recorded. [UC 22]
+  * [S2213] Delete Scheduled Appointments. The MID of the person logged in, secondary MID = the person who the appointment is scheduled with, transaction type = 2213, the appointment number, and the date are recorded. [UC 22]
+  * [S2300]  Comprehensive Report. The MID of the LHCP, the MID of the patient's record being requested (as the secondary MID), transaction type = 2300, and the date are recorded. [UC 23]
+  * [S2400] Take Satisfaction Survey. The MID of the patient, the MID of the HCP, the office visit id, transaction type = 2400, and the date are recorded. [UC 24]
+  * [S2500] View physician satisfaction results. The MID of the patient, transaction type = 2500, and the date are recorded. [UC 25]
+  * [S2600] Create laboratory procedure results. The MID of the viewer and of the patient, laboratory procedure ID, transaction type = 2600, and the date are recorded. [UC 26]
+  * [S2601] View laboratory procedure results. The MID of the viewer and of the patient, laboratory procedure ID, transaction type = 2601, and the date are recorded. [UC 26]
+  * [S2602] Edit laboratory procedure results. The MID of the viewer and of the patient, laboratory procedure ID, transaction type = 2602, and the date are recorded. [UC 26]
+  * [S2700] Send an Email. The MID of the logged in user, the user the email is being sent to, transaction type = 2700, and timestamp are recorded.[UC27]
+  * [S2710] View email history. The MID of the logged in user,, transaction type = 2710, and timestamp are recorded.[UC27]
+  * [S2800] View patient list. The MID of the HCP, transaction type = 2800, and the date are recorded. [UC 28]
+  * [S2900] Find LHCPs with experience with a diagnosis. The MID of the patient, transaction type = 2900, and the date are recorded. [UC 29]
+  * [S3000] Send messages. The MID of the message sender, the MID of the message recipient, transaction type = 3000, and the date are recorded. [UC 30]
+  * [S3001] View messages. The MID of the message recipient, the MID of the message sender, transaction type = 3001, and the date are recorded. [UC 30]
+  * [S3010] View Inbox. The MID of the viewer, transaction type = 3010, and the date are recorded. [UC 30]
+  * [S3011] View Outbox. The MID of the viewer, transaction type = 3011, and the date are recorded. [UC 30]
+  * [S3100] Find LHCPs for prescription renewal. The MID of the patient, transaction type = 3100, and the date are recorded. [UC 31]
+  * [S3200] Proactively confirm prescription-renewal needs. The MID of the HCP making the request, secondary MID = patient MID, transaction type = 3200, and the current date are recorded. Note that each patient in the presented patient list will have one log entry. [UC 32]
+  * [S3210] View the diagnoses list. The MID of the patient making the request, transaction type = 3210, and the current date are recorded. [UC 32]
+  * [S3300] Refer a patient for consultations. The MID of the HCP sending the referal, secondary MID = patient MID, transaction type = 3300, and the current date are recorded. [UC 33]
+  * [S3310] View referral for consultation. The MID of the HCP looking at the referal, patient MID,  transaction type = 3310, and the current date are recorded  [UC 33]
+  * [S3311] Modify referral for consultation. The MID of the HCP looking at the referal, patient MID, transaction type = 3311, and the current date are recorded [UC 33]
+  * [S3400]  LHCP adds a patient from his or her monitoring list. The MID of the LHCP, the MID of the patient, transaction type = 3400, and the current date are recorded. [UC 34]
+  * [S3401] LHCP edits patient list for his or her monitoring list. The MID of the LHCP, the MID of the patient, transaction type = 3401, and the current date are recorded. [UC 34]
+  * [S3402] LHCP deletes a patient from his or her monitoring list. The MID of the LHCP, the MID of the patient, transaction type = 3402, and the current date are recorded. [UC 34]
+  * [S3410] A patient or UAP reports remote monitoring levels (blood pressure, glucose levels, weight and/or pedometer reading). The updater’s MID, the patient being updated’s MID, transaction type = 3410, a timestamp are recorded, and the type of remote monitoring data is recorded. [UC 34]
+  * [S3420] A LHCP views remote monitoring levels (blood pressure, glucose levels, weight and/or pedometer reading). The updater’s MID, the patient being updated’s MID, transaction type = 3420, a timestamp are recorded, and the type of remote monitoring data is recorded. [UC 34]
+  * [S3500]Adverse event reporting. A patient MID,transaction type = 3500, and the date are recorded. [UC 35]
+  * [S3600] Adverse event monitoring. A public health agent MID, transaction type = 3600, the event ID and the date are recorded. [UC 36]
+  * [S3601] Delete adverse event. A public health agent MID, transaction type = 3601, the event ID and the date are recorded. [UC 36]
+  * [S3700] Prescribe medication. A patient MID, an LHCP MID, the CPT code,  transaction type = 3700,  the drug and reason involved and the date are recorded. [UC 37]
+  * [S3701] Edit prescription. An LHCP MID,  the patient MID, the prescription ID,  transaction type = 3701,  and the date are recorded. [UC 37]
+  * [S3710] Add overriding reason listing. The MID of the administrator, [secondary MID = blank], transaction type = 3710, and the date are recorded. [UC 37]
+  * [S3711] Edit overriding reason listing. The MID of the administrator, [secondary MID = blank], transaction type = 3711, the drug and reason involved and the date are recorded. [UC 37]
+  * [S3800]Add Drug Interactions Code. The Admin MID, no secondary MID,transaction type = 3800, and the two prescriptions involved in the interaction are recorded, along with a timestamp. [UC 38]
+  * [S3801] Delete Drug Interactions Code. The Admin MID, no secondary MID,transaction type = 3801 and the two prescriptions involved in the interaction are recorded, along with a timestamp. [UC 38]
+  * [S4000] View Calendar. The MID of the user, transaction type = 4000, and the date are recorded.  [UC 40]
+  * [S4010] View Upcoming Appointments. The MID of the person logged in, [no secondary MID], transaction type=4010, and the date are recorded. [UC 40]
+  * [S4200] View Notifications. The MID of the LHCP or the patient, [secondary MID = blank], transaction type = 4200, and the date are recorded. [UC 42]
+  * [S4300] View activity feed. The MID of the patient, [secondary MID = blank], transaction type = 4300, and the date are recorded. [UC 43]
+==5.4 Alternative Flows:==
+None
+
+====UC6 View HCP; Designate/Undesignate Designated Licensed Health Care Professional Use Case====
+==6.1 Preconditions:==
+UC1 and UC2 have completed and a licensed health care professional and a patient have been created. The patient has authenticated himself or herself in the iTrust Medical Records system [UC3].
+==6.2 Main Flow:==
+The patient chooses to view all LHCPs the patient has ever had an office visit with and those whom he/she had designated [S1, S2]. The patient can also add a LHCP to their provider list by searching for the name of a LHCP [S3] and then selecting to add the HCP to their list of providers.
+==6.3 Sub-flows:==
+  * [S1] The LHCP's name, specialty, address, date of office visit, and whether or not the LHCP is a DLHCP for this patient is indicated. The list is sorted by the date of the last office visit (most recent first).
+  * [S2] The patient can choose to toggle between designating/undesignating any LHCP as being a DLHCP for them.
+  * [S3] The patient types a last name or partial last name and optionally reduces the list of choices by providing the specialty and/or zip code (match on first three numbers of zip code). The LHCP's name, specialty, and address are provided.
+==6.4 Alternative Flows:==
+None
+==6.5 Logging==
+  * View LHCP [UC 5, S600]
+  * Declare LHCP as DLHCP [UC 5, S601]
+  * Undeclare LHCP as DLHCP [UC 5, S602]
+==6.6 Reference document==
+[[http://www.hhs.gov/healthit/usecases/consumeraccess.html|Office of the National Coordinator for Health Information Technology (ONC) Consumer Empowerment: Consumer Access to Clinical Information Prototype Use Case , Scenario 2]]
+
+
+
+====UC8 View Access Log Use Case====
+==8.1 Preconditions:==
+A patient is a registered user of the iTrust Medical Records system [UC1]. The patient has authenticated himself or herself in the iTrust Medical Records system [UC3].
+==8.2 Main Flow:==
+The patient chooses to view his or her access log. The patient then chooses the beginning and end date for the period of time they would like to view their access log for [S1, S2]. The resulting list should include the following for each access:
+  * Name of accessor (with a link to contact information if the viewer is an LHCP)
+  * Role of accessor relative to the patient
+  * Date and time of access
+  * Transaction Type (See Section 6.3)
+==8.3 Sub-flows:==
+  * [S1] The patient also chooses to view the list sorted by dates, most recent access first.
+  * [S2] The patient also chooses to view the list sorted by the role of the accessor relative to the patient (personal health representative, DLHCP, LHCP, UAP, Emergency Responder; any order is fine as long as the list is sorted by role) as well as by date for each role type.
+==8.4 Alternative Flows:==
+None
+==8.5 Logging==
+  * View Access Log [UC 5, S800]
+
+====UC9 View records Use Case====
+==9.1 Preconditions:==
+A patient is a registered user of the iTrust Medical Records system [UC1]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].
+==9.2 Main Flow:==
+A patient or personal health representative chooses to view medical records [S1] including family history [S2].
+==9.3 Sub-flows:==
+  * [S1] The patient or personal health representative can see patient personal health information (including historical values), immunizations, and office visit information (date, diagnoses, medication, name of attending physician but not notes, laboratory procedures) for (a) their own records and (b) the records for whom the user is a personal representative. If a patient or personal health representative has not taken an office visit satisfaction survey for an office visit yet, the patient may choose to take the survey for an office visit (if the survey has already been taken, the patient or personal health representative will not have the ability to take the survey or view their previously submitted survey) [UC24].
+  * [S2] The patient or personal health representative can see an abbreviated health history of their siblings, parents, and both sets of grandparents for which MIDs are available in iTrust. They can see diagnoses related to the following [presented as a table with an x if the family member suffered from that diagnosis]:
+     * high blood pressure (Systolic blood pressure over 240 mmHg and/or a diastolic blood pressure over 120 mmHg);
+     * high cholesterol (HDL (“good”) cholesterol levels under 35 mg/dL (milligrams per deciliter) and/or a triglyceride level over 250 mg/dL);
+     * diabetes [is diagnosed with ICD-9CM code beginning with 250:[[http://icd9cm.chrisendres.com/index.php?action=child&recordid=1765]],;
+     * cancer [is diagnosed with ICD-9CM code beginning with 199:[[http://icd9cm.chrisendres.com/index.php?action=child&recordid=1765]],;
+     * heart disease [is diagnosed with ICD=9CM code beginning with 402:[[http://icd9cm.chrisendres.com/index.php?action=child&recordid=1765]],;
+     * smoking; and
+     * the cause of death if the family member is deceased.
+==9.4 Alternative Flows:==
+None
+==9.5 Logging==
+  * View Medical Records [UC 5, S900]
+==9.6 Reference document:==
+The inclusion of the ER role was inspired by [[http://www.hhs.gov/healthit/usecases/documents/PHCDetailed.pdf|Department of Health and Human Services USA Personalized Health Care]] Use Case
+==9.7 Sub-flow Traces:==
+  * [S1] http://localhost:8080/iTrust/auth/patient/viewMyRecords.jsp
+  * [S2] No links. Implemented by ViewMyRecordsAction.getFamilyHistory()
+
+====UC10 Enter/edit personal health records Use Case====
+==10.1 Preconditions:==
+An HCP is a registered user of the iTrust Medical Records system [UC2]. The HCP has authenticated himself or herself in the iTrust Medical Records system [UC3].
+==10.2 Main Flow:==
+An HCP chooses to enter/edit personal health information. The information is view/editied [S1].
+==10.3 Sub-flows:==
+  * [S1]The health care personnel enters a MID [E1] of a patient and confirms their selection [E2]. The health care personnel may enter/edit personal health information including editing historical values from Data Format 6.4.1, 6.4.2 ,6.4.3  and 6.4.4, immunizations, and office visit information (date, diagnoses, medication, name of attending physician but not notes, laboratory procedures), family history (the MIDs of the patient's mother and father), and Body Mass Index (BMI) [S4]. The HCP can indicate the patient has passed away, providing an appropriate diagnosis code. The HCP can graph height or weight of the patient over the last 3 calendar years [S3].
+  * [S3] For the patient, the HCP can choose either height or weight to graph. The HCP is presented with a line chart giving the chosen measurements (either height or weight) of the patient spanning the last 3 calendar years of data, averaged by quarters (January-March, April-June, July-September, October-December) [E3].
+  * [S4] For each entry in the patient's basic health information history, the HCP is presented with an automatically-calculated value of BMI (in the format of digits XX.XX) calculated based on the formula “(weight in pounds * 703)/(height in inches * height in inches)” [E4]
+==10.4 Alternative Flows:==
+  * [E1] The health care professional types an invalid medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient. The health care professional does not confirm the selection and is prompted to try again.
+  * [E3] There are no chosen measurements recorded within a quarter. The displayed measurement for the quarter is zero.
+  * [E4] The height measurement value is 0. “Invalid height value of 0!” instead of a BMI value is displayed.
+==10.5 Logging==
+  * View Personal Health information [UC 5, S1000]
+  * Enter/Edit Personal Health Information [UC 5, S1001]
+
+====UC11 Document office visit Use Case====
+==11.1 Preconditions:==
+An HCP is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].
+==11.2 Main Flow:==
+An HCP chooses to document [S1] or edit [S2] an office visit .
+==11.3 Sub-flows:==
+  * [S1] The LHCP enters a MID [E1] of a patient and confirms their input [E2]. The LHCP document the notes (numbers, characters, #, ;, ?, -, ', ., :, blankspace and carriage return) of an office visit, providing the date of the office visit, and their own medical identification number. Additionally, the HCP can document one or more diagnoses (ICD-9CM code), one or more medical procedures (CPT code) performed, one or more lab procedures that are ordered (LOINC code, see Data Format 6.11) one or more medications (NDC, see Data Format 5.6) prescribed, and one or more immunizations given (CPT Code, see UC15, S1) chosen from appropriate pull-down lists. The event is logged [UC5, S8].
+  *  [S2] LHCPs can return to an office visit and alter the fields of the office visit [text, diagnoses, medical procedures, medications]. The event is logged [UC 5, S8].
+==11.4 Alternative Flows:==
+  * [E1] The LHCP types an invalid medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient. The health care personnel does not confirm the selection and is prompted to try again.
+==11.5 Logging==
+  * Create Office Visit [UC 5, S1100]
+  * View Office Visit [UC 5, S1101]
+  * Edit Office Visit [UC 5, S1102]
+==11.6 Reference document:==
+The inclusion of recording of immunizations was inspired by [[http://www.dhhs.gov/healthit/usecases/documents/EmergencyRespEHRUseCase.pdf|Department of Health and Human Services USA Immunization and Response Management]] Detailed Use Case
+
+====UC12 Determine operational profile Use Case====
+==12.1 Preconditions:==
+A software tester has a login and password. Similar to an administrator, a software tester is added by directly entering the software tester into the database by an administrator that has access to the database.
+==12.2 Main Flow:==
+The software tester authenticates himself or herself in the iTrust Medical Records system [UC2]. He or she is then presented with the actual operational profile of the operations of the iTrust Medical Records where the use percentage is the % of total transactions of a particular type by each of the user types [patient, LHCP, UHCP, admin, tester]
+
+^  Operation  ^  Reference  ^  
+|  Failed login  |  [none]  |
+|  User views homepage  |  	[none]  |
+|  Exception occurred and was not caught  |  	[none]  |
+|  View Global Preferences  |  [none]  |
+|  Edit Global Preferences  |  [none]  |
+|  View User Preferences  |  [none]  |
+|  Edit User Preferences  |  [none]  |
+|  Create a Patient	  |  UC1  |
+|  Disable a Patient	  |  UC1  |
+|  Create a LHCP	  |  UC2  |
+|  Edit LHCP information  |  	UC2  |
+|  Disable a LHCP	  |  UC2  |
+|  Create an ER	  |  UC2  |
+|  Edit ER information	  |  UC2  |
+|  Disable an ER	  |  UC2  |
+|  Create a PHA	  |  UC2  |
+|  Edit PHA information	  |  UC2  |
+|  Disable a PHA	  |  UC2  |
+|  Assign LHCP to a hospital  |  	UC2  |
+|  Unassign LHCP from a hospital  |  	UC2  |
+|  Create a UAP	  |  UC2  |
+|  Edit a UAP   |  	UC2  |
+|  Disable a UAP  |  	UC2  |
+|  View a personnel's information  |  	UC2  |
+|  Logged out	  |  UC3  |
+|  Logged out from inactivity	  |  UC3  |
+|  Password changed	  |  UC3  |
+|  View patient demographics  |  	UC4  |
+|  Edit patient demographics  |  	UC4  |
+|  View LHCP information	  |  UC6  |
+|  Declare LHCP as DLHCP  |  	UC6  |
+|  Undeclare LHCP as DLHCP  |  	UC6  |
+|  View access log  |  	UC8  |
+|  View medical records	  |  UC9  |
+|  View personal health information  |  	UC10  |
+|  Enter/edit personal health information  |  	UC10  |
+|  Create Office Visits  |  	UC11  |
+|  View Office Visits  |  	UC11  |
+|  Edit Office Visits	  |  UC11  |
+|  Declare personal health representative  |  	UC13  |
+|  Undeclare personal health representative  |  	UC13  |
+|  Request biosurveillance  |  	UC14  |
+|  Add Medical procedure code  |  	UC15  |
+|  View Medical procedure code  |  	UC15  |
+|  Add Immunization code  |  	UC15  |
+|  View Immunization code  |  	UC15  |
+|  Edit Immunization code  |  	UC15  |
+|  Add Diagnosis code  |  	UC15  |
+|  View Diagnosis code  |  	UC15  |
+|  Edit Diagnosis code  |  	UC15  |
+|  Add Drug code  |  	UC15  |
+|  View Drug code  |  	UC15  |
+|  Edit Drug code  |  	UC15  |
+|  Add Physical Services code  |  	UC15  |
+|  View Physical Services code  |  	UC15  |
+|  Edit Physical Services code  |  	UC15  |
+|  View risk factors  |  	UC16  |
+|  Proactively determine necessary patient care  |  	UC17  |
+|  Add a hospital listing  |  	UC18  |
+|  View a hospital listing  |  	UC18  |
+|  Edit a hospital listing  |  	UC18  |
+|  View prescription report  |  	UC19, UC40  |
+|  View Cause of Death Trends  |  	UC20  |
+|  Create emergency report  |  	UC21  |
+|  View emergency report  |  	UC21  |
+|  Add appointment type listing  |  	UC22  |
+|  View appointment type listing  |  	UC22  |
+|  Edit appointment type listing  |  	UC22  |
+|  Schedule Appointments	  |  UC22  |
+|  View Scheduled Appointment  |  	UC22  |
+|  Edit Scheduled Appointment  |  	UC22  |
+|  Delete Scheduled Appointment	  |  UC22  |
+|  View All Scheduled Appointments  |  	UC22  |
+|  Comprehensive Report  |  	UC23  |
+|  Take Satisfaction Survey  |  	UC24  |
+|  View physician satisfaction results	  |  UC25  |
+|  Create laboratory procedure results	  |  UC26  |
+|  View laboratory procedure results	  |  UC26, UC40  |
+|  Edit laboratory procedure results  |  	UC26  |
+|  Send an Email  |  	UC3, UC21, UC26, UC27, UC30, UC35, UC36, UC37  |
+|  View email history	  |  UC27  |
+|  View patient list  |  	UC28  |
+|  Find LHCPs with experience with a diagnosis  |  	UC29  |
+|  Send Messages  |  	UC30  |
+|  View Messages  |  	UC30  |
+|  View inbox  |  	UC30  |
+|  View outbox  |  	UC30  |
+|  Find LHCPs for prescription renewal  |  	UC31  |
+|  View expired prescriptions  |  	UC31  |
+|  Proactively confirm prescription-renewal needs  |  	UC32  |
+|  View list of diagnoses  |  	UC32  |
+|  Refer a patient for consultations  |  	UC33  |
+|  View referral for consultation	  |  UC33  |
+|  Modify referral for consultation  |  	UC33  |
+|  Patient added to monitoring list  |  	UC34  |
+|  Patient telemedicine permissions changed  |  	UC34  |
+|  Patient removed from monitoring list  |  	UC34  |
+|  Remote monitoring levels are reported  |  	UC34  |
+|  Remote monitoring levels are viewed  |  	UC34  |
+|  Adverse event reporting  |  	UC35  |
+|  Adverse event monitoring  |  	UC36  |
+|  Delete adverse event	  |  UC36  |
+|  Prescribe medication  |  	UC37  |
+|  Edit prescription	  |  UC37  |
+|  Add overriding reason listing  |  	UC37  |
+|  Edit overriding reason listing  |  	UC37  |
+|  Add Drug Interactions Code  |  	UC38  |
+|  Edit Drug Interactions Code  |  	UC38  |
+|  View calendar	  |  UC40  |
+|  View Upcoming Appointments  |  	UC40  |
+|  View Notifications  |  	UC42  |
+|  View activity feed  |  	UC43  |
+==12.3 Sub-flows:==
+None
+==12.4 Alternative Flows:==
+None
+
+====UC13 Declare/undeclare Personal Representative Use Case====
+==13.1 Preconditions:==
+An HCP is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].
+==13.2 Main Flow:==
+A patient's DLHCP chooses to add or delete a patient's [E1, E2] personal representative by typing that person's MID [E1, E2].
+==13.3 Sub-flows:==
+None
+==13.4 Alternative Flows:==
+  * [E1] The health care personnel types an invalid medical identification number and is prompted to try again.
+==13.5 Logging==
+  * Declare personal health representative [UC 5, S1300]
+  * Undeclare personal health representative [UC 5, S1301]
+
+
+
+====UC15 Maintain standards lists Use Case====
+==15.1 Preconditions:==
+The administrator has authenticated himself or herself in the iTrust Medical Records system [UC2].
+==15.2 Main Flow:==
+An administrator chooses to maintain the standards list for immunizations [S1], diagnoses [S2], allowable drugs [S3], or allowable physical services [S4].
+==15.3 Sub-flows:==
+  * [S1] The administrator will maintain [add/update] a listing of allowable immunizations that an HCP can use. The administrator will store (1) the CPT code (The CPT code set accurately describes medical, surgical, and diagnostic services and is designed to communicate uniform information about medical services and procedures among physicians, coders, patients, accreditation organizations, and payers for administrative, financial, and analytical purposes. About CPT) [E1] and (2) up to 30 alpha characters giving the name [E1] of the immunization.
+  * [S2] The administrator will maintain a listing of allowable diagnoses that an LHCP can use. The administrator will store (1) the ICD-9CM code (The International Statistical Classification of Diseases and Related Health Problems (most commonly known by the abbreviation ICD) provides codes to classify diseases and a wide variety of signs, symptoms, abnormal findings, complaints, social circumstances and external causes of injury or disease. [[http://www.cdc.gov/nchs/icd.htm|NHCS Classification of Diseases, Functioning and Disability]]) for the diagnosis [E1]; (2) a classification that the diagnosis is either chronic/long-term OR short term; and (3) up to 30 alphanumeric characters giving the name [E1] of the diagnosis.
+  * [S3] The administrator will maintain [add/update] a listing of allowable drugs that an HCP can use. The administrator will store (1) the National Drug Code (The National Drug Code (NDC) is a universal product identifier used in the United States for drugs intended for human use. [[http://www.fda.gov/Drugs/InformationOnDrugs/ucm142438.htm|National Drug Code Directory]])
+  * [S4] The administrator will maintain [add/update] a listing of allowable physical services (including laboratory procedures) that an HCP can use. The administrator will store information of a LOINC code (Logical Observation Identifiers Names and Codes (LOINC) is a database and universal standard for identifying medical laboratory observations. [[http://loinc.org/|LOINC c/o Medical Informatics]]) [E1] according to Data Format 6.11.
+==15.4 Alternative Flows:==
+  * [E1] The administrator types an invalid code information and is prompted to try again.
+==15.5 Logging==
+  * Add Medical procedure code [UC 5, S1500]
+  * View Medical procedure code [UC 5, S1501]
+  * Edit Medical procedure code [UC 5, S1502]
+  * Add Immunization code [UC 5, S1510]
+  * View Immunization code [UC 5, S1511]
+  * Edit Immunization code [UC 5, S1512]
+  * Add Diagnosis code [UC 5, S1520]
+  * View Diagnosis code [UC 5, S1521]
+  * Edit Diagnosis code [UC 5, S1522]
+  * Add Drug code [UC 5, S1530]
+  * View Drug code [UC 5, S1531]
+  * Edit Drug code [UC 5, S1532]
+  * Add Physical Services code [UC 5, S1540]
+  * View Physical Services code [UC 5, S1541]
+  * Edit Physical Services code [UC 5, S1542]
+
+====UC16 Identify risk of chronic disease Use Case====
+==16.1 Preconditions:==
+The LHCP has authenticated himself or herself in the iTrust Medical Records system [UC3].
+==16.2 Main Flow:==
+Through the Personal Health Records page, an LHCP chooses a chronic disease and a patient. The data in the database is analyzed according to the risk factors for the disease to determine if the patient exhibits a certain risk factor. Currently available risk factors for chronic diseases are defined for Diabetes and Type 1 and Type2 and Heart Disease. When the chosen patient satisfies the preconditions of the chosen chronic disease [E1], the LHCP is provided with a warning message if that patient exhibits three or more risk factors. The message will display the risk factors that the patients exhibit.
+==16.3 Sub-flows:==
+None
+==16.4 Alternative Flows:==
+  * [E1] The LHCP chooses to examine a patient for which the preconditions do not apply (e.g., an adult shouldn't be tested for child diabetes) and the LHCP is prompted that no analysis can occur.
+==16.5 Logging==
+  * Identify risk factors [UC 5, S1600]	
+
+====UC17 Proactively Determine Needed Patient Care Use Case====
+==17.1 Preconditions:==
+The HCP has authenticated himself or herself in the iTrust Medical Records system [UC2].
+==17.2 Main Flow:==
+An HCP chooses Office Visit Reminders and then to identify chronic patients who need an office visit [S1], older patients who need a flu shot [S2], or any patient who is overdue for an immunization [S3]. The HCP is presented with a listing of patients for whom they are a DLHCP who need care because of satisfying the one of preceding conditions. The presented patient information shall include each patient's name and home phone number so that reminder calls can be made. The list is sorted based on the alphabetical order of the patients' last names, and then first names.
+==17.3 Sub-flows:==
+  * [S1] An alive patient who has not had an office visit for more than one year and who has been diagnosed with
+      * diabetes mellitus [is diagnosed with ICD code beginning with 250:[[http://icd9cm.chrisendres.com/index.php?action=child&recordid=1765]] ]
+      * asthma [is diagnosed with ICD code beginning with 493:[[http://icd9cm.chrisendres.com/index.php?action=child&recordid=4700]] ], or
+      * circulatory-system disease [is diagnosed with an ICD code between 390 and 459 inclusive: [[http://icd9cm.chrisendres.com/index.php?action=child&recordid=4025]] ].
+  * [S2] An alive patient over 50 years old who has not had a flu shot [CPT codes 90656, 90658, 90660 per [[http://www.influenza.com/index.cfm?fa=ADDITIONAL_RES_HC_2]] during the months Sept - Dec of the last calendar year (or during the months Sept - Dec of the current calendar year if the retrieval time is between Sept - Dec).
+  * [S3] An alive patient under the age of 19 who has not had proper immunizations per the immunization schedule. The “catch up schedule” is relevant when the patient did not begin the immunizations according to the recommended schedule.
+      * __Hepatitis B (90371)__ three doses: at birth, at age 1 month, at age 6 months; catch up schedule: at least 4 weeks between dose 1 and dose 2 and at least 8 weeks between dose 2 and dose 3
+      * __Rotavirus (90681)__ three doses: at age 6 weeks, at age 4 months, at age 6 months; catch up schedule: at least 4 weeks between dose 1 and dose 2 and at least 4 weeks between dose 2 and dose 3
+      * __Diphtheria, Tetanus, Pertussis (90696)__ six doses: at age 6 weeks, at age 4 months, at age 6 months, at age 15 months, at age 4 years, at age 11 years; catch up schedule: at least 4 weeks between dose 1 and dose 2, at least 4 weeks between dose 2 and dose 3, at least 6 months between doses 3 and 4, at least 6 months between dose 4 and dose 5, at least 5 years between dose 5 and dose 6
+      * __Haemophilus influenzae (90645)__ three doses: at 6 weeks, at age 4 months, at age 12 months; catch up schedule: at least 4 weeks between dose 1 and dose 2 and at least 4 weeks between dose 2 and dose 3 if first dose is administered at younger than 12 months; if first dose is administered between 12 and 14 months, at least 8 weeks between dose 1 and dose 2 and dose three is canceled; if first dose is administered at or after 15 months, only one dose is required
+      * __Pneumococcal (90669)__ four doses: at age 6 weeks, at age 4 months, at age 6 months, at age 12 months; catch up schedule: at least 4 weeks between dose 1 and dose 2 and at least 4 weeks between dose 2 and dose 3 and at least 8 weeks between dose 3 and dose 4 if first dose is administered at younger than 12 months; if first dose is administered between 12 and 14 months, at least 8 weeks between dose 1 and dose 2 and dose three is canceled; if first dose is administered at or after 15 months, only one dose is required
+      * __Poliovirus (90712)__ four doses: at age 6 weeks, at age 4 months, at age 6 months, 4 years; catch up schedule: at least 4 weeks between dose 1 and dose 2, at least 4 weeks between dose 2 and dose 3, at least 4 weeks between doses 3 and 4, dose 4 is not required if dose 3 was administered at the age of 4 or older
+      *__Measles, Mumps, Rubella (90707)__ two doses: at age 12 months, at age 4 years; catch up schedule: at least 4 weeks between dose 1 and dose 2
+      *__Varicella (90396)__ two doses: at age 12 months, at age 4 years; catch up schedule: at least 3 months between dose 1 and dose 2
+      *__Hepatitis A (90633)__ two doses: at age 12 months; at age 18 months: catch up schedule: at least 6 months between dose 1 and dose 2
+      *__Human Papillomavirus (90649)__ Female only, three doses; at age 9 years; at age 9 years + 2 months; at age 9 years + 6 months; catch up schedule: at least two months between dose 1 and dose 2; at least four months between dose 2 and dose 3
+==17.4 Alternative Flows:==
+None
+==17.5 Logging==
+  * Proactively determine necessary patient care [UC 5, S1700]	
+==17.6 Reference Documents:==
+[[http://www.cispimmunize.org/|American Academy of Pediatrics]]
+  * [[http://www.cispimmunize.org/IZSchedule_Childhood.pdf|Childhood schedule (birth to 6 years)]]
+  * [[http://www.cispimmunize.org/IZSchedule_Adolescent.pdf|Adolescent schedule (7 to 18 years)]]
+  * [[http://www.cdc.gov/vaccines/programs/iis/stds/cpt.htm|CPT Codes]]
+
+====UC18 Maintain a hospital listing Use Case====
+==18.1 Preconditions:==
+The administrator has authenticated himself or herself in the iTrust Medical Records system [UC2].
+==18.2 Main Flow:==
+An administrator chooses to maintain the hospital listing [S1].(Note: A personnel may be assigned to more than one [UC 2, S1])
+==18.3 Sub-flows:==
+  * [S1] The administrator will store (1) hospital Id number for the hospital [E1]; and (2) up to 30 alphanumeric characters giving the name of the hospital
+  * [S2]. The system shall enable the administrator to add a new entry for a hospital, or modify the hospital name in an existing entry. Note that the administrator is not allowed through the system interface to delete an existing entry or modify the hospital ID number in an existing entry.
+==18.4 Alternative Flows:==
+  * [E1] The administrator types an invalid hospital ID and is prompted to try again.
+  * [E2] The administrator types an invalid hospital name and is prompted to try again.
+==18.5 Logging==
+  * Add a hospital listing [UC 5, S1800]
+  * View a hospital listing [UC 5, S1801]
+  * Edit a hospital listing [UC 5, S1802]
+
+====UC19 View prescription report Use Case====
+==19.1 Preconditions:==
+A patient and LHCP is a registered user of the iTrust Medical Records system [UC1 and UC2]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].
+==19.2 Main Flow:==
+A patient or personal health representative [S1] or LHCP [S2] chooses to view prescription reports. If the LHCP is not one of the patient's DLHCP or the UAP associated with one of their DLHCP, a message is sent to the patient and their personal representative [S4].
+==19.3 Sub-flows:==
+  * [S1] The user (patient or personal health representative) can choose to view a list of (1) their own prescriptions or (2) the prescriptions for whom the user is a person health representative by choosing one patient from a a list of these patients. A prescription list is then displayed [S3], sorted by start date (the later date is ranked earlier).
+  * [S2] The user (LHCP) selects a patient from the list of requested reports. At this point, the LHCP can view a prescription list for that patient [S3], sorted by start date (the later date is ranked earlier).
+  * [S3] The prescription report is titled with the patient name. The prescription list includes medication, date prescribed, start date, end date for each prescription, and the name of the doctor who prescribed the medication.
+==19.4 Alternative Flows:==
+  * [E1] The LHCP types an invalid medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient. The LHCP does not confirm the selection and is prompted to try again.
+==19.5 Logging==
+  * View prescription report [UC 5, S1900]
+
+
+
+====UC21 View emergency electronic health record Use Case====
+==21.1 Preconditions:==
+A LHCP or ER is a registered user of the iTrust Medical Records system [UC1 and UC2]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].
+==21.2 Main Flow:==
+A LHCP or ER chooses to view an emergency report and provides an MID [S1]. At this point, the LHCP obtains a printable report [meaning you should minimize the space taken up to provide the information] containing vital information for the patient:
+  * Name
+  * Age
+  * Gender
+  * Emergency contact (name and phone number)
+  * Allergies
+  * Blood type
+  * A list of all diagnosis codes chronic/long-term diagnoses for the patient and well as all short term diagnoses made within the last 30 days. Display the ICD-9CM code and the name of the diagnoses. Sort by most recent first.
+  * A list of all prescriptions the patient is likely to be currently taking as determined by the end date of the prescription has passed by 91 days or less. Display the National Drug Code and the name of the prescription. Sort by most recent first.
+  * A list of all immunizations the patient has had. Display the CPT Code and the name of the immunization. Sort by most recent first.
+==21.3 Sub-flows:==
+  * [S1] The LHCP or ER enters a MID [E1] and confirms the input [E2].
+==21.4 Alternative Flows:==
+  * [E1] The LHCP types an invalid medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient. The LHCP or ER does not confirm the selection and is prompted to try again.
+==21.5 Logging==
+  * View emergency report [UC 5, S2100]
+==21.6 Reference document:==
+The inclusion of the ER role was inspired by [[http://www.dhhs.gov/healthit/usecases/documents/EmergencyRespEHRUseCase.pdf|Department of Health and Human Services USA Emergency Responder Electronic Health Record]] Use Case
+
+====UC22 Flow of Events for the Schedule Appointments Use Case====
+==22.1 Preconditions:==
+A patient and LHCP are registered users of the iTrust Medical Records system [UC1 and UC2]. The iTrust user or administrator has authenticated himself or herself in the iTrust Medical Records system [UC3 and UC2].
+==22.2 Main Flow:==
+An administrator can manage a standardized list of appointment types [S1]. An LHCP can schedule an appointment with a patient [S2]. Both patients and LHCPs can view a list of their upcoming appointments [S3]. LHCP’s can edit or delete future appointments. [S4]
+==22.3 Sub-flows:==
+  * [S1] The system shall enable the administrator to (1) add a new entry for an appointment type, including its type name with up to 30 alpha characters and duration in the unit of minutes [E1], and (2) modify the duration in an existing entry [E1]. A new entry shall not have the same type name as that of any existing entry [E1]. Note that the administrator is not allowed through the system interface to delete an existing entry or modify the appointment type name in an existing entry.
+  * [S2] The LHCP chooses to schedule an appointment with a patient (it is assumed that the LHCP and patient have already worked out the details of the appointment in person or via telephone outside of the system). The LHCP enters the patient MID, selects the type of appointment from a pull-down menu of the existing appointment types, enter the appointment date and start time (only a date/time equal or after the current date/time is allowed) (the user interface shall provide both the option of typing in a specific date in the date format and the option of selecting a date from a calendar for the current month), enter comment (optional) up to 1000 characters such as reason for the appointment [E1].
+  * [S3] A user (an LHCP or patient) wishes to view a list of his or her upcoming appointments (i.e., a list including appointments whose appointment date and start time is equal or later than the current date/time). The user chooses to open his or her upcoming appointment list. Each row in the list includes the appointment type, appointment date and start time, duration, and the name of either the patient (only for the user being an LHCP) or the LHCP (only for the user being a patient). The appointments in the list shall be ordered by appointment date and start time, the soonest upcoming first. The row for each conflicting appointment is highlighted in bold (a conflicting appointment is one that has overlap in its appointment duration period with that of at least another appointment of the same user). When viewing the calendar, the user selects an appointment from the list to read comment by clicking the “Read Comment” link beside the row for the appointment, and then the comment for the appointment shall be displayed in a new page [E2].
+  * [S4] When an LHCP views a list of his or her upcoming appointments, they are presented with an option to edit or remove the appointment. [E3]
+==22.4 Alternative Flows:==
+  * [E1] The user inputs invalid information and is prompted to try again.
+  * [E2] The comment is empty and the text “No Comment” (without link) is displayed instead of the “Read Comment” link.
+  * [E3] The date for the appointment is in the past, an error message is displayed and the appointment is not edited.
+==22.5 Logging==
+  * Add appointment type listing [UC 5, S2200]
+  * View appointment type listing [UC 5, S2201]
+  * Modify appointment type listing [UC 5, S2202]
+  * Schedule Appointments [UC 5, S2210]
+  * View Scheduled Appointments [UC 5, S2211]
+  * Edit Scheduled Appointments [UC 5, S2212] (action unimplemented)
+  * Delete Scheduled Appointments [UC 5, S2213] (action unimplemented)
+
+====UC23 View Comprehensive Patient Report Use Case====
+==23.1 Preconditions:==
+An LHCP has authenticated him or herself in the iTrust Medical Records system [UC2].
+==23.2 Main Flow:==
+The LHCP requests a comprehensive patient report for a particular patient [S1]. The LHCP is able to view the comprehensive patient report [S3] from a list of his/her requests.
+==23.3 Sub-flows:==
+  * [S1] The LHCP enters a patient medical identification number (MID) [E1] and confirms his/her input [E2].
+  * [S3] The LHCP can view of the comprehensive patient [[team6:requirementsdocument#4. Non-Functional Requirements|report]] for the specified patient, including the information below.
+       * All patient demographic information (address, phone, etc.), see [UC4] and Data Format 6.1
+       * The entire history of personal health records, see [UC10] and Data Format 6.4
+       * All diagnoses, including those not normally viewable by the requesting LHCP, see [UC11] and Data Format 6.5
+       * All designated HCPs (MIDs and Names), see [UC6]
+       * All allergies, procedures, medications, office visits, and known relatives, see [UC11] and Data Format 6.5, 6.6
+       * All MIDs and names of people that this person is representing, see [UC13]
+       * All MIDs and names of people that this person is represented by, see [UC13]
+   * [S4] The LHCP views a list of requests he/she has made for reports, with the status and pertinent information about the requests.
+==23.4 Alternative Flows:==
+  * [E1] The LHCP types an invalid MID and is prompted to try again.
+  * [E2] The chosen patient is not the desired patient. The LHCP does not confirm the selection and can try again.
+==23.5 Logging==
+  * Comprehensive Report [UC 5, S2300]
+
+====UC24 Take Satisfaction Survey Use Case====
+==24.1 Preconditions:==
+A patient is a registered user of the iTrust Medical Records system [UC1]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].
+==24.2 Main Flow:==
+A patient or personal health representative can answer any of the following questions relative to a previous (in UC9, S1) office visit according to Data Format 6.13.
+  * How many minutes did you wait in the waiting room?
+  * How many minutes did you wait in the examination room before seeing your physician?
+  * How satisfied were you with your office visit?
+  * How satisfied were you with the treatment or information you received?
+The answers to the survey are stored.
+==24.3 Sub-flows:==
+None
+==24.4 Alternative Flows:==
+None
+==24.5 Logging==
+  * Take Satisfaction Survey [UC 5, S2400]
+
+====UC25 View Physician Satisfaction Survey Results Use Case====
+==25.1 Preconditions:==
+A user is a registered user of the iTrust Medical Records system [UC1]. The iTrust user has authenticated himself or herself in the iTrust Medical Records system [UC3].
+==25.2 Main Flow:==
+A user chooses to view physician satisfaction survey results. The user provides a zip code [E1] Or a hospital code and an (optional) physician type (from a pull-down list: see data format 6.2 - general, surgeon, heart specialist, pediatrician, OB/GYN). The patient is provided with the following for each physician of that type that practices in a zip code (based upon the address/zipcode provided in UC2) that match the first three digits of the provided zip code:
+  * Name
+  * Address
+  * Average number of minutes patients wait in waiting room
+  * Average number of minutes patients wait in examination room prior to seeing physician
+  * Average office visit satisfaction
+  * Average satisfaction with treatment/information
+  * Percentage of office visits for which satisfaction information is available
+==25.3 Sub-flows:==
+None
+==25.4 Alternative Flows:==
+  * [E1] The input is not a valid zip code (see Data Format 6.2). The user is asked to try again.
+==25.5 Logging==
+  * View physician satisfaction results [UC 5, S2500]
+
+====UC26 View/Edit Laboratory Procedure Status Use Case====
+==26.1 Preconditions:==
+A patient and HCP are registered users of the iTrust Medical Records system [UC1 and UC2]. The iTrust user has been authenticated in the iTrust Medical Records system [UC3].
+==26.2 Main Flow:==
+A patient or personal health representative [S1] or HCP [S2] chooses to view laboratory procedure status; or a HCP chooses to edit a laboratory procedure [S3]. If the HCP is not one of the patient's DLHCP or the UAP associated with one of their DLHCP, a message is sent to the patient and their personal representative [S4].
+==26.3 Sub-flows:==
+  * [S1] The patient can view a list of laboratory procedures and status for (a) their own records and (b) the records for which the user is a personal representative. The reports are viewed under the “View My Records” tab. Only laboratory procedures for which the HCP has allowed viewing access are shown. The list is sorted by date of the last status update, most recent first.
+  * [S2] The HCP enters a MID [E1] of a patient and confirms their input [E2]. The HCP can view a list of laboratory procedures and results, sorted by the date of the last status update, most recent first. If the HCP is the HCP that ordered the laboratory procedure, the HCP can allow or disallow viewing access to the laboratory results and is given the option to edit the office visit in which the laboratory procedure was ordered.
+  * [S3] The HCP enters a MID [E1] of a patient and confirms their input [E2]. The HCP can view a list of laboratory procedures and can choose to update the status and comments (including results, if applicable) (see Data Format 6.11). The list is sorted by the dates of the last status update.An email notification is sent [UC27, S2].
+==26.4 Alternative Flows:==
+  * [E1] The HCP types an invalid medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient. The HCP does not confirm the selection and is prompted to try again.
+==26.5 Logging==
+  * Create laboratory procedure results [UC 5, S2600]
+  * View laboratory procedure results [UC 5, S2601]
+  * Edit laboratory procedure results [UC 5, S2602]
+
+====UC27 Alert Users by Email Use Case====
+==27.1 Preconditions:==
+One of UC3, UC22, UC23, or UC26 has been initiated.
+==27.2 Main Flow:==
+An email alert is sent out to the iTrust user in the event of a changed password [S1], status change in laboratory procedure [S2], comprehensive report requested and generated [S4]. //Note to students: the iTrust system does NOT currently support actual email sending, only a “fake” email sending facility. All email notifications should be executed through the fake email utility.//
+==27.3 Sub-flows:==
+  * [S1] The user has successfully changed his/her password [UC3, S2]. An email informing the user of the password change is sent to the user including the MID but not the password.
+  * [S2] The status of a laboratory procedure has been updated [UC26, S3]. The patient is notified with the following information: the LOINC number and the updated status.
+==27.4 Alternative Flows:==
+None
+==27.5 Logging==
+  * Send an Email [UC 5, S2700]
+  * View email history [UC 5, S2710]
+
+====UC28 View Patients====
+==28.1 Preconditions:==
+A LHCP is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has been authenticated in the iTrust Medical Records system [UC3].
+==28.2 Main Flow:==
+The LHCP chooses to view all patients with which he or she has ever had an office visit with. The patient’s name (clickable to view PHR), address, and date of last office visit. The list is sorted by the date of the last office visit (most recent first).
+==28.3 Sub-flows:==
+None
+==28.4 Alternative Flows:==
+None
+==28.5 Logging==
+  * View patient list [UC 5, S2800]
+==28.6 Reference document:==
+Office of the National Coordinator for [[http://www.hhs.gov/healthit/usecases/consumeraccess.html|Health Information Technology (ONC) Consumer Empowerment: Consumer Access to Clinical Information Prototype]] Use Case Scenario 2
+
+====UC29 Find LHCPs with experience with a diagnosis====
+==29.1 Preconditions:==
+A patient is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has been authenticated in the iTrust Medical Records system [UC3].
+==29.2 Main Flow:==
+A patient has just been diagnosed with a condition and wants to find the LHCPs in the area who have handled that condition. The patient chooses 'My Diagnoses” and is presented with a listing of all their own diagnoses, sorted by diagnosis date (more recent first). The patient can select a diagnosis and will be presented with the LHCPs in the patient's living area (based upon the first three numbers of their zip code) who have handled this diagnosis in the last three years. The list is ranked by the quantity of patients the LHCP has treated for that diagnosis (each patient is only counted once regardless of the number of office visits). For each LHCP, the following information is displayed:
+  * Name of LHCP linked to contact information for that LHCP
+  * The quantity of unique patients treated by that LHCP for that diagnosis (each patient is only counted once regardless of the number of office visits)
+  * List of all prescriptions given by that LHCP for that diagnosis
+  * List of all laboratory procedures ordered by that LHCP for that diagnosis
+  * The LCHP's average visit satisfaction
+  * The LHCP's average treatment satisfaction
+==29.3 Sub-flows:==
+None
+==29.4 Alternative Flows:==
+None
+==29.5 Logging==
+  * Find LHCPs with experience with a diagnosis [UC 5, S2900]
+==29.6 Reference document:==
+Inspired by Office of the [[http://healthit.hhs.gov/portal/server.pt?open=512&objID=1202&&PageID=15677&mode=2&in_hi_userid=10732&cached=true|National Coordinator for Health Information Technology (ONC) ]]Quality Detailed Use Case
+
+====UC30 Messaging between LHCP and patient====
+==30.1 Preconditions:==
+A LHCP or patient is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has been authenticated in the iTrust Medical Records system [UC3].
+==30.2 Main Flow:==
+An LHCP wants to send a message to a patient and/or that patient's personal representative [S2] or a patient or personal representative wants to send a message to one of their DLHCP or that of a person they are representing [S1]. LHCPs and patients/representatives may reply to messages [S3, S4]. An LHCP or patient/representative may view a message [S5]. An LHCP or patient/representative can sort his or her message inbox and message outbox [S6]. An LHCP or patient/representative can modify and save his/her message displaying filter [S7] or view his/her message inbox [S5] including only the messages satisfying the specified filtering criteria in the saved filter.
+==30.3 Sub-flows:==
+  * [S1] A patient or personal representative for a patient chooses to send a message to an LHCP (no multiple recipients allowed in a single message). The patient/representative is presented with a pull down menu of his/her DLHCP. The patient/representative chooses one of these DLHCP and types the subject (up to 100 characters) and text of a message (up to 1000 characters), and clicks the send button. A row for showing the message subject, the name of the recipient, and the timestamp (which includes both date and time) is then visible in the patient/representative’s message outbox. A bolded row for showing the message subject, the name of sender, and the timestamp is then visible in the LHCP's message inbox. A fake email is sent to the LHCP alerting the user that a new message has arrived. After a message is sent, the patient or personal representative is directed to his/her message outbox.
+  * [S2] An LHCP chooses to send a message to a patient/representative (no multiple recipients allowed in a single message). The LHCP enters and confirms the patient/representative's MID [E1, E2]. The LHCP types the subject (up to 100 characters) and the text of a message (up to 1000 characters), and clicks the send button. A row for showing the message subject, the name of the recipient, and the timestamp is then visible in the LHCP’s message outbox. A bolded row for showing the message subject, the name of the sender, and the timestamp is then visible in the patient/representative’s message inbox, and a fake email is sent to the patient/representative that indicates that he/she has a new message from an LHCP. After a message is sent, the LHCP is directed to to his/her message outbox.
+  * [S3] A patient or patient representative wishes to reply to a message. The patient/representative views his or her message inbox. The patient/representative opens the message to which he or she wishes to reply [S5], and then clicks the reply link above the message text. The patient/representative enters the text of the response message (up to 1000 characters) he or she wishes to send, then clicks the send button. A row for showing the message subject (now preceded by “RE:”), the name of the recipient, and the timestamp is then visible in the patient/representative’s message outbox. A bolded row for showing the message subject (now preceded by “RE:”), the name of the sender, and timestamp is then visible in the LHCP’s message inbox. A fake email is sent to the LHCP alerting the LHCP that a new message reply has arrived.
+  * [S4] An LHCP wishes to reply to a message. The LHCP views his or her message inbox. The LHCP opens the message to which he or she wishes to reply [S5], and then clicks the reply link above the message text. The LHCP enters the text of the response message (up to 1000 characters) he or she wishes to send, then clicks the send button. A row for showing the message subject (now preceded by “RE:”), the name of the recipient, and the timestamp are then visible in the LHCP’s message outbox. A bolded row for showing the message subject (now preceded by “RE:”), the name of sender, and timestamp are then visible in the patient/representative’s message inbox. A fake email is sent to the patient/representative alerting the patient/representative that a new message reply has arrived.
+  * [S5] A user (a patient, patient representative, or LHCP) wishes to read a message from the message inbox or outbox. The user chooses to open his or her message inbox/outbox. Each row in the message inbox/outbox includes the message subject, the name of either the sender (only for the case of inbox) or recipient (only for the case of outbox), and timestamp. By default, the messages in the message inbox/outbox should be ordered by timestamp, the most recent first. Each row for an unread message in the message inbox is bolded. The user selects a message from the message inbox/outbox to read by clicking the “Read” link beside the row for the message, and then the message subject, the name of the sender, the name of the the recipient, timestamp, and the message text shall be displayed in a new page. After a message in the message inbox is read (i.e., displayed in a new page), the row for the message in the message inbox is not bolded anymore.
+  * [S6] A user (a patient, patient representative, or LHCP) can sort messages in his or her message inbox by either the sender's last name or timestamp (but not both) in either ascending or descending order (where timestamps in descending order would have the most recent first). A user can sort messages in his or her message outbox by the recipient's last name or timestamp (but not both) in either ascending or descending order. To do so, a user selects one option out of the “Sort by” labeled drop-down box (with options of “Sender/Recipient” or “Timestamp”) and selects one option out of the “by order of” labeled drop-down box (with options of “ascending” or “descending”), and then click the “Sort” button. Note that the sorted order is not saved for later viewing after the message inbox or outbox is reopened again (where the default sorting is always used).
+  * [S7] A user (an LHCP or patient/representative) can modify his/her message displaying filter by modifying the following filtering criteria: (1) the sender (i.e., the sender's name is exactly the same as the specified string), (2) the subject (i.e., the subject is exactly the same as the specified string), (3) has the words (i.e., the subject or the message body has the specified substring), (4) doesn't have (i.e., neither the subject nor the message body has the specified substring), (5) time stamp falling into the period defined by the starting date and ending date (inclusive) (the user interface shall provide both the option of typing in a specific date in the date format and the option of selecting a date from a calendar for the current month). Note that a single filter includes values for these five filtering criteria (rather than five filters for these five filtering criteria) and a value could be an empty string, indicating that this criterion has no impact on filtering (i.e., imposing no constraints related to this criterion). The user interface shall be initially populated with the values of the filtering criteria from the previously saved filter. After the user modifies the criteria, the user chooses to click the “Cancel” button to cancel the modifications of the filter (i.e., repopulate the user interface with the values of the filtering criteria from the previously saved filter), to click the “Test Search” button to search (i.e., displaying the message inbox [S5] including only the messages satisfying the specified filtering criteria), or to click the “Save” button to save the modified filter. Each user is associated with only one filter (being saved across login sessions) and applies only this saved filter. The user's associated filter initially has all empty inputs for the filtering criteria before the user modifies it.
+==30.4 Alternative Flows:==
+  * [E1] The HCP types an invalid medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient. The HCP does not confirm the selection and is prompted to try again.
+==30.5 Logging==
+  * Send messages [UC 5, S3000]
+  * View messages [UC 5, S3001]
+  * View Inbox [UC 5, S3010]
+  * View Outbox [UC 5, S3011]
+==30.6 Reference Document:==
+Inspired by [[http://healthit.hhs.gov/portal/server.pt/gateway/PTARGS_0_10731_848113_0_0_18/PPSMDetai led.pdf|Office of the National Coordinator for Health Information Technology (ONC) Patient - Provider Secure Messaging]] Use Case
+
+====UC31 Find LHCPs for prescription renewal Use Case====
+==31.1 Preconditions:==
+A patient is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has been authenticated in the iTrust Medical Records system [UC3].
+==31.2 Main Flow:==
+A patient wants to renew the patient's expired prescriptions (i.e., prescriptions' end dates are earlier than the current date) and therefore wants to find the LHCPs who earlier wrote the patient's expired prescriptions (it is assumed that the doctors who wrote prescriptions are all LHCPs so no LHCP checks on the prescription-writing doctors are needed). The patient chooses “My Expired Prescription Reports” and is presented with a list of the patient's expired prescriptions [S1], sorted by start date (the later date is ranked earlier closer to the top). The patient can select to view contact information of a selected LHCP shown in the expired prescription list [S2].
+==31.3 Sub-flows:==
+  * [S1] The expired prescription report list is titled with the patient name. The expired prescription list includes medication, date prescribed (i.e., the day of the office visit), start date, end date for each prescription, and the name of the LHCP who prescribed the medication (where the name of the LHCP is linked to contact information for that LHCP). If there are no expired prescriptions, an empty expired prescription list is presented.
+  * [S2] The patient clicks on the name of the LHCP for an expired prescription, and is presented with the contact information for that LHCP (including First Name Last Name, LHCP Type, Street Address 1, Street Address 2, City, State, Zip Code, Phone, and Contact Email); if any type of contact information is missing or the whole contact information for the LHCP is not available in the database, the corresponding missing types of information are simply shown as blank.
+==31.4 Alternative Flows:==
+None
+==31.5 Logging==
+  * Find LHCPs for prescription renewal [UC 5, S3100]
+
+====UC32 Proactively Confirm Prescription-Renewal Needs Use Case====
+==32.1 Preconditions:==
+The HCP has authenticated himself or herself in the iTrust Medical Records system [UC2 3].
+==32.2 Main Flow:==
+The HCP chooses “Potential Prescription-Renewals” and is presented with a list of patients [S2] that satisfy ALL of the three conditions: (1) patients for whom the HCP is a DLHCP, (2) special-diagnosis-history patients [S1], (3) patients whose prescriptions will expire within 7 days (including the 7th day) from the current date (i.e., (currentDate < = expiredDate < = (currentDate + 7 days)).
+==32.3 Sub-flows:==
+  * [S1] A chronic special-diagnosis-history patient is an alive patient who has been diagnosed with at least one of the following:
+      * diabetes mellitus [is diagnosed with ICD code beginning with 250:[[http://icd9cm.chrisendres.com/icd9cm/index.php?action=child&recordid=1894]] ],
+      * asthma [is diagnosed with ICD code beginning with 493:[[http://icd9cm.chrisendres.com/icd9cm/index.php?action=child&recordid=5000]] ], or
+      * circulatory-system disease [is diagnosed with an ICD code between 390 and 459 inclusive: [[http://icd9cm.chrisendres.com/icd9cm/index.php?action=child&recordid=4314]] ].
+  * [S2] The patient list is titled with the HCP's name. The patient list includes the patient's name (i.e., first name and last name), phone number, and contact email address [E1, E2] (so that confirmation calls or emails can be made or sent outside of the iTrust system). The list is sorted based on the ascending alphabetical order of the patients' last names, and then first names. When a chronic special-diagnosis-history patient satisfies all three conditions and has multiple prescriptions satisfying the third condition, the patient is listed in the list only once. The list is a static list with no link on the patient's name, phone number, or contact email address)
+==32.4 Alternative Flows:==
+  * [E1] If there are no patients satisfying the three conditions, an empty list is presented.
+==32.5 Logging==
+  * Proactively confirm prescription-renewal needs [UC 5, S3200]
+  * View the diagnoses list [UC 5, S3210]
+==32.6 Reference Documents:==
+[[http://www.patentstorm.us/patents/7286996/fulltext.html]]
+
+
+====UC33 Refer and Provide Consultations Use Case====
+==33.1 Preconditions:==
+A LHCP is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has been authenticated in the iTrust Medical Records system [UC3].
+==33.2 Main Flow:==
+A sending LHCP refers a patient to another receiving LHCP [S1]. A receiving HCP reviews pending consultations [S2]. A sending LHCP reviews the consultation sent back by the receiving LHCP [S3].
+==33.3 Sub-flows:==
+  * [S1] An LHCP chooses to refer a patient to another receiving LHCP. The sending LHCP is presented with a drop down menu of his patients and another drop down menu of other LHCPs. When the patient and receiving LHCP are chosen, the LHCP is presented with the MID of the patient that will be sent to the receiving HCP. The sending HCP is also presented with a text box to include the details of the referral to be sent to the receiving LHCP. The sending LHCP then chooses to send the request or to cancel [E1, E2]. The status of the consultation being sent is set as “pending”.
+  * [S2] An LHCP chooses to review pending consultations. The receiving LHCP is presented with a list of pending referrals. The receiving LHCP then selects a referral to view details and is presented with the MID of the sending LHCP, the patient MID, and the referral details. The LHCP is also presented with an option (“finish”, “decline”, “pending” with “pending” as default value) to mark the status of the consultation and a text box to enter the details of the consultation. The receiving LHCP can then choose to confirm the status setting/consultation entering or cancel.
+==33.4 Alternative Flows:==
+  * [E1] The patient chosen is not the desired patient. The HCP does not confirm the selection and is prompted to try again.
+  * [E2] The receiving HCP chosen is not the desired HCP. The sending HCP does not confirm the selection and is prompted to try again.
+==33.5 Logging==
+  * Refer a patient for consultations [UC 5, S3300]
+  * View referral for consultation [UC 5, S3310]
+  * Modify referral for consultation [UC 5, S3311]
+
+
+
+
+====UC34 Report Telemedicine Monitoring Details Use Case====
+==34.1 Preconditions:==
+  * An LHCP, UAP, or patient is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has been authenticated in the iTrust Medical Records system [UC3].
+==34.2 Main Flow:==
+  * An LHCP or UAP creates a list of patients (by MID) for which he or she will monitor remotely [E1, S1]. A patient either chooses to input his or her physiologic measurements (blood pressure and/or glucose levels) [S2], or to input his or her weight, height, and/or pedometer readings [S7]. An LHCP can see the blood pressure and glucose levels [S3], or weight, height, and pedometer readings [S8] for the patients he or she is monitoring, with two separate lists for physiologic andheight/weight/pedometer readings [S3]. A UAP [S5 & S9] or patient representative [S6 & S10] can input the blood pressure, glucose levels, height, weight, or pedometer readings for a patient. A patient may have up to 10 physiologic data points in any one day, reported by him/herself, a UAP, or a personal representative [E4]. A patient may have at most one height data point, one weight data point, and one pedometer data point in any one day, reported by him/herself, a UAP, or a personal representative [E6].
+==34.3 Sub-flows:==
+  * [S1] An LHCP or UAP can add and delete patients from his or her monitoring list. A patient is added to the list by the LHCP or UAP typing in the patient's MID [E1] or name. An LHCP can delete a patient from his or her monitoring list by the LHCP typing the the patient's MID [E1]. In both cases, the LHCP is presented the name of the patient and must confirm the add/delete. For each patient from the monitoring list, the LHCP can choose to edit which types of remote monitoring information (blood pressure, glucose levels, height, weight, and pedometer readings) should be submitted by the patient. By default, all types of information are selected for monitoring.
+  * [S2] A patient whose at least one physiologic data type is specified to be under monitoring chooses to report their physiologic data. He or she can report his or her blood pressure (systolic and diastolic) [E2] and/or glucose levels [E3]. The input data, a timestamp, and the fact that the status is “self-reported” are saved.
+  * [S3] An LHCP chooses to view the physiologic data monitoring details. The LHCP is presented with a listing of all his or her patients whose at least one physiologic data type is specified to be under monitoring with their blood pressure and glucose levels, recording timestamp, and whom reported the data (patient, UAP name, personal representative name). Patients with no information for the current day are highlighted. Patients with blood pressure or glucose level out of range are highlighted (normal blood pressure: systolic 90-140; diastolic 60-90; normal glucose 70-150). The LHCP can select a patient to obtain additional information about a patient [S4].
+  * [S4] An LHCP selects to view additional information for a patient. The LHCP is presented with a screen upon which he/she can choose a date range. Once the date range is selected, the LHCP can see the patient name; patient phone number; personal representative (name and phone number), if applicable; and the blood pressure, glucose levels, height, weight, and pedometer readings as well as whom reported the data (patient, UAP name, personal representative name) for that date range.
+  * [S5] A UAP can select to report physiologic measurements. He/she is presented with a list of the patients whose at least one physiologic data type is specified to be under monitoring and for whom he/she is allowed to report measurements. He or she can select a patient and then enter data. He or she can report the blood pressure (systolic and diastolic) [E2] and/or glucose levels [E3] for the patient. The input data, a timestamp, and the fact the the status was reported by “case manager” and their MID are saved. Only the applicable input entries (those whose corresponding data types of the patient are specified to be under monitoring) are displayed to the UAP.
+  * [S6] A patient can select to report physiologic measurements for those whose at least one physiologic data type is specified to be under monitoring andfor whom he/she is a patient representative. He/she is presented with a list of the patients whose at least one physiologic data type is specified to be under monitoring and for which he/she is allowed to report measurements. He or she can select a patient and then enter data. He or she can report the blood pressure (systolic and diastolic) [E2] and/or glucose levels [E3] for the patient. The input data and a timestamp and the fact that the status was reported by “patient representative” and their MID are saved. Only the applicable input entries (those whose corresponding data types of the patient are specified to be under monitoring) are displayed to the patient.
+  * [S7] A patient whose height, weight, or pedometer data type is specified to be under monitoring chooses to report his/her height/weight/pedometer data. He or she can report his or her daily height (in the format of digits XXXX.X with the units of “feet”), daily weight (in the format of digits XXXX.X with units of “lbs”), and/or pedometer readings (in the format of up to 10 digits of integer with units of “footsteps”) [E5]. The input data, a timestamp, and the fact that the status is “self-reported” are saved. Only the applicable input entries (those whose corresponding data types of the patient are specified to be under monitoring) are displayed to the patient.
+  * [S8] An LHCP chooses to view the height/weight/pedometer data monitoring details. The LHCP is presented with a listing of all his or her patients whose height, weight, or pedometer data type is specified to be under monitoring with their height, weight and pedometer reading numbers, recording timestamp, and who reported the data (patient name, UAP name, or personal representative name). Patients with no information for the current day are highlighted in red. Patients with a weight value 5% more or less than the immediate previously recorded weight value are highlighted (if the new weight value exceeds 105% of the previous weight value, the entry should be highlighted yellow; if the new weight value is below 95% of the previous weight value, the entry should be highlighted yellow). The LHCP can select a patient to obtain additional information about a patient [S4].
+  * [S9] A UAP can select to report height/weight/pedometer measurements. He/she is presented with a list of the patients whose height, weight, or pedometer data type is specified to be under monitoring and for which he/she is allowed to report measurements. He or she can select a patient and then enter data. He or she can report the height, weight, and/or pedometer reading [E5] for the patient. The input data, a timestamp, and the fact that the status was reported by “case manager” and his/her MID are saved. Only the applicable input entries (those whose corresponding data types of the patient are specified to be under monitoring) are displayed to the UAP.
+  * [S10] A patient can select to report height, weight, and/or pedometer readings for those for whom he/she is a patient representative. He/she is presented with a list of the patients for which he/she is allowed to report measurements. He or she can select a patient and then enter data. He or she can report the height, weight, and/or pedometer readings [E5] for the patient. The input data, a timestamp, and the fact that the status was reported by “patient representative” and his/her MID are saved. Only the applicable input entries (those whose corresponding data types of the patient are specified to be under monitoring) are displayed to the patient.
+==34.4 Alternative Flows:==
+  * [E1] The patient chosen is not the desired patient. The HCP does not confirm the selection and is prompted to try again.
+  * [E2] The patient, UAP, or personal representative enters a systolic blood pressure outside the range 40-240 or a diastolic blood pressure outside the range 40-150. He/she is notified of an error and is prompted to try again.
+  * [E3] The patient, UAP, or personal representative enters a glucose level outside the range 0-250. He/she is notified of an error and is prompted to try again.
+  * [E4] The patient, UAP, or personal representative tries to enter more than ten physiologic data points for one day and is told additional data cannot be entered.
+  * [E5] The patient, UAP, or personal representative enters an alpha invalid value for weight and/or pedometer reading and is notified of an error and prompted to try again.
+  * [E6] The patient, UAP, or personal representative tries to enter more than one weight data point or more than one pedometer data point for the day and is told additional data cannot be entered.
+==34.5 Logging==
+  * LHCP adds a patient from his or her monitoring list [UC 5, S3400]
+  * LHCP edits the patient list from his or her monitoring list [UC 5, S3401]
+  * LHCP deletes a patient from his or her monitoring list [UC 5, S3402]
+  * A patient reports remote monitoring levels (blood pressure, glucose levels, weight and/or pedometer reading) [UC 5, S3410]
+  * A LHCP views the remote monitoring data the patients they are monitoring report[UC 5, S3420]
+==34.6 Reference Documents==
+[[http://healthit.hhs.gov/portal/server.pt/gateway/PTARGS_0_10731_848114_0_0_18/RMonDetailed.pdf|US Department of Health and Human Services Remote Monitoring Use Case]]
+
+====UC35 Report Adverse Event Use Case====
+==35.1 Preconditions:==
+A patient is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has been authenticated in the iTrust Medical Records system [UC3].
+==35.2 Main Flow:==
+A patient selects to reports an event related to a prescription drug [S1] or immunization [S2] reaction.
+==35.3 Sub-flows:==
+  * [S1] A patient is presented with a listing of all prescription drugs for which he/she has been prescribed and/or has taken in the last 12 months. The patient chooses one or more drug(s) for which to report the adverse event. The patient is then able to write a textual description which describes the symptoms of the adverse event and to save the information. A fake email is sent to the LHCP who prescribed the medication indicating the patient name and MID, drug, and symptoms.
+  * [S2] A patient is presented with a listing of all immunizations for which he/she has been administered in the last 12 months. The patient chooses the immunization for which to report the adverse event. The patient is then able to write a textual description which describes the symptoms of the adverse event and to save the information. A fake email is sent to the LHCP who administered the immunization indicating the patient name and MID, drug, and symptoms.
+==35.4 Alternative Flows:==
+None
+==35.5 Logging==
+  * Adverse event reporting [UC 5, S3500]
+==35.6 Reference Documents:==
+[[http://healthit.hhs.gov/portal/server.pt/gateway/PTARGS_0_10731_848115_0_0_18/CAERFinalExtGap.pdf|US Department of Health and Human Services Consumer Adverse Event Reporting]] Use Case
+
+====UC36 Monitor Adverse Event Use Case====
+==36.1 Preconditions:==
+A patient or public health agent are a registered user of the iTrust Medical Records system [UC2]. The iTrust user has been authenticated in the iTrust Medical Records system [UC3].
+==36.2 Main Flow:==
+A public health agent selects a specific time period for which he/she would like to see a detailed listing of all adverse events related to prescription drugs [S1] or immunizations [S2] or to see trends in adverse events relate to prescription drugs [S4] or immunizations [S5].
+==36.3 Sub-flows:==
+  * [S1] A public health agent is presented with a listing of prescription drug-related adverse events for the time period that do not have a status of “removed”, sorted by NDC. The public health agent can select to see the detail of a specific report. Upon reading the report, the public health agent can choose to send a “fake email” message to the adverse event reporter to gain more information about the report. The public health agent may also choose to remove an adverse event report (such as based upon communication with the reporter or because the report appears to be bogus) [S3].
+  * [S2] A public health agent is presented with a listing of immunization-related adverse events for the time period that do not have a status of “removed”, sorted by CPT code . The public health agent can select to see the detail of a specific report. Upon reading the report, the public health agent can choose to send a “fake email” message to the adverse event reporter to gain more information about the report. The public health agent may also choose to remove an adverse event report (such as based upon communication with the reporter or because the report appears to be bogus) [S3].
+  * [S3] The adverse event report changes to a status of “removed.” A message of the removal is sent to the adverse event reporter and to the LHCP involved in the report (because the LHCP prescribed the drug or administered the immunization).
+==36.4 Alternative Flows:==
+None
+==36.5 Logging==
+  * Adverse event monitoring [UC 5, S3600]
+  * Delete adverse event [UC 5, S3601]
+==36.6 Reference Documents==
+[[http://healthit.hhs.gov/portal/server.pt/gateway/PTARGS_0_10731_848115_0_0_18/CAERFinalExtGap.pdf|US Department of Health and Human Services Consumer Adverse Event Reporting Use Case]]
+
+====UC37 Safe Drug Prescription Use Case====
+==37.1 Preconditions:==
+An LHCP is registered user of the iTrust Medical Records system [UC2]. The iTrust user or administrator has been authenticated in the iTrust Medical Records system [UC3].
+==37.2 Main Flow:==
+While documenting an office visit, the LHCP selects to prescribe a patient a drug by selecting its NDC and name [S1, S2]. Upon notice of allergies and interactions the LHCP proceeds with the prescription [S3] or the the use case begins again to allow the LHCP to choose another drug or the LHCP abandons the use case.The administrator chooses to maintain the overriding reasons that an LHCP can select from [S4]
+==37.3 Sub-flows:==
+  * [S1] The drug desired to be prescribed is checked against the patient's drug allergies. The LHCP is notified of drug allergy.
+  * [S2] The drug desired to be prescribed is checked for interactions between other drugs currently taken by the patient. The LHCP is notified of possible interactions.
+  * [S3] The LHCP selects one or more reasons out the nine reasons listed [[http://archinte.ama-assn.org/cgi/content/full/163/21/2625/TABLEIOI20692T4|here]]:for the overriding.[E1] The patient is sent a “fake email” that the LHCP has prescribed a medication that he/she is allergic to or that has a known interaction with a drug he/she is taking.
+  * [S4] The system shall enable the administrator to add a new entry for a reason [S5], or modify the reason name in an existing entry [S5]. Note that the administrator is not allowed through the system interface to delete an existing entry or modify the reason ID number in an existing entry.
+  * [S5] The system shall store (1) reason id number for the reason [E2]; and (2) up to 80 alphanumeric characters giving the name of the[S5] The system shall store (1) reason id number for the reason [E2]; and (2) up to 80 alphanumeric characters giving the name of the reason. [E3] reason. [E3]
+==37.4 Alternative Flows:==
+  * [E1] When the LHCP selects the “Other” reason, the LHCP shall enter free-style text to provide the details for “Other” reasons.
+  * [E2] The administrator types an invalid ID and is prompted to try again.
+  * [E3] The administrator types an invalid name and is prompted to try again.
+==37.5 Logging==
+  * Prescribe medication [UC 5, S3700]
+  * Edit prescription [UC 5, S3701]
+  * Add overriding reason listing [UC 5, S3710]
+  * Edit overriding reason listing [UC 5, S3711]
+==37.6 Reference Documents:==
+[[http://healthit.hhs.gov/portal/server.pt/gateway/PTARGS_0_10731_848121_0_0_18/MedGapFinalExtGap.pdf|US Department of Health and Human Services Medication Gaps Use Case]]
+
+====UC38 Maintain Drug Interaction Use Case====
+==38.1 Preconditions:==
+An admin is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has been authenticated in the iTrust Medical Records system [UC3].
+==38.2 Main Flow:==
+The administrator records [S1] or deletes [S2] a drug interaction between two prescription drugs.
+==38.3 Sub-flows:==
+  * [S1] The administer is presented with two lists of NDC codes/names. The administrator chooses a drug from each list to record an interaction between the two drugs [E1] The two drugs and a textual description of the possible effects of the interaction are stored.
+  * [S2] The administrator selects one drug and is presented with a listing of all drug interactions with that drug. The administrator can select a particular pair of drugs and delete the interaction between the two drugs.
+==38.4 Alternative Flows:==
+  * [E1] The administrator has chosen the same drug from both lists. The system directs the user to make a different choice.
+==38.5 Logging==
+  * Add Drug Interactions Code [UC 5, S3800]
+  * Delete Drug Interactions Code[UC 5, S3801]
+==38.6 Reference Documents==
+[[http://healthit.hhs.gov/portal/server.pt/gateway/PTARGS_0_10731_848121_0_0_18/MedGapFinalExtGap.pdf|US Department of Health and Human Services Medication Gaps Use Case]]
+
+
+
+====UC40 View Schedule Calendar Use Case====
+==40.1 Preconditions:==
+An LHCP or patient is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has been authenticated in the iTrust Medical Records system [UC3].
+==40.2 Main Flow:==
+An LHCP or patient can click the “View Appointment Calendar” link to view his/her appointments in the current month displayed on a calendar for the current month [S1]. A patient can click “View Full Calendar” link to view his/her appointments in the current month together with his/her office visit dates, prescription dates, and lab procedure dates in the current month displayed on a calendar for the current month [S2].
+==40.3 Sub-flows:==
+  * [S1] A user (an LHCP or patient) chooses to display his/her appointments in the current month on a calendar for the current month. His/her appointments in the current month shall be displayed on the calendar [S3]. The user can select an appointment from the calendar to read the appointment's details [S4].
+  * [S2] A user (a patient) chooses to display his/her appointments in the current month together with his/her office visit dates, prescription dates, and lab procedure dates of the current month on a calendar for the current month. His/her appointments shall be displayed on the calendar [S3]. The user can select an appointment from the calendar to read the appointment's details [S4]. In the calendar, the date entry with an office visit shall display a label as the diagnoses (i.e., ICD-9CM codes) for the office visit. The user can select an office visit from the calendar to read the visit's details [S5]. //In the calendar, the date entry with a prescription date (i.e., the date of the office visit the medication was prescribed on) shall display a label for the medications prescribed (i.e., NDC, see Data Format 5.6) in the prescription.// The user can select a prescription from the calendar to read the prescription's details [S6]. //In the calendar, the date entry with a laboratory procedure (i.e., the entry of the its last status update date) shall display a label as the LOINC code for the laboratory procedure. The user can select a laboratory procedure from the calendar to read the laboratory procedure's details [S7].//
+  * [S3] In the calendar, the date entry with an appointment shall display a label as the appointment type name for the appointment. The date entry including conflicting appointments is highlighted in bold (a conflicting appointment is one that has overlap in its appointment duration period with that of at least another appointment of the same user).
+  * [S4] The user selects an appointment from the calendar to read its details by clicking the “Read Details” link beside or below the appointment type name displayed for the appointment, and then the details for the appointment shall be displayed in a new page, including the appointment type, the appointment date and start time, comment, and the name of either the patient (only for the user being an LHCP) or the LHCP (only for the user being a patient).
+  * [S5] The user selects an office visit from the calendar to read its details by clicking the “Read Details” link beside or below the ICD-9CM code (i.e., diagnose) displayed for the visit, and then the details for the visit shall be displayed in a new page, including date of office visit, note text, diagnoses (i.e., ICD-9CM codes), medical procedures performed (i.e., CPT code) , lab procedures ordered (LOINC code, see Data Format 6.11), medications prescribed (i.e., NDC, see Data Format 5.6), immunizations given (i.e., CPT Code, see UC15, S1), and the name of the doctor who prescribed the medication.
+  * [S6] The user selects a prescription from the calendar to read its details by clicking the “Read Details” link beside or below the medication displayed for the prescription, and then the details for the prescription shall be displayed in a new page, including the medications prescribed (i.e., NDC, see Data Format 5.6), date prescribed, start date, end date for each prescription, and the name of the doctor who prescribed the medication.
+  * [S7] The user selects a laboratory procedure from the calendar to read its details by clicking the “Read Details” link beside or below the LOINC code displayed for the laboratory procedure, and then the details for the laboratory procedure shall be displayed in a new page, including laboratory procedure code, status, commentary, results, andoffice visit date when the laboratory procedure was ordered.
+==40.4 Alternative Flows:==
+None
+==40.5 Logging==
+  * View prescription report [UC 5, S1900]
+  * View Laboratory Procedure Results [UC 5, S2601]
+  * View Calendar [UC 5, S4000]
+  * View Upcoming Appointments [UC 5, S4010]
+
+
+
+====UC42 View Notifications Use Case====
+==42.1 Preconditions:==
+An LHCP or patient is a registered user of the iTrust Medical Records system [UC2]. The iTrust user has been authenticated in the iTrust Medical Records system [UC3].
+==42.2 Main Flow:==
+  * An LHCP [S2] views his or her iTrust homepage. On the LHCP homepage, the LHCP views a notification center with a list of his or her upcoming appointments for the current date [S1], number of physiologic data monitoring reports of his or her patients for the current date [S3], number of weight/pedometer data monitoring reports of his or her patients for the current date [S4], number of unread messages from his or her message inbox [S5]. The event is logged [UC5].
+  * A patient or personal health representative [S1] views his or her iTrust homepage. On the patient homepage, the Patient views a notification center. The notification center displays, “You haven't entered remote monitoring information for today yet!” if the patient is being monitored for telemedicine but the patient or personal health representative hasn't entered remote monitoring information for the current date yet. The notification center also displays a list of the patient and patient representee upcoming appointments [S2], the information of his or her designated HCP [S6], and the number of unread messages from his or her message inbox [S5].
+==42.3 Sub-flows:==
+  * [S1] An LHCP views a list of his or her upcoming appointments for the current date (sorted by time, soonest upcoming first), with each appointment displayed in the format “HH:MM AM/PM - AppointmentType”. The LHCP clicks an appointment to view more details. The appointment details display the appointment type, appointment date and start time, duration, the name of the patient, and appointment comments [E1].
+  * [S2] A user (a patient or personal health representative) can choose to view a list of his or her upcoming appointments for himself/herself, as well as appointments for the patients he/she represents (i.e., a list including appointments whose appointment date and start time is equal or later than the current date/time, sorted by time with soonest upcoming first). The appointments are listed in the format “MM/DD/YYYY - AppointmentType”. The patient or personal health representative clicks an appointment to view more details. The appointment details include the appointment type, appointment date and start time, duration, the name of the LHCP, and appointment comments [E1].
+  * [S3] An LHCP views the number of submitted physiologic data monitoring reports of his or her patients for the current date. The LHCP clicks this number to view the physiologic data monitoring details of his or her patients for the current date. The LHCP is presented with a listing of all his or her patients to view physiologic data reported during the current date. Each row in the list includes their blood pressure and glucose levels, recording timestamp, and whom reported the data (patient, UAP name, personal representative name).
+  * [S4] An LHCP views the number of submitted weight/pedometer data monitoring reports of his or her patients for the current date. The LHCP clicks this number to view the weight/pedometer monitoring details of his or her patients for the current date. The LHCP is presented with a listing of all his or her patients to view weight/pedometer data reported during the current date. Each row in the list includes their weight and pedometer reading numbers levels, recording timestamp, and whom reported the data (patient, UAP name, personal representative name).
+  * [S5] A user (a patient, patient representative, or LHCP) views the number of unread messages from his or her message inbox. The user clicks this number to view his or her message inbox. The user is presented with a list of his or her messages in the message inbox. Each row in the list includes the message subject, the name of the sender, and timestamp. By default, the messages in the list should be ordered by timestamp, the most recent first. The user selects a message from the list to read by clicking the “Read” link beside the row for the message, and then the message subject, the name of the sender, the name of the the recipient, timestamp, and the message text shall be displayed in a new page.
+  * [S6] A user (a patient or personal health representative) views basic information about his or her designated LHCPs, including the name, phone number, and contact email information [E2].
+==42.4 Alternative Flows:==
+  * [E1] If the comment is empty, the text “No Comment” is displayed.
+  * [E2] If a patient has no declared LHCP, “You have no declared LHCP” is displayed.
+==42.5 Logging==
+  * View Notifications [UC 5, S4200]
+
+
+====UC43 View Activity Feed Use Case====
+==43.1 Preconditions:==
+A patient is a registered user of the iTrust Medical Records system [UC1]. The patient has authenticated himself or herself in the iTrust Medical Records system [UC3].
+==43.2 Main Flow:==
+After the patient logs in, an activity feed is displayed [S1].
+==43.3 Sub-flows:==
+  * [S1] The activity feeds show the information below (if the accessor is an LHCP, the accessor's name in the displayed activity shall be linked to the LHCP's contact information) [S2]:
+      * who/when created or disabled the patient,
+      * who/when accessed the patient's demographic information,
+      * who/when accessed/edited the patient's medical records (i.e., personal health records),
+      * who/when documented or edited the patient's office visits,
+      * who/when declared/undeclared the patient's personal representative,
+      * who/when analyzed risk of chronic disease for the patient,
+      * who/when proactively determined needed patient care for the patient,
+      * who/when viewed the patient's prescription report,
+      * who/when viewed the patient's emergency electronic health record,
+      * who/when scheduled an appointment with the patient,
+      * who/when accessed the patient's comprehensive reports,
+      * who/when viewed laboratory procedure status of the patient or edited laboratory procedure of the patient,
+      * who/when accessed the patient's information (name, address, and date of last office visit),
+      * who/when sent the patient a message,
+      * who/when proactively confirmed prescription-renewal needs for the patient,
+      * who/when referred the patient for consultations,
+      * who/when added/deleted the patient from monitoring list,
+      * who/when prescribed drug to the patient,
+      * who/when reported remote monitoring information for the patient,
+      * the date and time of each of the patient's successful authentications.
+  * [S2] Only the most recent 20 activities are listed in the user page after login. If there are more than the currently listed activities, a link of “Older Activities” shall be displayed [E1]. The patient can choose to click this link. The system shall append 20 more activities to the end of the currently listed activities on the same page. Similarly if there are more than the currently listed activities, a link of “Older Activities” shall be further displayed [E1] and so on.
+==43.4 Alternative Flows:==
+  * [E1] If there are no older activities besides the currently listed activities, no link of “Older Activities” is displayed.
+==43.5 Logging==
+  * View activity feed [UC 5, S43 00]
+
+=====4. Non-Functional Requirements=====
+==4.1 HIPAA==
+Implementation must not violate HIPAA guidelines.
+==4.2 Exlusive Authentication==
+The system shall enable multiple simultaneous users, each with his/her own exclusive authentication.
+==4.3 Form Validation==
+The form validation of the system shall show the errors of all the fields in a form at the same time.
+==4.4 Reports==
+A **report** is a page which opens in a separate window and contains minimal decoration. The format is printer-friendly in that the background is white and the information does not exceed the width of 750 pixels so that upon printing, no information is lost due to the information being too wide.
+==4.5 Privacy Policy==
+The system shall have a privacy policy linked off of the home page. The privacy policy should follow the template provided [[http://ecommerce.ncsu.edu/studio/templates/privacy_tem.doc|here.]]
+==4.6 Security of MID==
+Remove MID from being displayed on all pages and URLs. MIDs should be considered private, sensitive information.
+=====5. Constraints=====
+==5.1 Language==
+The system shall be implemented as a Java Server Page web application.
+==5.2 Coding Standards==
+The implementation shall adhere to the Java Coding Standards.
+==5.3 Documentation==
+All new code shall be documented using the Javadoc documentation system.
+==5.4 Environment==
+The implementation shall run on the Windows platform in the Eclipse 3.3 environment.
+==5.5 Testing==
+All non-GUI classes must have at least 80% unit testing/JUnit coverage of tests that pass.
+==5.6 Database==
+To control open connections to the database, all database access should be done through an object that uses the Singleton pattern.
+==5.7 Patterns==
+The implementation must use the Strategy pattern for epidemic detection and cause-of-death trends and the Singleton pattern for database connections.
+==5.8 Static Analysis==
+The application should have no true positive Severe or Medium FindBugs errors.
+
+=====6. Data Field Formats=====
+
+====6.0 User====
+^Field^Format^
+|Security Question  |Up to 50 alphanumeric characters and symbols: <space> ? - '  |
+|Security Answer  |Up to 50 alphanumeric characters and symbols: <space> ? - '  |
+|Password  |8-20 alphanumeric characters. In production, password should be encrypted in the database. During development, password can be in plain text.  |
+
+====6.1 Patient====
+^Field^Format^
+|Medical identification number (MID)  |Unique 10-digit number that does not start with 9 (reserved for personnel, ie LHCP, UHCP (UAP), Admin)|
+|Last Name  |Up to 20 alpha characters and symbol - and ', <space>|
+|First Name  |Up to 20 alpha characters and symbol - and ' ,<space>|
+|Contact email  |Up to 30 alphanumeric characters and symbols . and _ @, <space>|
+|Street Address 1  |Up to 20 alphanumeric characters and symbols: . <space>|
+|Street Address 2  |Up to 20 alphanumeric characters and symbols: . <space> (optional field)|
+|City  |Up to 15 alpha characters|
+|State  |Approved 2-letter state abbreviation|
+|Zip Code  |5 digits - 4 digits (the latter part – 4 digits– is optional)|
+|Phone  |3 digits - 3 digits - 4 digits|
+|Emergency contact name  |Up to 40 alpha characters and symbol - and ', <space>|
+|Emergency contact phone  |3 digits - 3 digits - 4 integers|
+|Insurance company name  |Up to 20 alphanumeric characters|
+|Insurance company Address 1  |Up to 20 alphanumeric characters and symbols: . - and blankspace|
+|Insurance company Address 2  |Up to 20 alphanumeric characters and symbols: . - and blankspace (optional field)|
+|Insurance company City  |Up to 15 alpha characters|
+|Insurance company State  |Approved 2-letter state abbreviation|
+|Insurance company Zip  |5 integers - 4 integers (the latter part – 4 integers – is optional)|
+|Insurance company Phone  |3 integers - 3 integers - 4 integers|
+|Insurance identification  |Up to 20 alphanumeric characters|
+
+====6.2 Medical Care Personnel====
+^Field^Format^
+|Medical identification number (MID)  |Unique 10-digit number that begins with 9 for Admin, LHCP, and ER and with an 8 for UAP|
+|Role  |“Administrator”, “Licensed health care professional”, “Unlicensed authorized personnel”, “Emergency responder” “Public health agent” (admin, LHCP, UAP, ER, PHA)|
+|LHCP Type  |(for LHCP only) “General”, “Surgeon”, “Heart specialist”, “Pediatrician”, “OB/GYN”|
+|Last Name  |Up to 20 alpha characters and symbol - and '|
+|First Name  |Up to 20 alpha characters and symbol - and '|
+|Street Address 1  |Up to 30 alphanumeric characters and symbol: .|
+|Street Address 2  |Up to 30 alphanumeric characters and symbol: . (optional field)|
+|City  |Up to 15 alphanumeric characters|
+|State  |Approved 2-letter state abbreviation|
+|Zip Code  |5 integers - 4 integers (the latter part – 4 integers – is optional)|
+|Phone  |3 integers - 3 integers - 4 integers|
+|Contact Email  |Up to 30 alphanumeric characters and symbols . and _ @, <space>|
+
+
+
+====6.3 Audit & Transaction Logging ====
+^Field^Format^
+|Editor/Viewer MID (ie the user performing the action)  |10-digit number|
+|Secondary medical identification number  |10-digit number|
+|Transaction type  |See below|
+|Additional Information  |Up to 30 alphanumeric characters for optional description or clarification|
+|Date/ Time  |Timestamp|
+
+[[auditCodes|Audit & Transaction Code Definitions]]
+
+====6.4 Patient Personal Health Record====
+Order of these entries does not matter.
+The following information must be maintained.
+**Table 6.4.1**
+Patient Information:
+^Field^Format^
+|Patient MID  |Unique 10-digit number that does not start with 9 [uneditable]|
+|First Name  |Up to 20 Letters, space, ' and -|
+|Last Name  |Up to 20 Letters, space, ' and -|
+|Email  |Up to 30 alphanumeric characters and symbols . and _ @|
+|Address  |Up to 30 alphanumeric characters, and .|
+|City  |Up to 15 characters|
+|State  |2 character state code|
+|Zip  |xxxxx or xxxxx-xxxx|
+|Phone  |xxx-xxx-xxxx|
+|Mother MID  |Unique 10-digit number that does not start with 9|
+|Father MID  |Unique 10-digit number that does not start with 9 (optional)|
+|Credit Card Type  |(Mastercard, Visa, Discover or American Express}|
+|Credit Card Number  |xxxx-xxxx-xxxx-xxxx|
+
+**Table 6.4.2**
+Patient's Insurance Information:
+^Field^Format^
+|Name  |Up to 20 Letters, space, ' and -|
+|Address  |Up to 30 alphanumeric characters, and .|
+|City  |Up to 15 characters|
+|State  |2 character state code|
+|Zip  |xxxxx or xxxxx-xxxx|
+|Phone  |xxx-xxx-xxxx|
+|Insurance ID  |Up to 20 letters, digits, space, ' and -|
+
+**Table 6.4.3**
+The Patient's Emergency Contact Information:
+^Field^Format^
+|Name  |Up to 20 Letters, space, ' and -|
+|Phone  |xxx-xxx-xxxx|
+
+**Table 6.4.4**
+The Patient's Health Information:
+^Field^Format^
+|Ethnicity  |Choose from Caucasian, African American, Hispanic, American Indian, Asian, other|
+|Blood Type  |O+, A+, B+, AB+, O-, A-, B-, AB-|
+|Gender  |Male or Female|
+|Birth Date  |including day, month, and year|
+|Deceased Date  |including day, month, and year (optional field)|
+|Deceased Diagnosis  |The cause-of-death diagnosis, in ICD9CM format (optional field) [for UC16]|
+|Topical Notes  |Up to 200 alphanumeric characters and symbols: ? - ' . blankspace and carriage return of personal information about the patient (optional field)|
+|Food Allergies  |As many entries as necessary of up to 30 alpha characters each; stored per office visit.|
+|Drug Allergies  |National Drug code|
+
+Additionally, a history of the following information must be maintained \\
+**Table 6.4.5**
+^Field^Format^
+|Height  |Up to 3-digit number+ up to 1 decimal place (inches).|
+|Weight  |Up to 4-digit number + up to 1 decimal place (pounds).|
+|Blood Pressure  |Up to 3-digit number / Up to 3-digit number|
+|Cholesterol  |HDL [integer less than 90], triglyceride [integer between 100 and 600], LDL [integer between 0 and 600] and the total cholesterol [integer between 100 and 600].|
+|Smoker  |(Yes/No)|
+
+====6.5 Diagnosis Information====
+^Field^Format^
+|Patient MID  |Unique 10-digit number that does not start with 9|
+|Diagnosis number  |Unique (to that patient) up to 10-digit number|
+|Diagnosis  |ICD9cm code|
+|Discretionary Access  |Yes/no, specifies whether or not the patient has the ability to hide this diagnosis|
+|Privacy Level  |Privacy level of the diagnosis set by the patient: all, none, designated HCP only|
+|Office Visit ID  |Integer identifier that specifies the office visit.|
+
+====6.6 Prescription History====
+^Field^Format^
+|Patient MID  |Patient Medical identification number unique 10-digit number that does not start with 9|
+|Medication  |National Drug Code|
+|Start Date  |Date|
+|End Date  |Date|
+|Office Visit ID  |Identifier that specifies the office visit.|
+
+====6.7 Hospital Information====
+^Field^Format^
+|Hospital ID number  |A unique 10-digit integer|
+|Name  |Up to 30 alphanumeric characters|
+
+====6.8 Medical Care Personnel Affiliation====
+^Field^Format^
+|Medical identification number (MID)  |10-digit number that begins with 9|
+|Hospital ID number  |A 10-digit integer|
+
+====6.9 Medical Care Personnel Affiliation====
+===6.9.1 Diabetes risk factors===
+==6.9.1.1 Type 1 diabetes (11 years old or younger)==
+[[http://www.webmd.com/hw/diabetes_1_2/uq1456.asp|Source]]
+  * Family history of type 1 diabetes (mother, father, sister, brother)
+  * Ethnicity: Increase risk for Caucasian people.
+  * Viral infections during childhood (less than 18 years old): echovirus (ICD9cm 079.1) and Coxsackie B (ICD9cm 079.2)
+==6.9.1.2 Type 2 diabetes==
+[[http://www.webmd.com/content/article/59/66831|Source]]
+  * Age over 45.
+  * Ethnicity. The risk of diabetes is greater in Hispanics, African American, American Indians, and Asians.
+  * Being overweight. If you are overweight, defined as a body mass index (BMI) greater than 25.
+    * Assume any height and weight are in inches and pounds, respectively.
+    * With the English system, calculate BMI by dividing weight in pounds (lbs) by height in inches (in) squared and multiplying by a conversion factor of 703.
+  * Hypertension. High blood pressure increases the risk of developing diabetes.
+    * Systolic blood pressure over 240 mmHg and/or a diastolic blood pressure over 120 mmHg.
+  * Abnormal cholesterol levels. HDL (“good”) cholesterol levels under 35 mg/dL (milligrams per deciliter) and/or a triglyceride level over 250 mg/dL increases your risk.
+  * Prior diagnoses. History of gestational diabetes, polycystic ovary disease (PCOS) or vascular disease
+  * Family history of type 2 diabetes (mother, father, sister, brother)
+===6.9.2 Heart disease risk factors===
+[[http://www.webmd.com/content/pages/9/1675_57840|Source]]
+  * Gender. Men have greater risk than women.
+  * Age. Over 45
+  * Ethnicity. The risk of heart disease is greater in African American, American Indians and Hispanic Americans.
+  * Obesity. If you are overweight, defined as a body mass index (BMI) greater than 30.
+    * Assume any height and weight are in inches and pounds, respectively.
+    * With the English system, calculate BMI by dividing weight in pounds (lbs) by height in inches (in) squared and multiplying by a conversion factor of 703.
+  * Hypertension. High blood pressure increases the risk of developing diabetes.
+    * Systolic blood pressure over 240 mmHg and/or a diastolic blood pressure over 120 mmHg.
+  * Abnormal cholesterol levels. HDL (“good”) cholesterol levels under 35 mg/dL (milligrams per deciliter) and/or a triglyceride level over 250 mg/dL increases your risk.
+  * Smoking. Current or prior smoker
+  * Prior diagnoses. Diabetes.
+  * Family history of heart disease (mother, father, sister, brother)
+====6.10 Patient Appointment Request====
+^Field^Format^
+|MID  |Unique 10-digit number|
+|Reason for the Visit  |up to 500 characters (optional)|
+|HCP MID  |Unique 10-digit number *|
+|Hospital ID  |Unique 10-digit number *|
+|Date 1  |Date that is today or after (optional)|
+|Time 1  |Time (optional)|
+|Date 2  |Date that is today or after (optional)|
+|Time 2  |Time (optional)|
+|Length of Visit  |up to a 4 digit number|
+|Status of the appointment request  |“Scheduled”, “Need Patient Confirm”, “Need LHCP Confirm”, “Rejected”|
+|Rejection Message  |up to 500 characters (optional)|
+|Comments  |up to 500 characters (optional)|
+|Number of Weeks to Visit  |2 digit number (optional)|
+Either the HCP Medical Identification Number or the hospital is required.
+Note: Date/Time can be timestamps.
+
+====6.11 Logical Observation Identifiers Names and Codes (LOINC)====
+^Field^Format^
+|Laboratory Procedure Code  |(Unique [[http://www.regenstrief.org/medinformatics/loinc/|LOINC Number]] Digits of the format nnnnn-n|
+|Component  |Up to 100 characters|
+|Kind of Property  |Up to 100 characters|
+|Time Aspect  |Up to 100 characters (optional)|
+|System  |Up to 100 characters (optional)|
+|Scale Type  |Up to 100 characters (optional)|
+|Method Type  |Up to 100 characters (optional)|
+
+See [[http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=test_data|test data]] for examples
+
+====6.12 Laboratory Procedure====
+^Field^Format^
+|Patient MID  |Unique 10-digit number that does not start with 9|
+|Laboratory Procedure ID  |Unique identifier for a laboratory procedure of a patient|
+|Laboratory Procedure Code  |LOINC Number|
+|Status  |One of (NOT YET RECEIVED, PENDING, COMPLETED)|
+|Commentary  |Up to 500 alphanumeric characters|
+|Results  |Up to 500 alphanumeric characters|
+|Office Visit ID|Identifier that specifies the office visit in which the laboratory procedure was ordered|
+|Date/Time of last status update|Timestamp|
+
+====6.13 Laboratory Procedure====
+^Field^Format^
+|Minutes|Up to 3 digit number|
+|Satisfaction Rating|Number ranging from 1 (very unhappy) to 5 (very satisfied)|
+=====8. Document Revision History=====
+  * January 1, 2011: Jason King
+    * Updated requirements to reflect iTrust v11 implementation for Spring 2011

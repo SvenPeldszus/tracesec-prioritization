@@ -1,0 +1,260 @@
+======Transaction & Audit Logging Summary======
+Below is the transaction table for the auditing used in iTrust as specified by UC 5.
+
+The values have been divided up by use case, such that each use case has 100 values. For example, UC 1 has the transactions from 100-199 and UC 23 has the transactions 2300-2399.
+
+
+=====1-999=====
+====Miscellaneous====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 1 |  Login Failures  |  [empty]  |  [empty]  |  N/A  |  Other  |  None  |  No  |
+| 10 |  View Home Page  |  User  |  [empty]  |  N/A  |  view  |  None  |  No  |
+| 20 |  Uncaught Exception  |  User  |  [empty]  |  N/A  |  Other  |  None  |  No  |
+| 30 |  View Global Preferences  |  User  |  [empty]  |  N/A  |  View  |  None  |  No  |
+| 31 |  Edit Global Preferences  |  User  |  [empty]  |  N/A  |  Edit  |  None  |  No  |
+| 32 |  View Preferences  |  User  |  [empty]  |  N/A  |  View  |  None  |  No  |
+| 33 |  Edit Preferences  |  User  |  [empty]  |  N/A  |  Edit  |  None  |  No  |
+
+
+
+====UC 1====
+
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 100 |  Create a Patient  |  HCP  |  Patient  |  1  |  Create  |  None  |  Yes  |
+| 101 |  Disable a Patient  |  HCP  |  Patient  |  1  |  Delete  |  None  |  Yes  |
+
+====UC 2====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 200 |  Create a LHCP  |  Admin  |  LHCP  |  2  |  Create  |  None  |  No  |
+| 201 |  Edit a LHCP  |  Admin  |  LHCP  |  2  |  Edit  |  None  |  No  |
+| 202 |  Disable a LHCP  |  Admin  |  LHCP  |  2  |  Disable  |  None  |  No  |
+| 210 |  Create an ER  |  Admin  |  ER  |  2  |  Create  |  None  |  No  |
+| 211 |  Edit an ER  |  Admin  |  ER  |  2  |  Edit  |  None  |  No  |
+| 212 |  Disable an ER  |  Admin  |  ER  |  2  |  Disable  |  None  |  No  |
+| 220 |  Create an PHA  |  Admin  |  PHA  |  2  |  Create  |  None  |  No  |
+| 221 |  Edit a PHA  |  Admin  |  PHA  |  2  |  Edit  |  None  |  No  |
+| 222 |  Disable a PHA  |  Admin  |  PHA  |  2  |  Disable  |  None  |  No  |
+| 230 |  Assign LHCP to a hospital  |  Admin  |  LHCP  |  2  |  Create  |  None  |  No  |
+| 231 |  Remove a LHCP from a hospital  |  Admin  |  LHCP  |  2  |  Delete  |  None  |  No  |
+| 240 |  Create UAP  |  LHCP  |  UAP  |  2  |  Create  |  None  |  No  |
+| 241 |  Edit UAP  |  LHCP  |  UAP  |  2  |  Create  |  None  |  No  |
+| 242 |  Disable UAP  |  LHCP  |  UAP  |  2  |  Disable  |  None  |  No  |
+| 250 |  View Personnel  |  Viewer (all users)  |  Personnel being viewed  |  2  |  View  |  None  |  The role of the personnel  |
+
+====UC 3====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 300 |  Authenticate User  |  All Users  |  [empty]  |  3  |  Other  |  None  |  Yes  |
+| 301 |  User Logs Out  |  All Users  |  [empty]  |  3  |  Other  |  None  |  No  |
+| 302 |  User is Inactive and is Automatically Logged Out  |  All Users  |  [empty]  |  3  |  Other  |  None  |  No  |
+| 310 |  Reset Password  |  All Users  |  [empty]  |  3  |  Other  |  None  |  No  |
+
+====UC 4====
+
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 400 |  View demographics  |  HCP \\ Patient  |  Patient  |  4  |  View  |  None  |  Yes  |
+| 410 |  Enter/edit demographics  |  HCP \\ Patient  |  Patient  |  4  |  Edit  |  None  |  Yes  |
+
+====UC 5====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+|    |    |    |    |    |    |    |    |
+====UC 6====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 600 |  View LHCP  |  Editor (may be the patient)  |  Patient  |  6  |  View  |  MID of the LHCP  |  No  |
+| 601 |  Declare LHCP as DLHCP  |  Editor (may be the patient)  |  Patient  |  6  |  Create  |  MID of the LHCP  |  No  |
+| 602 |  Undeclare LHCP as DLHCP  |  Editor (may be the patient)  |  Patient  |  6  |  Delete  |  NID of the LHCP  |  No  |
+
+====UC 7====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+|    |    |    |    |    |    |    |    |
+====UC 8====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 800 |  View Access Log  |  Patient  |  [empty]  |  8  |  View  |  None  |  No  |
+
+====UC 9====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 900 |  View Medical Records  |  Viewer (may be patient)  |  Patient  |  9  |  View  |  None  |  Yes  |
+
+=====1000-1999=====
+====UC 10====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 1000 |  View Personal Health Information  |  Viewer  |  Patient  |  10  |  View  |  None  |  Yes  |
+| 1001 |  Enter/Edit Personal Health Information  |  Editer  |  Patient  |  10  |  Edit  |  None  |  Yes  |
+
+====UC 11====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 1100 |  Create Office Visits  |  HCP  |  Patient  |  11  |  Create  |  Office Visit ID  |  Yes  |
+| 1101 |  View Office Visits  |  HCP \\ Patient  |  Patient  |  11  |  View  |  Office Visit ID  |  Yes  |
+| 1102 |  Edit Office Visits  |  HCP  |  Patient  |  11  |  Edit  |  Office Visit ID  |  Yes  |
+
+====UC 12====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+|    |    |    |    |    |    |    |    |
+====UC 13====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 1300 |  Declare personal health representative  |  HCP  |  Patient  |  13  |  Create  |  MID of the Personal Health Representative  |  Yes  |
+| 1301 |  Undeclare personal health representative  |  Viewer  |  Patient  |  13  |  Delete  |  MID of the Personal Health Representative  |  Yes  |
+
+====UC 14====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+|    |    |    |   |    |    |    |    |
+
+====UC 15====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 1500 |  Add Medical Procedure Code  |  Admin  |  [empty]  |  15  |  Create  |  The Medical Procedure Code  |  No  |
+| 1501 |  View Medical procedure code  |  Admin  |  [empty]  |  15  |  View  |  The Medical Procedure Code  |  No  |
+| 1502 |  Edit Medical procedure code  |  Admin  |  [empty]  |  15  |  Edit  |  The Medical Procedure Code  |  No  |
+| 1510 |  Add Immunization Code  |  Admin  |  [empty]  |  15  |  Create  |  The Immunization Code  |  No  |
+| 1511 |  View Immunization code  |  Admin  |  [empty]  |  15  |  View  |  The Immunization Code  |  No  |
+| 1512 |  Edit Immunization code  |  Admin  |  [empty]  |  15  |  Edit  |  The Immunization Code  |  No  |
+| 1520 |  Add Diagnosis Code  |  Admin  |  [empty]  |  15  |  Create  |  The Diagnosis Code  |  No  |
+| 1521 |  View Diagnosis code  |  Admin  |  [empty]  |  15  |  View  |  The Diagnosis Code  |  No  |
+| 1522 |  Edit Diagnosis code  |  Admin  |  [empty]  |  15  |  Edit  |  The Diagnosis Code  |  No  |
+| 1530 |  Add Drug Code  |  Admin  |  [empty]  |  15  |  Create  |  The Drug Code  |  No  |
+| 1531 |  View Drug code  |  Admin  |  [empty]  |  15  |  View  |  The Drug Code  |  No  |
+| 1532 |  Edit Drug code  |  Admin  |  [empty]  |  15  |  Edit  |  The Drug Code  |  No  |
+| 1540 |  Add Physical Services Code  |  Admin  |  [empty]  |  15  |  Create  |  The Physical Services Code  |  No  |
+| 1541 |  View Physical Services code  |  Admin  |  [empty]  |  15  |  View  |  The Physical Services Code  |  No  |
+| 1542 |  Edit Physical Services code  |  Admin  |  [empty]  |  15  |  Edit  |  The Physical Services Code  |  No  |
+
+====UC 16====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 1600 |  View Identify risk factors  |  LHCP  |  Patient  |  16  |  Other  |  None  |  Yes  |
+
+====UC 17====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 1700 |  Proactively determine necessary patient care  |  HCP  |  Patient  |  17  |  Other  |  The category the patient falls under. \\ Note: Each patient in the presented patient list will have one log entry.  |  Yes  |
+
+====UC 18====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 1800 |  Add a Hospital Listing  |  Admin  |  [empty]  |  18  |  Create  |  Hospital ID Number  |  No  |
+| 1801 |  View a Hospital Listing  |  Admin  |  [empty]  |  18  |  View  |  Hospital ID Number  |  No  |
+| 1802 |  Edit a Hospital Listing  |  Admin  |  [empty]  |  18  |  Edit  |  Hospital ID Number  |  No  |
+
+====UC 19====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 1900 |  View prescription report  |  Patient or LHCP  |  Patient  |  19 \\ 40  |  View  |  None  |  Yes  |
+
+=====2000-2999=====
+====UC 20====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 2000 |  View Cause of Death Trends  |  LHCP  |  [empty]  |  20  |  View  |  None  |  No  |
+
+====UC 21====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 2100 |  View Emergency Report  |  LHCP  |  Patient  |  21  |  View  |  None  |  Yes  |
+
+====UC 22====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 2200 |  Add Appointment Type Listing  |  Admin  |  [empty]  |  22  |  Add  |  None  |  No  |
+| 2201 |  View Appointment Type Listing  |  Admin  |  [empty]  |  22  |  View  |  None  |  No  |
+| 2202 |  Edit Appointment Type Listing  |  Admin  |  [empty]  |  22  |  Edit  |  None  |  No  |
+| 2210 |  Schedule Appointment  |  LHCP  |  Patient  |  22  |  Add  |  None  |  Yes  |
+| 2211 |  View Scheduled Appointment  |  LHCP \\ Patient  |  Patient \\ LHCP  |  22  |  View  |  None  |  Yes  |
+| 2212 |  Edit Scheduled Appointment  |  LHCP  |  Patient  |  22  |  Edit  |  None  |  Yes  |
+| 2213 |  Delete Scheduled Appointment  |  LHCP  |  Patient  |  22  |  Delete  |  None  |  Yes  |
+| 2220 |  View Scheduled Appointments  |  LHCP \\ Patient  |  [empty]  |  22  |  View  |  None  |  Yes  |
+
+====UC 23====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 2300 |  View Comprehensive Report  |  LHCP  |  Patient  |  23  |  View  |  None  |  Yes  |
+
+====UC 24====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 2400 |  Take Satisfaction Survey  |  Patient  |  HCP  |  24  |  View  |  The Office Visit ID  |  No  |
+
+====UC 25====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 2500 |  View Physician Satisfaction Results  |  Patient  |  [empty]  |  25  |  View  |  None  |  No  |
+
+====UC 26====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 2600 |  Create Laboratory Procedure Results  |  HCP  |  Patient  |  26  |  Create  |  LaboratoryProcedureCode  |  Yes  |
+| 2601 |  View Laboratory Procedure Results  |  HCP  |  Patient  |  26 \\ 40  |  View  |  LaboratoryProcedureCode  |  Yes  |
+| 2602 |  Edit Laboratory Procedure Results  |  HCP  |  Patient  |  26  |  Edit  |  LaboratoryProcedureCode  |  Yes  |
+
+====UC 27====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 2700 |  Send Email  |  User  |  Recipient  |  3\\ 21\\ 26\\ 27\\ 30\\ 35\\ 36\\ 37  |  view  |  None  |  No  |
+| 2710 |  View Email History  |  HCP \\ Patient  |  [empty]  |  27  |  view  |  None  |  No  |
+
+====UC 28====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 2800 |  View Patient List  |  HCP  |  [empty]  |  28  |  View  |  None  |  Yes  |
+
+====UC 29====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 2900 |  Find LHCPs with Experience with a Diagnosis  |  Patient  |  [empty]  |  29  |  Other  |  None  |  No  |
+
+=====3000-3999=====
+====UC 30====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 3000 |  Send Message  |  Sender: \\ LHCP or \\ Patient  |  Recipient: \\ LHCP or \\ Patient  |  30  |  Other  |  None  |  Yes  |
+| 3001 |  View Message  |  Recipient: \\ LHCP or \\ Patient  |  Sender: \\ LHCP or \\ Patient  |  30  |  View  |  None  |  No  |
+| 3010 |  View Inbox  |  Reader: \\ LHCP or \\ Patient  |   [empty]  |  30  |  Other  |  None  |  Yes  |
+| 3011 |  View Outbox  |  Sender: \\ LHCP or \\ Patient  |  [empty]  |  30  |  Other  |  None  |  Yes  |
+
+====UC 31====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 3100 |  Find LHCPs for Prescription Renewal  |  Patient  |  [empty]  |  31  |  Other  |  None  |  No  |
+| 3110 |  View expired prescriptions  |  Patient  |  [empty  |  31  |  View  |  None  |  No  |
+
+====UC 32====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 3200 |  Proactively Confirm Prescription-Renewal Needs  |  HCP  |  Patient  |  32  |  Other  |  Note: Each patient in the presented patient list will have one log entry  |  Yes  |
+| 3210 |  View diagnoses list  |  Patient  |  [empty]  |  32  |  View  |  None  |  No  |
+
+====UC 33====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 3300 |  Refer a Patient for Consultations  |  HCP  |  Patient  |  33  |  Other  |  None  |  Yes  |
+| 3310 |  View Referral for Consultation  |  HCP  |  Patient  |  33  |  View  |  None  |  ?  |
+| 3300 |  Modify Referral for Consultation  |  HCP  |  Patient  |  33  |  Other  |  None  |  ?  |
+
+====UC 34====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 3400 |  LHCP adds a Patient to their Monitoring List  |  LHCP  |  Patient  |  34  |  Create  |  None  |  Yes  |
+| 3401 |  LHCP edits the telemedicine reporting permissions of a patient on their Monitoring List  |  LHCP  |  Patient  |  34  |  Edit  |  None  |  Yes  |
+| 3402 |  LHCP deletes a Patient from their Monitoring List  |  LHCP  |  Patient  |  34  |  Delete  |  None  |  Yes  |
+| 3410 |  Reports Remote Monitoring Levels (blood pressure, glucose levels, weight and/or pedometer reading)  |  UAP \\ Patient  |  Patient Being Edited  |  34  |  Delete  |  None  |  Yes  |
+| 3420 |  View Remote Monitoring Levels (blood pressure, glucose levels, weight and/or pedometer reading)  |  LHCP  |  Patient  |  34  |  View  |  None  |  Yes  |
+
+====UC 35====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 3500 |  Adverse Event Reporting  |  Patient  |  [empty]  |  35  |  Create  |  None  |  No  |
+
+====UC 36====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 3600 |  Adverse Event Monitoring  |  PHA  |  [empty]  |  36  |  View  |  Event ID  |  ?  |
+| 3610 |  Delete Adverse Event  |  PHA  |  [empty]  |  36  |  View  |  Event ID  |  ?  |
+
+====UC 37====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 3700 |  Prescribe Medication  |  LHCP  |  Patient  |  37  |  Create  |  CPT code \\ The drug and reason involved if there is an allergy or drug reaction notification  |  Yes  |
+| 3701 |  Edit Prescription  |  HCP  |  Patient  |  37  |  Edit  |  The prescription ID  |  Yes  |
+| 3710 |  Add Overriding Reason Listing  |  Admin  |  [empty]  |  37  |  Create  |  ORCode  |  No  |
+| 3711 |  Edit Overriding Reason Listing  |  Admin  |  [empty]  |  37  |  Edit  |  ORCode  |  No  |
+
+====UC 38====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 3800 |  Add Drug Interactions Code  |  Admin  |  [empty]  |  38  |  Create  |  The two prescriptions involved in the interaction  |  No  |
+| 3801 |  Delete Drug Interactions Code  |  Admin  |  [empty]  |  38  |  Delete  |  The two prescriptions involved in the interaction  |  No  |
+
+====UC 39====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+|    |    |    |    |    |    |    |    |
+=====4000-4999=====
+
+====UC 40====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 4000 |  View Calendar  |  LHCP \\ Patient  |  [empty]  |  40  |  View  |  None  |  No  |
+| 4010 |  View Upcoming Appointments  |  LHCP \\ Patient  |  [empty]  |  40  |  View  |  None  |  No  |
+
+====UC 41====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+|    |    |    |    |    |    |    |    |
+====UC 42====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 4200 |  View Notifications  |  LHCP \\ Patient  |  [empty]  |  42  |  View  |  None  |  No  |
+
+====UC 43====
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 4300 |  View Activity Feed  |  Patient  |  [empty]  |  43  |  View  |  None  |  No  |

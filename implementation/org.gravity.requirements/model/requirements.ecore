@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="requirements" nsURI="http://www.example.org/requirements" nsPrefix="requirements">
+  <eClassifiers xsi:type="ecore:EClass" name="RequirementsModel">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="usecases" upperBound="-1"
+        eType="#//UseCase" containment="true" eOpposite="#//UseCase/model"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UseCase" eSuperTypes="#//IdentifyableObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="supportet" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preconditons" upperBound="-1"
+        eType="#//PreConditon" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mainflows" upperBound="-1"
+        eType="#//MainFlow" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subflows" upperBound="-1"
+        eType="#//SubFlow" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alternativeflows" upperBound="-1"
+        eType="#//AlternativeFlow" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="#//RequirementsModel"
+        eOpposite="#//RequirementsModel/usecases"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="loggingRequirements" upperBound="-1"
+        eType="#//LoggingRequirement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PreConditon" eSuperTypes="#//Element"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SubFlow" eSuperTypes="#//IdentifyableObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MainFlow" eSuperTypes="#//Element"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IdentifyableObject" abstract="true"
+      eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Element" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="references" upperBound="-1"
+        eType="#//IdentifyableObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="usecase" lowerBound="1"
+        eType="#//UseCase"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AlternativeFlow" eSuperTypes="#//IdentifyableObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LoggingRequirement" eSuperTypes="#//IdentifyableObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="additionalInformation"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

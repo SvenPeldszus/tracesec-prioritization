@@ -186,6 +186,16 @@ public class QualityModelPackageImpl extends EPackageImpl implements QualityMode
 	 * @generated
 	 */
 	@Override
+	public EAttribute getAbstractQualityNode_Priority() {
+		return (EAttribute)abstractQualityNodeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getQualityAspect() {
 		return qualityAspectEClass;
 	}
@@ -239,14 +249,15 @@ public class QualityModelPackageImpl extends EPackageImpl implements QualityMode
 		isCreated = true;
 
 		// Create classes and their features
+		abstractQualityNodeEClass = createEClass(ABSTRACT_QUALITY_NODE);
+		createEReference(abstractQualityNodeEClass, ABSTRACT_QUALITY_NODE__OWNER);
+		createEAttribute(abstractQualityNodeEClass, ABSTRACT_QUALITY_NODE__TITLE);
+		createEAttribute(abstractQualityNodeEClass, ABSTRACT_QUALITY_NODE__PRIORITY);
+
 		qualityCategoryEClass = createEClass(QUALITY_CATEGORY);
 		createEReference(qualityCategoryEClass, QUALITY_CATEGORY__OWNED_NODES);
 		createEReference(qualityCategoryEClass, QUALITY_CATEGORY__ASPECTS);
 		createEReference(qualityCategoryEClass, QUALITY_CATEGORY__SUBCATEGORIES);
-
-		abstractQualityNodeEClass = createEClass(ABSTRACT_QUALITY_NODE);
-		createEReference(abstractQualityNodeEClass, ABSTRACT_QUALITY_NODE__OWNER);
-		createEAttribute(abstractQualityNodeEClass, ABSTRACT_QUALITY_NODE__TITLE);
 
 		qualityAspectEClass = createEClass(QUALITY_ASPECT);
 		createEAttribute(qualityAspectEClass, QUALITY_ASPECT__DESCRIPTION);
@@ -288,14 +299,15 @@ public class QualityModelPackageImpl extends EPackageImpl implements QualityMode
 		qualityAspectEClass.getESuperTypes().add(this.getAbstractQualityNode());
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(abstractQualityNodeEClass, AbstractQualityNode.class, "AbstractQualityNode", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAbstractQualityNode_Owner(), this.getQualityCategory(), this.getQualityCategory_OwnedNodes(), "owner", null, 1, 1, AbstractQualityNode.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractQualityNode_Title(), ecorePackage.getEString(), "title", null, 0, 1, AbstractQualityNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractQualityNode_Priority(), ecorePackage.getEInt(), "priority", null, 0, 1, AbstractQualityNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(qualityCategoryEClass, QualityCategory.class, "QualityCategory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getQualityCategory_OwnedNodes(), this.getAbstractQualityNode(), this.getAbstractQualityNode_Owner(), "ownedNodes", null, 0, -1, QualityCategory.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getQualityCategory_OwnedNodes(), this.getAbstractQualityNode(), this.getAbstractQualityNode_Owner(), "ownedNodes", null, 0, -1, QualityCategory.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getQualityCategory_Aspects(), this.getQualityAspect(), null, "aspects", null, 0, -1, QualityCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getQualityCategory_Subcategories(), this.getQualityCategory(), null, "subcategories", null, 0, -1, QualityCategory.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(abstractQualityNodeEClass, AbstractQualityNode.class, "AbstractQualityNode", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAbstractQualityNode_Owner(), this.getQualityCategory(), this.getQualityCategory_OwnedNodes(), "owner", null, 1, 1, AbstractQualityNode.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAbstractQualityNode_Title(), ecorePackage.getEString(), "title", null, 0, 1, AbstractQualityNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(qualityAspectEClass, QualityAspect.class, "QualityAspect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getQualityAspect_Description(), ecorePackage.getEString(), "description", null, 0, 1, QualityAspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

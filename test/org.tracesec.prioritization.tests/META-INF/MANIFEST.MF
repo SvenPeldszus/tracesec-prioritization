@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: TraceSec Tests
+Bundle-SymbolicName: org.tracesec.prioritization.tests
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Ruhr University Bochum
+Automatic-Module-Name: org.tracesec.prioritizatiion.tests
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Require-Bundle: org.gravity.typegraph.sonarlint,
+ org.eclipse.uml2.uml,
+ org.tracesec.graph.dsl,
+ org.moflon.tgg.runtime,
+ org.gravity.tgg.pm.uml,
+ org.tracesec.qualitymodel,
+ org.tracesec.prioritization,
+ org.junit,
+ org.junit.jupiter.api

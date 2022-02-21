@@ -1,0 +1,4 @@
+====Data Format 6.13: Satisfaction Survey Results====
+^Field^Format^
+|Minutes|Up to 3 digit number|
+|Satisfaction Rating|Number ranging from 1 (very unhappy) to 5 (very satisfied)|

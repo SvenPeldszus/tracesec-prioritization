@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.menus">
+      <command
+                  commandId="org.tracesec.prioritization.ui.command"
+                  label="Prioritize Issues"
+                  style="push">
+            </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.tracesec.prioritization.ui.command.Handler"
+            id="org.tracesec.prioritization.ui.command"
+            name="Prioritize Issues">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="org.tracesec.prioritization.ui.command1"
+            name="name">
+      </command>
+   </extension>
+
+</plugin>

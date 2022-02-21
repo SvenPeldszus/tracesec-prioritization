@@ -1,0 +1,85 @@
+====== iTrust Design Notes ======
+
+Here are some archetype classes that the system uses. In adding new code, please keep using the appropriate responsibilities for each class type. 
+----
+===== New Design =====
+Starting Fall 2016 we have been moving towards a new design using JSF and MVC. Documentation of this new design is currently in progress.
+----
+==== Model ====
+Going forward, the iTrust model will have two main components: POJOs (Plain Old Java Objects) and Data classes. There are also some supporting classes (such as Loaders). Model classes are all found in the 'edu.ncsu.csc.itrust.model' package, and are further packaged based on the POJOs.
+=== POJO ===
+Every object in the iTrust system (e.g. Hospital, Office Visit, User) should be represented in a POJO, or Plain Old Java Object. These classes contain a list of attributes which are ONLY accessible via getters and setters. POJOs are manipulated by the controller, and are passed to and from the database using the Data classes.
+
+=== Data ===
+Data classes are how we add, update, and retrieve objects from the the database. Data classes have two main types: The Interface, and the Implementation. Each POJO should have one Data Interface and at least one implementation.
+
+== Interface ==
+Each POJO should have an Interface.  The Interface name should be <T>Data where <T> is the name of the POJO with which it is associated. The Interface specifies which methods the controller will call to access data from the database. The Interface extends the base interface DataBean<T> where <T> is the type of POJO that is to be added, updated, or retrieved. The base interface provides a set of basic methods (getByID, getAll, etc) that most classes should implement. However, you will find that in most cases there are additional methods specific to that POJO which must also be implemented. Although there may be instances where the Interface does NOT implement all of the methods specified in DataBean, if you are considering NOT implementing a method you should first consult with the teaching staff. Using an interface allows you to call data classes from the controller in a standard way, even if we change the underlying database at a later time (e.g. if we decide to introduce [[http://hibernate.org|Hibernate]]).
+
+==Implementation ==
+An implementation class implements the methods specified in the Interface using the current underlying database system. In the case of iTrust v22, this is MySQL.The convention for implementation names it <T><ImplType> Where T is the name of the POJO with which the implementation is associated and <ImplType> is the database with which it interacts. For example: OfficeVisitMySQL.
+
+=== Loader ===
+Loader classes take care of the implementation details of how information is transferred to/from a POJO. They are called by the Implementation classes associated with the same database system as the loader interface. Since our current database system is MySQL, loaders must implement the MySQLLoader<T> class where <T> is the POJO with which the loader is associated. The naming convention for loaders is <T><ImplType>Loader Where T is the name of the POJO with which the implementation is associated and <ImplType> is the database with which it interacts. For example: OfficeVisitMySQLLoader.
+
+=== A Note on Converters ===
+For both Implementation and Loader classes you will see instances with the extension "Conv" or "Converter". Currently there are a number of classes from the old design still extant in the iTrust System. How we interact with that data now may differ significantly from how we interact with that data once that module is rebuilt. Hence the classes that deal with the technicalities of implementation (i.e. implementation and loader classes) are labeled "Converters". These converter classes often do NOT have the entire Loader or Data interface implemented, and throw errors when the unimplemented methods are called.
+----
+==== View ====
+In the new model, the view consists primarily of xhtml files written in jsf. These files should contain no business logic. See viewOfficeVisit.xhtml for an example. 
+----
+==== Controller ====
+The controller classes are located in the 'edu.ncsu.csc.itrust.controller' package and are grouped based on the primary object in the model which they control.
+----
+----
+=====Old Design=====
+Starting Fall 2016 we have been moving towards a new design using JSF and MVC. However, many components of the old design are still in place (and may need to be leveraged in ongoing development). The notes below may be applicable as you try to fix bugs or understand why things work a certain way. They should be ignored in new development.
+----
+
+====View====
+=== JSP Files ===
+The View is the JSP files. These files should contain minimal processing and logic.
+----
+
+====Controller====
+=== Action ===
+Each JSP uses exactly one Action class. This is the main class for the "Controller" part of the architecture. These classes are the ones that integrate all of the other classes together to form the feature. For example, the Action class will take in parameters, validate the information, perform some "business logic" if needed, then pass the information over to the DAO for database interaction. Methods in Action classes can get pretty complex if you're not careful. Rule of thumb: if your method takes up more than a single screen, start splitting your method up into smaller methods. Plenty of Action classes delegate the logic to a separate set of classes (e.g. ChronicDiseaseMediator).
+
+=== Base Actions ===
+
+These are abstractions to provide some ease in making new actions. Use a base action when a page requires an ID of some sort to work. For example, "Edit Patient" would have to have a Patient ID in order to make sense. If you use a PatientBaseAction, then its constructor will verify the MID string and throw an exception if it doesn't check out (thus kicking you back to your homepage with an error message). 
+----
+
+==== Model ====
+Note: Most of the older classes that were part of the model are in the 'edu.ncsu.csc.itrust.model.old' package.
+=== Bean ===
+
+A bean's purpose is to store data. Period. Little or no functionality is to be added to a bean (with the exception of minor formatting such as concatenating phone numbers together). A bean must only have Getters and Setters (Eclipse Hint: Use Source > Generate Getters and Setters... to create these easily) 
+
+=== Form ===
+
+A form is a bean, kinda. You could say that it's a "form" of a bean :) Think of a form as a real-life administrative form that you would fill out to get something done, not necessarily making sense by itself. For example, a Patient is a Bean, but the info used to request an Epidemic Detection is a Form. 
+
+
+=== Loader ===
+
+Loads in information to/from beans using ResultSets and PreparedStatements. Use the superclass to enforce consistency. 
+
+=== Validator ===
+
+Checks a given bean for valid input. This is a //must// for input from the user! Note that Validators are designed around giving the user //all// of the errors in their form at once. For example, if the First Name AND the Last Name of a patient are wrong - the validator should report both problems, not just the first error and then stop. 
+
+=== DAO ===
+
+Database Access Object. All info coming into a DAO is already validated. Just worry about DB stuff here. As a result, DAO methods should rarely have if-statements or perform any complex functionality other than storing to and retreiving from the database.  If you think a DAO method requires a lot of complexity, consider the alternatives :
+  * Asking your TA student if it can be done in SQL, or
+  * Putting the logic in an Action class or a separate delegate class (this usually means splitting your DAO method into separate methods - it's good to keep them small and simple!)
+
+Also, note the following conventions:
+  * Usually every table has one DAO (e.g. PatientDAO). We also add new DAOs for logical groupings of complex queries on tables (e.g. FamilyDAO). //Don't// create new DAOs for everything you do. Use what's there and add to it.
+  * All SQLExceptions are caught and re-thrown as DBExceptions - this is to hide valuable DB information from the user, which is a security risk. Please follow this convention. And don't ignore SQLExceptions as they still need handling once they are caught.
+  * All DAOs need to have a DAOFactory with which to access other DAOs and to get connections. If you create a new DAO, please add it to DAOFactory using the design that's already in place (e.g. every DAO must have a constructor with a DAOFactory as a parameter)
+  * Use the built-in utility to close connections gracefully.
+
+----
+Also, see the [[how do i]] page for more valuable information on DAOs and database conventions.

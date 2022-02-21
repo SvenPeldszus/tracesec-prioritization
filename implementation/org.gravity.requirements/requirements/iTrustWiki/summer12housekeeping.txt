@@ -1,0 +1,57 @@
+=====Summer 2012 iTrust Housekeeping=====
+
+
+
+====Requirements====
+==Objectives==
+  * Make sure sub flows are referenced in the main flow
+  * Make sure exception flows are references in the main flow and/or sub flows
+  * Check preconditions for accuracy
+
+^ Status ^ Assigned to ^ Work Item ^
+| Done | Casper | Cleanup UC1 |
+| Done | Casper | Cleanup UC2 |
+| Done | Casper | Cleanup UC3 |
+| No changes made | Casper | Cleanup UC4 |
+| No changes made | Casper | Cleanup UC5 |
+| Done | Casper | Cleanup UC6 |
+| Does not exist | Casper | Cleanup UC7 |
+| No changes made | Casper | Cleanup UC8 |
+| No changes made | Casper | Cleanup UC9 |
+| Done | Casper | Cleanup UC10 |
+| No changes made | Casper | Cleanup UC11 |
+| No changes made | Casper | Cleanup UC12 |
+| Done | Casper | Cleanup UC13 |
+| Does not exist | Casper | Cleanup UC14 |
+| Done | Casper | Cleanup UC15 |
+| No changes made | Casper | Cleanup UC16 |
+| No changes made | Casper | Cleanup UC17 |
+| No changes made | Casper | Cleanup UC18 |
+| Done | Casper | Cleanup UC19 |
+| Does not exist | Casper | Cleanup UC20 |
+| Done | Casper | Cleanup UC21 |
+| Done | Casper  | Cleanup UC22 |
+| Done | Casper | Cleanup UC23 |
+| Done | Casper | Cleanup UC24 |
+| Done | Casper | Cleanup UC25 |
+| Done | Casper  | Cleanup UC26 |
+| Done | Casper | Cleanup UC27 |
+| Done | Casper | Cleanup UC28 |
+| Done | Casper | Cleanup UC29 |
+| Done | Casper  | Cleanup UC30 |
+| Done | Casper | Cleanup UC31 |
+| Done | Casper  | Cleanup UC32 |
+| Done | Casper  | Cleanup UC33 |
+| Done | Casper | Cleanup UC34 |
+| Done | Casper | Cleanup UC35 |
+| Pending question | Casper | Cleanup UC36 |
+| Done | Casper | Cleanup UC37 |
+|  |  | Cleanup UC38 |
+| Does not exist | Casper  | Cleanup UC39 |
+|  |  | Cleanup UC40 |
+| Does not exist | Casper  | Cleanup UC41 |
+|  |  | Cleanup UC42 |
+| Done | Casper | Cleanup UC43 |
+|  |  | Cleanup UC44 |
+|  |  | Cleanup UC45 |
+| No changes made | Casper | Cleanup UC46 |

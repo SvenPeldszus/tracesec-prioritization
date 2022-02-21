@@ -1,0 +1,14 @@
+**Data Format 6.16**
+
+|Field|Format|
+|Date|mm/dd/yy, restricted to current or past dates. Required|
+|Type of Meal|One of "Breakfast," "Lunch," "Dinner," or "Snack." Required|
+|Name of Food|Not null or empty. Required|
+|Number of Servings|Positive number. Required|
+|Calories per Serving|Zero or positive number. Required|
+|Grams of Fat per Serving|Zero or positive number. Required|
+|Milligrams of Sodium per Serving|Zero or positive number. Required|
+|Grams of Carbs per Serving|Zero or positive number. Required|
+|Grams of Sugars per Serving|Zero or positive number. Required|
+|Grams of Fiber per Serving|Zero or positive number. Required|
+|Grams of Protein per Serving|Zero or positive number. Required|

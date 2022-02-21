@@ -1,0 +1,11 @@
+|Field|Format|
+|Year of conception|4 digit year. Required.|
+|Number of weeks pregnant|2 digits - 1 digit, where the first is number of weeks between [0,42] and the second is the number of days between [0,6]. Required.|
+|Number of hours in labor|Zero or positive double. Optional.|
+|Delivery Type|One of "Vaginal Delivery", "Caesarean Section", or "Miscarriage". Required.|
+
+
+
+
+
+

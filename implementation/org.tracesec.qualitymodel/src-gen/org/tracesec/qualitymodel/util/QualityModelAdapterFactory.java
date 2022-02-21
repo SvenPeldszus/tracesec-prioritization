@@ -68,12 +68,12 @@ public class QualityModelAdapterFactory extends AdapterFactoryImpl {
 	protected QualityModelSwitch<Adapter> modelSwitch =
 		new QualityModelSwitch<Adapter>() {
 			@Override
-			public Adapter caseQualityCategory(QualityCategory object) {
-				return createQualityCategoryAdapter();
-			}
-			@Override
 			public Adapter caseAbstractQualityNode(AbstractQualityNode object) {
 				return createAbstractQualityNodeAdapter();
+			}
+			@Override
+			public Adapter caseQualityCategory(QualityCategory object) {
+				return createQualityCategoryAdapter();
 			}
 			@Override
 			public Adapter caseQualityAspect(QualityAspect object) {

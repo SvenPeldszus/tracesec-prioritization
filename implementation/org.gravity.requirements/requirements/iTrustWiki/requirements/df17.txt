@@ -1,0 +1,13 @@
+**Data Format 6.17**
+
+|Field|Format|
+|Date|mm/dd/yy. Required|
+|Attending Optometrist or Ophthalmologist HCP| String. Optional and not needed for all ophthalmology use cases.|
+|Visual acuity numerator|Positive integer. Required for both right (OD) and left (OS) eyes.|
+|Visual acuity denominator|Positive integer. Required for both right (OD) and left (OS) eyes.|
+|Sphere (SPH)|Double between -10 and 10, inclusive.  Rounded to the nearest quarter-diopter. Required for both the right (OD) and left (OS) eyes.|
+|Cylinder (CYL)|Double between -10 and 10, inclusive. Rounded to the nearest quarter-diopter. Optional for either the right (OD) and left (OS) eyes.|
+|Axis|Positive integer between 1 and 180, inclusive. Required for the same eye if Cylinder is provided. |
+|Add|Double between 0.75 and 3.00, inclusive. Rounded to the nearest quarter-diopter.  Required for both right (OD) and left (OS) eyes.|
+|Surgery|Drop down box of surgeries. Optional and not needed for all ophthalmology use cases.|
+|Surgery|String. Optional and not needed for all ophthalmology use cases.|

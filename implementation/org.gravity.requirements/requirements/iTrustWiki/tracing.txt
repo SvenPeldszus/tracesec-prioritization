@@ -1,0 +1,105 @@
+====== Use Case Tracing ======
+
+[[start|Back to iTrust Home]]
+
+ [[requirements|View current requirements]]
+
+For a listing of traceability from use cases and sub flows to the Action, DAOs and Validator classes, see the {{itrusttrace.pdf|Complete iTrust Traceability Results}}.
+
+This tracing is accurate as of iTrust v10, but newer versions may be different in their implementations.
+
+This page provides a mapping between each Use Case in the current version of the requirements and JSPs within the current version of the system.
+
+^ Use Case and Subflow      ^ URL       ^
+| [[requirements#uc1_create_and_disable_patients_use_case|UC1S1]]    | /auth/hcp-uap/addPatient.jsp |
+| [[requirements#uc2_create_disable_and_edit_personnel_use_case|UC2S1]] | /auth/admin/addHCP.jsp |
+| [[requirements#uc2_create_disable_and_edit_personnel_use_case|UC2S2]] | /auth/hcp/addUAP.jsp |
+| [[requirements#uc3_authenticate_users_use_case|UC3S1]] | /util/resetPassword.jsp |
+| [[requirements#uc3_authenticate_users_use_case|UC3S2]] | No links.  Implemented by ResetPasswordAction.resetPassword() |
+| [[requirements#uc3_authenticate_users_use_case|UC3S3]] | /auth/admin/sessionTimeout.jsp |
+| [[requirements#uc3_authenticate_users_use_case|UC3S4]] | /auth/hcp/home.jsp |
+| [[requirements#uc4_enter_edit_demographics_use_case|UC4S1]] | /auth/patient/editMyDemographics.jsp |
+| [[requirements#uc4_enter_edit_demographics_use_case|UC4S2]] | /auth/getPatientID.jsp |
+| [[requirements#uc4_enter_edit_demographics_use_case|UC4S3]] | /auth/staff/editMyDemographics.jsp |
+| [[requirements#uc5_log_transaction_use_case|UC5]] | No links.  Implemented by LogTransactionDAO.logTransaction() |
+| [[requirements#uc6_view_hcpdesignate_undesignate_designated_licensed_health_care_professional_use_case|UC6S1]] | /auth/patient/viewVisitedHCPs.jsp |
+| [[requirements#uc6_view_hcpdesignate_undesignate_designated_licensed_health_care_professional_use_case|UC6S2]] | /auth/patient/viewVisitedHCPs.jsp |
+| [[requirements#uc6_view_hcpdesignate_undesignate_designated_licensed_health_care_professional_use_case|UC6S3]] | /auth/patient/viewVisitedHCPs.jsp |
+| [[requirements#uc7_allow_disallow_access_to_diagnosis_use_case_deleted|UC7]] | No links. Deleted. |
+| [[requirements#uc8_view_access_log_use_case|UC8S1]] | /auth/patient/viewAccessLog.jsp |
+| [[requirements#uc8_view_access_log_use_case|UC8S2]] | /auth/patient/viewAccessLog.jsp |
+| [[requirements#uc9_view_records_use_case|UC9S1]] | /auth/patient/viewMyRecords.jsp |
+| [[requirements#uc9_view_records_use_case|UC9S2]] | No links.  Implemented by ViewMyRecordsAction.getFamilyHistory() |
+| [[requirements#uc10_enter_edit_personal_health_records_use_case|UC10S1]] | /auth/hcp-uap/editBasicHealth.jsp |
+| [[requirements#uc10_enter_edit_personal_health_records_use_case|UC10S2]] | /auth/patient/home.jsp |
+| [[requirements#uc11_document_office_visit_use_case|UC11S1]] | /auth/hcp-uap/editOfficeVisit.jsp |
+| [[requirements#uc11_document_office_visit_use_case|UC11S2]] | /auth/hcp-uap/editOfficeVisit.jsp |
+| [[requirements#uc12_determine_operational_profile_use_case|UC12]] | /auth/tester/home.jsp |
+| [[requirements#uc13_declare_undeclare_personal_representative_use_case|UC13]] | /auth/hcp/editRepresentatives.jsp |
+| [[requirements#uc14_request_biosurveillance_use_case|UC14]] | No links. |
+| [[requirements#uc15_maintain_standards_lists_use_case|UC15S1]] | /auth/admin/editCPTProcedureCodes.jsp |
+| [[requirements#uc15_maintain_standards_lists_use_case|UC15S2]] | /auth/admin/editICDCodes.jsp |
+| [[requirements#uc15_maintain_standards_lists_use_case|UC15S3]] | /auth/admin/editNDCodes.jsp |
+| [[requirements#uc15_maintain_standards_lists_use_case|UC15S4]] | /auth/admin/editLOINCCodes.jsp |
+| [[requirements#uc16_identify_risk_of_chronic_disease_use_case|UC16]] | /auth/hcp-uap/chronicDiseaseRisks.jsp |
+| [[requirements#uc17_proactively_determine_needed_patient_care_use_case|UC17S1]] | /auth/hcp/visitReminders.jsp |
+| [[requirements#uc17_proactively_determine_needed_patient_care_use_case|UC17S2]] | /auth/hcp/visitReminders.jsp |
+| [[requirements#uc17_proactively_determine_needed_patient_care_use_case|UC17S3]] | /auth/hcp/visitReminders.jsp |
+| [[requirements#uc18_maintain_a_hospital_listing_use_case|UC18S1]] | /auth/admin/hospitalListing.jsp |
+| [[requirements#uc18_maintain_a_hospital_listing_use_case|UC18S2]] | /auth/admin/hospitalListing.jsp |
+| [[requirements#uc19_view_prescription_report_use_case|UC19S1]] | /auth/patient/viewPrescriptionRecords.jsp |
+| [[requirements#uc19_view_prescription_report_use_case|UC19S2]] | /auth/hcp-uap/getPrescriptionReport.jsp |
+| [[requirements#uc19_view_prescription_report_use_case|UC19S3]] | /auth/hcp-uap/getPrescriptionReport.jsp |
+| [[requirements#uc19_view_prescription_report_use_case|UC19S4]] | /auth/patient/home.jsp |
+| [[requirements#uc20_view_cause-of-death_trends_report_use_case|UC20]] | No links. |
+| [[requirements#uc21_view_emergency_electronic_health_record_use_case|UC21S1]] | /auth/hcp-er/emergencyReport.jsp |
+| [[requirements#uc21_view_emergency_electronic_health_record_use_case|UC21S2]] | /auth/patient/home.jsp |
+| [[requirements#uc21_view_emergency_electronic_health_record_use_case|UC21S3]] | /auth/hcp-er/emergencyReport.jsp |
+| [[requirements#uc22flow_of_events_for_the_schedule_appointments_use_case|UC22]] | No links. |
+| [[requirements#uc23_view_comprehensive_patient_report_use_case|UC23S1]] | /auth/getPatientID.jsp |
+| [[requirements#uc23_view_comprehensive_patient_report_use_case|UC23S2]] | No links. |
+| [[requirements#uc23_view_comprehensive_patient_report_use_case|UC23S3]] | /auth/hcp-uap/viewReport.jsp |
+| [[requirements#uc23_view_comprehensive_patient_report_use_case|UC23S4]] | /auth/hcp-uap/viewMyReportRequests.jsp |
+| [[requirements#uc24_take_satisfaction_survey_use_case|UC24]] | /auth/patient/survey.jsp |
+| [[requirements#uc25_view_physician_satisfaction_survey_results_use_case|UC25]] | /auth/surveyResults.jsp |
+| [[requirements#uc26_view_edit_laboratory_procedure_status_use_case|UC26S1]] | /auth/patient/viewMyRecords.jsp |
+| [[requirements#uc26_view_edit_laboratory_procedure_status_use_case|UC26S2]] | /auth/hcp/LabProcHCP.jsp |
+| [[requirements#uc26_view_edit_laboratory_procedure_status_use_case|UC26S3]] | /auth/hcp-uap/updateLabProc.jsp |
+| [[requirements#uc26_view_edit_laboratory_procedure_status_use_case|UC26S4]] | /auth/patient/home.jsp |
+| [[requirements#uc27_alert_users_by_email_use_case|UC27S1]] | /util/resetPassword.jsp |
+| [[requirements#uc27_alert_users_by_email_use_case|UC27S2]] | /hcp-uap/updateLabProc.jsp |
+| [[requirements#uc28_view_patients|UC28]] | /auth/hcp-uap/viewPatientOfficeVisitHistory.jsp |
+| [[requirements#uc29_find_lhcps_with_experience_with_a_diagnosis|UC29]] | /auth/patient/myDiagnoses.jsp |
+| [[requirements#uc30_messaging_between_lhcp_and_patient|UC30S1]] | /auth/patient/sendMessage.jsp |
+| [[requirements#uc30_messaging_between_lhcp_and_patient|UC30S2]] | /auth/hcp/sendMessage.jsp |
+| [[requirements#uc30_messaging_between_lhcp_and_patient|UC30S3]] | /auth/patient/viewMyMessages.jsp |
+| [[requirements#uc30_messaging_between_lhcp_and_patient|UC30S4]] | /auth/hcp/reply.jsp |
+| [[requirements#uc30_messaging_between_lhcp_and_patient|UC30S5]] | /auth/patient/reply.jsp |
+| [[requirements#uc31_find_lhcps_for_prescription_renewal_use_case|UC31S1]] | /auth/patient/viewExpiredPrescriptionRecords.jsp |
+| [[requirements#uc31_find_lhcps_for_prescription_renewal_use_case|UC31S2]] | /auth/patient/viewLHCP.jsp |
+| [[requirements#uc32_proactively_confirm_prescription-renewal_needs_use_case|UC32S1]] | No links. |
+| [[requirements#uc32_proactively_confirm_prescription-renewal_needs_use_case|UC32S2]] | /auth/hcp/viewPrescriptionRenewalNeeds.jsp |
+| [[requirements#uc33_refer_and_provide_consultations_use_case|UC33S1]] | /auth/hcp/hcpConsultation.jsp |
+| [[requirements#uc33_refer_and_provide_consultations_use_case|UC33S2]] | /auth/hcp/hcpConsultation.jsp |
+| [[requirements#uc33_refer_and_provide_consultations_use_case|UC33S3]] | /auth/hcp/hcpConsultation.jsp |
+| [[requirements#uc34_remotely_monitor_patient_physiologic_measurements|UC34S1]] | /auth/hcp/editPatientList.jsp |
+| [[requirements#uc34_remotely_monitor_patient_physiologic_measurements|UC34S2]] | /auth/patient/addTelemedicineData.jsp |
+| [[requirements#uc34_remotely_monitor_patient_physiologic_measurements|UC34S3]] | /auth/hcp/monitorPatients.jsp |
+| [[requirements#uc34_remotely_monitor_patient_physiologic_measurements|UC34S4]] | /auth/hcp/viewAdditionalInfo.jsp |
+| [[requirements#uc34_remotely_monitor_patient_physiologic_measurements|UC34S5]] | /auth/uap/addTelemedicineData.jsp |
+| [[requirements#uc34_remotely_monitor_patient_physiologic_measurements|UC34S6]] | /auth/patient/addTelemedicineData.jsp |
+| [[requirements#uc35_report_adverse_event_use_case|UC35S1]] | /auth/patient/reportAdverseEvent.jsp |
+| [[requirements#uc35_report_adverse_event_use_case|UC35S2]] | /auth/patient/reportAdverseEvent.jsp |
+| [[requirements#uc36_monitor_adverse_event_use_case|UC36S1]] | /auth/pha/monitorAdverseEvents.jsp |
+| [[requirements#uc36_monitor_adverse_event_use_case|UC36S2]] | /auth/pha/monitorAdverseEvents.jsp |
+| [[requirements#uc36_monitor_adverse_event_use_case|UC36S3]] | /auth/pha/adverseEventDetails.jsp |
+| [[requirements#uc36_monitor_adverse_event_use_case|UC36S4]] | /auth/pha/barchart.jsp |
+| [[requirements#uc36_monitor_adverse_event_use_case|UC36S5]] | /auth/pha/barchart.jsp |
+| [[requirements#uc37_safe_drug_prescription_use_case|UC37S1]] | /auth/hcp-uap/editOfficeVisit.jsp |
+| [[requirements#uc37_safe_drug_prescription_use_case|UC37S2]] | /auth/hcp-uap/editOfficeVisit.jsp |
+| [[requirements#uc37_safe_drug_prescription_use_case|UC37S3]] | No links.  Implemented by EditOfficeVisitAction.sendEmail() |
+| [[requirements#uc38_maintain_drug_interaction_use_case|UC38S1]] | /auth/admin/editNDCInteractions.jsp |
+| [[requirements#uc38_maintain_drug_interaction_use_case|UC38S2]] | /auth/admin/editNDCodes.jsp | 
+| [[requirements#uc39_view_transaction_logs_use_case|UC39]] | No links. |
+| [[requirements#uc40_view_schedule_calendar_use_case|UC40]] | No links. |
+| [[requirements#uc41_send_reminders_use_case|UC41]] | No links. |

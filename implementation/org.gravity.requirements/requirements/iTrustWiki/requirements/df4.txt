@@ -1,0 +1,60 @@
+=====Data Format 6.4: Patient Personal Health Record=====
+Order of these entries does not matter.
+The following information must be maintained.
+====Table 6.4.1====
+Patient Information:
+^Field^Format^
+|Patient MID  |Unique 10-digit number that does not start with 9 [uneditable]|
+|First Name  |Up to 20 Letters, space, ' and -|
+|Last Name  |Up to 20 Letters, space, ' and -|
+|Email  |Up to 30 alphanumeric characters and symbols . and _ @|
+|Address  |Up to 30 alphanumeric characters, and .|
+|City  |Up to 15 characters|
+|State  |2 character state code|
+|Zip  |xxxxx or xxxxx-xxxx|
+|Phone  |xxx-xxx-xxxx|
+|Mother MID  |Unique 10-digit number that does not start with 9|
+|Father MID  |Unique 10-digit number that does not start with 9 (optional)|
+
+====Table 6.4.2====
+Patient's Insurance Information:
+^Field^Format^
+|Name  |Up to 20 Letters, space, ' and -|
+|Address  |Up to 30 alphanumeric characters, and .|
+|City  |Up to 15 characters|
+|State  |2 character state code|
+|Zip  |xxxxx or xxxxx-xxxx|
+|Phone  |xxx-xxx-xxxx|
+|Insurance ID  |Up to 20 letters, digits, space, ' and -|
+
+====Table 6.4.3====
+The Patient's Emergency Contact Information:
+^Field^Format^
+|Name  |Up to 20 Letters, space, ' and -|
+|Phone  |xxx-xxx-xxxx|
+
+====Table 6.4.4====
+The Patient's Health Information:
+^Field^Format^
+|Ethnicity  |Choose from Caucasian, African American, Hispanic, American Indian, Asian, other|
+|Blood Type  |O+, A+, B+, AB+, O-, A-, B-, AB-|
+|Gender  |Male or Female|
+|Birth Date  |including day, month, and year|
+|Deceased Date  |including day, month, and year (optional field)|
+|Deceased Diagnosis  |The cause-of-death diagnosis, in ICD9CM format (optional field) [for UC16]|
+|Topical Notes  |Up to 200 alphanumeric characters and symbols: ? - ' . blankspace and carriage return of personal information about the patient (optional field)|
+|Food Allergies  |As many entries as necessary of up to 30 alpha characters each; stored per office visit.|
+|Drug Allergies  |National Drug code|
+
+Additionally, a history of the following information must be maintained \\
+
+
+====Table 6.4.5====
+^Field^Format^
+|Height/Length  |Up to 3-digit number + up to 1 decimal place (inches) **greater than 0**.|
+|Weight  |Up to 4-digit number + up to 1 decimal place (pounds) **greater than 0**.|
+|Head Circumference  |up to 3-digit number + up to 1 decimal place (inches) **greater than 0**.|
+|Blood Pressure  |Up to 3-digit number / Up to 3-digit number|
+|Cholesterol  |HDL [integer less than 90], triglyceride [integer between 100 and 600], LDL [integer between 0 and 600].|
+|Household Smoking Status  | 1 - non-smoking household, 2 - outdoor smokers, 3 - indoor smokers  |
+|Patient Smoking Status  |1 - Current every day smoker; 2 - Current some day smoker; 3 - Former smoker; 4 - Never smoker; 5 - Smoker, current status unknown; 9 - unknown if ever smoked  |

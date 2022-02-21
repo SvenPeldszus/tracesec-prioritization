@@ -1,0 +1,135 @@
+====== Deploying iTrust v13 (Fall 2011) to Mac ======
+{{mac-logo.jpg?50x50|}} These deployment instructions are for **Mac**, [[home_deployment_instructions|Go here]] if you want to deploy on a different operating system.
+
+You may also find these installation guides, prepared by previous 326 students helpful:
+  * {{itrustinstallationonamac.doc|}}
+  * {{teamproject_itrustmacguide_lab201_team2.pdf|}}
+
+
+
+[[start|Back to start]]
+
+
+
+
+
+
+===== Downloads =====
+
+To install iTrust on your home system, download and install the following packages.
+
+^ Program/Package Name ^ Details ^
+| [[http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/keplerr|Eclipse v4.3]] | Unzip the program files to a permanent location. Be sure you download the Eclipse IDE for Java EE Developers. |
+| [[http://www.oracle.com/technetwork/java/javase/downloads/index.html|JDK v1.6]] | Download the Java JDK and not the JRE package. Also, do not confuse this with the Java EE SDK.  Any update for version 1.5 (eg v5) will do; you do not need NetBeans nor the Source Code (though the source can be helpful).|
+| [[http://tomcat.apache.org/download-60.cgi|Apache Tomcat v6.0]] | Download the core zip, unzip into desired location. **Don't forget this! Download the [[http://dev.mysql.com/downloads/connector/j/#downloads|MySQL JDBC Driver]].  Select the platform independent option and download the zip or tar.  Open the archive file and place the mysql-connector-java-5.1.*-bin.jar file into the following directory:** ''<your tomcat folder>/lib/'' |
+| [[http://dev.mysql.com/downloads/mysql/|MySQL v5.6.*]] | Select and install the distribution for your operating system. Note that you do not need to obtain a username for download. **Note that you should not check ''Disable networking'' when configuring the server and to disable strict mode checking!** |
+| [[http://dev.mysql.com/downloads/tools/workbench/|MySQL Workbench (optional)]] | These can be useful for tweaking your local database and testing your queries. Install for your operating system. |
+| [[http://sourceforge.net/projects/itrust/|iTrust Source]] | Download the zip to desired location. Do not extract.|
+
+
+===== Getting Started =====
+
+From here on, the rest of the deployment instructions for Mac will take place within the Eclipse development environment.  Open Eclipse to continue.
+
+Then, open the Java perspective by going to ''Window -> Open Perspective - Other''.
+
+{{openperspective-mac.jpg}}
+
+And select ''Java'' and click ''Finish''.
+
+{{javaperspective.jpg}}
+
+
+
+
+===== Apache Tomcat =====
+Once you unzip Tomcat into a directory on your machine (don't forget the MySQL driver!), you will need to set up the Web Tools environment to deploy projects. To do this, complete the following steps in Rational Team Concert or Eclipse:
+  * Go to ''Window > Show View > Other...'' Select ''Server > Servers...''
+
+{{servers.jpg}}
+
+  * In the ''Servers'' view, right click and select "New"
+
+{{newserve-mac.jpg}}
+
+  * Select ''Apache > Tomcat v6.0 Server''. Hit next.
+  * Select the folder where you previously unzipped Tomcat (your version number might not match the screenshot - that's okay as long as it's 6.0). 
+
+{{tomcatserver.jpg}}
+
+  * Hit ''Finish''
+
+
+
+
+===== Starting the Server=====
+
+  * In the servers view, you should see your new runtime below. Click on the "Play" button to start the server.
+
+
+
+  * If you see the text ''Server startup in xxxxx ms'' in the ''Console'' view, and the ''Servers'' view shows that your status is "Synchronized", then your server is properly configured. If the Console view isn't open, go to ''Window > Show View... > Console''
+
+
+===== MySQL =====
+
+iTrust needs to be able to connect to a MySQL database. Your instructor or TA may give you the database URL, username, and password details. If, however, you wish to have a local database (which performs significantly faster), you can install MySQL on your own machine. Here are instructions for how to set up your sever on [[http://dev.mysql.com/doc/refman/5.0/en/windows-installation.html|Windows]], [[http://dev.mysql.com/doc/refman/5.0/en/linux-rpm.html|Linux]] and [[http://dev.mysql.com/doc/refman/5.0/en/mac-os-x-installation.html|Mac OS X]]. We recommend you use the Developer Machine option, and be sure to allow TCP/IP connections.
+
+If you use a local MySQL setup, then you will also need to create a database. Use the GUI tools for this, or use the "MySQL Command Line Client", and run the command Create Database iTrust; which will create a database named "iTrust". The root password should be set to an empty string.
+
+
+===== Troubleshooting MySQL Installation =====
+
+If MySQL does not install properly and you wish to re-install, be sure to remove the log files and the data tables. For example, if you originally installed MySQL into c:\Program Files\MySQL\My SQL Server 5.0, then delete the MySQL folder before re-installing.
+
+MySQL has a large community and extensive documentation, so if you can't find the answer to your question here, consult the MySQL website.
+
+
+
+===== Importing and Deploying the Project =====
+The source files will need to be imported as an Eclipse project, and deployed as a Tomcat application. To do this, follow these steps:
+
+  * Download the source (see link at the top) and save it to a location you can remember.
+  * From within Eclipse, switch to the Java perspective. (use Window >  Open Perspective..., or use the icons in the upper-right corner)
+  * To import the project files, go to ''File -> Import'' ... and select ''Existing Projects Into Workspace''. Click Next.
+
+{{import.jpg}}
+
+  * Check the radio button ''Select Archive File'' and select ''Browse''.
+  * Select the archive of your source code.
+  * Make sure that iTrust is checked in the projects selector and click Finish. The files are now in your workspace. The Package Explorer should look like this:
+
+{{packageexplorer.jpg}}
+
+  * Now you need to deploy the project to your Tomcat server. In the Servers view, right-click on your Tomcat installation and select Add and Remove Projects...
+
+{{addandremove.jpg}}
+
+  * iTrust should show up on the list, move it over to the "Configured Projects" pane, hit Finish.
+
+{{addandremovedone-mac.jpg}}
+
+  * If you click on the plus sign in your server configuration, you should see "iTrust" deployed (published) there.
+  
+
+
+
+===== Configuring the Project =====
+  * Now that iTrust is set up to be deployed on Tomcat, you need to set the database parameters. In the Package Explorer, Open up iTrust > WebRoot > META-INF > context.xml
+  * If the file is opened in "Design" mode, switch to the "Source" mode at the bottom of the editor.
+  * Follow the comments in the context.xml file to properly set up your database parameters. **If you have a username, password, and URL for a database provided by the instructor or TA, or if you have a local database, please use those parameters**.
+
+  * To test your parameters, go to ''iTrust > unittests>  edu.ncsu.csc.itrust''. Right-click on ''DBBuilder.java'', select ''Run as... > Java Application''
+(to view your packages easier, click on the triangle in the package explorer view, Package Presentation > "Hierarchical") 
+
+{{dbbuilder.jpg}}
+
+  * The console view should show many lines beginning with ''Executing:'' , then end with ''Operation Completed''
+  * To populate your database with test data, go to ''unittests'', and in the datagenerators package, run the ''TestDataGenerator.java'' program. You should also get a lot of ''Executing:'' , followed by an ''Operation Completed''.
+
+{{testdatagenerator.jpg}}
+
+
+===== Running the Application =====
+   *  Start the Tomcat Server in the ''Servers'' view as before.  **NOTE:** This step is ''required''.  Because you have made changes to the Tomcat and iTrust configurations, you must restart Tomcat.
+   * Open your internet browser and surf to [[http://localhost:8080/iTrust/]]. You should be able to log in and use the application as normal.

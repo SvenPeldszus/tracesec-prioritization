@@ -1,0 +1,36 @@
+**UC83: Ophthalmology Patient Office Visit**
+
+**83.1 Preconditions**
+
+An HCP is a registered user of the iTrust Medical Records system ([[uc2|UC2]]). The iTrust HCP user has authenticated himself or herself in the iTrust Medical Records system ([[uc3|UC3]]). The patient must be a registered patient in the iTrust Medical Records system.
+
+**83.2: Main Flow**
+
+A HCP chooses to view [S2], document [S3], or edit [S4] an ophthalmology office visit for an iTrust patient [S1]. 
+
+** 83.3 Sub-flows** 
+
+  * [S1] The HCP enters a MID [E1] or name of a patient and confirms their selection [E2].
+  * [S2] An non-optometrist/ophthalmologist HCP selects an ophthalmology office visit from a list of prior visits.  The HCP can view (but not edit) the details of the ophthalmology office visit as described in in [S3]. All events are logged ([[uc5|UC5]]).
+  * [S3] An optometrist or ophthalmologist HCP [E3] documents the following information related to an ophthalmology office visit and saves the ophthalmology office visit record. All events are logged ([[uc5|UC5]]). After the ophthalmology office visit record is saved, the optometrist or ophthalmologist HCP is sent to an overview of all recorded ophthalmology office visits for the patent. The following information may be entered, but not all is required. [E4] Data details are described in [[df17|Data Format 6.17]].
+     * Date of the ophthalmology office visit - current date. Required.
+     * Visual Acuity Results. Required.
+     * Sphere (SPH) for both the right (OD) and left (OS) eyes. Required.
+     * Cylinder (CYL) for both the right (OD) and left (OS) eyes. Optional for one or both eyes.
+     * Axis for both the right (OD) and left (OS) eyes. Required for the same eye that has a cylinder reading.
+     * Add for both the right (OD) and left (OS) eyes. Required.
+
+  * [S4] An optometrist or ophthalmologist HCP can return to an ophthalmology office visit and modify or delete the fields of the ophthalmology office visit [E3]. The event is logged ([[uc5|UC5]]). After the ophthalmology office visit record is saved, the optometrist or ophthalmologist HCP is sent to an overview of all recorded ophthalmology office visits for the patent.
+
+** 83.4: Alternative Flows**
+  * [E1] The HCP types an invalid patient medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient. The HCP does not confirm the selection and is prompted to try again.
+  * [E3] An HCP without the optometrist or ophthalmologist specializations is unable to create or edit an ophthalmology office visit. They are prompted to create a regular office visit ([[uc11|UC11]]).
+  * [E4] Invalid or missing inputs are flagged and an error message appropriate to the input is printed.
+
+**83.5: Logging**
+
+|Transaction Code|Verbose Description|Logged In MID|Secondary MID|Use Case(s) Involved|Type of Transaction|Additional Information|Patient Viewable|
+|8300|Create Ophthalmology Office Visit|Editor (HCP)|Patient|83|Create|Office Visit ID|Yes|
+|8301|View Ophthalmology Office Visit|Viewer (HCP)|Patient|83|View|Office Visit ID|Yes|
+|8302|Edit Ophthalmology Office Visit|Editor (HCP)|Patient|83|Edit|Office Visit ID|Yes|

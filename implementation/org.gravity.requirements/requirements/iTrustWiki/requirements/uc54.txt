@@ -1,0 +1,20 @@
+====UC54 Percentiles====
+==54.1 Preconditions:==
+An HCP or patient is a registered user of the iTrust Medical Records system ([[requirements:uc2|UC2]]). The HCP or patient has authenticated himself or herself in the iTrust Medical Records system ([[requirements:uc3|UC3]]).
+==54.2 Main Flow:==
+The HCP selects a patient [S1] and selects the option to view the basic health metrics for the patient [S2]. The patient selects the option to view their own basic health metrics [S2].
+==54.3 Sub-flows:==
+  * [S1] The health care personnel enters a MID [E1] of a patient and confirms their selection [E2].
+  * [S2] The percentiles shall display for the following information in the Basic Health Metrics ([[requirements:uc52|UC52]]):
+      * Weight for age from birth to 20 years of age
+      * Height/Length from birth to 20 years of age
+      * Head Circumference from birth to 3 years of age
+      * BMI from 2 to 20 years of age
+==54.4 Alternative Flows:==
+  * [E1] The health care professional types an invalid medical identification number and is prompted to try again.
+  * [E2] The patient chosen is not the desired patient. The health care professional does not confirm the selection and is prompted to try again.
+  * [E3] If there is no data for a given age range, there should not be percentiles displayed for that patient.
+==54.5 Logging==
+^  Transaction Code  ^  Verbose Description  ^  Logged In MID  ^  Secondary MID  ^  Use Case(s) Involved  ^  Type of Transaction  ^  Additional Information  ^  Patient Viewable  ^
+| 5400 |  Patient View of Percentiles  |  Patient  |  None  |  54  |  View  |  None  |  Yes  |
+| 5401 |  HCP View of Percentiles  |  HCP  |  Patient  |  54  |  View  |  None  |  Yes  |

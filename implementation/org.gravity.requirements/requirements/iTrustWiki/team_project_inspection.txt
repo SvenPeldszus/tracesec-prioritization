@@ -1,0 +1,54 @@
+====== Team Project Requirements Inspection ======
+
+
+Below are most of the questions and comments we received during the requirements inspection in lab.
+
+
+===== UC24 =====
+  * The survey is assumed to be optional, is that correct? Also, it is assumed to have no expiration date, is that true?
+    * Yes. Yes.
+
+  * We are assuming that the user cannot view past results, is that ok?
+    * Yes.  I have updated UC 9 to reflect this.
+
+  * How is the survey linked to the specific office visit?
+    * This is completely up to you.  The requirements are not very specific about this, so we are giving you freedom to choose.  The only requirement is that the patient should only be able to take 1 survey per office visit.  The office visit survey should somehow keep track of the HCP mid in order to fulfill UC 25.  To fulfill the extra credit requirement, the office visit survey should also keep track of the hospital id
+
+  * Can we provide ranges of minutes for the questions? (Ex. Less than 5 minutes etc...)
+    * No.  UC 25 requires average waiting times, which would be very difficult to do with ranges.
+
+  * What is the limit for minutes?
+    * Up to 3 digits. We've moved the data format stuff down to the new data format 6.13.
+
+===== UC25 =====
+
+  * Is the authenticated user a patient or a hcp, or an admin, or all of the above?
+    * Any //authenticated// user can access the satisfaction survey results.
+
+  * In the alternate flow, does  invalid zipcode mean: not a 5 digit number, no search results (not in DB), or one of the zipcodes that the post office will not deliver mail to?
+    * Validate the zip code based on Data Format 6.2:  5 integers - 4 integers (the latter part – 4 integers – is optional)
+
+  * In the alternate flow, what does invalid physician type mean? Does it mean no search results?
+    * An invalid physician type would be one not provided in Data Format 6.2:  “General”, “Surgeon”, “Heart specialist”, “Pediatrician”, “OB/GYN”
+
+
+===== UC26 =====
+
+  * Who is the email sent to?
+    * The patient.  See [UC27, S2]
+
+
+
+
+===== UC27 =====
+
+  * UC22 needs to be added to the precondition
+    * Good catch :)
+
+  * In S3, what is the location in the appointment?
+    * Not sure how that got in the requirement.  Its gone now.
+
+
+===== Data Format 6.3 =====
+  * Update the table
+    * Done!
