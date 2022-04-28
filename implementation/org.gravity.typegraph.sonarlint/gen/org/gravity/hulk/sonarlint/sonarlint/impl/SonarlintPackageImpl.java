@@ -181,6 +181,36 @@ public class SonarlintPackageImpl extends EPackageImpl implements SonarlintPacka
 	 * @generated
 	 */
 	@Override
+	public EAttribute getSonarlintFinding_Line() {
+		return (EAttribute)sonarlintFindingEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSonarlintFinding_StartChar() {
+		return (EAttribute)sonarlintFindingEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSonarlintFinding_EndChar() {
+		return (EAttribute)sonarlintFindingEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public SonarlintFactory getSonarlintFactory() {
 		return (SonarlintFactory)getEFactoryInstance();
 	}
@@ -212,6 +242,9 @@ public class SonarlintPackageImpl extends EPackageImpl implements SonarlintPacka
 		createEAttribute(sonarlintFindingEClass, SONARLINT_FINDING__DESCRIPTION);
 		createEAttribute(sonarlintFindingEClass, SONARLINT_FINDING__CREATIONDATE);
 		createEAttribute(sonarlintFindingEClass, SONARLINT_FINDING__MARKER);
+		createEAttribute(sonarlintFindingEClass, SONARLINT_FINDING__LINE);
+		createEAttribute(sonarlintFindingEClass, SONARLINT_FINDING__START_CHAR);
+		createEAttribute(sonarlintFindingEClass, SONARLINT_FINDING__END_CHAR);
 	}
 
 	/**
@@ -256,6 +289,9 @@ public class SonarlintPackageImpl extends EPackageImpl implements SonarlintPacka
 		initEAttribute(getSonarlintFinding_Description(), ecorePackage.getEString(), "description", null, 0, 1, SonarlintFinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSonarlintFinding_Creationdate(), ecorePackage.getELong(), "creationdate", null, 0, 1, SonarlintFinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSonarlintFinding_Marker(), ecorePackage.getEJavaObject(), "marker", null, 0, 1, SonarlintFinding.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSonarlintFinding_Line(), ecorePackage.getEInt(), "line", null, 0, 1, SonarlintFinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSonarlintFinding_StartChar(), ecorePackage.getEInt(), "startChar", null, 0, 1, SonarlintFinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSonarlintFinding_EndChar(), ecorePackage.getEInt(), "endChar", null, 0, 1, SonarlintFinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

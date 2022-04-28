@@ -22,22 +22,31 @@ public interface QualityModelFactory extends EFactory {
 	QualityModelFactory eINSTANCE = org.tracesec.qualitymodel.impl.QualityModelFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Quality Category</em>'.
+	 * Returns a new object of class '<em>Quality</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Quality Category</em>'.
+	 * @return a new object of class '<em>Quality</em>'.
 	 * @generated
 	 */
-	QualityCategory createQualityCategory();
+	Quality createQuality();
 
 	/**
-	 * Returns a new object of class '<em>Quality Aspect</em>'.
+	 * Returns a new object of class '<em>Aspect</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Quality Aspect</em>'.
+	 * @return a new object of class '<em>Aspect</em>'.
 	 * @generated
 	 */
-	QualityAspect createQualityAspect();
+	Aspect createAspect();
+
+	/**
+	 * Returns a new object of class '<em>Quality Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Quality Model</em>'.
+	 * @generated
+	 */
+	QualityModel createQualityModel();
 
 	/**
 	 * Returns the package supported by this factory.

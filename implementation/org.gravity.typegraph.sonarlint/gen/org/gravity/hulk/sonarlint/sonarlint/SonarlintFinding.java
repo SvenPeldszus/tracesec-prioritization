@@ -20,6 +20,9 @@ import org.gravity.hulk.antipatterngraph.HCodeSmell;
  *   <li>{@link org.gravity.hulk.sonarlint.sonarlint.SonarlintFinding#getDescription <em>Description</em>}</li>
  *   <li>{@link org.gravity.hulk.sonarlint.sonarlint.SonarlintFinding#getCreationdate <em>Creationdate</em>}</li>
  *   <li>{@link org.gravity.hulk.sonarlint.sonarlint.SonarlintFinding#getMarker <em>Marker</em>}</li>
+ *   <li>{@link org.gravity.hulk.sonarlint.sonarlint.SonarlintFinding#getLine <em>Line</em>}</li>
+ *   <li>{@link org.gravity.hulk.sonarlint.sonarlint.SonarlintFinding#getStartChar <em>Start Char</em>}</li>
+ *   <li>{@link org.gravity.hulk.sonarlint.sonarlint.SonarlintFinding#getEndChar <em>End Char</em>}</li>
  * </ul>
  *
  * @see org.gravity.hulk.sonarlint.sonarlint.SonarlintPackage#getSonarlintFinding()
@@ -180,5 +183,71 @@ public interface SonarlintFinding extends HCodeSmell {
 	 * @generated
 	 */
 	void setMarker(Object value);
+
+	/**
+	 * Returns the value of the '<em><b>Line</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Line</em>' attribute.
+	 * @see #setLine(int)
+	 * @see org.gravity.hulk.sonarlint.sonarlint.SonarlintPackage#getSonarlintFinding_Line()
+	 * @model
+	 * @generated
+	 */
+	int getLine();
+
+	/**
+	 * Sets the value of the '{@link org.gravity.hulk.sonarlint.sonarlint.SonarlintFinding#getLine <em>Line</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Line</em>' attribute.
+	 * @see #getLine()
+	 * @generated
+	 */
+	void setLine(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Start Char</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Start Char</em>' attribute.
+	 * @see #setStartChar(int)
+	 * @see org.gravity.hulk.sonarlint.sonarlint.SonarlintPackage#getSonarlintFinding_StartChar()
+	 * @model
+	 * @generated
+	 */
+	int getStartChar();
+
+	/**
+	 * Sets the value of the '{@link org.gravity.hulk.sonarlint.sonarlint.SonarlintFinding#getStartChar <em>Start Char</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Start Char</em>' attribute.
+	 * @see #getStartChar()
+	 * @generated
+	 */
+	void setStartChar(int value);
+
+	/**
+	 * Returns the value of the '<em><b>End Char</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>End Char</em>' attribute.
+	 * @see #setEndChar(int)
+	 * @see org.gravity.hulk.sonarlint.sonarlint.SonarlintPackage#getSonarlintFinding_EndChar()
+	 * @model
+	 * @generated
+	 */
+	int getEndChar();
+
+	/**
+	 * Sets the value of the '{@link org.gravity.hulk.sonarlint.sonarlint.SonarlintFinding#getEndChar <em>End Char</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>End Char</em>' attribute.
+	 * @see #getEndChar()
+	 * @generated
+	 */
+	void setEndChar(int value);
 
 } // SonarlintFinding

@@ -3,26 +3,43 @@
 <plugin>
    <extension
          point="org.eclipse.ui.menus">
-      <command
-                  commandId="org.tracesec.prioritization.ui.command"
-                  label="Prioritize Issues"
-                  style="push">
-            </command>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.jdt.ui.PackageExplorer?after=additions">
+         <command
+               commandId="org.tracesec.prioritization.ui.command.prioritize"
+               label="Prioritize Issues"
+               style="push">
+         </command>
+         <command
+               commandId="org.tracesec.prioritization.ui.command.show"
+               label="Show in Prioritization View"
+               style="push">
+         </command>
+      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="org.tracesec.prioritization.ui.command.Handler"
-            id="org.tracesec.prioritization.ui.command"
+            defaultHandler="org.tracesec.prioritization.ui.command.PrioritizationHandler"
+            id="org.tracesec.prioritization.ui.command.prioritize"
             name="Prioritize Issues">
       </command>
+      <command
+            defaultHandler="org.tracesec.prioritization.ui.command.OpenViewerHandler"
+            id="org.tracesec.prioritization.ui.command.show"
+            name="Show in Prioritization View">
+      </command>
    </extension>
    <extension
-         point="org.eclipse.ui.commands">
-      <command
-            id="org.tracesec.prioritization.ui.command1"
-            name="name">
-      </command>
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            class="org.tracesec.prioritization.ui.view.IssuesView"
+            id="org.tracesec.prioritization.ui.issuesview"
+            name="TraceSec Issues"
+            restorable="true">
+      </view>
    </extension>
 
 </plugin>

@@ -12,7 +12,5 @@ Export-Package: org.gravity.requirements,
  org.gravity.requirements.impl,
  org.gravity.requirements.util
 Require-Bundle: org.eclipse.uml2.uml,
- org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport,
  org.tracesec.requirements
 Bundle-ActivationPolicy: lazy

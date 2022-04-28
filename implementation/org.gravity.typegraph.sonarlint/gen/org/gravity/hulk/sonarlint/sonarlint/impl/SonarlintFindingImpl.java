@@ -25,6 +25,9 @@ import org.gravity.hulk.sonarlint.sonarlint.SonarlintPackage;
  *   <li>{@link org.gravity.hulk.sonarlint.sonarlint.impl.SonarlintFindingImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.gravity.hulk.sonarlint.sonarlint.impl.SonarlintFindingImpl#getCreationdate <em>Creationdate</em>}</li>
  *   <li>{@link org.gravity.hulk.sonarlint.sonarlint.impl.SonarlintFindingImpl#getMarker <em>Marker</em>}</li>
+ *   <li>{@link org.gravity.hulk.sonarlint.sonarlint.impl.SonarlintFindingImpl#getLine <em>Line</em>}</li>
+ *   <li>{@link org.gravity.hulk.sonarlint.sonarlint.impl.SonarlintFindingImpl#getStartChar <em>Start Char</em>}</li>
+ *   <li>{@link org.gravity.hulk.sonarlint.sonarlint.impl.SonarlintFindingImpl#getEndChar <em>End Char</em>}</li>
  * </ul>
  *
  * @generated
@@ -169,6 +172,66 @@ public class SonarlintFindingImpl extends HCodeSmellImpl implements SonarlintFin
 	 * @ordered
 	 */
 	protected Object marker = MARKER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLine() <em>Line</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLine()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int LINE_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getLine() <em>Line</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLine()
+	 * @generated
+	 * @ordered
+	 */
+	protected int line = LINE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getStartChar() <em>Start Char</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStartChar()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int START_CHAR_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getStartChar() <em>Start Char</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStartChar()
+	 * @generated
+	 * @ordered
+	 */
+	protected int startChar = START_CHAR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getEndChar() <em>End Char</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEndChar()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int END_CHAR_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getEndChar() <em>End Char</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEndChar()
+	 * @generated
+	 * @ordered
+	 */
+	protected int endChar = END_CHAR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -356,6 +419,75 @@ public class SonarlintFindingImpl extends HCodeSmellImpl implements SonarlintFin
 	 * @generated
 	 */
 	@Override
+	public int getLine() {
+		return line;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setLine(int newLine) {
+		int oldLine = line;
+		line = newLine;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SonarlintPackage.SONARLINT_FINDING__LINE, oldLine, line));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getStartChar() {
+		return startChar;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setStartChar(int newStartChar) {
+		int oldStartChar = startChar;
+		startChar = newStartChar;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SonarlintPackage.SONARLINT_FINDING__START_CHAR, oldStartChar, startChar));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getEndChar() {
+		return endChar;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setEndChar(int newEndChar) {
+		int oldEndChar = endChar;
+		endChar = newEndChar;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SonarlintPackage.SONARLINT_FINDING__END_CHAR, oldEndChar, endChar));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case SonarlintPackage.SONARLINT_FINDING__RULEKEY:
@@ -372,6 +504,12 @@ public class SonarlintFindingImpl extends HCodeSmellImpl implements SonarlintFin
 				return getCreationdate();
 			case SonarlintPackage.SONARLINT_FINDING__MARKER:
 				return getMarker();
+			case SonarlintPackage.SONARLINT_FINDING__LINE:
+				return getLine();
+			case SonarlintPackage.SONARLINT_FINDING__START_CHAR:
+				return getStartChar();
+			case SonarlintPackage.SONARLINT_FINDING__END_CHAR:
+				return getEndChar();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -404,6 +542,15 @@ public class SonarlintFindingImpl extends HCodeSmellImpl implements SonarlintFin
 				return;
 			case SonarlintPackage.SONARLINT_FINDING__MARKER:
 				setMarker(newValue);
+				return;
+			case SonarlintPackage.SONARLINT_FINDING__LINE:
+				setLine((Integer)newValue);
+				return;
+			case SonarlintPackage.SONARLINT_FINDING__START_CHAR:
+				setStartChar((Integer)newValue);
+				return;
+			case SonarlintPackage.SONARLINT_FINDING__END_CHAR:
+				setEndChar((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -438,6 +585,15 @@ public class SonarlintFindingImpl extends HCodeSmellImpl implements SonarlintFin
 			case SonarlintPackage.SONARLINT_FINDING__MARKER:
 				setMarker(MARKER_EDEFAULT);
 				return;
+			case SonarlintPackage.SONARLINT_FINDING__LINE:
+				setLine(LINE_EDEFAULT);
+				return;
+			case SonarlintPackage.SONARLINT_FINDING__START_CHAR:
+				setStartChar(START_CHAR_EDEFAULT);
+				return;
+			case SonarlintPackage.SONARLINT_FINDING__END_CHAR:
+				setEndChar(END_CHAR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -464,6 +620,12 @@ public class SonarlintFindingImpl extends HCodeSmellImpl implements SonarlintFin
 				return creationdate != CREATIONDATE_EDEFAULT;
 			case SonarlintPackage.SONARLINT_FINDING__MARKER:
 				return MARKER_EDEFAULT == null ? marker != null : !MARKER_EDEFAULT.equals(marker);
+			case SonarlintPackage.SONARLINT_FINDING__LINE:
+				return line != LINE_EDEFAULT;
+			case SonarlintPackage.SONARLINT_FINDING__START_CHAR:
+				return startChar != START_CHAR_EDEFAULT;
+			case SonarlintPackage.SONARLINT_FINDING__END_CHAR:
+				return endChar != END_CHAR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -492,6 +654,12 @@ public class SonarlintFindingImpl extends HCodeSmellImpl implements SonarlintFin
 		result.append(creationdate);
 		result.append(", marker: ");
 		result.append(marker);
+		result.append(", line: ");
+		result.append(line);
+		result.append(", startChar: ");
+		result.append(startChar);
+		result.append(", endChar: ");
+		result.append(endChar);
 		result.append(')');
 		return result.toString();
 	}

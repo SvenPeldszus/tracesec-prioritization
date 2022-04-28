@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.tracesec.feature"
+      label="TraceSec Feature"
+      version="1.0.0.202203041005"
+      provider-name="Ruhr University Bochum">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import feature="org.gravity.features.hulk" version="1.0.0.qualifier"/>
+      <import feature="org.sonarlint.eclipse.feature" version="7.1.0.39158"/>
+      <import feature="org.eclipse.xtext.runtime" version="2.25.0.v20210301-1429"/>
+      <import feature="org.eclipse.xtext.ui" version="2.25.0.v20210301-1429"/>
+      <import feature="org.eclipse.xtext.xbase" version="2.25.0.v20210301-1429"/>
+      <import feature="org.eclipse.xtext.xbase.lib" version="2.25.0.v20210301-0822"/>
+      <import feature="org.eclipse.uml2" version="5.5.2.v20210228-1829"/>
+      <import feature="org.gravity.features.uml" version="1.0.0.qualifier"/>
+      <import feature="org.moflon.tgg.mosl.feature" version="3.0.1.202202151536"/>
+      <import feature="org.gravity.features.typegraph.basic" version="1.0.0.qualifier"/>
+   </requires>
+
+   <plugin
+         id="org.tracesec.prioritization"
+         download-size="42"
+         install-size="111"
+         version="0.1.0.202203041005"
+         unpack="false"/>
+
+   <plugin
+         id="org.tracesec.graph.dsl.ide"
+         download-size="41"
+         install-size="144"
+         version="1.0.0.202203041005"
+         unpack="false"/>
+
+   <plugin
+         id="org.tracesec.graph.dsl.ui"
+         download-size="16"
+         install-size="46"
+         version="1.0.0.202203041005"
+         unpack="false"/>
+
+   <plugin
+         id="org.tracesec.requirements"
+         download-size="33"
+         install-size="105"
+         version="0.1.0.202203041005"
+         unpack="false"/>
+
+   <plugin
+         id="org.tracesec.qualitymodel"
+         download-size="21"
+         install-size="51"
+         version="0.1.0.202203041005"
+         unpack="false"/>
+
+   <plugin
+         id="org.tracesec.graph.dsl"
+         download-size="102"
+         install-size="238"
+         version="1.0.0.202203041005"
+         unpack="false"/>
+
+   <plugin
+         id="org.tracesec.prioritization.ui"
+         download-size="20"
+         install-size="34"
+         version="0.1.0.202203041005"
+         unpack="false"/>
+
+   <plugin
+         id="org.gravity.typegraph.sonarlint"
+         download-size="24"
+         install-size="47"
+         version="1.0.0.202203041005"
+         unpack="false"/>
+
+</feature>

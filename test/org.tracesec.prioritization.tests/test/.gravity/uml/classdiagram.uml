@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="ASCII"?>
-<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" name="root model">
-  <packagedElement xsi:type="uml:Model" name="Test">
-    <packagedElement xsi:type="uml:Package" name="Common Java datatypes">
-      <packagedElement xsi:type="uml:PrimitiveType" name="float"/>
-      <packagedElement xsi:type="uml:PrimitiveType" name="double"/>
-      <packagedElement xsi:type="uml:PrimitiveType" name="void"/>
-      <packagedElement xsi:type="uml:PrimitiveType" name="short"/>
-      <packagedElement xsi:type="uml:PrimitiveType" name="long"/>
-      <packagedElement xsi:type="uml:PrimitiveType" name="char"/>
-      <packagedElement xsi:type="uml:PrimitiveType" name="byte"/>
-      <packagedElement xsi:type="uml:PrimitiveType" name="boolean"/>
-      <packagedElement xsi:type="uml:PrimitiveType" name="int"/>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_2BtbIL-1EeyTyvHMoq6R6A" name="root model">
+  <packagedElement xmi:type="uml:Model" xmi:id="_2BtbIb-1EeyTyvHMoq6R6A" name="Test">
+    <packagedElement xmi:type="uml:Package" xmi:id="_2BuCML-1EeyTyvHMoq6R6A" name="Common Java datatypes">
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_2BvQUL-1EeyTyvHMoq6R6A" name="float"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_2BvQUb-1EeyTyvHMoq6R6A" name="double"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_2BvQUr-1EeyTyvHMoq6R6A" name="void"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_2BvQU7-1EeyTyvHMoq6R6A" name="short"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_2BvQVL-1EeyTyvHMoq6R6A" name="long"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_2BvQVb-1EeyTyvHMoq6R6A" name="char"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_2BvQVr-1EeyTyvHMoq6R6A" name="byte"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_2BvQV7-1EeyTyvHMoq6R6A" name="boolean"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_2BvQWL-1EeyTyvHMoq6R6A" name="int"/>
     </packagedElement>
-    <packagedElement xsi:type="uml:Package" name="dummy">
-      <packagedElement xsi:type="uml:Class" name="Test" visibility="public">
-        <ownedOperation name="a" visibility="public">
-          <ownedParameter type="//Test/Common%20Java%20datatypes/void" direction="return"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_2BvQWb-1EeyTyvHMoq6R6A" name="dummy">
+      <packagedElement xmi:type="uml:Class" xmi:id="_2BvQWr-1EeyTyvHMoq6R6A" name="Test" visibility="public">
+        <ownedOperation xmi:id="_2ByToL-1EeyTyvHMoq6R6A" name="a" visibility="public">
+          <ownedParameter xmi:id="_2B0I0L-1EeyTyvHMoq6R6A" type="_2BvQUr-1EeyTyvHMoq6R6A" direction="return"/>
         </ownedOperation>
-        <ownedOperation name="b" visibility="private">
-          <ownedParameter type="//Test/Common%20Java%20datatypes/void" direction="return"/>
+        <ownedOperation xmi:id="_2B0I0b-1EeyTyvHMoq6R6A" name="b" visibility="private">
+          <ownedParameter xmi:id="_2B0I0r-1EeyTyvHMoq6R6A" type="_2BvQUr-1EeyTyvHMoq6R6A" direction="return"/>
         </ownedOperation>
       </packagedElement>
     </packagedElement>
   </packagedElement>
-  <packagedElement xsi:type="uml:Model" name="source references">
-    <packagedElement xsi:type="uml:Artifact" name="Test.java" fileName="/home/speldszus/workspace/runtime-workspaces/GRaViTY-runtime/Test/src/dummy/Test.java">
-      <manifestation supplier="//Test/dummy/Test" utilizedElement="//Test/dummy/Test"/>
+  <packagedElement xmi:type="uml:Model" xmi:id="_2B0v4L-1EeyTyvHMoq6R6A" name="source references">
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_2B1-AL-1EeyTyvHMoq6R6A" name="Test.java" fileName="/home/speldszus/workspace/runtime-workspaces/GRaViTY-runtime/Test/src/dummy/Test.java">
+      <manifestation xmi:id="_2B3MIL-1EeyTyvHMoq6R6A" supplier="_2BvQWr-1EeyTyvHMoq6R6A" utilizedElement="_2BvQWr-1EeyTyvHMoq6R6A"/>
     </packagedElement>
   </packagedElement>
-  <packagedElement xsi:type="uml:Model" name="externals"/>
+  <packagedElement xmi:type="uml:Model" xmi:id="_2B3MIb-1EeyTyvHMoq6R6A" name="externals"/>
 </uml:Model>

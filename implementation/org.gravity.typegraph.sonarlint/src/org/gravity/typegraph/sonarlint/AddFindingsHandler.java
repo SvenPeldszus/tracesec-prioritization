@@ -1,5 +1,6 @@
 package org.gravity.typegraph.sonarlint;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,18 +26,18 @@ public class AddFindingsHandler extends AbstractHandler {
 		if(selection.isEmpty()) {
 			return null;
 		}
-		final JobGroup jobgroup = new JobGroup("Add SonarLint Findings to selected PMs", 0, 0);
+		final var jobgroup = new JobGroup("Add SonarLint Findings to selected PMs", 0, 0);
 		for(final IJavaProject project: selection) {
-			final String name = project.getProject().getName();
+			final var name = project.getProject().getName();
 			final Job job = new Job("Add SonarLint Findings to PM of "+name) {
 
 				@Override
 				protected IStatus run(final IProgressMonitor monitor) {
 					try {
-						if(SonarLintProcessor.addSonarLintFindingsToPM(project.getProject(), null)) {
+						if(SonarLintProcessor.addSonarLintFindingsToPM(project.getProject(), null) != null) {
 							return Status.OK_STATUS;
 						}
-					} catch (CoreException | NoConverterRegisteredException e) {
+					} catch (CoreException | NoConverterRegisteredException | IOException e) {
 						return new Status(IStatus.ERROR, getClass(), "Adding SonarLint findings to PM failed for project "+name+" due to an Exception!", e);
 					}
 					return new Status(IStatus.ERROR, getClass(), "Adding SonarLint findings to PM failed for project "+name+"!");

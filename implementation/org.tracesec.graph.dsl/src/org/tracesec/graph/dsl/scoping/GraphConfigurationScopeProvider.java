@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.scoping.IScope;
@@ -44,8 +45,8 @@ public class GraphConfigurationScopeProvider extends AbstractGraphConfigurationS
 				final List<EObject> list = new ArrayList<>();
 				for (final Namespace name : ((Configuration) context.eContainer().eContainer().eContainer())
 						.getNamespaces()) {
-					for(final EClass e : getElements(name, EClass.class)) {
-						if(type.isSuperTypeOf(e)) {
+					for (final EClass e : getElements(name, EClass.class)) {
+						if (type.isSuperTypeOf(e)) {
 							list.add(e);
 						}
 					}
@@ -57,7 +58,11 @@ public class GraphConfigurationScopeProvider extends AbstractGraphConfigurationS
 
 			} else if (reference == GraphConfigurationPackage.eINSTANCE.getAttributeWeight_Value()) {
 				final List<EAttribute> attributes = edge.getReference().getEReferenceType().getEAllAttributes().stream()
-						.filter(a -> a.getEAttributeType().getInstanceClass() == int.class)
+						.filter(attribute -> {
+							final var type = attribute.getEAttributeType();
+							return (int.class.isAssignableFrom(type.getInstanceClass()))
+									|| (type instanceof EEnum);
+						})
 						.collect(Collectors.toList());
 				return Scopes.scopeFor(attributes);
 			}
@@ -68,10 +73,16 @@ public class GraphConfigurationScopeProvider extends AbstractGraphConfigurationS
 
 			}
 		} else if (context instanceof AttributeWeight) {
-			final List<EAttribute> attributes = ((Edge) context.eContainer()).getReference().getEReferenceType()
-					.getEAllAttributes().stream().filter(a -> a.getEAttributeType().getInstanceClass() == int.class)
-					.collect(Collectors.toList());
-			return Scopes.scopeFor(attributes);
+			final var referenceType = ((Edge) context.eContainer()).getReference().getEReferenceType();
+			if (referenceType != null) {
+				final List<EAttribute> attributes = referenceType.getEAllAttributes().stream()
+						.filter(a -> {
+							final var eAttributeType = a.getEAttributeType();
+							return (eAttributeType instanceof EEnum) || (eAttributeType.getInstanceClass() == int.class);
+						})
+						.collect(Collectors.toList());
+				return Scopes.scopeFor(attributes);
+			}
 		}
 		return super.getScope(context, reference);
 	}

@@ -11,27 +11,27 @@ import java.util.stream.Collectors;
 
 import org.tracesec.prioritization.graph.ResidualEdge;
 import org.tracesec.prioritization.graph.ResidualNode;
-import org.tracesec.prioritization.tracegraph.Edge;
 import org.tracesec.prioritization.tracegraph.Graph;
 import org.tracesec.prioritization.tracegraph.Node;
 
 public class DinicsAlgorithm {
 
-	private final Map<Node, ResidualNode> nodes = new HashMap<>();
+	private final Map<Node, ResidualNode> nodes;
 
 	public DinicsAlgorithm(final Graph graph) {
-		for (final Node node : graph.getNodes()) {
-			this.nodes.put(node, new ResidualNode(node.getId()));
-		}
-		for (final Edge edge : graph.getEdges()) {
+		this.nodes = graph.getNodes().parallelStream()
+				.collect(Collectors.toMap(k -> k, node -> new ResidualNode(node.getId())));
+		graph.getEdges().parallelStream().map(edge -> {
 			final var source = this.nodes.get(edge.getSrc());
 			final var target = this.nodes.get(edge.getTrg());
-			final var created = new ResidualEdge(source, target, edge.getCapacity());
+			return new ResidualEdge(source, target, edge.getCapacity());
+		}).sequential().forEach(edge -> {
+			final var target = edge.getTrg();
 			final var result = target.getOut().stream().filter(e -> target.equals(e.getTrg())).findAny();
-			if(result.isPresent()) {
-				created.setOpposite(result.get());
+			if (result.isPresent()) {
+				edge.setOpposite(result.get());
 			}
-		}
+		});
 	}
 
 	public int maxFlow(final Node src, final Node trg) {
@@ -44,24 +44,24 @@ public class DinicsAlgorithm {
 		while (!(flow = blockingFlow(source, target)).isEmpty()) {
 			final var values = flow;
 			final var value = source.getOut().stream().mapToInt(e -> values.getOrDefault(e, 0)).sum();
-			System.out.println("The blocking flow is of "+value+" units.");
+			System.out.println("The blocking flow is of " + value + " units.");
 			maxFlow += value;
 			augment(flow);
 		}
 
-		System.out.println("The maximal flow between "+source.getId() +" and "+ target.getId()+"  is "+maxFlow+" units.");
+		System.out.println("The maximal flow between " + source.getId() + " and " + target.getId() + "  is " + maxFlow
+				+ " units.");
 		return maxFlow;
 	}
 
 	private void augment(final Map<ResidualEdge, Integer> flow) {
-		for(final Entry<ResidualEdge, Integer> entry : flow.entrySet()) {
+		for (final Entry<ResidualEdge, Integer> entry : flow.entrySet()) {
 			final var edge = entry.getKey();
 			final var fwd = edge.getUsedCapacity();
 			var opposite = edge.getOppisite();
-			if(opposite != null) {
+			if (opposite != null) {
 				opposite.augmentCapacity(fwd);
-			}
-			else {
+			} else {
 				opposite = new ResidualEdge(edge.getTrg(), edge.getSrc(), fwd);
 				opposite.setOpposite(edge);
 			}
@@ -79,8 +79,9 @@ public class DinicsAlgorithm {
 					flows.compute(next, (k, v) -> v != null ? v + flow : flow);
 					next.useCapacity(flow);
 				}
-				System.out.println("Found path {\n" + path.stream().map(ResidualEdge::toString).collect(Collectors.joining(",\n"))
-						+ "\n} with " + flow + " units of flow.");
+				//				System.out.println(
+				//						"Found path {\n" + path.stream().map(ResidualEdge::toString).collect(Collectors.joining(",\n"))
+				//						+ "\n} with " + flow + " units of flow.");
 			}
 		}
 		return flows;
@@ -108,7 +109,8 @@ public class DinicsAlgorithm {
 				if (trg.equals(next.getTrg())) {
 					return constructPath(next, parents);
 				}
-				final var parentMap = next.getTrg().getOut().stream().filter(out -> out.notSeen(time)).collect(Collectors.toMap(out -> out, out -> next));
+				final var parentMap = next.getTrg().getOut().stream().filter(out -> out.notSeen(time))
+						.collect(Collectors.toMap(out -> out, out -> next));
 				parents.putAll(parentMap);
 				fifo.addAll(parentMap.keySet());
 			}

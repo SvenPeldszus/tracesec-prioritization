@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.tracesec.feature_1.0.0.202204251408.jar" id="org.tracesec.feature" version="1.0.0.202204251408">
+      <category name="org.tracesec"/>
+   </feature>
+   <category-def name="org.tracesec" label="TraceSec"/>
+</site>

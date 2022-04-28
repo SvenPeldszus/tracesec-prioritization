@@ -18,7 +18,8 @@ public class GraphConfigurationValidator extends AbstractGraphConfigurationValid
 	@Check
 	public void checkGreetingStartsWithCapital(final Edge reference) {
 		final var type = reference.getReference().getEReferenceType();
-		if ((type != null) && !type.isSuperTypeOf(reference.getType())) {
+		final var referencedType = reference.getType();
+		if ((type != null) && (referencedType != null) && !type.isSuperTypeOf(referencedType)) {
 			error("The reference is not in the type!",
 					GraphConfigurationPackage.Literals.EDGE__TARGET);
 		}

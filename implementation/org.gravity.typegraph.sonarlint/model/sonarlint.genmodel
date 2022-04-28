@@ -16,6 +16,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sonarlint.ecore#//SonarlintFinding/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sonarlint.ecore#//SonarlintFinding/creationdate"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sonarlint.ecore#//SonarlintFinding/marker"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sonarlint.ecore#//SonarlintFinding/line"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sonarlint.ecore#//SonarlintFinding/startChar"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sonarlint.ecore#//SonarlintFinding/endChar"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

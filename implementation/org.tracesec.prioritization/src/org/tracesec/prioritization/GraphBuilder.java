@@ -10,11 +10,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.moflon.tgg.runtime.AbstractCorrespondence;
 import org.moflon.tgg.runtime.CorrespondenceModel;
 import org.tracesec.graph.dsl.graphConfiguration.AttributeWeight;
@@ -34,20 +36,23 @@ public class GraphBuilder {
 	private final Graph graph;
 
 	private final Map<EObject, Node> map;
-	private final List<Node> nodes;
 	private final List<Edge> edges;
-	private final List<Resource> models;
+	private final List<EPackage> order;
+	private final Set<Relation> seenRelations;
 
-	public GraphBuilder(final Configuration configuration, final List<EObject> models) {
+	public GraphBuilder(final Configuration configuration, final List<EPackage> order) {
 		this.configuration = configuration;
-		this.models = models.stream().map(EObject::eResource).collect(Collectors.toList());
+		this.order = order;
 		this.map = new ConcurrentHashMap<>();
 		this.graph = TracegraphFactory.eINSTANCE.createGraph();
-		this.nodes = this.graph.getNodes();
-		this.edges = this.graph.getEdges();
+		this.edges = Collections.synchronizedList(this.graph.getEdges());
+		this.seenRelations = new HashSet<>();
 	}
 
 	public Graph getGraph() {
+		if(this.graph.getNodes().isEmpty()) {
+			this.graph.getNodes().addAll(this.map.values());
+		}
 		return this.graph;
 	}
 
@@ -59,7 +64,6 @@ public class GraphBuilder {
 		node = TracegraphFactory.eINSTANCE.createNode();
 		node.setRepresents(object);
 		node.setId(object.toString());
-		this.nodes.add(node);
 		this.map.put(object, node);
 		return node;
 	}
@@ -81,6 +85,10 @@ public class GraphBuilder {
 	}
 
 	public Node add(final EObject root) {
+		if (root instanceof CorrespondenceModel) {
+			add((CorrespondenceModel) root);
+			return null;
+		}
 		final var node = node(root);
 		add(getRelations(root));
 		return node;
@@ -92,42 +100,41 @@ public class GraphBuilder {
 
 	private void add(final Collection<Relation> relations) {
 		final var relationStack = new LinkedList<>(relations);
-		final Set<Object> seen = new HashSet<>();
 		while (!relationStack.isEmpty()) {
 			final var relation = relationStack.pop();
-			if (!seen.contains(relation)) {
-				seen.add(relation);
+			if (this.seenRelations.add(relation)) {
 				relationStack.addAll(add(relation));
 			}
 		}
 	}
 
 	private Collection<Relation> addCorrespondences(final CorrespondenceModel traces) {
-		final List<Relation> stack = new LinkedList<>();
-		for (final AbstractCorrespondence corr : traces.getCorrespondences()) {
-			final var src = getSource(corr);
-			final var trg = getTarget(corr);
+		return traces.getCorrespondences().stream().flatMap(corr -> {
+			try {
+				final var src = getSource(corr);
+				final var trg = getTarget(corr);
 
-			if (!ignored(src.eClass()) && !ignored(trg.eClass())) {
-				final var srcNode = node(src);
-				stack.addAll(getRelations(src));
+				if (!ignored(src.eClass()) && !ignored(trg.eClass())) {
+					final var srcNode = node(src);
+					final var trgNode = node(trg);
 
-				final var trgNode = node(trg);
-				stack.addAll(getRelations(trg));
-
-				final var srcIdx = this.models.indexOf(src.eResource());
-				final var trgIdx = this.models.indexOf(trg.eResource());
-				if (srcIdx < trgIdx) {
-					edge(srcNode, trgNode, trgIdx - srcIdx);
-				} else if (srcIdx == trgIdx) {
-					edge(srcNode, trgNode, 1);
-					edge(trgNode, srcNode, 1);
-				} else {
-					edge(trgNode, srcNode, srcIdx - trgIdx);
+					final var srcIdx = this.order.indexOf(src.eClass().getEPackage());
+					final var trgIdx = this.order.indexOf(trg.eClass().getEPackage());
+					if (srcIdx > trgIdx) {
+						edge(srcNode, trgNode,  srcIdx- trgIdx);
+					} else if (srcIdx == trgIdx) {
+						edge(srcNode, trgNode, 1);
+						edge(trgNode, srcNode, 1);
+					} else {
+						edge(trgNode, srcNode, trgIdx - srcIdx);
+					}
+					return Stream.of(src, trg);
 				}
+			} catch (final NullPointerException e) {
+				e.printStackTrace();
 			}
-		}
-		return stack;
+			return Stream.empty();
+		}).distinct().flatMap(node -> getRelations(node).stream()).collect(Collectors.toList());
 	}
 
 	private EObject getTarget(final AbstractCorrespondence corr) {
@@ -155,9 +162,7 @@ public class GraphBuilder {
 
 		final var src = node(relation.getSrc());
 		for (final EObject trg : relation.getTrg()) {
-			if (!ignored(trg.eClass())) {
-				newRelations.addAll(add(src, reference, trg, defaultWeight));
-			}
+			newRelations.addAll(add(src, reference, trg, defaultWeight));
 		}
 		return newRelations;
 	}
@@ -168,8 +173,11 @@ public class GraphBuilder {
 
 		// There is no configuration for the edge -> create a edge with default capacity
 		if (configurationEdges.isEmpty()) {
-			edge(src, node(trg), defaultWeight);
-			return getRelations(trg);
+			if (!ignored(trg.eClass())) {
+				edge(src, node(trg), defaultWeight);
+				return getRelations(trg);
+			}
+			return Collections.emptyList();
 		}
 
 		// Search if there are association classes configured
@@ -191,14 +199,14 @@ public class GraphBuilder {
 		final var associationClass = result.get();
 
 		final var target = associationClass.getTarget();
-		if(target == null) {
+		if (target == null) {
 			edge(src, node(trg), getWeight(associationClass, trg));
 			return getRelations(trg);
 		}
 
 		for (final EObject newTrg : Relation.getValueAsCollection(trg, target)) {
 			if (!ignored(newTrg.eClass())) {
-				edge(src, node(newTrg), getWeight(associationClass, newTrg));
+				edge(src, node(newTrg), getWeight(associationClass, trg));
 				newRelations.addAll(getRelations(newTrg));
 			}
 		}
@@ -210,7 +218,12 @@ public class GraphBuilder {
 		if (w instanceof NumberWeight) {
 			return ((NumberWeight) w).getValue();
 		} else {
-			return ((Number) trg.eGet(((AttributeWeight) w).getValue())).intValue();
+			final var value = trg.eGet(((AttributeWeight) w).getValue());
+			if (value instanceof Number) {
+				return ((Number) value).intValue();
+			} else {
+				return ((Enumerator) value).getValue();
+			}
 		}
 	}
 
@@ -236,8 +249,16 @@ public class GraphBuilder {
 	}
 
 	private Collection<Relation> getRelations(final EObject node) {
-		return node.eClass().getEAllReferences().stream().filter(ref -> !ignored(ref))
-				.map(ref -> new Relation(node, ref)).filter(r -> !r.getTrg().isEmpty()).collect(Collectors.toList());
+		final List<Relation> relations = new LinkedList<>();
+		for (final EReference ref : node.eClass().getEAllReferences()) {
+			if (!ignored(ref)) {
+				final var relation = new Relation(node, ref);
+				if (!relation.getTrg().isEmpty()) {
+					relations.add(relation);
+				}
+			}
+		}
+		return relations;
 	}
 
 	private boolean ignored(final EReference reference) {
@@ -264,7 +285,7 @@ public class GraphBuilder {
 			if (namespace.getExclude().contains(eclass)) {
 				return true;
 			}
-			if (namespace.getInclude().parallelStream().anyMatch(i -> i.getType() == eclass)) {
+			if (namespace.getInclude().stream().anyMatch(i -> i.getType() == eclass)) {
 				return false;
 			}
 			return namespace.getConsider() == Consider.NONE;
@@ -291,7 +312,7 @@ public class GraphBuilder {
 	private Namespace getNamespace(final EClass eclass) {
 		final Set<String> uris = new HashSet<>();
 		var ePackage = eclass.getEPackage();
-		while(ePackage != null) {
+		while (ePackage != null) {
 			uris.add(ePackage.getNsURI());
 			ePackage = ePackage.getESuperPackage();
 		}
@@ -299,7 +320,7 @@ public class GraphBuilder {
 				.orElse(null);
 	}
 
-	public Node get(final EObject finding) {
-		return this.nodes.stream().filter(n -> finding.equals(n.getRepresents())).findAny().orElse(null);
+	public Node get(final EObject object) {
+		return this.map.get(object);
 	}
 }

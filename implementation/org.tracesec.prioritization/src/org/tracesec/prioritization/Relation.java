@@ -21,15 +21,20 @@ public class Relation {
 
 	@SuppressWarnings("unchecked")
 	public static Collection<EObject> getValueAsCollection(final EObject src, final EReference reference) {
-		final var value = src.eGet(reference);
-		if (value == null) {
+		try{
+			final var value = src.eGet(reference);
+			if (value == null) {
+				return Collections.emptyList();
+			}
+			if (value instanceof Collection) {
+				return (Collection<EObject>) value;
+			}
+			if (value instanceof EObject) {
+				return Collections.singleton((EObject) value);
+			}
+		}
+		catch(final NullPointerException e) {
 			return Collections.emptyList();
-		}
-		if (value instanceof Collection) {
-			return (Collection<EObject>) value;
-		}
-		if (value instanceof EObject) {
-			return Collections.singleton((EObject) value);
 		}
 		throw new IllegalStateException();
 	}

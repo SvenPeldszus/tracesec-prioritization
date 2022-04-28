@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.tracesec.qualitymodel.QualityCategory;
+import org.tracesec.qualitymodel.Quality;
 import org.tracesec.qualitymodel.QualityModelPackage;
 
 /**
@@ -68,8 +68,8 @@ public class QualityModelDerivedUnionAdapter extends AdapterImpl {
 	 */
 	protected void notifyChanged(Notification notification, EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case QualityModelPackage.QUALITY_CATEGORY:
-				notifyQualityCategoryChanged(notification, eClass);
+			case QualityModelPackage.QUALITY:
+				notifyQualityChanged(notification, eClass);
 				break;
 		}
 	}
@@ -95,14 +95,8 @@ public class QualityModelDerivedUnionAdapter extends AdapterImpl {
 	 * @param eClass the Ecore class of the notifier.
 	 * @generated
 	 */
-	protected void notifyQualityCategoryChanged(Notification notification, EClass eClass) {
-		switch (notification.getFeatureID(QualityCategory.class)) {
-			case QualityModelPackage.QUALITY_CATEGORY__ASPECTS:
-				notifyChanged(notification, eClass, QualityModelPackage.Literals.QUALITY_CATEGORY__OWNED_NODES);
-				break;
-			case QualityModelPackage.QUALITY_CATEGORY__SUBCATEGORIES:
-				notifyChanged(notification, eClass, QualityModelPackage.Literals.QUALITY_CATEGORY__OWNED_NODES);
-				break;
+	protected void notifyQualityChanged(Notification notification, EClass eClass) {
+		switch (notification.getFeatureID(Quality.class)) {
 		}
 	}
 

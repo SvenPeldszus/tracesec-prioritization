@@ -56,6 +56,13 @@
     <semanticResources>../instances/uml/test.notation</semanticResources>
     <semanticResources>../instances/uml/test.uml</semanticResources>
     <semanticResources>../instances/maxflow.xmi</semanticResources>
+    <semanticResources>prioritization.ecore</semanticResources>
+    <semanticResources>platform:/resource/org.gravity.typegraph.sonarlint/model/sonarlint.ecore</semanticResources>
+    <semanticResources>platform:/plugin/org.gravity.hulk.antipatterngraph/model/Antipatterngraph.ecore</semanticResources>
+    <semanticResources>prioritization.genmodel</semanticResources>
+    <semanticResources>platform:/resource/org.gravity.hulk.antipatterngraph/model/Antipatterngraph.genmodel</semanticResources>
+    <semanticResources>platform:/resource/org.gravity.typegraph.basic/model/Basic.genmodel</semanticResources>
+    <semanticResources>platform:/resource/org.gravity.typegraph.sonarlint/model/sonarlint.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_Ro-HoG1DEeupRZXCJybxZw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_eDThYW1DEeupRZXCJybxZw" name="tracegraph" repPath="#_eDPP8G1DEeupRZXCJybxZw" changeId="2b2d659c-eb2b-4da2-b7e5-57d1d00e6475">

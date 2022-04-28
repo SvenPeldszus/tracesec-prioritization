@@ -409,8 +409,8 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 				AbstractRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractRequirement_Id(), theXMLTypePackage.getString(), "id", null, 0, 1,
-				AbstractRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+				AbstractRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractRequirement_Title(), theXMLTypePackage.getString(), "title", null, 0, 1,
 				AbstractRequirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -420,11 +420,11 @@ public class RequirementsPackageImpl extends EPackageImpl implements Requirement
 		initEReference(getAbstractRequirement_OutgoingReferences(), this.getRequirementRelation(),
 				this.getRequirementRelation_Source(), "outgoingReferences", null, 0, -1, AbstractRequirement.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getAbstractRequirement_IncomingReferences(), this.getRequirementRelation(),
 				this.getRequirementRelation_Target(), "incomingReferences", null, 0, -1, AbstractRequirement.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(requirementRelationEClass, RequirementRelation.class, "RequirementRelation", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

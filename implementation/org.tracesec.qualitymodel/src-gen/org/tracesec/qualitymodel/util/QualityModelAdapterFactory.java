@@ -68,16 +68,16 @@ public class QualityModelAdapterFactory extends AdapterFactoryImpl {
 	protected QualityModelSwitch<Adapter> modelSwitch =
 		new QualityModelSwitch<Adapter>() {
 			@Override
-			public Adapter caseAbstractQualityNode(AbstractQualityNode object) {
-				return createAbstractQualityNodeAdapter();
+			public Adapter caseQualityModel(QualityModel object) {
+				return createQualityModelAdapter();
 			}
 			@Override
-			public Adapter caseQualityCategory(QualityCategory object) {
-				return createQualityCategoryAdapter();
+			public Adapter caseQuality(Quality object) {
+				return createQualityAdapter();
 			}
 			@Override
-			public Adapter caseQualityAspect(QualityAspect object) {
-				return createQualityAspectAdapter();
+			public Adapter caseAspect(Aspect object) {
+				return createAspectAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -100,44 +100,44 @@ public class QualityModelAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.tracesec.qualitymodel.QualityCategory <em>Quality Category</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.tracesec.qualitymodel.Quality <em>Quality</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.tracesec.qualitymodel.QualityCategory
+	 * @see org.tracesec.qualitymodel.Quality
 	 * @generated
 	 */
-	public Adapter createQualityCategoryAdapter() {
+	public Adapter createQualityAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.tracesec.qualitymodel.AbstractQualityNode <em>Abstract Quality Node</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.tracesec.qualitymodel.Aspect <em>Aspect</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.tracesec.qualitymodel.AbstractQualityNode
+	 * @see org.tracesec.qualitymodel.Aspect
 	 * @generated
 	 */
-	public Adapter createAbstractQualityNodeAdapter() {
+	public Adapter createAspectAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.tracesec.qualitymodel.QualityAspect <em>Quality Aspect</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.tracesec.qualitymodel.QualityModel <em>Quality Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.tracesec.qualitymodel.QualityAspect
+	 * @see org.tracesec.qualitymodel.QualityModel
 	 * @generated
 	 */
-	public Adapter createQualityAspectAdapter() {
+	public Adapter createQualityModelAdapter() {
 		return null;
 	}
 

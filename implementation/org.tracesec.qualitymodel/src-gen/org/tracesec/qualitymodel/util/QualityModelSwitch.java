@@ -66,23 +66,21 @@ public class QualityModelSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case QualityModelPackage.ABSTRACT_QUALITY_NODE: {
-				AbstractQualityNode abstractQualityNode = (AbstractQualityNode)theEObject;
-				T result = caseAbstractQualityNode(abstractQualityNode);
+			case QualityModelPackage.QUALITY_MODEL: {
+				QualityModel qualityModel = (QualityModel)theEObject;
+				T result = caseQualityModel(qualityModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case QualityModelPackage.QUALITY_CATEGORY: {
-				QualityCategory qualityCategory = (QualityCategory)theEObject;
-				T result = caseQualityCategory(qualityCategory);
-				if (result == null) result = caseAbstractQualityNode(qualityCategory);
+			case QualityModelPackage.QUALITY: {
+				Quality quality = (Quality)theEObject;
+				T result = caseQuality(quality);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case QualityModelPackage.QUALITY_ASPECT: {
-				QualityAspect qualityAspect = (QualityAspect)theEObject;
-				T result = caseQualityAspect(qualityAspect);
-				if (result == null) result = caseAbstractQualityNode(qualityAspect);
+			case QualityModelPackage.ASPECT: {
+				Aspect aspect = (Aspect)theEObject;
+				T result = caseAspect(aspect);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -91,47 +89,47 @@ public class QualityModelSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Quality Category</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Quality</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Quality Category</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Quality</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseQualityCategory(QualityCategory object) {
+	public T caseQuality(Quality object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Quality Node</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Aspect</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Quality Node</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Aspect</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAbstractQualityNode(AbstractQualityNode object) {
+	public T caseAspect(Aspect object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Quality Aspect</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Quality Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Quality Aspect</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Quality Model</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseQualityAspect(QualityAspect object) {
+	public T caseQualityModel(QualityModel object) {
 		return null;
 	}
 

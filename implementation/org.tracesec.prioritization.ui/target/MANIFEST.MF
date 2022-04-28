@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Issue Prioritization UI
+Bundle-SymbolicName: org.tracesec.prioritization.ui;singleton:=true
+Bundle-Version: 0.1.0.202203041005
+Bundle-Activator: org.tracesec.prioritization.ui.Activator
+Bundle-Vendor: Ruhr University Bochum
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.gravity.ecli
+ pse.ui,org.eclipse.core.resources,org.gravity.typegraph.sonarlint,org.a
+ pache.log4j,org.eclipse.uml2.uml,org.gravity.tgg.modisco.pm,org.eclipse
+ .gef
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Automatic-Module-Name: org.tracesec.prioritization.ui
+Bundle-ActivationPolicy: lazy
+

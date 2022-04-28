@@ -57,7 +57,7 @@ public interface AbstractRequirement extends EObject {
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
 	 * @see org.tracesec.requirements.RequirementsPackage#getAbstractRequirement_Id()
-	 * @model id="true" dataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 * @generated
 	 */
 	String getId();
@@ -127,7 +127,7 @@ public interface AbstractRequirement extends EObject {
 	 * @return the value of the '<em>Outgoing References</em>' containment reference list.
 	 * @see org.tracesec.requirements.RequirementsPackage#getAbstractRequirement_OutgoingReferences()
 	 * @see org.tracesec.requirements.RequirementRelation#getSource
-	 * @model opposite="source" containment="true"
+	 * @model opposite="source" containment="true" ordered="false"
 	 * @generated
 	 */
 	EList<RequirementRelation> getOutgoingReferences();
@@ -141,7 +141,7 @@ public interface AbstractRequirement extends EObject {
 	 * @return the value of the '<em>Incoming References</em>' reference list.
 	 * @see org.tracesec.requirements.RequirementsPackage#getAbstractRequirement_IncomingReferences()
 	 * @see org.tracesec.requirements.RequirementRelation#getTarget
-	 * @model opposite="target"
+	 * @model opposite="target" ordered="false"
 	 * @generated
 	 */
 	EList<RequirementRelation> getIncomingReferences();

@@ -35,6 +35,8 @@
 		<module>test/org.tracesec.prioritization.tests</module>
 		<!--Build modules-->
 		<module>build/org.tracesec.target</module>
+                <module>build/org.tracesec.feature</module>
+                <module>build/org.tracesec.updatesite</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
@@ -64,7 +66,7 @@
 						<artifact>
 							<groupId>org.tracesec</groupId>
 							<artifactId>org.tracesec.target</artifactId>
-							<version>${project.version}</version>
+							<version>0.1.0-SNAPSHOT</version>
 						</artifact>
 					</target>
 					<environments>
@@ -296,7 +298,7 @@
 		<repository>
 			<id>Eclipse</id>
 			<layout>p2</layout>
-			<url>https://download.eclipse.org/releases/2021-12</url>
+			<url>https://download.eclipse.org/releases/2022-03</url>
 		</repository>
 		<repository>
                         <id>Sonarlint</id>
@@ -312,6 +314,16 @@
 			<id>GRaViTY</id>
 			<layout>p2</layout>
 			<url>https://gravity-tool.org/beta-updatesite</url>
+		</repository>
+                <repository>
+                        <id>CARiSMA</id>
+                        <layout>p2</layout>
+                        <url>https://rgse.uni-koblenz.de/carisma/updatesite/</url>
+                </repository>
+		<repository>
+			<id>plantuml</id>
+			<layout>p2</layout>
+			<url>https://hallvard.github.io/plantuml</url>
 		</repository>
 	</repositories>
 </project>

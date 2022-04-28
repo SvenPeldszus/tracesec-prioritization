@@ -11,14 +11,17 @@ Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.tracesec.prioritization,
  org.tracesec.prioritization.tracegraph,
  org.tracesec.prioritization.tracegraph.impl,
- org.tracesec.prioritization.tracegraph.util
-Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.core.runtime,
- org.eclipse.uml2.uml,
+ org.tracesec.prioritization.tracegraph.util,
+ org.tracesec.prioritization.tracelinks,
+ org.tracesec.prioritization.tracelinks.impl,
+ org.tracesec.prioritization.tracelinks.util,
+ org.tracesec.prioritization.prioritization.prioritization,
+ org.tracesec.prioritization.prioritization.prioritization.impl,
+ org.tracesec.prioritization.prioritization.prioritization.util
+Require-Bundle: org.eclipse.uml2.uml,
  org.tracesec.graph.dsl,
- org.moflon.tgg.runtime,
- org.gravity.typegraph.basic,
  org.gravity.tgg.pm.uml,
  org.tracesec.qualitymodel,
- org.gravity.typegraph.sonarlint
+ org.gravity.typegraph.sonarlint;visibility:=reexport,
+ org.apache.log4j
 Bundle-ActivationPolicy: lazy

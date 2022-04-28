@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Automatic-Module-Name: org.tracesec.graph.dsl
 Bundle-ManifestVersion: 2
 Bundle-Name: org.tracesec.graph.dsl
-Bundle-Vendor: My Company
+Bundle-Vendor: Ruhr University Bochum
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.tracesec.graph.dsl; singleton:=true
 Bundle-ActivationPolicy: lazy
@@ -27,3 +27,4 @@ Export-Package: org.tracesec.graph.dsl.graphConfiguration.impl,
  org.tracesec.graph.dsl.graphConfiguration.util,
  org.tracesec.graph.dsl.generator
 Import-Package: org.apache.log4j
+Bundle-ClassPath: .

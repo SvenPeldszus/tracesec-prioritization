@@ -40,7 +40,10 @@ Weight: NumberWeight | AttributeWeight;
 
 NumberWeight: value=INT;
 
-AttributeWeight: value=[ecore::EAttribute];
+AttributeWeight: (owner=Owner ".")? value=[ecore::EAttribute];
+
+enum Owner:
+	TARGET="trg" | ASSOCIATION="assoc";
 
 enum Consider:
 	ALL="ALL" | NONE="NONE";

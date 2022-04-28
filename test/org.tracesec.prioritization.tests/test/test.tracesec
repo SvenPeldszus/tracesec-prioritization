@@ -23,10 +23,11 @@ namespace "http://www.gravity-tool.org/typegraph/basic" {
 }
 
 namespace "http://www.tracesec.org/qualitymodel" {
+	consider = NONE
 	include{
-		type QualityCategory {
+		type Quality {
 			include {
-				reference ownedNodes -> priority
+				reference aspects -- Aspect -- quality -> assoc.priority
 			}
 		}
 	}

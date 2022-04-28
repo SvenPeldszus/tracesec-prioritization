@@ -14,4 +14,20 @@
             genModel="model/tracegraph.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated tracelinks -->
+      <package
+            uri="http://www.tracesec.org/tracelinks"
+            class="org.tracesec.prioritization.tracelinks.TracelinksPackage"
+            genModel="model/tracelinks.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated prioritization -->
+      <package
+            uri="http://www.tracesec.org/prioritization"
+            class="org.tracesec.prioritization.prioritization.prioritization.PrioritizationPackage"
+            genModel="model/prioritization.genmodel"/>
+   </extension>
+
 </plugin>

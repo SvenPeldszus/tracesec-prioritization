@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.tracesec.feature"
+      label="TraceSec Feature"
+      version="1.0.0.qualifier"
+      provider-name="Ruhr University Bochum">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <includes
+         id="org.gravity.features.eclipse"
+         version="0.0.0"/>
+
+   <includes
+         id="org.gravity.features.hulk"
+         version="0.0.0"/>
+
+   <includes
+         id="org.gravity.features.modisco"
+         version="0.0.0"/>
+
+   <includes
+         id="org.gravity.features.refactorings"
+         version="0.0.0"/>
+
+   <includes
+         id="org.gravity.features.security"
+         version="0.0.0"/>
+
+   <includes
+         id="org.gravity.features.typegraph.basic"
+         version="0.0.0"/>
+
+   <includes
+         id="org.gravity.features.uml"
+         version="0.0.0"/>
+
+   <includes
+         id="org.gravity.license.epl"
+         version="0.0.0"/>
+
+   <requires>
+      <import plugin="org.eclipse.uml2.uml"/>
+      <import plugin="org.gravity.tgg.pm.uml"/>
+      <import plugin="org.apache.log4j"/>
+      <import plugin="org.eclipse.xtext.ide"/>
+      <import plugin="org.eclipse.xtext.xbase.ide"/>
+      <import feature="org.eclipse.xtext.ui" version="2.25.0.v20210301-1429"/>
+      <import plugin="org.eclipse.xtext.ui.shared"/>
+      <import plugin="org.eclipse.xtext.ui.codetemplates.ui"/>
+      <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.compare"/>
+      <import plugin="org.eclipse.xtext.builder"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.uml2.common"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.xtext"/>
+      <import feature="org.eclipse.xtext.xbase" version="2.25.0.v20210301-1429"/>
+      <import plugin="org.eclipse.equinox.common" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.xbase.lib" version="2.14.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.util"/>
+      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.gravity.eclipse.ui"/>
+      <import plugin="org.gravity.tgg.modisco.pm"/>
+      <import plugin="org.eclipse.gef"/>
+      <import plugin="org.eclipse.ui.workbench.texteditor"/>
+      <import plugin="org.gravity.hulk.antipatterngraph"/>
+      <import plugin="org.gravity.typegraph.basic"/>
+      <import plugin="org.sonarlint.eclipse.core"/>
+      <import plugin="org.gravity.eclipse"/>
+      <import plugin="org.sonarlint.eclipse.ui"/>
+      <import plugin="org.sonarlint.eclipse.jdt"/>
+      <import plugin="org.eclipse.text"/>
+      <import plugin="org.sonarsource.sonarlint.core.sonarlint-core-osgi"/>
+      <import feature="org.eclipse.xtext.ui" version="2.25.0.v20210301-1429"/>
+      <import feature="org.eclipse.xtext.xbase" version="2.25.0.v20210301-1429"/>
+      <import feature="org.eclipse.xtext.ui" version="2.25.0.v20210301-1429"/>
+      <import feature="org.eclipse.xtext.xbase" version="2.25.0.v20210301-1429"/>
+      <import feature="org.eclipse.xtext.ui" version="2.25.0.v20210301-1429"/>
+      <import feature="org.eclipse.xtext.xbase" version="2.25.0.v20210301-1429"/>
+      <import feature="org.gravity.features.hulk" version="1.0.0.qualifier"/>
+      <import feature="org.sonarlint.eclipse.feature" version="7.1.0.39158"/>
+      <import feature="org.eclipse.xtext.runtime" version="2.25.0.v20210301-1429"/>
+      <import feature="org.eclipse.xtext.ui" version="2.25.0.v20210301-1429"/>
+      <import feature="org.eclipse.xtext.xbase" version="2.25.0.v20210301-1429"/>
+      <import feature="org.eclipse.xtext.xbase.lib" version="2.25.0.v20210301-0822"/>
+      <import feature="org.eclipse.uml2" version="5.5.2.v20210228-1829"/>
+      <import feature="org.gravity.features.uml" version="1.0.0.qualifier"/>
+      <import feature="org.moflon.tgg.mosl.feature" version="3.0.1.202202151536"/>
+      <import feature="org.gravity.features.typegraph.basic" version="1.0.0.qualifier"/>
+      <import plugin="org.antlr.runtime" version="3.2.0" match="perfect"/>
+   </requires>
+
+   <plugin
+         id="org.tracesec.prioritization"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.tracesec.graph.dsl.ide"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.tracesec.graph.dsl.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.tracesec.requirements"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.tracesec.qualitymodel"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.tracesec.graph.dsl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.tracesec.prioritization.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.gravity.typegraph.sonarlint"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.antlr.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

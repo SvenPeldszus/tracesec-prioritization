@@ -185,13 +185,40 @@ public interface SonarlintPackage extends EPackage {
 	int SONARLINT_FINDING__MARKER = AntipatterngraphPackage.HCODE_SMELL_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Line</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONARLINT_FINDING__LINE = AntipatterngraphPackage.HCODE_SMELL_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Start Char</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONARLINT_FINDING__START_CHAR = AntipatterngraphPackage.HCODE_SMELL_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>End Char</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SONARLINT_FINDING__END_CHAR = AntipatterngraphPackage.HCODE_SMELL_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>Finding</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SONARLINT_FINDING_FEATURE_COUNT = AntipatterngraphPackage.HCODE_SMELL_FEATURE_COUNT + 7;
+	int SONARLINT_FINDING_FEATURE_COUNT = AntipatterngraphPackage.HCODE_SMELL_FEATURE_COUNT + 10;
 
 	/**
 	 * The operation id for the '<em>EClass</em>' operation.
@@ -435,6 +462,39 @@ public interface SonarlintPackage extends EPackage {
 	EAttribute getSonarlintFinding_Marker();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.gravity.hulk.sonarlint.sonarlint.SonarlintFinding#getLine <em>Line</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Line</em>'.
+	 * @see org.gravity.hulk.sonarlint.sonarlint.SonarlintFinding#getLine()
+	 * @see #getSonarlintFinding()
+	 * @generated
+	 */
+	EAttribute getSonarlintFinding_Line();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gravity.hulk.sonarlint.sonarlint.SonarlintFinding#getStartChar <em>Start Char</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Start Char</em>'.
+	 * @see org.gravity.hulk.sonarlint.sonarlint.SonarlintFinding#getStartChar()
+	 * @see #getSonarlintFinding()
+	 * @generated
+	 */
+	EAttribute getSonarlintFinding_StartChar();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.gravity.hulk.sonarlint.sonarlint.SonarlintFinding#getEndChar <em>End Char</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>End Char</em>'.
+	 * @see org.gravity.hulk.sonarlint.sonarlint.SonarlintFinding#getEndChar()
+	 * @see #getSonarlintFinding()
+	 * @generated
+	 */
+	EAttribute getSonarlintFinding_EndChar();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -522,6 +582,30 @@ public interface SonarlintPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SONARLINT_FINDING__MARKER = eINSTANCE.getSonarlintFinding_Marker();
+
+		/**
+		 * The meta object literal for the '<em><b>Line</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SONARLINT_FINDING__LINE = eINSTANCE.getSonarlintFinding_Line();
+
+		/**
+		 * The meta object literal for the '<em><b>Start Char</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SONARLINT_FINDING__START_CHAR = eINSTANCE.getSonarlintFinding_StartChar();
+
+		/**
+		 * The meta object literal for the '<em><b>End Char</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SONARLINT_FINDING__END_CHAR = eINSTANCE.getSonarlintFinding_EndChar();
 
 	}
 

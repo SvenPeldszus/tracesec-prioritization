@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.tracesec.prioritization/src-gen" modelPluginID="org.tracesec.prioritization"
+    modelName="Prioritization" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    usedGenPackages="../../org.gravity.hulk.antipatterngraph/model/Antipatterngraph.genmodel#//antipatterngraph ../../org.gravity.typegraph.basic/model/Basic.genmodel#//basic ../../org.gravity.typegraph.sonarlint/model/sonarlint.genmodel#//sonarlint"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>prioritization.ecore</foreignModel>
+  <genPackages prefix="Prioritization" basePackage="org.tracesec.prioritization.prioritization"
+      disposableProviderFactory="true" ecorePackage="prioritization.ecore#/">
+    <genClasses ecoreClass="prioritization.ecore#//Prioritization">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference prioritization.ecore#//Prioritization/findings"/>
+    </genClasses>
+    <genClasses ecoreClass="prioritization.ecore#//Finding">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference prioritization.ecore#//Finding/represents"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute prioritization.ecore#//Finding/priority"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute prioritization.ecore#//Finding/manualPriority"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
