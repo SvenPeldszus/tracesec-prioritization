@@ -206,7 +206,7 @@ public class PrioTopKAnalysis {
 		
 		try (final var stream = new FileOutputStream("./output/ari-eval-tracesec-itrust.csv")) {
 			
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < 1000; i++) {
 		
 				System.out.println("--------------------------------------------------");
 				System.out.println("top k  |      TraceSec      " + "Run: " + i);
@@ -243,7 +243,7 @@ public class PrioTopKAnalysis {
 		
 		try (final var stream = new FileOutputStream("./output/ari-eval-sonarcube-itrust.csv")) {
 			
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < 1000; i++) {
 		
 				System.out.println("--------------------------------------------------");
 				System.out.println("top k  |     SonarCube      " + "Run: " + i);
@@ -282,7 +282,7 @@ public class PrioTopKAnalysis {
 		
 		try (final var stream = new FileOutputStream("./output/ari-eval-tracesec-cwa.csv")) {
 			
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < 1000; i++) {
 		
 				System.out.println("--------------------------------------------------");
 				System.out.println("top k  |      TraceSec      " + "Run: " + i);
@@ -317,7 +317,7 @@ public class PrioTopKAnalysis {
 		
 		try (final var stream = new FileOutputStream("./output/ari-eval-sonarcube-cwa.csv")) {
 		
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < 1000; i++) {
 			
 				System.out.println("--------------------------------------------------");
 				System.out.println("top k  |     SonarCube      " + "Run: " + i);
