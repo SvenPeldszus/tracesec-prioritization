@@ -153,7 +153,7 @@ public class PrioTopKAnalysis {
     	
     	List<FindingPrio> manualPrios = new ArrayList<FindingPrio>();
     	List<FindingPrio> tracesecPrios = new ArrayList<FindingPrio>();
-    	List<FindingPrio> sonarcubePrios = new ArrayList<FindingPrio>();
+    	List<FindingPrio> sonarQubePrios = new ArrayList<FindingPrio>();
     	
     	Path path = Paths.get( filepath );
     	if ( Files.notExists( path ) ) { throw new IllegalStateException( "Failed to find file at path: " + path ); }
@@ -169,7 +169,7 @@ public class PrioTopKAnalysis {
     	    int id = Integer.valueOf( parts[ 2 ] );
     	    int manual = Integer.valueOf( parts[ 3 ] );
     	    int tracesec = Integer.valueOf( parts[ 4 ] );
-    	    int sonarcube = Integer.valueOf( parts[ 6 ] );
+    	    int sonarQube = Integer.valueOf( parts[ 6 ] );
     	    
     	    FindingPrio manualPrio = new FindingPrio(id,manual);
     	    manualPrios.add( manualPrio );
@@ -177,13 +177,13 @@ public class PrioTopKAnalysis {
     	    FindingPrio tracesecPrio = new FindingPrio(id,tracesec);
     	    tracesecPrios.add( tracesecPrio );
     	    
-    	    FindingPrio sonarcubePrio = new FindingPrio(id,sonarcube);
-    	    sonarcubePrios.add( sonarcubePrio );
+    	    FindingPrio sonarQubePrio = new FindingPrio(id,sonarQube);
+    	    sonarQubePrios.add( sonarQubePrio );
     	}
     	
     	prioLists.add(manualPrios);
     	prioLists.add(tracesecPrios);
-    	prioLists.add(sonarcubePrios);
+    	prioLists.add(sonarQubePrios);
     	
     	return prioLists;
     }
@@ -241,12 +241,12 @@ public class PrioTopKAnalysis {
 			}
 		}
 		
-		try (final var stream = new FileOutputStream("./output/ari-eval-sonarcube-itrust.csv")) {
+		try (final var stream = new FileOutputStream("./output/ari-eval-sonarQube-itrust.csv")) {
 			
 			for (int i = 0; i < 1000; i++) {
 		
 				System.out.println("--------------------------------------------------");
-				System.out.println("top k  |     SonarCube      " + "Run: " + i);
+				System.out.println("top k  |     SonarQube      " + "Run: " + i);
 				System.out.println("--------------------------------------------------");
 			
 			
@@ -315,12 +315,12 @@ public class PrioTopKAnalysis {
 			}
 		}
 		
-		try (final var stream = new FileOutputStream("./output/ari-eval-sonarcube-cwa.csv")) {
+		try (final var stream = new FileOutputStream("./output/ari-eval-sonarQube-cwa.csv")) {
 		
 			for (int i = 0; i < 1000; i++) {
 			
 				System.out.println("--------------------------------------------------");
-				System.out.println("top k  |     SonarCube      " + "Run: " + i);
+				System.out.println("top k  |     SonarQube      " + "Run: " + i);
 				System.out.println("--------------------------------------------------");
 			
 				if (i == 0) {
