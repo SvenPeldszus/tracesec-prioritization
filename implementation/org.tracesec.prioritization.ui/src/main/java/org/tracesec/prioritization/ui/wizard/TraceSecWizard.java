@@ -38,6 +38,7 @@ import org.tracesec.prioritization.ui.view.IssuesView;
 import org.tracesec.prioritization.ui.wizard.pages.ContinuePage;
 import org.tracesec.prioritization.ui.wizard.pages.ModelSecectionPage;
 import org.tracesec.qualitymodel.FindingLinker;
+import org.tracesec.qualitymodel.Quality;
 import org.tracesec.qualitymodel.QualityModel;
 
 public class TraceSecWizard extends Wizard {
@@ -59,16 +60,16 @@ public class TraceSecWizard extends Wizard {
 		this.project = project;
 		final var network = this.project.getFile(FLOW_NETWORK);
 		if (network.exists()) {
-			addPage(new ContinuePage(this));
-			setForcePreviousAndNextButtons(true);
+			this.addPage(new ContinuePage(this));
+			this.setForcePreviousAndNextButtons(true);
 		} else {
-			addSelectionPage();
+			this.addSelectionPage();
 		}
 	}
 
 	public ModelSecectionPage addSelectionPage() throws CoreException, IOException {
 		this.selectionPage = new ModelSecectionPage(this.project);
-		addPage(this.selectionPage);
+		this.addPage(this.selectionPage);
 		return this.selectionPage;
 	}
 
@@ -76,19 +77,21 @@ public class TraceSecWizard extends Wizard {
 	public boolean performFinish() {
 		try {
 			if (this.selectionPage == null) {
-				loadFlowNetwork();
-			} else if (!createFlowNetwork()) {
+				if (!this.loadFlowNetwork()) {
+					return false;
+				}
+			} else if (!this.createFlowNetwork()) {
 				return false;
 			}
 
 			final Collection<SonarlintFinding> findings = SonarLintProcessor.getFindings(this.pm);
 
 			final var start = System.currentTimeMillis();
-			final var result = Priorizitation.prioritize(findings, this.qm.getRoot(), this.graph);
+			final var result = new Priorizitation().prioritize(findings, this.qm.getRoot(), this.graph);
 			final var stop = System.currentTimeMillis();
 			System.out.println("Prioritization: " + (stop - start) + "ms");
 
-			final var prioritization = createResults(result);
+			final var prioritization = this.createResults(result);
 
 			IssuesView.getIssuesView().populate(prioritization, this.project);
 			return true;
@@ -102,19 +105,22 @@ public class TraceSecWizard extends Wizard {
 	/**
 	 * Loads the flow network from the standard location
 	 */
-	private void loadFlowNetwork() {
+	private boolean loadFlowNetwork() {
 		final var set = new ResourceSetImpl();
-		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
+		set.getResourceFactoryRegistry().getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION,
+				UMLResource.Factory.INSTANCE);
 		final var resource = set.getResource(EMFUtil.getPlatformResourceURI(this.project.getFile(FLOW_NETWORK)), true);
 		EcoreUtil.resolveAll(resource);
 		this.graph = (Graph) resource.getContents().get(0);
-		this.graph.getNodes().parallelStream().map(Node::getRepresents).forEach(node -> {
-			if(node instanceof TypeGraph) {
-				this.pm = (TypeGraph) node;
+		return this.graph.getNodes().parallelStream().map(Node::getRepresents).anyMatch(node -> {
+			if (node instanceof final TypeGraph model) {
+				this.pm = model;
+			} else if (node instanceof final QualityModel model) {
+				this.qm = model;
+			} else if (node instanceof final Quality quality) {
+				this.qm = (QualityModel) quality.eContainer();
 			}
-			else if(node instanceof QualityModel) {
-				this.qm = (QualityModel) node;
-			}
+			return this.qm != null && this.pm != null;
 		});
 	}
 
@@ -128,9 +134,8 @@ public class TraceSecWizard extends Wizard {
 	private Prioritization createResults(final SortedMap<Integer, List<SonarlintFinding>> result) throws IOException {
 		final var prioritization = PrioritizationFactory.eINSTANCE.createPrioritization();
 		for (final Entry<Integer, List<SonarlintFinding>> entry : result.entrySet()) {
-			System.out.println("Priority: " + entry.getKey() + " -- "
-					+ entry.getValue().stream().map(f -> f.getRulekey() + " at " + f.getTAnnotated())
-					.collect(Collectors.joining(", ", "[", "]")));
+			System.out.println("Priority: " + entry.getKey() + " -- " + entry.getValue().stream()
+					.map(f -> f.getRulekey() + " at " + f.getTAnnotated()).collect(Collectors.joining(", ", "[", "]")));
 			for (final SonarlintFinding finding : entry.getValue()) {
 				final var priority = PrioritizationFactory.eINSTANCE.createFinding();
 				priority.setPriority(entry.getKey());
@@ -138,24 +143,26 @@ public class TraceSecWizard extends Wizard {
 				prioritization.getFindings().add(priority);
 			}
 		}
-		final var prios = this.graph.eResource().getResourceSet().createResource(
-				EMFUtil.getPlatformResourceURI(this.project.getFile("tracesec-prioritization.xmi")));
+		final var prios = this.graph.eResource().getResourceSet()
+				.createResource(EMFUtil.getPlatformResourceURI(this.project.getFile("tracesec-prioritization.xmi")));
 		prios.getContents().add(prioritization);
 		prios.save(Collections.emptyMap());
 		return prioritization;
 	}
 
 	private boolean createFlowNetwork() throws CoreException, NoConverterRegisteredException, IOException {
-		if(this.selectionPage.recalculateFindings()) {
+		if (this.selectionPage.recalculateFindings()) {
 			SonarLintProcessor.addSonarLintFindingsToPM(this.project, new NullProgressMonitor());
 		}
 
-		final var set = initResourceSet(this.selectionPage);
+		final var set = this.initResourceSet(this.selectionPage);
 
 		final var configuration = (Configuration) set
-				.getResource(EMFUtil.getPlatformResourceURI(this.selectionPage.getConfigurationFile()), true).getContents().get(0);
+				.getResource(EMFUtil.getPlatformResourceURI(this.selectionPage.getConfigurationFile()), true)
+				.getContents().get(0);
 
-		final var builder = buildGraph(set, configuration, this.selectionPage.getModels(), this.selectionPage.getOrder());
+		final var builder = this.buildGraph(set, configuration, this.selectionPage.getModels(),
+				this.selectionPage.getOrder());
 
 		if (this.qm == null) {
 			return false;
@@ -211,8 +218,7 @@ public class TraceSecWizard extends Wizard {
 			for (final EObject object : resource.getContents()) {
 				if (object instanceof QualityModel) {
 					this.qm = (QualityModel) object;
-				}
-				else {
+				} else {
 					if (object instanceof TypeGraph) {
 						this.pm = (TypeGraph) object;
 					}
@@ -220,6 +226,15 @@ public class TraceSecWizard extends Wizard {
 				}
 			}
 		}
+		try {
+			final var resource = set.createResource(org.eclipse.emf.common.util.URI
+					.createPlatformResourceURI(models.get(0).getProject().getName() + "/pre-flowgraph.xmi", true));
+			resource.getContents().add(builder.getGraph());
+			resource.save(Collections.emptyMap());
+		} catch (final IOException e) {
+			e.printStackTrace();
+		}
+
 		FindingLinker.linkFindings(this.qm, SonarLintProcessor.getFindings(this.pm));
 		builder.add(this.qm.getRoot());
 

@@ -21,8 +21,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.sonarlint.eclipse.ui,
  org.sonarlint.eclipse.jdt,
  org.eclipse.text,
- org.sonarsource.sonarlint.core.sonarlint-core-osgi
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+ org.sonarsource.sonarlint.core.sonarlint-java-client-osgi,
+ org.sonarlint.eclipse.core
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: org.gravity.typegraph.sonarlint
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .

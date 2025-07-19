@@ -58,36 +58,6 @@ public interface QualityModelPackage extends EPackage {
 	QualityModelPackage eINSTANCE = org.tracesec.qualitymodel.impl.QualityModelPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.tracesec.qualitymodel.impl.QualityImpl <em>Quality</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.tracesec.qualitymodel.impl.QualityImpl
-	 * @see org.tracesec.qualitymodel.impl.QualityModelPackageImpl#getQuality()
-	 * @generated
-	 */
-	int QUALITY = 1;
-
-	/**
-	 * The meta object id for the '{@link org.tracesec.qualitymodel.impl.AspectImpl <em>Aspect</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.tracesec.qualitymodel.impl.AspectImpl
-	 * @see org.tracesec.qualitymodel.impl.QualityModelPackageImpl#getAspect()
-	 * @generated
-	 */
-	int ASPECT = 2;
-
-	/**
-	 * The meta object id for the '{@link org.tracesec.qualitymodel.Priority <em>Priority</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.tracesec.qualitymodel.Priority
-	 * @see org.tracesec.qualitymodel.impl.QualityModelPackageImpl#getPriority()
-	 * @generated
-	 */
-	int PRIORITY = 3;
-
-	/**
 	 * The meta object id for the '{@link org.tracesec.qualitymodel.impl.QualityModelImpl <em>Quality Model</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -134,6 +104,16 @@ public interface QualityModelPackage extends EPackage {
 	int QUALITY_MODEL_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.tracesec.qualitymodel.impl.QualityImpl <em>Quality</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.tracesec.qualitymodel.impl.QualityImpl
+	 * @see org.tracesec.qualitymodel.impl.QualityModelPackageImpl#getQuality()
+	 * @generated
+	 */
+	int QUALITY = 1;
+
+	/**
 	 * The feature id for the '<em><b>Aspects</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -152,22 +132,13 @@ public interface QualityModelPackage extends EPackage {
 	int QUALITY__TITLE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Priority</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUALITY__PRIORITY = 2;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QUALITY__DESCRIPTION = 3;
+	int QUALITY__DESCRIPTION = 2;
 
 	/**
 	 * The feature id for the '<em><b>Relevant Elements</b></em>' reference list.
@@ -176,7 +147,7 @@ public interface QualityModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUALITY__RELEVANT_ELEMENTS = 4;
+	int QUALITY__RELEVANT_ELEMENTS = 3;
 
 	/**
 	 * The number of structural features of the '<em>Quality</em>' class.
@@ -185,7 +156,7 @@ public interface QualityModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUALITY_FEATURE_COUNT = 5;
+	int QUALITY_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Quality</em>' class.
@@ -195,6 +166,16 @@ public interface QualityModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int QUALITY_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.tracesec.qualitymodel.impl.AspectImpl <em>Aspect</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.tracesec.qualitymodel.impl.AspectImpl
+	 * @see org.tracesec.qualitymodel.impl.QualityModelPackageImpl#getAspect()
+	 * @generated
+	 */
+	int ASPECT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Priority</b></em>' attribute.
@@ -241,6 +222,48 @@ public interface QualityModelPackage extends EPackage {
 	 */
 	int ASPECT_OPERATION_COUNT = 0;
 
+	/**
+	 * The meta object id for the '{@link org.tracesec.qualitymodel.Priority <em>Priority</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.tracesec.qualitymodel.Priority
+	 * @see org.tracesec.qualitymodel.impl.QualityModelPackageImpl#getPriority()
+	 * @generated
+	 */
+	int PRIORITY = 3;
+
+
+	/**
+	 * Returns the meta object for class '{@link org.tracesec.qualitymodel.QualityModel <em>Quality Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Quality Model</em>'.
+	 * @see org.tracesec.qualitymodel.QualityModel
+	 * @generated
+	 */
+	EClass getQualityModel();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.tracesec.qualitymodel.QualityModel#getQualities <em>Qualities</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Qualities</em>'.
+	 * @see org.tracesec.qualitymodel.QualityModel#getQualities()
+	 * @see #getQualityModel()
+	 * @generated
+	 */
+	EReference getQualityModel_Qualities();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.tracesec.qualitymodel.QualityModel#getRoot <em>Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Root</em>'.
+	 * @see org.tracesec.qualitymodel.QualityModel#getRoot()
+	 * @see #getQualityModel()
+	 * @generated
+	 */
+	EReference getQualityModel_Root();
 
 	/**
 	 * Returns the meta object for class '{@link org.tracesec.qualitymodel.Quality <em>Quality</em>}'.
@@ -273,17 +296,6 @@ public interface QualityModelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getQuality_Title();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.tracesec.qualitymodel.Quality#getPriority <em>Priority</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Priority</em>'.
-	 * @see org.tracesec.qualitymodel.Quality#getPriority()
-	 * @see #getQuality()
-	 * @generated
-	 */
-	EAttribute getQuality_Priority();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.tracesec.qualitymodel.Quality#getDescription <em>Description</em>}'.
@@ -361,38 +373,6 @@ public interface QualityModelPackage extends EPackage {
 	EEnum getPriority();
 
 	/**
-	 * Returns the meta object for class '{@link org.tracesec.qualitymodel.QualityModel <em>Quality Model</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Quality Model</em>'.
-	 * @see org.tracesec.qualitymodel.QualityModel
-	 * @generated
-	 */
-	EClass getQualityModel();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.tracesec.qualitymodel.QualityModel#getQualities <em>Qualities</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Qualities</em>'.
-	 * @see org.tracesec.qualitymodel.QualityModel#getQualities()
-	 * @see #getQualityModel()
-	 * @generated
-	 */
-	EReference getQualityModel_Qualities();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.tracesec.qualitymodel.QualityModel#getRoot <em>Root</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Root</em>'.
-	 * @see org.tracesec.qualitymodel.QualityModel#getRoot()
-	 * @see #getQualityModel()
-	 * @generated
-	 */
-	EReference getQualityModel_Root();
-
-	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -415,6 +395,32 @@ public interface QualityModelPackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.tracesec.qualitymodel.impl.QualityModelImpl <em>Quality Model</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.tracesec.qualitymodel.impl.QualityModelImpl
+		 * @see org.tracesec.qualitymodel.impl.QualityModelPackageImpl#getQualityModel()
+		 * @generated
+		 */
+		EClass QUALITY_MODEL = eINSTANCE.getQualityModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Qualities</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference QUALITY_MODEL__QUALITIES = eINSTANCE.getQualityModel_Qualities();
+
+		/**
+		 * The meta object literal for the '<em><b>Root</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference QUALITY_MODEL__ROOT = eINSTANCE.getQualityModel_Root();
+
 		/**
 		 * The meta object literal for the '{@link org.tracesec.qualitymodel.impl.QualityImpl <em>Quality</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -440,14 +446,6 @@ public interface QualityModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute QUALITY__TITLE = eINSTANCE.getQuality_Title();
-
-		/**
-		 * The meta object literal for the '<em><b>Priority</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute QUALITY__PRIORITY = eINSTANCE.getQuality_Priority();
 
 		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
@@ -508,32 +506,6 @@ public interface QualityModelPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum PRIORITY = eINSTANCE.getPriority();
-
-		/**
-		 * The meta object literal for the '{@link org.tracesec.qualitymodel.impl.QualityModelImpl <em>Quality Model</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.tracesec.qualitymodel.impl.QualityModelImpl
-		 * @see org.tracesec.qualitymodel.impl.QualityModelPackageImpl#getQualityModel()
-		 * @generated
-		 */
-		EClass QUALITY_MODEL = eINSTANCE.getQualityModel();
-
-		/**
-		 * The meta object literal for the '<em><b>Qualities</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference QUALITY_MODEL__QUALITIES = eINSTANCE.getQualityModel_Qualities();
-
-		/**
-		 * The meta object literal for the '<em><b>Root</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference QUALITY_MODEL__ROOT = eINSTANCE.getQualityModel_Root();
 
 	}
 

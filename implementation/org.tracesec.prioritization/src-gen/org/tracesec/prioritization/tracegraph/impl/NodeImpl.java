@@ -34,7 +34,6 @@ import org.tracesec.prioritization.tracegraph.TracegraphPackage;
  *   <li>{@link org.tracesec.prioritization.tracegraph.impl.NodeImpl#getOut <em>Out</em>}</li>
  *   <li>{@link org.tracesec.prioritization.tracegraph.impl.NodeImpl#getIn <em>In</em>}</li>
  *   <li>{@link org.tracesec.prioritization.tracegraph.impl.NodeImpl#getRepresents <em>Represents</em>}</li>
- *   <li>{@link org.tracesec.prioritization.tracegraph.impl.NodeImpl#getId <em>Id</em>}</li>
  * </ul>
  *
  * @generated
@@ -69,26 +68,6 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * @ordered
 	 */
 	protected EObject represents;
-
-	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getId()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ID_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getId()
-	 * @generated
-	 * @ordered
-	 */
-	protected String id = ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -184,37 +163,14 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getId() {
-		return id;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setId(String newId) {
-		String oldId = id;
-		id = newId;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TracegraphPackage.NODE__ID, oldId, id));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case TracegraphPackage.NODE__OUT:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOut()).basicAdd(otherEnd, msgs);
-		case TracegraphPackage.NODE__IN:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getIn()).basicAdd(otherEnd, msgs);
+			case TracegraphPackage.NODE__OUT:
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOut()).basicAdd(otherEnd, msgs);
+			case TracegraphPackage.NODE__IN:
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIn()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -227,10 +183,10 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case TracegraphPackage.NODE__OUT:
-			return ((InternalEList<?>) getOut()).basicRemove(otherEnd, msgs);
-		case TracegraphPackage.NODE__IN:
-			return ((InternalEList<?>) getIn()).basicRemove(otherEnd, msgs);
+			case TracegraphPackage.NODE__OUT:
+				return ((InternalEList<?>) getOut()).basicRemove(otherEnd, msgs);
+			case TracegraphPackage.NODE__IN:
+				return ((InternalEList<?>) getIn()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -243,16 +199,14 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case TracegraphPackage.NODE__OUT:
-			return getOut();
-		case TracegraphPackage.NODE__IN:
-			return getIn();
-		case TracegraphPackage.NODE__REPRESENTS:
-			if (resolve)
-				return getRepresents();
-			return basicGetRepresents();
-		case TracegraphPackage.NODE__ID:
-			return getId();
+			case TracegraphPackage.NODE__OUT:
+				return getOut();
+			case TracegraphPackage.NODE__IN:
+				return getIn();
+			case TracegraphPackage.NODE__REPRESENTS:
+				if (resolve)
+					return getRepresents();
+				return basicGetRepresents();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -266,20 +220,17 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case TracegraphPackage.NODE__OUT:
-			getOut().clear();
-			getOut().addAll((Collection<? extends Edge>) newValue);
-			return;
-		case TracegraphPackage.NODE__IN:
-			getIn().clear();
-			getIn().addAll((Collection<? extends Edge>) newValue);
-			return;
-		case TracegraphPackage.NODE__REPRESENTS:
-			setRepresents((EObject) newValue);
-			return;
-		case TracegraphPackage.NODE__ID:
-			setId((String) newValue);
-			return;
+			case TracegraphPackage.NODE__OUT:
+				getOut().clear();
+				getOut().addAll((Collection<? extends Edge>) newValue);
+				return;
+			case TracegraphPackage.NODE__IN:
+				getIn().clear();
+				getIn().addAll((Collection<? extends Edge>) newValue);
+				return;
+			case TracegraphPackage.NODE__REPRESENTS:
+				setRepresents((EObject) newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -292,18 +243,15 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case TracegraphPackage.NODE__OUT:
-			getOut().clear();
-			return;
-		case TracegraphPackage.NODE__IN:
-			getIn().clear();
-			return;
-		case TracegraphPackage.NODE__REPRESENTS:
-			setRepresents((EObject) null);
-			return;
-		case TracegraphPackage.NODE__ID:
-			setId(ID_EDEFAULT);
-			return;
+			case TracegraphPackage.NODE__OUT:
+				getOut().clear();
+				return;
+			case TracegraphPackage.NODE__IN:
+				getIn().clear();
+				return;
+			case TracegraphPackage.NODE__REPRESENTS:
+				setRepresents((EObject) null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -316,33 +264,14 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case TracegraphPackage.NODE__OUT:
-			return out != null && !out.isEmpty();
-		case TracegraphPackage.NODE__IN:
-			return in != null && !in.isEmpty();
-		case TracegraphPackage.NODE__REPRESENTS:
-			return represents != null;
-		case TracegraphPackage.NODE__ID:
-			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case TracegraphPackage.NODE__OUT:
+				return out != null && !out.isEmpty();
+			case TracegraphPackage.NODE__IN:
+				return in != null && !in.isEmpty();
+			case TracegraphPackage.NODE__REPRESENTS:
+				return represents != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (id: ");
-		result.append(id);
-		result.append(')');
-		return result.toString();
 	}
 
 } //NodeImpl

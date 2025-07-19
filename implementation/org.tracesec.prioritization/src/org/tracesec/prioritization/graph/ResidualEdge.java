@@ -5,11 +5,13 @@ public class ResidualEdge {
 	private final ResidualNode src;
 	private final ResidualNode trg;
 
-	private long visited;
+	private final long visited;
 
 	private int capacity;
 	private int usedCapacity;
+	private int flow;
 	private ResidualEdge opposite;
+	private ResidualEdge previouslyVisitied;
 
 	public ResidualEdge(final ResidualNode src, final ResidualNode trg, final int capacity) {
 		this.src = src;
@@ -17,19 +19,17 @@ public class ResidualEdge {
 		this.trg = trg;
 		this.capacity = capacity;
 		this.usedCapacity = 0;
+		this.flow = 0;
 		this.visited = 0;
 	}
 
 	public int useCapacity(final int amount) {
+		this.flow += amount;
 		if ((this.capacity - this.usedCapacity) >= amount) {
 			this.usedCapacity += amount;
 			return this.capacity - this.usedCapacity;
 		}
 		throw new IllegalArgumentException("Trying to use more capacity than available");
-	}
-
-	public void visit(final long time) {
-		this.visited = time;
 	}
 
 	public ResidualNode getSrc() {
@@ -58,7 +58,7 @@ public class ResidualEdge {
 
 	@Override
 	public String toString() {
-		return this.src.getId() +"--("+this.usedCapacity+'/'+this.capacity+")-->"+this.trg.getId();
+		return this.src.getId() + "--(" + this.usedCapacity + '/' + this.capacity + ")-->" + this.trg.getId();
 	}
 
 	public boolean hasCapacity() {
@@ -70,8 +70,8 @@ public class ResidualEdge {
 	}
 
 	public ResidualEdge setOpposite(final ResidualEdge opposite) {
-		if(this.opposite != null) {
-			if(!opposite.equals(this.opposite)) {
+		if (this.opposite != null) {
+			if (!opposite.equals(this.opposite)) {
 				final var old = this.opposite;
 				old.setOpposite(null);
 				this.opposite = opposite;
@@ -80,11 +80,9 @@ public class ResidualEdge {
 			}
 			return null;
 		}
-		else {
-			this.opposite = opposite;
-			if(opposite!=null) {
-				opposite.setOpposite(this);
-			}
+		this.opposite = opposite;
+		if (opposite != null) {
+			opposite.setOpposite(this);
 		}
 		return null;
 	}
@@ -92,5 +90,17 @@ public class ResidualEdge {
 	public void augmentCapacity(final int amount) {
 		this.capacity = (this.capacity + amount) - this.usedCapacity;
 		this.usedCapacity = 0;
+	}
+
+	public void setPreviouslyVisited(final ResidualEdge edge) {
+		this.previouslyVisitied = edge;
+	}
+
+	public ResidualEdge getPrevioulyVisited() {
+		return this.previouslyVisitied;
+	}
+
+	public int getFlow() {
+		return this.flow;
 	}
 }

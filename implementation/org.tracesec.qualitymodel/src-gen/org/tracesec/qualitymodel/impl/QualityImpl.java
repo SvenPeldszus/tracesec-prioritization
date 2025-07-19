@@ -5,18 +5,21 @@ package org.tracesec.qualitymodel.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.tracesec.qualitymodel.Aspect;
 import org.tracesec.qualitymodel.Quality;
 import org.tracesec.qualitymodel.QualityModelPackage;
@@ -31,7 +34,6 @@ import org.tracesec.qualitymodel.QualityModelPackage;
  * <ul>
  *   <li>{@link org.tracesec.qualitymodel.impl.QualityImpl#getAspects <em>Aspects</em>}</li>
  *   <li>{@link org.tracesec.qualitymodel.impl.QualityImpl#getTitle <em>Title</em>}</li>
- *   <li>{@link org.tracesec.qualitymodel.impl.QualityImpl#getPriority <em>Priority</em>}</li>
  *   <li>{@link org.tracesec.qualitymodel.impl.QualityImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.tracesec.qualitymodel.impl.QualityImpl#getRelevantElements <em>Relevant Elements</em>}</li>
  * </ul>
@@ -68,26 +70,6 @@ public class QualityImpl extends MinimalEObjectImpl.Container implements Quality
 	 * @ordered
 	 */
 	protected String title = TITLE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPriority()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int PRIORITY_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getPriority() <em>Priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPriority()
-	 * @generated
-	 * @ordered
-	 */
-	protected int priority = PRIORITY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
@@ -180,29 +162,6 @@ public class QualityImpl extends MinimalEObjectImpl.Container implements Quality
 	 * @generated
 	 */
 	@Override
-	public int getPriority() {
-		return priority;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setPriority(int newPriority) {
-		int oldPriority = priority;
-		priority = newPriority;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QualityModelPackage.QUALITY__PRIORITY, oldPriority, priority));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -274,8 +233,6 @@ public class QualityImpl extends MinimalEObjectImpl.Container implements Quality
 				return getAspects();
 			case QualityModelPackage.QUALITY__TITLE:
 				return getTitle();
-			case QualityModelPackage.QUALITY__PRIORITY:
-				return getPriority();
 			case QualityModelPackage.QUALITY__DESCRIPTION:
 				return getDescription();
 			case QualityModelPackage.QUALITY__RELEVANT_ELEMENTS:
@@ -299,9 +256,6 @@ public class QualityImpl extends MinimalEObjectImpl.Container implements Quality
 				return;
 			case QualityModelPackage.QUALITY__TITLE:
 				setTitle((String)newValue);
-				return;
-			case QualityModelPackage.QUALITY__PRIORITY:
-				setPriority((Integer)newValue);
 				return;
 			case QualityModelPackage.QUALITY__DESCRIPTION:
 				setDescription((String)newValue);
@@ -328,9 +282,6 @@ public class QualityImpl extends MinimalEObjectImpl.Container implements Quality
 			case QualityModelPackage.QUALITY__TITLE:
 				setTitle(TITLE_EDEFAULT);
 				return;
-			case QualityModelPackage.QUALITY__PRIORITY:
-				setPriority(PRIORITY_EDEFAULT);
-				return;
 			case QualityModelPackage.QUALITY__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
@@ -353,8 +304,6 @@ public class QualityImpl extends MinimalEObjectImpl.Container implements Quality
 				return aspects != null && !aspects.isEmpty();
 			case QualityModelPackage.QUALITY__TITLE:
 				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
-			case QualityModelPackage.QUALITY__PRIORITY:
-				return priority != PRIORITY_EDEFAULT;
 			case QualityModelPackage.QUALITY__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case QualityModelPackage.QUALITY__RELEVANT_ELEMENTS:
@@ -375,8 +324,6 @@ public class QualityImpl extends MinimalEObjectImpl.Container implements Quality
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (title: ");
 		result.append(title);
-		result.append(", priority: ");
-		result.append(priority);
 		result.append(", description: ");
 		result.append(description);
 		result.append(')');

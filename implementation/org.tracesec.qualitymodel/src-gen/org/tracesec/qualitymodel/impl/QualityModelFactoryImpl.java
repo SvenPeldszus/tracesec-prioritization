@@ -101,6 +101,17 @@ public class QualityModelFactoryImpl extends EFactoryImpl implements QualityMode
 	 * @generated
 	 */
 	@Override
+	public QualityModel createQualityModel() {
+		QualityModelImpl qualityModel = new QualityModelImpl();
+		return qualityModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Quality createQuality() {
 		QualityImpl quality = new QualityImpl();
 		return quality;
@@ -135,17 +146,6 @@ public class QualityModelFactoryImpl extends EFactoryImpl implements QualityMode
 	 */
 	public String convertPriorityToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QualityModel createQualityModel() {
-		QualityModelImpl qualityModel = new QualityModelImpl();
-		return qualityModel;
 	}
 
 	/**

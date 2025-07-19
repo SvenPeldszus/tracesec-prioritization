@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.tracesec.prioritization.tests
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Ruhr University Bochum
 Automatic-Module-Name: org.tracesec.prioritizatiion.tests
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: org.gravity.typegraph.sonarlint,
  org.eclipse.uml2.uml,
  org.tracesec.graph.dsl,
@@ -13,6 +13,5 @@ Require-Bundle: org.gravity.typegraph.sonarlint,
  org.gravity.tgg.pm.uml,
  org.tracesec.qualitymodel,
  org.tracesec.prioritization,
- org.junit,
- org.junit.jupiter.api,
+ junit-jupiter-api;bundle-version="5.9.1",
  org.tracesec.prioritization.ui

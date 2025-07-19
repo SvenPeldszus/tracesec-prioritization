@@ -13,5 +13,10 @@
             class="org.tracesec.qualitymodel.QualityModelPackage"
             genModel="model/qualitymodel.genmodel"/>
    </extension>
-
+   <extension point="org.eclipse.sirius.componentization">
+    <component class="org.tracesec.qualitymodel.Activator"
+               id="org.tracesec.qualitymodel"
+	       name="qualitymodel">
+    </component>
+  </extension>
 </plugin>

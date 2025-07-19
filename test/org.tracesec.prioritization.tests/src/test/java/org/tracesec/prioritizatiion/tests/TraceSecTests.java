@@ -46,36 +46,37 @@ public class TraceSecTests {
 		final var quality = set.createResource(URI.createURI("QualityModel.xmi"));
 		quality.load(new FileInputStream("test/.gravity/QualityModel.xmi"), null);
 
-
 		final var qualityModel = (QualityModel) quality.getContents().get(0);
 		final var umlModel = uml.getContents().get(0);
 		final var programModel = pm.getContents().get(0);
 
 		final var configuration = loadConfiguration(set);
 
-		final var modelOrder = Arrays.asList(qualityModel.eClass().getEPackage(), umlModel.eClass().getEPackage(), programModel.eClass().getEPackage());
+		final var modelOrder = Arrays.asList(qualityModel.eClass().getEPackage(), umlModel.eClass().getEPackage(),
+				programModel.eClass().getEPackage());
 
 		final var startGraphConstruction = System.currentTimeMillis();
 		final var builder = new GraphBuilder(configuration, modelOrder);
 		builder.add((CorrespondenceModel) corr.getContents().get(0));
 		builder.add(qualityModel.getRoot());
 		final var stopGraphConstruction = System.currentTimeMillis();
-		System.out.println("Graph construction: "+(stopGraphConstruction-startGraphConstruction)+"ms\n");
+		System.out.println("Graph construction: " + (stopGraphConstruction - startGraphConstruction) + "ms\n");
 
-		System.out.println("Nodes: "+builder.getGraph().getNodes().size()+", edges: "+builder.getGraph().getEdges().size());
+		System.out.println(
+				"Nodes: " + builder.getGraph().getNodes().size() + ", edges: " + builder.getGraph().getEdges().size());
 
 		save(set, builder);
 
 		final var findings = getFindings(pm);
 
 		final var start = System.currentTimeMillis();
-		final var result = Priorizitation.prioritize(findings, qualityModel.getRoot(), builder.getGraph());
+		final var result = new Priorizitation().prioritize(findings, qualityModel.getRoot(), builder.getGraph());
 		final var stop = System.currentTimeMillis();
-		System.out.println("Prioritization: "+(stop-start)+"ms");
+		System.out.println("Prioritization: " + (stop - start) + "ms");
 
 		for (final Entry<Integer, List<SonarlintFinding>> entry : result.entrySet()) {
 			System.out.println("Priority: " + entry.getKey() + " -- " + entry.getValue().stream()
-					.map(f -> f.getRulekey() + " at " + f.getTAnnotated()).collect(Collectors.joining(", ", "[",  "]")));
+					.map(f -> f.getRulekey() + " at " + f.getTAnnotated()).collect(Collectors.joining(", ", "[", "]")));
 		}
 	}
 

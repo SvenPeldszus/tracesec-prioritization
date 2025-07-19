@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.tracesec.prioritization.tracegraph.Node#getOut <em>Out</em>}</li>
  *   <li>{@link org.tracesec.prioritization.tracegraph.Node#getIn <em>In</em>}</li>
  *   <li>{@link org.tracesec.prioritization.tracegraph.Node#getRepresents <em>Represents</em>}</li>
- *   <li>{@link org.tracesec.prioritization.tracegraph.Node#getId <em>Id</em>}</li>
  * </ul>
  *
  * @see org.tracesec.prioritization.tracegraph.TracegraphPackage#getNode()
@@ -75,27 +74,5 @@ public interface Node extends EObject {
 	 * @generated
 	 */
 	void setRepresents(EObject value);
-
-	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Id</em>' attribute.
-	 * @see #setId(String)
-	 * @see org.tracesec.prioritization.tracegraph.TracegraphPackage#getNode_Id()
-	 * @model
-	 * @generated
-	 */
-	String getId();
-
-	/**
-	 * Sets the value of the '{@link org.tracesec.prioritization.tracegraph.Node#getId <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Id</em>' attribute.
-	 * @see #getId()
-	 * @generated
-	 */
-	void setId(String value);
 
 } // Node

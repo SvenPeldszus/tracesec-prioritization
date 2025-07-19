@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalGraphConfigurationParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_INT", "RULE_STRING", "RULE_ID", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'default'", "'='", "'consider'", "'namespace'", "'{'", "'include'", "'}'", "'exclude'", "'type'", "'reference'", "'--'", "'.'", "'trg'", "'assoc'", "'ALL'", "'NONE'", "'->'", "'<-'", "'<->'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_INT", "RULE_STRING", "RULE_ID", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'default'", "'='", "'consider'", "'namespace'", "'{'", "'include'", "'}'", "'exclude'", "'type'", "'reference'", "'--'", "'ALL'", "'NONE'", "'->'", "'<-'", "'<->'"
     };
     public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=8;
@@ -40,10 +40,7 @@ public class InternalGraphConfigurationParser extends AbstractInternalAntlrParse
     public static final int RULE_WS=9;
     public static final int RULE_ANY_OTHER=10;
     public static final int T__26=26;
-    public static final int T__27=27;
-    public static final int T__28=28;
     public static final int RULE_INT=4;
-    public static final int T__29=29;
     public static final int T__22=22;
     public static final int RULE_ML_COMMENT=7;
     public static final int T__23=23;
@@ -1430,7 +1427,7 @@ public class InternalGraphConfigurationParser extends AbstractInternalAntlrParse
             if ( (LA18_0==RULE_INT) ) {
                 alt18=1;
             }
-            else if ( (LA18_0==RULE_ID||(LA18_0>=23 && LA18_0<=24)) ) {
+            else if ( (LA18_0==RULE_ID) ) {
                 alt18=2;
             }
             else {
@@ -1630,95 +1627,34 @@ public class InternalGraphConfigurationParser extends AbstractInternalAntlrParse
 
 
     // $ANTLR start "ruleAttributeWeight"
-    // InternalGraphConfiguration.g:677:1: ruleAttributeWeight returns [EObject current=null] : ( ( ( (lv_owner_0_0= ruleOwner ) ) otherlv_1= '.' )? ( (otherlv_2= RULE_ID ) ) ) ;
+    // InternalGraphConfiguration.g:677:1: ruleAttributeWeight returns [EObject current=null] : ( (otherlv_0= RULE_ID ) ) ;
     public final EObject ruleAttributeWeight() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_1=null;
-        Token otherlv_2=null;
-        Enumerator lv_owner_0_0 = null;
-
+        Token otherlv_0=null;
 
 
         	enterRule();
 
         try {
-            // InternalGraphConfiguration.g:683:2: ( ( ( ( (lv_owner_0_0= ruleOwner ) ) otherlv_1= '.' )? ( (otherlv_2= RULE_ID ) ) ) )
-            // InternalGraphConfiguration.g:684:2: ( ( ( (lv_owner_0_0= ruleOwner ) ) otherlv_1= '.' )? ( (otherlv_2= RULE_ID ) ) )
+            // InternalGraphConfiguration.g:683:2: ( ( (otherlv_0= RULE_ID ) ) )
+            // InternalGraphConfiguration.g:684:2: ( (otherlv_0= RULE_ID ) )
             {
-            // InternalGraphConfiguration.g:684:2: ( ( ( (lv_owner_0_0= ruleOwner ) ) otherlv_1= '.' )? ( (otherlv_2= RULE_ID ) ) )
-            // InternalGraphConfiguration.g:685:3: ( ( (lv_owner_0_0= ruleOwner ) ) otherlv_1= '.' )? ( (otherlv_2= RULE_ID ) )
+            // InternalGraphConfiguration.g:684:2: ( (otherlv_0= RULE_ID ) )
+            // InternalGraphConfiguration.g:685:3: (otherlv_0= RULE_ID )
             {
-            // InternalGraphConfiguration.g:685:3: ( ( (lv_owner_0_0= ruleOwner ) ) otherlv_1= '.' )?
-            int alt19=2;
-            int LA19_0 = input.LA(1);
-
-            if ( ((LA19_0>=23 && LA19_0<=24)) ) {
-                alt19=1;
-            }
-            switch (alt19) {
-                case 1 :
-                    // InternalGraphConfiguration.g:686:4: ( (lv_owner_0_0= ruleOwner ) ) otherlv_1= '.'
-                    {
-                    // InternalGraphConfiguration.g:686:4: ( (lv_owner_0_0= ruleOwner ) )
-                    // InternalGraphConfiguration.g:687:5: (lv_owner_0_0= ruleOwner )
-                    {
-                    // InternalGraphConfiguration.g:687:5: (lv_owner_0_0= ruleOwner )
-                    // InternalGraphConfiguration.g:688:6: lv_owner_0_0= ruleOwner
-                    {
-
-                    						newCompositeNode(grammarAccess.getAttributeWeightAccess().getOwnerOwnerEnumRuleCall_0_0_0());
-                    					
-                    pushFollow(FOLLOW_23);
-                    lv_owner_0_0=ruleOwner();
-
-                    state._fsp--;
-
-
-                    						if (current==null) {
-                    							current = createModelElementForParent(grammarAccess.getAttributeWeightRule());
-                    						}
-                    						set(
-                    							current,
-                    							"owner",
-                    							lv_owner_0_0,
-                    							"org.tracesec.graph.dsl.GraphConfiguration.Owner");
-                    						afterParserOrEnumRuleCall();
-                    					
-
-                    }
-
-
-                    }
-
-                    otherlv_1=(Token)match(input,22,FOLLOW_15); 
-
-                    				newLeafNode(otherlv_1, grammarAccess.getAttributeWeightAccess().getFullStopKeyword_0_1());
-                    			
-
-                    }
-                    break;
-
-            }
-
-            // InternalGraphConfiguration.g:710:3: ( (otherlv_2= RULE_ID ) )
-            // InternalGraphConfiguration.g:711:4: (otherlv_2= RULE_ID )
-            {
-            // InternalGraphConfiguration.g:711:4: (otherlv_2= RULE_ID )
-            // InternalGraphConfiguration.g:712:5: otherlv_2= RULE_ID
+            // InternalGraphConfiguration.g:685:3: (otherlv_0= RULE_ID )
+            // InternalGraphConfiguration.g:686:4: otherlv_0= RULE_ID
             {
 
-            					if (current==null) {
-            						current = createModelElement(grammarAccess.getAttributeWeightRule());
-            					}
-            				
-            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_2); 
+            				if (current==null) {
+            					current = createModelElement(grammarAccess.getAttributeWeightRule());
+            				}
+            			
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_2); 
 
-            					newLeafNode(otherlv_2, grammarAccess.getAttributeWeightAccess().getValueEAttributeCrossReference_1_0());
-            				
-
-            }
-
+            				newLeafNode(otherlv_0, grammarAccess.getAttributeWeightAccess().getValueEAttributeCrossReference_0());
+            			
 
             }
 
@@ -1744,96 +1680,8 @@ public class InternalGraphConfigurationParser extends AbstractInternalAntlrParse
     // $ANTLR end "ruleAttributeWeight"
 
 
-    // $ANTLR start "ruleOwner"
-    // InternalGraphConfiguration.g:727:1: ruleOwner returns [Enumerator current=null] : ( (enumLiteral_0= 'trg' ) | (enumLiteral_1= 'assoc' ) ) ;
-    public final Enumerator ruleOwner() throws RecognitionException {
-        Enumerator current = null;
-
-        Token enumLiteral_0=null;
-        Token enumLiteral_1=null;
-
-
-        	enterRule();
-
-        try {
-            // InternalGraphConfiguration.g:733:2: ( ( (enumLiteral_0= 'trg' ) | (enumLiteral_1= 'assoc' ) ) )
-            // InternalGraphConfiguration.g:734:2: ( (enumLiteral_0= 'trg' ) | (enumLiteral_1= 'assoc' ) )
-            {
-            // InternalGraphConfiguration.g:734:2: ( (enumLiteral_0= 'trg' ) | (enumLiteral_1= 'assoc' ) )
-            int alt20=2;
-            int LA20_0 = input.LA(1);
-
-            if ( (LA20_0==23) ) {
-                alt20=1;
-            }
-            else if ( (LA20_0==24) ) {
-                alt20=2;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 20, 0, input);
-
-                throw nvae;
-            }
-            switch (alt20) {
-                case 1 :
-                    // InternalGraphConfiguration.g:735:3: (enumLiteral_0= 'trg' )
-                    {
-                    // InternalGraphConfiguration.g:735:3: (enumLiteral_0= 'trg' )
-                    // InternalGraphConfiguration.g:736:4: enumLiteral_0= 'trg'
-                    {
-                    enumLiteral_0=(Token)match(input,23,FOLLOW_2); 
-
-                    				current = grammarAccess.getOwnerAccess().getTARGETEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_0, grammarAccess.getOwnerAccess().getTARGETEnumLiteralDeclaration_0());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // InternalGraphConfiguration.g:743:3: (enumLiteral_1= 'assoc' )
-                    {
-                    // InternalGraphConfiguration.g:743:3: (enumLiteral_1= 'assoc' )
-                    // InternalGraphConfiguration.g:744:4: enumLiteral_1= 'assoc'
-                    {
-                    enumLiteral_1=(Token)match(input,24,FOLLOW_2); 
-
-                    				current = grammarAccess.getOwnerAccess().getASSOCIATIONEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-                    				newLeafNode(enumLiteral_1, grammarAccess.getOwnerAccess().getASSOCIATIONEnumLiteralDeclaration_1());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-
-
-            }
-
-
-            	leaveRule();
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleOwner"
-
-
     // $ANTLR start "ruleConsider"
-    // InternalGraphConfiguration.g:754:1: ruleConsider returns [Enumerator current=null] : ( (enumLiteral_0= 'ALL' ) | (enumLiteral_1= 'NONE' ) ) ;
+    // InternalGraphConfiguration.g:700:1: ruleConsider returns [Enumerator current=null] : ( (enumLiteral_0= 'ALL' ) | (enumLiteral_1= 'NONE' ) ) ;
     public final Enumerator ruleConsider() throws RecognitionException {
         Enumerator current = null;
 
@@ -1844,33 +1692,33 @@ public class InternalGraphConfigurationParser extends AbstractInternalAntlrParse
         	enterRule();
 
         try {
-            // InternalGraphConfiguration.g:760:2: ( ( (enumLiteral_0= 'ALL' ) | (enumLiteral_1= 'NONE' ) ) )
-            // InternalGraphConfiguration.g:761:2: ( (enumLiteral_0= 'ALL' ) | (enumLiteral_1= 'NONE' ) )
+            // InternalGraphConfiguration.g:706:2: ( ( (enumLiteral_0= 'ALL' ) | (enumLiteral_1= 'NONE' ) ) )
+            // InternalGraphConfiguration.g:707:2: ( (enumLiteral_0= 'ALL' ) | (enumLiteral_1= 'NONE' ) )
             {
-            // InternalGraphConfiguration.g:761:2: ( (enumLiteral_0= 'ALL' ) | (enumLiteral_1= 'NONE' ) )
-            int alt21=2;
-            int LA21_0 = input.LA(1);
+            // InternalGraphConfiguration.g:707:2: ( (enumLiteral_0= 'ALL' ) | (enumLiteral_1= 'NONE' ) )
+            int alt19=2;
+            int LA19_0 = input.LA(1);
 
-            if ( (LA21_0==25) ) {
-                alt21=1;
+            if ( (LA19_0==22) ) {
+                alt19=1;
             }
-            else if ( (LA21_0==26) ) {
-                alt21=2;
+            else if ( (LA19_0==23) ) {
+                alt19=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 21, 0, input);
+                    new NoViableAltException("", 19, 0, input);
 
                 throw nvae;
             }
-            switch (alt21) {
+            switch (alt19) {
                 case 1 :
-                    // InternalGraphConfiguration.g:762:3: (enumLiteral_0= 'ALL' )
+                    // InternalGraphConfiguration.g:708:3: (enumLiteral_0= 'ALL' )
                     {
-                    // InternalGraphConfiguration.g:762:3: (enumLiteral_0= 'ALL' )
-                    // InternalGraphConfiguration.g:763:4: enumLiteral_0= 'ALL'
+                    // InternalGraphConfiguration.g:708:3: (enumLiteral_0= 'ALL' )
+                    // InternalGraphConfiguration.g:709:4: enumLiteral_0= 'ALL'
                     {
-                    enumLiteral_0=(Token)match(input,25,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,22,FOLLOW_2); 
 
                     				current = grammarAccess.getConsiderAccess().getALLEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getConsiderAccess().getALLEnumLiteralDeclaration_0());
@@ -1882,12 +1730,12 @@ public class InternalGraphConfigurationParser extends AbstractInternalAntlrParse
                     }
                     break;
                 case 2 :
-                    // InternalGraphConfiguration.g:770:3: (enumLiteral_1= 'NONE' )
+                    // InternalGraphConfiguration.g:716:3: (enumLiteral_1= 'NONE' )
                     {
-                    // InternalGraphConfiguration.g:770:3: (enumLiteral_1= 'NONE' )
-                    // InternalGraphConfiguration.g:771:4: enumLiteral_1= 'NONE'
+                    // InternalGraphConfiguration.g:716:3: (enumLiteral_1= 'NONE' )
+                    // InternalGraphConfiguration.g:717:4: enumLiteral_1= 'NONE'
                     {
-                    enumLiteral_1=(Token)match(input,26,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,23,FOLLOW_2); 
 
                     				current = grammarAccess.getConsiderAccess().getNONEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getConsiderAccess().getNONEEnumLiteralDeclaration_1());
@@ -1921,7 +1769,7 @@ public class InternalGraphConfigurationParser extends AbstractInternalAntlrParse
 
 
     // $ANTLR start "ruleDirection"
-    // InternalGraphConfiguration.g:781:1: ruleDirection returns [Enumerator current=null] : ( (enumLiteral_0= '->' ) | (enumLiteral_1= '<-' ) | (enumLiteral_2= '<->' ) ) ;
+    // InternalGraphConfiguration.g:727:1: ruleDirection returns [Enumerator current=null] : ( (enumLiteral_0= '->' ) | (enumLiteral_1= '<-' ) | (enumLiteral_2= '<->' ) ) ;
     public final Enumerator ruleDirection() throws RecognitionException {
         Enumerator current = null;
 
@@ -1933,42 +1781,42 @@ public class InternalGraphConfigurationParser extends AbstractInternalAntlrParse
         	enterRule();
 
         try {
-            // InternalGraphConfiguration.g:787:2: ( ( (enumLiteral_0= '->' ) | (enumLiteral_1= '<-' ) | (enumLiteral_2= '<->' ) ) )
-            // InternalGraphConfiguration.g:788:2: ( (enumLiteral_0= '->' ) | (enumLiteral_1= '<-' ) | (enumLiteral_2= '<->' ) )
+            // InternalGraphConfiguration.g:733:2: ( ( (enumLiteral_0= '->' ) | (enumLiteral_1= '<-' ) | (enumLiteral_2= '<->' ) ) )
+            // InternalGraphConfiguration.g:734:2: ( (enumLiteral_0= '->' ) | (enumLiteral_1= '<-' ) | (enumLiteral_2= '<->' ) )
             {
-            // InternalGraphConfiguration.g:788:2: ( (enumLiteral_0= '->' ) | (enumLiteral_1= '<-' ) | (enumLiteral_2= '<->' ) )
-            int alt22=3;
+            // InternalGraphConfiguration.g:734:2: ( (enumLiteral_0= '->' ) | (enumLiteral_1= '<-' ) | (enumLiteral_2= '<->' ) )
+            int alt20=3;
             switch ( input.LA(1) ) {
-            case 27:
+            case 24:
                 {
-                alt22=1;
+                alt20=1;
                 }
                 break;
-            case 28:
+            case 25:
                 {
-                alt22=2;
+                alt20=2;
                 }
                 break;
-            case 29:
+            case 26:
                 {
-                alt22=3;
+                alt20=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 22, 0, input);
+                    new NoViableAltException("", 20, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt22) {
+            switch (alt20) {
                 case 1 :
-                    // InternalGraphConfiguration.g:789:3: (enumLiteral_0= '->' )
+                    // InternalGraphConfiguration.g:735:3: (enumLiteral_0= '->' )
                     {
-                    // InternalGraphConfiguration.g:789:3: (enumLiteral_0= '->' )
-                    // InternalGraphConfiguration.g:790:4: enumLiteral_0= '->'
+                    // InternalGraphConfiguration.g:735:3: (enumLiteral_0= '->' )
+                    // InternalGraphConfiguration.g:736:4: enumLiteral_0= '->'
                     {
-                    enumLiteral_0=(Token)match(input,27,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,24,FOLLOW_2); 
 
                     				current = grammarAccess.getDirectionAccess().getFWDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getDirectionAccess().getFWDEnumLiteralDeclaration_0());
@@ -1980,12 +1828,12 @@ public class InternalGraphConfigurationParser extends AbstractInternalAntlrParse
                     }
                     break;
                 case 2 :
-                    // InternalGraphConfiguration.g:797:3: (enumLiteral_1= '<-' )
+                    // InternalGraphConfiguration.g:743:3: (enumLiteral_1= '<-' )
                     {
-                    // InternalGraphConfiguration.g:797:3: (enumLiteral_1= '<-' )
-                    // InternalGraphConfiguration.g:798:4: enumLiteral_1= '<-'
+                    // InternalGraphConfiguration.g:743:3: (enumLiteral_1= '<-' )
+                    // InternalGraphConfiguration.g:744:4: enumLiteral_1= '<-'
                     {
-                    enumLiteral_1=(Token)match(input,28,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,25,FOLLOW_2); 
 
                     				current = grammarAccess.getDirectionAccess().getBWDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getDirectionAccess().getBWDEnumLiteralDeclaration_1());
@@ -1997,12 +1845,12 @@ public class InternalGraphConfigurationParser extends AbstractInternalAntlrParse
                     }
                     break;
                 case 3 :
-                    // InternalGraphConfiguration.g:805:3: (enumLiteral_2= '<->' )
+                    // InternalGraphConfiguration.g:751:3: (enumLiteral_2= '<->' )
                     {
-                    // InternalGraphConfiguration.g:805:3: (enumLiteral_2= '<->' )
-                    // InternalGraphConfiguration.g:806:4: enumLiteral_2= '<->'
+                    // InternalGraphConfiguration.g:751:3: (enumLiteral_2= '<->' )
+                    // InternalGraphConfiguration.g:752:4: enumLiteral_2= '<->'
                     {
-                    enumLiteral_2=(Token)match(input,29,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,26,FOLLOW_2); 
 
                     				current = grammarAccess.getDirectionAccess().getBIEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getDirectionAccess().getBIEnumLiteralDeclaration_2());
@@ -2044,7 +1892,7 @@ public class InternalGraphConfigurationParser extends AbstractInternalAntlrParse
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000001000L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000006000L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000006000000L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000C00000L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000006002L});
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000008000L});
@@ -2059,8 +1907,7 @@ public class InternalGraphConfigurationParser extends AbstractInternalAntlrParse
     public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000070800L});
     public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000120000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000038200000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000001800050L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000007200000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000000050L});
 
 }

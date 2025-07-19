@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Scalability Evaluation
+Bundle-SymbolicName: org.tracesec.eval
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Ruhr University Bochum
+Automatic-Module-Name: org.tracesec.eval.scalability
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Require-Bundle: org.eclipse.emf.henshin.model,
+ org.gravity.typegraph.basic,
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.emf.henshin.interpreter,
+ org.eclipse.emf.ecore,
+ org.eclipse.uml2.uml,
+ org.moflon.tgg.runtime,
+ org.gravity.tgg.pm.uml,
+ org.tracesec.requirements,
+ org.tracesec.prioritization,
+ org.tracesec.qualitymodel,
+ org.tracesec.graph.dsl,
+ org.eclipse.xtext,
+ org.antlr.runtime;bundle-version="3.2.0",
+ org.gravity.security.annotations.pm
+Bundle-ClassPath: .,
+ target/dependency/commons-math3.jar

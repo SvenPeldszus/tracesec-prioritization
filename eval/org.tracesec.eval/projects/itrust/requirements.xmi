@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="ASCII"?>
+<requirements:RequirementsSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:requirements="http://www.tracesec.org/requirements">
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC30" title="Messaging between LHCP and patient" incomingReferences="//@requirements.1/@outgoingReferences.3">
+    <requirements xsi:type="requirements:Requirement" wording="A patient or personal representative for a patient chooses to send a message to an LHCP (no multiple recipients allowed in a single message). The patient/representative is presented with a pull down menu of his/her DLHCP. The patient/representative chooses one of these DLHCP and types the subject (up to 100 characters) and text of a message (up to 1000 characters), and clicks the send button. A row for showing the message subject, the name of the recipient, and the timestamp (which includes both date and time) is then visible in the patient/representative&#x2019;s message outbox. A bolded row for showing the message subject, the name of sender, and the timestamp is then visible in the LHCP's message inbox. A fake email is sent to the LHCP alerting the user that a new message has arrived. After a message is sent, the patient or personal representative is directed to his/her message outbox." id="S1" incomingReferences="//@requirements.0/@requirements.9/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:Requirement" wording="An LHCP chooses to send a message to a patient/representative (no multiple recipients allowed in a single message). The LHCP enters and confirms the patient/representative's MID [E1, E2]. The LHCP types the subject (up to 100 characters) and the text of a message (up to 1000 characters), and clicks the send button. A row for showing the message subject, the name of the recipient, and the timestamp is then visible in the LHCP&#x2019;s message outbox. A bolded row for showing the message subject, the name of the sender, and the timestamp is then visible in the patient/representative&#x2019;s message inbox, and a fake email is sent to the patient/representative that indicates that he/she has a new message from an LHCP. After a message is sent, the LHCP is directed to to his/her message outbox." id="S2" incomingReferences="//@requirements.0/@requirements.9/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.0/@requirements.7" type="COMPLEMENT"/>
+      <outgoingReferences target="//@requirements.0/@requirements.8" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="A patient or patient representative wishes to reply to a message. The patient/representative views his or her message inbox. The patient/representative opens the message to which he or she wishes to reply [S5], and then clicks the reply link above the message text. The patient/representative enters the text of the response message (up to 1000 characters) he or she wishes to send, then clicks the send button. A row for showing the message subject (now preceded by &#x201c;RE:&#x201d;), the name of the recipient, and the timestamp is then visible in the patient/representative&#x2019;s message outbox. A bolded row for showing the message subject (now preceded by &#x201c;RE:&#x201d;), the name of the sender, and timestamp is then visible in the LHCP&#x2019;s message inbox. A fake email is sent to the LHCP alerting the LHCP that a new message reply has arrived." id="S3" incomingReferences="//@requirements.0/@requirements.9/@requirements.0/@outgoingReferences.2">
+      <outgoingReferences target="//@requirements.0/@requirements.4" type="REFINEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="An LHCP wishes to reply to a message. The LHCP views his or her message inbox. The LHCP opens the message to which he or she wishes to reply [S5], and then clicks the reply link above the message text. The LHCP enters the text of the response message (up to 1000 characters) he or she wishes to send, then clicks the send button. A row for showing the message subject (now preceded by &#x201c;RE:&#x201d;), the name of the recipient, and the timestamp are then visible in the LHCP&#x2019;s message outbox. A bolded row for showing the message subject (now preceded by &#x201c;RE:&#x201d;), the name of sender, and timestamp are then visible in the patient/representative&#x2019;s message inbox. A fake email is sent to the patient/representative alerting the patient/representative that a new message reply has arrived." id="S4" incomingReferences="//@requirements.0/@requirements.9/@requirements.0/@outgoingReferences.3">
+      <outgoingReferences target="//@requirements.0/@requirements.4" type="REFINEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="A user (a patient, patient representative, or LHCP) wishes to read a message from the message inbox or outbox. The user chooses to open his or her message inbox/outbox. Each row in the message inbox/outbox includes the message subject, the name of either the sender (only for the case of inbox) or recipient (only for the case of outbox), and timestamp. By default, the messages in the message inbox/outbox should be ordered by timestamp, the most recent first. Each row for an unread message in the message inbox is bolded. The user selects a message from the message inbox/outbox to read by clicking the &#x201c;Read&#x201d; link beside the row for the message, and then the message subject, the name of the sender, the name of the the recipient, timestamp, and the message text shall be displayed in a new page. After a message in the message inbox is read (i.e., displayed in a new page), the row for the message in the message inbox is not bolded anymore." id="S5" incomingReferences="//@requirements.0/@requirements.3/@outgoingReferences.0 //@requirements.0/@requirements.6/@outgoingReferences.0 //@requirements.0/@requirements.2/@outgoingReferences.0 //@requirements.0/@requirements.9/@requirements.0/@outgoingReferences.4"/>
+    <requirements xsi:type="requirements:Requirement" wording="A user (a patient, patient representative, or LHCP) can sort messages in his or her message inbox by either the sender's last name or timestamp (but not both) in either ascending or descending order (where timestamps in descending order would have the most recent first). A user can sort messages in his or her message outbox by the recipient's last name or timestamp (but not both) in either ascending or descending order. To do so, a user selects one option out of the &#x201c;Sort by&#x201d; labeled drop-down box (with options of &#x201c;Sender/Recipient&#x201d; or &#x201c;Timestamp&#x201d;) and selects one option out of the &#x201c;by order of&#x201d; labeled drop-down box (with options of &#x201c;ascending&#x201d; or &#x201c;descending&#x201d;), and then click the &#x201c;Sort&#x201d; button. Note that the sorted order is not saved for later viewing after the message inbox or outbox is reopened again (where the default sorting is always used)." id="S6" incomingReferences="//@requirements.0/@requirements.9/@requirements.0/@outgoingReferences.5"/>
+    <requirements xsi:type="requirements:Requirement" wording="A user (an LHCP or patient/representative) can modify his/her message displaying filter by modifying the following filtering criteria: (1) the sender (i.e., the sender's name is exactly the same as the specified string), (2) the subject (i.e., the subject is exactly the same as the specified string), (3) has the words (i.e., the subject or the message body has the specified substring), (4) doesn't have (i.e., neither the subject nor the message body has the specified substring), (5) time stamp falling into the period defined by the starting date and ending date (inclusive) (the user interface shall provide both the option of typing in a specific date in the date format and the option of selecting a date from a calendar for the current month). Note that a single filter includes values for these five filtering criteria (rather than five filters for these five filtering criteria) and a value could be an empty string, indicating that this criterion has no impact on filtering (i.e., imposing no constraints related to this criterion). The user interface shall be initially populated with the values of the filtering criteria from the previously saved filter. After the user modifies the criteria, the user chooses to click the &#x201c;Cancel&#x201d; button to cancel the modifications of the filter (i.e., repopulate the user interface with the values of the filtering criteria from the previously saved filter), to click the &#x201c;Test Search&#x201d; button to search (i.e., displaying the message inbox [S5] including only the messages satisfying the specified filtering criteria), or to click the &#x201c;Save&#x201d; button to save the modified filter. Each user is associated with only one filter (being saved across login sessions) and applies only this saved filter. The user's associated filter initially has all empty inputs for the filtering criteria before the user modifies it." id="S7" incomingReferences="//@requirements.0/@requirements.9/@requirements.0/@outgoingReferences.6">
+      <outgoingReferences target="//@requirements.0/@requirements.4" type="REFINEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The HCP types an invalid medical identification number and is prompted to try again." id="E1" incomingReferences="//@requirements.0/@requirements.1/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The patient chosen is not the desired patient. The HCP does not confirm the selection and is prompted to try again." id="E2" incomingReferences="//@requirements.0/@requirements.1/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC30.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="An LHCP wants to send a message to a patient and/or that patient's personal representative [S2] or a patient or personal representative wants to send a message to one of their DLHCP or that of a person they are representing [S1]. LHCPs and patients/representatives may reply to messages [S3, S4]. An LHCP or patient/representative may view a message [S5]. An LHCP or patient/representative can sort his or her message inbox and message outbox [S6]. An LHCP or patient/representative can modify and save his/her message displaying filter [S7] or view his/her message inbox [S5] including only the messages satisfying the specified filtering criteria in the saved filter." id="M1">
+        <outgoingReferences target="//@requirements.0/@requirements.1" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.0/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.0/@requirements.2" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.0/@requirements.3" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.0/@requirements.4" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.0/@requirements.5" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.0/@requirements.6" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC3" title="Authenticate Users Use Case" incomingReferences="//@requirements.23/@outgoingReferences.3 //@requirements.10/@outgoingReferences.15">
+    <outgoingReferences target="//@requirements.17" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.25" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.10" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.0" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.5" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.3" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.27" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.8" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.16" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.24" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.33" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.15" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.19" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.12" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.23" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.2" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.31" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.21" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.30" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.22" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.4" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.26" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.7" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.20" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.18" type="PRECONDITION"/>
+    <requirements xsi:type="requirements:Requirement" wording="If the security question/answer has been set (it is not null) [E2], present security question and obtain answer [S2, E1]." id="S1" incomingReferences="//@requirements.1/@requirements.6/@requirements.0/@outgoingReferences.1">
+      <outgoingReferences target="//@requirements.1/@requirements.4" type="COMPLEMENT"/>
+      <outgoingReferences target="//@requirements.1/@requirements.1" type="REFINEMENT"/>
+      <outgoingReferences target="//@requirements.1/@requirements.3" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="If answer to security question is correct, allow user to change their password. An email notification is sent [UC27, S1]." id="S2" incomingReferences="//@requirements.1/@requirements.0/@outgoingReferences.1">
+      <outgoingReferences target="//@requirements.32/@requirements.0" type="REFINEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="Electronic sessions must terminate after ten minutes of inactivity. Ensure that authentication is reset after a period of inactivity that exceeds ten minutes." id="S3" incomingReferences="//@requirements.1/@requirements.6/@requirements.0/@outgoingReferences.2"/>
+    <requirements xsi:type="requirements:Requirement" wording="The user may try three times. After three failed attempts with a userid in a given session, disallow attempts to log in via IP address for 15 minutes (see comments in the source code)." id="E1" incomingReferences="//@requirements.1/@requirements.6/@requirements.0/@outgoingReferences.0 //@requirements.1/@requirements.0/@outgoingReferences.2"/>
+    <requirements xsi:type="requirements:Requirement" wording="If the patient has never stored a security question/answer, the user is asked for the random password assigned on creation of the account." id="E2" incomingReferences="//@requirements.1/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="A user who has enabled &#x201c;Log-in with Google&#x201d; can use their Google account to log into the iTrust healthcare management system." id="E3"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC3.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="A user enters their MID and their password to gain role-based entry into the iTrust Medical Records system [E1] or requests that their password be changed [S1]. A session that has been inactive for more than ten minutes is terminated [S3]. Upon successful authentication, the user will be directed to a personalized home page based on their role. An authenticated session ends when the user logs out or closes the iTrust application." id="M1">
+        <outgoingReferences target="//@requirements.1/@requirements.3" type="COMPLEMENT"/>
+        <outgoingReferences target="//@requirements.1/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.1/@requirements.2" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="In an emergency, the health are provider (LHCP or ER) can benefit from a subset of a patient record that can help with critical care.  This subset, and emergency electronic health record) is extracted via this use case." id="UC21" title="View emergency electronic health record Use Case" incomingReferences="//@requirements.1/@outgoingReferences.15">
+    <requirements xsi:type="requirements:Requirement" wording="The LHCP or ER enters a MID [E1] and confirms the input [E2]." id="S1">
+      <outgoingReferences target="//@requirements.2/@requirements.1" type="COMPLEMENT"/>
+      <outgoingReferences target="//@requirements.2/@requirements.2" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The LHCP/ER types an invalid medical identification number and is prompted to try again." id="E1" incomingReferences="//@requirements.2/@requirements.3/@requirements.0/@outgoingReferences.0 //@requirements.2/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The patient chosen is not the desired patient. The LHCP or ER does not confirm the selection and is prompted to try again." id="E2" incomingReferences="//@requirements.2/@requirements.3/@requirements.0/@outgoingReferences.1 //@requirements.2/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC21.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="A LHCP or ER chooses to view an emergency report and provides an MID [E1]. The LHCP/ER is presented with a patient confirmation [E2]. The LHCP/ER obtains a printable report (meaning you should minimize the space taken up to provide the information) containing vital information for the patient:* Name* Age* Gender* Emergency contact (name and phone number)* Blood type* A list of all diagnosis codes chronic diagnoses for the patient and well as all short term diagnoses made within the last 30 days. Display the ICD-10CM code and the name of the diagnoses. Sort by most recent first.* A list of all prescriptions the patient is likely to be currently taking as determined by the end date of the prescription has passed by 91 days or less. Display the National Drug Code and the name of the prescription. Sort by most recent first.* A list of all immunizations the patient has had. Display the CPT Code and the name of the immunization. Sort by most recent first." id="M1">
+        <outgoingReferences target="//@requirements.2/@requirements.1" type="COMPLEMENT"/>
+        <outgoingReferences target="//@requirements.2/@requirements.2" type="COMPLEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC28" title="View Patients" incomingReferences="//@requirements.1/@outgoingReferences.5">
+    <requirements xsi:type="requirements:RequirementsSet" id="UC28.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="The LHCP chooses to view all patients with which he or she has ever had an office visit with. The patient&#x2019;s name (clickable to view PHR), address, and date of last office visit are displayed. The list is sorted by the date of the last office visit (most recent first)." id="M1"/>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="UC57" id="UC57" title="Change Password" incomingReferences="//@requirements.10/@outgoingReferences.12 //@requirements.1/@outgoingReferences.20">
+    <requirements xsi:type="requirements:Requirement" wording="The user clicks link to change password." id="S1" incomingReferences="//@requirements.4/@requirements.3/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The user enters the current password and the new password [E1]." id="S2" incomingReferences="//@requirements.4/@requirements.3/@requirements.0/@outgoingReferences.1">
+      <outgoingReferences target="//@requirements.4/@requirements.2" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="If the new password is less than 5 characters long and does not contain at least 1 letter and 1 number, the user is prompted to enter another appropriate password." id="E1" incomingReferences="//@requirements.4/@requirements.1/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC57.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="The User selects the option to change his or her password [S1]. The User fills out required information to change the password [S2]." id="M1">
+        <outgoingReferences target="//@requirements.4/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.4/@requirements.1" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC13" title="Declare/undeclare Personal Representative Use Case" incomingReferences="//@requirements.6/@requirements.1/@outgoingReferences.3 //@requirements.19/@requirements.0/@outgoingReferences.1 //@requirements.10/@outgoingReferences.4 //@requirements.1/@outgoingReferences.4">
+    <requirements xsi:type="requirements:Requirement" wording="The health care personnel types an invalid medical identification number and is prompted to try again." id="E1" incomingReferences="//@requirements.5/@requirements.1/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC13.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="The HCP selects a patient by typing in the MID of the patient [E1]. The HCP can choose to add or remove another registered user as a personal health representative to that patient. Personal Health Representatives must also have the &quot;Patient&quot; role in the iTrust system" id="M1">
+        <outgoingReferences target="//@requirements.5/@requirements.0" type="COMPLEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC23" title="View Comprehensive Patient Report Use Case" incomingReferences="//@requirements.10/@outgoingReferences.7">
+    <requirements xsi:type="requirements:Requirement" wording="The LHCP enters a patient medical identification number (MID) [E1] and confirms his/her input [E2]." id="S1" incomingReferences="//@requirements.6/@requirements.5/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.6/@requirements.3" type="COMPLEMENT"/>
+      <outgoingReferences target="//@requirements.6/@requirements.4" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The LHCP can view the comprehensive patient report for the specified patient, which includes the information below.* All patient demographic information (address, phone, etc.), see (UC4) and [[requirements:df1|Data Format 6.1]]* All designated HCPs (MIDs and Names), see (UC6)* All allergies, office visits, and known relatives, see (UC11) and [[requirements:df5|Data Format 6.5]], [[requirements:df6|6.6]]* All MIDs and names of people that this person is representing, see (UC13)* All MIDs and names of people that this person is represented by, see (UC13)" id="S2" incomingReferences="//@requirements.6/@requirements.5/@requirements.0/@outgoingReferences.1">
+      <outgoingReferences target="//@requirements.22"/>
+      <outgoingReferences target="//@requirements.20"/>
+      <outgoingReferences target="//@requirements.27"/>
+      <outgoingReferences target="//@requirements.5"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The LHCP views a list of requests he/she has made for reports, with the status and pertinent information about the requests." id="S3" incomingReferences="//@requirements.6/@requirements.5/@requirements.0/@outgoingReferences.2"/>
+    <requirements xsi:type="requirements:Requirement" wording="The LHCP types an invalid MID and is prompted to try again." id="E1" incomingReferences="//@requirements.6/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The chosen patient is not the desired patient. The LHCP does not confirm the selection and can try again." id="E2" incomingReferences="//@requirements.6/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC23.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="The LHCP requests a comprehensive patient report for a particular patient [S1]. The LHCP is able to view the comprehensive patient report [S2] from a list of his/her previous requests [S3]." id="M1">
+        <outgoingReferences target="//@requirements.6/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.6/@requirements.1" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.6/@requirements.2" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC42" title="View Notifications Use Case" incomingReferences="//@requirements.10/@outgoingReferences.14 //@requirements.1/@outgoingReferences.22">
+    <requirements xsi:type="requirements:Requirement" wording="An LHCP views a list of his or her upcoming appointments for the current date (sorted by time, soonest upcoming first), with each appointment displayed in the format &#x201c;HH:MM AM/PM - AppointmentType&#x201d;. The LHCP clicks an appointment to view more details. The appointment details display the appointment type, appointment date and start time, duration, the name of the patient, and appointment comments [E1]." id="S1" incomingReferences="//@requirements.7/@requirements.8/@requirements.0/@outgoingReferences.1">
+      <outgoingReferences target="//@requirements.7/@requirements.6" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="A user (a patient or personal health representative) can choose to view a list of his or her upcoming appointments for himself/herself, as well as appointments for the patients he/she represents (i.e., a list including appointments whose appointment date and start time is equal or later than the current date/time, sorted by time with soonest upcoming first). The appointments are listed in the format &#x201c;MM/DD/YYYY - AppointmentType&#x201d;. The patient or personal health representative clicks an appointment to view more details. The appointment details include the appointment type, appointment date and start time, duration, the name of the LHCP, and appointment comments [E1]." id="S2" incomingReferences="//@requirements.7/@requirements.8/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.7/@requirements.6" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="An LHCP views the number of submitted physiologic data monitoring reports of his or her patients for the current date. The LHCP clicks this number to view the physiologic data monitoring details of his or her patients for the current date. The LHCP is presented with a listing of all his or her patients to view physiologic data reported during the current date. Each row in the list includes their blood pressure and glucose levels, recording timestamp, and whom reported the data (patient, UAP name, personal representative name)." id="S3" incomingReferences="//@requirements.7/@requirements.8/@requirements.0/@outgoingReferences.2"/>
+    <requirements xsi:type="requirements:Requirement" wording="An LHCP views the number of submitted weight/pedometer data monitoring reports of his or her patients for the current date. The LHCP clicks this number to view the weight/pedometer monitoring details of his or her patients for the current date. The LHCP is presented with a listing of all his or her patients to view weight/pedometer data reported during the current date. Each row in the list includes their weight and pedometer reading numbers levels, recording timestamp, and whom reported the data (patient, UAP name, personal representative name)." id="S4" incomingReferences="//@requirements.7/@requirements.8/@requirements.0/@outgoingReferences.3"/>
+    <requirements xsi:type="requirements:Requirement" wording="A user (a patient, patient representative, or LHCP) views the number of unread messages from his or her message inbox. The user clicks this number to view his or her message inbox. The user is presented with a list of his or her messages in the message inbox. Each row in the list includes the message subject, the name of the sender, and timestamp. By default, the messages in the list should be ordered by timestamp, the most recent first. The user selects a message from the list to read by clicking the &#x201c;Read&#x201d; link beside the row for the message, and then the message subject, the name of the sender, the name of the the recipient, timestamp, and the message text shall be displayed in a new page." id="S5" incomingReferences="//@requirements.7/@requirements.8/@requirements.0/@outgoingReferences.4"/>
+    <requirements xsi:type="requirements:Requirement" wording="A user (a patient or personal health representative) views basic information about his or her designated LHCPs, including the name, phone number, and contact email information [E2]." id="S6" incomingReferences="//@requirements.7/@requirements.8/@requirements.0/@outgoingReferences.5">
+      <outgoingReferences target="//@requirements.7/@requirements.7" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="If the comment is empty, the text &#x201c;No Comment&#x201d; is displayed." id="E1" incomingReferences="//@requirements.7/@requirements.0/@outgoingReferences.0 //@requirements.7/@requirements.1/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="If a patient has no declared LHCP, &#x201c;You have no declared LHCP&#x201d; is displayed." id="E2" incomingReferences="//@requirements.7/@requirements.5/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC42.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="* An LHCP [S2] views his or her iTrust homepage. On the LHCP homepage, the LHCP views a notification center with a list of his or her upcoming appointments for the current date [S1], number of physiologic data monitoring reports of his or her patients for the current date [S3], number of weight/pedometer data monitoring reports of his or her patients for the current date [S4], number of unread messages from his or her message inbox [S5], number of pending lab procedures (UC26), **and number of pending appointment requests (UC22)**. The event is logged (UC5).* A patient or personal health representative [S1] views his or her iTrust homepage. On the patient homepage, the Patient views a notification center. The notification center displays, &#x201c;You haven't entered remote monitoring information for today yet!&#x201d; if the patient is being monitored for telemedicine but the patient or personal health representative hasn't entered remote monitoring information for the current date yet. The notification center also displays a list of the patient and patient representee upcoming appointments [S2], the information of his or her designated HCP [S6], and the number of unread messages from his or her message inbox [S5], and number of unviewed completed lab procedures (UC26)." id="M1">
+        <outgoingReferences target="//@requirements.7/@requirements.1" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.7/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.7/@requirements.2" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.7/@requirements.3" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.7/@requirements.4" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.7/@requirements.5" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.30"/>
+        <outgoingReferences target="//@requirements.15"/>
+        <outgoingReferences target="//@requirements.13"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC40" title="View Schedule Calendar Use Case" incomingReferences="//@requirements.10/@outgoingReferences.6 //@requirements.1/@outgoingReferences.7">
+    <requirements xsi:type="requirements:Requirement" wording="A user (an LHCP or patient) chooses to display his/her appointments in the current month on a calendar for the current month. His/her appointments in the current month shall be displayed on the calendar [S3]. The user can select an appointment from the calendar to read the appointment's details [S4]." id="S1" incomingReferences="//@requirements.8/@requirements.7/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.8/@requirements.2" type="REFINEMENT"/>
+      <outgoingReferences target="//@requirements.8/@requirements.3" type="REFINEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="A user (a patient) chooses to display his/her appointments in the current month together with his/her office visit dates, prescription dates, and lab procedure dates of the current month on a calendar for the current month. His/her appointments shall be displayed on the calendar [S3]. The user can select an appointment from the calendar to read the appointment's details [S4]. In the calendar, the date entry with an office visit shall display a label as the diagnoses (i.e., ICD-9CM codes) for the office visit. The user can select an office visit from the calendar to read the visit's details [S5]. //In the calendar, the date entry with a prescription date (i.e., the date of the office visit the medication was prescribed on) shall display a label for the medications prescribed (i.e., NDC, see [[requirements:df6|Data Format 6.6]]) in the prescription.// The user can select a prescription from the calendar to read the prescription's details [S6]. //In the calendar, the date entry with a laboratory procedure (i.e., the entry of the its last status update date) shall display a label as the LOINC code for the laboratory procedure. The user can select a laboratory procedure from the calendar to read the laboratory procedure's details [S7].//" id="S2" incomingReferences="//@requirements.8/@requirements.7/@requirements.0/@outgoingReferences.1">
+      <outgoingReferences target="//@requirements.8/@requirements.2" type="REFINEMENT"/>
+      <outgoingReferences target="//@requirements.8/@requirements.3" type="REFINEMENT"/>
+      <outgoingReferences target="//@requirements.8/@requirements.4" type="REFINEMENT"/>
+      <outgoingReferences target="//@requirements.8/@requirements.5" type="REFINEMENT"/>
+      <outgoingReferences target="//@requirements.8/@requirements.6" type="REFINEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="In the calendar, the date entry with an appointment shall display a label as the appointment type name for the appointment. The date entry including conflicting appointments is highlighted in bold (a conflicting appointment is one that has overlap in its appointment duration period with that of at least another appointment of the same user)." id="S3" incomingReferences="//@requirements.8/@requirements.0/@outgoingReferences.0 //@requirements.8/@requirements.1/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The user selects an appointment from the calendar to read its details by clicking the &#x201c;Read Details&#x201d; link beside or below the appointment type name displayed for the appointment, and then the details for the appointment shall be displayed in a new page, including the appointment type, the appointment date and start time, comment, and the name of either the patient (only for the user being an LHCP) or the LHCP (only for the user being a patient)." id="S4" incomingReferences="//@requirements.8/@requirements.0/@outgoingReferences.1 //@requirements.8/@requirements.1/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:Requirement" wording="The user selects an office visit from the calendar to read its details by clicking the &#x201c;Read Details&#x201d; link beside or below the ICD-9CM code (i.e., diagnose) displayed for the visit, and then the details for the visit shall be displayed in a new page, including date of office visit, note text, diagnoses (i.e., ICD-9CM codes), medical procedures performed (i.e., CPT code) , lab procedures ordered (LOINC code, see [[requirements:df11|Data Format 6.11]]), medications prescribed (i.e., NDC, see [[requirements:df6|Data Format 6.6]]), immunizations given (i.e., CPT Code, see [[requirements:uc15|UC15, S1]]), and the name of the doctor who prescribed the medication." id="S5" incomingReferences="//@requirements.8/@requirements.1/@outgoingReferences.2"/>
+    <requirements xsi:type="requirements:Requirement" wording="The user selects a prescription from the calendar to read its details by clicking the &#x201c;Read Details&#x201d; link beside or below the medication displayed for the prescription, and then the details for the prescription shall be displayed in a new page, including the medications prescribed (i.e., NDC, see [[requirements:df6|Data Format 6.6]]), date prescribed, start date, end date for each prescription, and the name of the doctor who prescribed the medication." id="S6" incomingReferences="//@requirements.8/@requirements.1/@outgoingReferences.3"/>
+    <requirements xsi:type="requirements:Requirement" wording="The user selects a laboratory procedure from the calendar to read its details by clicking the &#x201c;Read Details&#x201d; link beside or below the LOINC code displayed for the laboratory procedure, and then the details for the laboratory procedure shall be displayed in a new page, including laboratory procedure code, status, commentary, results, andoffice visit date when the laboratory procedure was ordered." id="S7" incomingReferences="//@requirements.8/@requirements.1/@outgoingReferences.4"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC40.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="An LHCP or patient can click the &#x201c;View Appointment Calendar&#x201d; link to view his/her appointments in the current month displayed on a calendar for the current month [S1]. A patient can click &#x201c;View Full Calendar&#x201d; link to view his/her appointments in the current month together with his/her office visit dates, prescription dates, and lab procedure dates in the current month displayed on a calendar for the current month [S2]." id="M1">
+        <outgoingReferences target="//@requirements.8/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.8/@requirements.1" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC50" title="Ward Management Use Case">
+    <requirements xsi:type="requirements:Requirement" wording=": The HCP can perform a query on all the rooms in the hospital. The query must allow for room status, ward, and any other relevant or important properties about the room. The HCP will be presented with a list of rooms matching the search criteria. Optionally, you may display a floor map highlighting the rooms that match the search criteria.* Room status must be one of **clean**, **needs cleaning**, **out of service**." id="S1" incomingReferences="//@requirements.9/@requirements.5/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording=": The HCP can assign a patient to a room. The system must not allow a patient to be assigned to a room that is not being monitored by an HCP, so this can be handled by preventing the patient checkin, or (preferably), also enforcing that be completed along with this subflow." id="S2" incomingReferences="//@requirements.9/@requirements.5/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:Requirement" wording=": The HCP can remove a patient from a room along with a reason for checkout (i.e. the patient checks out of the hospital or dies). The HCP may also move a patient from one room to another." id="S3" incomingReferences="//@requirements.9/@requirements.5/@requirements.0/@outgoingReferences.2"/>
+    <requirements xsi:type="requirements:Requirement" wording=": The HCP can change the room status to one of **clean**, **needs cleaning**, **out of service**." id="S4"/>
+    <requirements xsi:type="requirements:Requirement" wording="he hospital is full and a patient can not be assigned to a room. This will also apply if a room meeting the specified criteria is not available." id=""/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC50.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="An HCP logs in to the system and queries the list of rooms at the hospital [S1]. The HCP then checks in a patient into an available room [S2]. An HCP can also remove a patient from a room [S3]. The admin can assign HCP to care for specific wards." id="M1">
+        <outgoingReferences target="//@requirements.9/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.9/@requirements.1" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.9/@requirements.2" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC2" title="Create, Disable, and Edit Personnel Use Case" incomingReferences="//@requirements.34/@requirements.0/@requirements.0/@outgoingReferences.0 //@requirements.1/@outgoingReferences.2">
+    <outgoingReferences target="//@requirements.14" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.17" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.25" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.35" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.5" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.27" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.8" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.6" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.15" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.28" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.12" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.31" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.4" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.26" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.7" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.1" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.29" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.18" type="PRECONDITION"/>
+    <requirements xsi:type="requirements:Requirement" wording="An administrator enters a LHCP, ER, or public health agent as a user of iTrust Medical Records system, initially only the name and email are provided. A secret key is personally provided to the user, with which the user can reset his/her password. The admin must specify a specialty for a new LHCP (one of: General Physician, Heart Surgeon, OB/GYN, Pediatrician, Surgeon) and for a new LT (one of blood, tissue, or general). The data for personnel can be edited according to [[requirements:df2|Data Format 6.2]] (all fields mandatory except for associated MID and Street Address 2) [E1]. The administrator shall be allowed to assign a LHCP to multiple hospitals, and the administrator can choose among only the hospitals provided in the hospital list pull down menu. The hospital ID numbers for a LHCP are stored in the Medical Care Personnel Affiliation database ([[requirements:df8|data format 6.8]]). The administrator shall be allowed to assign a LT to a single hospital, and the administrator can choose among only the hospitals provided in the hospital list pull down menu. The hospital ID numbers for a LT are stored in the Medical Care Personnel Affiliation database ([[requirements:df11|data format 6.11]])." id="S1" incomingReferences="//@requirements.10/@requirements.3/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.10/@requirements.2" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="A LHCP enters an UAP as a user of iTrust Medical Records system according to [[requirements:df2|data format 6.2]] (all fields mandatory) [E1]." id="S2" incomingReferences="//@requirements.10/@requirements.3/@requirements.0/@outgoingReferences.1">
+      <outgoingReferences target="//@requirements.10/@requirements.2" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The system prompts the admin or LCHP to correct the format of a required data field because the input of that data field does not match that specified in [[requirements:df2|data format 6.2]], for HCPs." id="E1" incomingReferences="//@requirements.10/@requirements.1/@outgoingReferences.0 //@requirements.10/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC2.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="An admin creates a LHCP, an ER, a Laboratory Technician (LT), or a public health agent (PHA) [S1]. A LHCP creates UAPs [S2]. Once entered, the admin or LHCP is presented a detailed confirmation screen to approve." id="M1">
+        <outgoingReferences target="//@requirements.10/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.10/@requirements.1" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="UC67" id="Use Case 67" title="Manage Allergy records">
+    <requirements xsi:type="requirements:Requirement" wording="- A form is displayed allowing the HCP to enter an allergy name." id="S1" incomingReferences="//@requirements.11/@requirements.4/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="- A plaintext allergy is added to the patient record." id="S2" incomingReferences="//@requirements.11/@requirements.4/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:Requirement" wording="- An error message is displayed when the allergy being added is not plaintext (contains special symbols) informing the HCP that only plaintext is allowed" id="E1" incomingReferences="//@requirements.11/@requirements.4/@requirements.0/@outgoingReferences.2"/>
+    <requirements xsi:type="requirements:Requirement" wording="- An error message is displayed when the allergy being added exceeds 64 chars in length informing the user that the allergy string must be less than 64 chars" id="E2" incomingReferences="//@requirements.11/@requirements.4/@requirements.0/@outgoingReferences.3"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="Use Case 67.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="Any HCP may add a new allergy to a patient record from the patient records page [S1]. Upon submittingthe form, the allergy is added to the patient record [S2][E1][E2]." id="M1">
+        <outgoingReferences target="//@requirements.11/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.11/@requirements.1" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.11/@requirements.2" type="COMPLEMENT"/>
+        <outgoingReferences target="//@requirements.11/@requirements.3" type="COMPLEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="UC51" id="UC51" title="Enter/edit Basic Health Metrics" incomingReferences="//@requirements.27/@requirements.2/@outgoingReferences.0 //@requirements.27/@requirements.1/@outgoingReferences.2 //@requirements.10/@outgoingReferences.10 //@requirements.1/@outgoingReferences.13 //@requirements.27/@outgoingReferences.0">
+    <requirements xsi:type="requirements:Requirement" wording="If the patient is under three calendar years of age, the HCP enters the length, weight, head circumference, and household smoking status [S4]." id="S1" incomingReferences="//@requirements.12/@requirements.6/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.12/@requirements.3" type="REFINEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="If the patient is three calendar years of age or older and under 12 calendar years of age, the HCP enters the height, weight, blood pressure, and household smoking status [S4]." id="S2" incomingReferences="//@requirements.12/@requirements.6/@requirements.0/@outgoingReferences.1">
+      <outgoingReferences target="//@requirements.12/@requirements.3" type="REFINEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="If the patient is 12 calendar years of age or older, the HCP enters the height, weight, blood pressure, household smoking status [S4], patient smoking status [S5], high density lipoproteins (HDL) cholesterol, low density lipoproteins (LDL) cholesterol, and Triglycerides." id="S3" incomingReferences="//@requirements.12/@requirements.6/@requirements.0/@outgoingReferences.2">
+      <outgoingReferences target="//@requirements.12/@requirements.3" type="REFINEMENT"/>
+      <outgoingReferences target="//@requirements.12/@requirements.4" type="REFINEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The HCP selects one of the following menu options to specify the smoking status of household members: 1 - non-smoking household, 2 - outdoor smokers, 3 - indoor smokers." id="S4" incomingReferences="//@requirements.12/@requirements.2/@outgoingReferences.0 //@requirements.12/@requirements.1/@outgoingReferences.0 //@requirements.12/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The HCP selects one of the following menu options to specify the smoking status of the patient: 1 - Current every day smoker; 2 - Current some day smoker; 3 - Former smoker; 4 - Never smoker; 5 - Smoker, current status unknown; 9 - unknown if ever smoked." id="S5" incomingReferences="//@requirements.12/@requirements.2/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:Requirement" wording="An error message is displayed describing what entries do not conform to appropriate data formats." id="E1" incomingReferences="//@requirements.12/@requirements.6/@requirements.0/@outgoingReferences.3"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC51.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="The HCP enters health metrics appropriate for the age of the patient: under 3 years [S1], between 3 years and under 12 years [S2], and 12 and over [S3] ([[requirements:df4|Data Format 6.4.5]]) [E1]. All ages are calculated as calendar years between the date of the office visit date and the patient&#x2019;s birthdate." id="M1">
+        <outgoingReferences target="//@requirements.12/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.12/@requirements.1" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.12/@requirements.2" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.12/@requirements.5" type="COMPLEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="Medical information is highly personal.  Maintaining confidentiality and integrity of patient data is paramount.  Complete log files are critical for performing forensics on inappropriate access (create, read, update, delete) of patient data and on the inappropriate granting of system privileges to users." id="UC5" title="Log Transaction Use Case" incomingReferences="//@requirements.23/@requirements.6/@requirements.0/@outgoingReferences.2 //@requirements.27/@requirements.2/@outgoingReferences.3 //@requirements.7/@requirements.8/@requirements.0/@outgoingReferences.8 //@requirements.30/@requirements.12/@requirements.0/@outgoingReferences.9 //@requirements.27/@requirements.1/@outgoingReferences.1">
+    <requirements xsi:type="requirements:Requirement" wording="For creating, viewing, modifying, or deleting information, the following information is recorded: the MID of the logged in user, any appropriate secondary MID of the user whose information is being accessed, a transaction type corresponding to the given action, and the current timestamp.  Individual audit codes related to specific use cases are presented within each Use Case description.  The subflow and transaction values are based on Use Case. For example, any in the range of 100-199 are for UC1, any in the range of 200-299 are in UC2, etc." id="S1" incomingReferences="//@requirements.13/@requirements.2/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The values from range 1-99 are logging events which do not exist in any use case but are concerned with the system as a whole. Miscellaneous transaction codes 1-99 are presented in Section 5.5 below.  For Login Failures, the IP Address of the machine, transaction type = 1, and timestamp are recorded." id="S2" incomingReferences="//@requirements.13/@requirements.2/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC5.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="Any event which creates, views, edits, or deletes information is logged [S1]. Login failures, valid authentication, and log outs are also logged [S2].Note:" id="M1">
+        <outgoingReferences target="//@requirements.13/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.13/@requirements.1" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="The medical industry uses a variety of standard codes to enable communication with other medical institutions and with insurance companies.  In this use case, the administrator can maintain (add/update) these codes that are used in a variety of use cases in the application." id="UC15" title="Maintain standards lists Use Case" incomingReferences="//@requirements.27/@requirements.2/@outgoingReferences.2 //@requirements.27/@requirements.1/@outgoingReferences.4 //@requirements.10/@outgoingReferences.0">
+    <requirements xsi:type="requirements:Requirement" wording="The administrator will maintain [add/update] a listing of allowable immunizations and medical procedures that an HCP can use. The administrator will store (1) the CPT code (The [[https://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cpt|CPT code]] set accurately describes medical, surgical, and diagnostic services and is designed to communicate uniform information about medical services and procedures among physicians, coders, patients, accreditation organizations, and payers for administrative, financial, and analytical purposes.) [E1](2) up to 30 alpha characters giving the name [E1] of the immunization or medical procedure." id="S1" incomingReferences="//@requirements.14/@requirements.5/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.14/@requirements.4" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The administrator will maintain [add/update] a listing of allowable diagnoses that an LHCP can use. The administrator will store (1) the ICD-10CM code (The International Statistical Classification of Diseases and Related Health Problems (most commonly known by the abbreviation ICD) provides codes to classify diseases and a wide variety of signs, symptoms, abnormal findings, complaints, social circumstances and external causes of injury or disease. [[https://www.hcup-us.ahrq.gov/toolssoftware/chronic_icd10/chronic_icd10.jsp#download|NHCS Classification of Diseases, Functioning and Disability with Chronic Disease Indicator]]) for the diagnosis [E1]; (2) up to 30 alphanumeric characters giving the name [E1] of the diagnosis; and (3) an indicator for Chronic Disease.  Use the 2017 release of the codes." id="S2" incomingReferences="//@requirements.14/@requirements.5/@requirements.0/@outgoingReferences.1">
+      <outgoingReferences target="//@requirements.14/@requirements.4" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The administrator will maintain [add/update] a listing of allowable drugs that an HCP can use. The administrator will store (1) the National Drug Code (The National Drug Code (NDC) is a universal product identifier used in the United States for drugs intended for human use. [[http://www.fda.gov/Drugs/InformationOnDrugs/ucm142438.htm|National Drug Code Directory]]); and (2) up to 40 alphanumeric characters giving the name [E1] of the drug." id="S3" incomingReferences="//@requirements.14/@requirements.5/@requirements.0/@outgoingReferences.2">
+      <outgoingReferences target="//@requirements.14/@requirements.4" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The administrator will maintain [add/update] a listing of allowable physical services (including laboratory procedures) that an HCP can use. The administrator will store information of a LOINC code (Logical Observation Identifiers Names and Codes (LOINC) is a database and universal standard for identifying medical laboratory observations. [[http://loinc.org/|LOINC c/o Medical Informatics]]) [E1] according to [[requirements:df11|Data Format 6.11]]." id="S4" incomingReferences="//@requirements.14/@requirements.5/@requirements.0/@outgoingReferences.3">
+      <outgoingReferences target="//@requirements.14/@requirements.4" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The administrator types an invalid code information and is prompted to try again." id="E1" incomingReferences="//@requirements.14/@requirements.2/@outgoingReferences.0 //@requirements.14/@requirements.0/@outgoingReferences.0 //@requirements.14/@requirements.1/@outgoingReferences.0 //@requirements.14/@requirements.3/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC15.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="An administrator chooses to maintain the standards list for immunizations and medical procedures [S1], diagnoses [S2], allowable drugs [S3], or allowable physical services [S4]." id="M1">
+        <outgoingReferences target="//@requirements.14/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.14/@requirements.1" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.14/@requirements.2" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.14/@requirements.3" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC22" title="Flow of Events for the Schedule Appointments Use Case" incomingReferences="//@requirements.7/@requirements.8/@requirements.0/@outgoingReferences.7 //@requirements.1/@outgoingReferences.11 //@requirements.10/@outgoingReferences.8">
+    <requirements xsi:type="requirements:Requirement" wording="The system shall enable the administrator to (1) add a new entry for an appointment type, including its type name with up to 30 alpha characters and duration in the unit of minutes [E1], and (2) modify the duration in an existing entry [E1]. A new entry shall not have the same type name as that of any existing entry [E1]. Note that the administrator is not allowed through the system interface to delete an existing entry or modify the appointment type name in an existing entry." id="S1" incomingReferences="//@requirements.15/@requirements.12/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.15/@requirements.8" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The LHCP chooses to schedule an appointment with a patient (it is assumed that the LHCP and patient have already worked out the details of the appointment in person or via telephone outside of the system). The LHCP enters the patient MID *" id="S2" incomingReferences="//@requirements.15/@requirements.7/@outgoingReferences.0 //@requirements.15/@requirements.12/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:Requirement" wording="**, selects the type of appointment from a pull-down menu of the existing appointment types, enter the appointment date and start time (only a date/time equal or after the current date/time is allowed)[E3] (the user interface shall provide both the option of typing in a specific date in the date format and the option of selecting a date from a calendar for the current month), enter comment (optional) up to 1000 characters such as reason for the appointment [E1]." id="E4">
+      <outgoingReferences target="//@requirements.15/@requirements.10" type="COMPLEMENT"/>
+      <outgoingReferences target="//@requirements.15/@requirements.8" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The Patient chooses to request an appointment with an LHCP. The patient selects an LHCP from his or her provider list.  The patient selects the type of appointment from a pull-down menu of the existing appointment types, enter the appointment date and start time (only a date/time equal or after the current date/time is allowed)[E3]. If the requested appointment time does not conflict with any existing appointment for the LHCP, the request is saved. If the requested appointment time does conflict with an existing appointments, the patient is presented with a list of the three next non-overlapping available appointment times within 7 days of the requested date. The patient selects one of these appointments and the request is saved." id="S3" incomingReferences="//@requirements.15/@requirements.12/@requirements.0/@outgoingReferences.2">
+      <outgoingReferences target="//@requirements.15/@requirements.10" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="A user (an LHCP or patient) wishes to view a list of his or her upcoming appointments (i.e., a list including appointments whose appointment date and start time is equal or later than the current date/time). The user chooses to open his or her upcoming appointment list. Each row in the list includes the appointment type, appointment date and start time, duration, and the name of either the patient (only for the user being an LHCP) or the LHCP (only for the user being a patient). The appointments in the list shall be ordered by appointment date and start time, the soonest upcoming first. The row for each conflicting appointment is highlighted in bold (a conflicting appointment is one that has overlap in its appointment duration period with that of at least another appointment of the same user). When viewing the calendar, the user selects an appointment from the list to read comment by clicking the &#x201c;Read Comment&#x201d; link beside the row for the appointment, and then the comment for the appointment shall be displayed in a new page [E2].* *" id="S4" incomingReferences="//@requirements.15/@requirements.7/@outgoingReferences.1 //@requirements.15/@requirements.12/@requirements.0/@outgoingReferences.3">
+      <outgoingReferences target="//@requirements.15/@requirements.9" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="An LHCP views a list of pending appointment requests. Each appointment request is listed as being pending, approved, or rejected. The LHCP is presented with an option to approve or reject each pending appointment request. When the LHCP approves or rejects an appointment request, a message is sent to the Patient indicating the requests's status. When the date of an appointment request has passed, it is no longer displayed.**" id="S5" incomingReferences="//@requirements.15/@requirements.12/@requirements.0/@outgoingReferences.4"/>
+    <requirements xsi:type="requirements:Requirement" wording="When an LHCP views a list of his or her upcoming appointments, they are presented with an option to edit or remove the appointment. The LHCP is unable to edit or remove any past appointments. [E3]" id="S6" incomingReferences="//@requirements.15/@requirements.12/@requirements.0/@outgoingReferences.5">
+      <outgoingReferences target="//@requirements.15/@requirements.10" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="When an LHCP adds a new appointment [S2] or edits the date or time of an existing appointment [S4], the LHCP is notified of any existing appointments that occur during the same time. The LHCP is presented with a list of other appointments that conflict with the new one. The LHCP may choose to override this warning and confirm the date and time or may cancel and return to referring page." id="S7" incomingReferences="//@requirements.15/@requirements.12/@requirements.0/@outgoingReferences.6">
+      <outgoingReferences target="//@requirements.15/@requirements.1" type="REFINEMENT"/>
+      <outgoingReferences target="//@requirements.15/@requirements.4" type="REFINEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The user inputs invalid information and is prompted to try again." id="E1" incomingReferences="//@requirements.15/@requirements.2/@outgoingReferences.1 //@requirements.15/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The comment is empty and the text &#x201c;No Comment&#x201d; (without link) is displayed instead of the &#x201c;Read Comment&#x201d; link." id="E2" incomingReferences="//@requirements.15/@requirements.4/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The date for the appointment is in the past, an error message is displayed and the appointment is not edited." id="E3" incomingReferences="//@requirements.15/@requirements.2/@outgoingReferences.0 //@requirements.15/@requirements.3/@outgoingReferences.0 //@requirements.15/@requirements.6/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The user inputs the MID of a patient who is deceased and is prompted to try again." id="E4"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC22.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="An administrator can manage a standardized list of appointment types [S1]. An LHCP can schedule an appointment with a patient [S2]. A patient can request to schedule an appointment with an LHCP [S3]. Both patients and LHCPs can view a list of their upcoming appointments [S4]. An LHCP can view a list of their upcoming appointment requests [S5]. LHCP&#x2019;s can edit or delete future appointments [S6]. The LHCP is notified if a new or edited appointment time conflicts with another existing appointment [S7]." id="M1">
+        <outgoingReferences target="//@requirements.15/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.15/@requirements.1" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.15/@requirements.3" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.15/@requirements.4" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.15/@requirements.5" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.15/@requirements.6" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.15/@requirements.7" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC9" title="View records Use Case" incomingReferences="//@requirements.23/@outgoingReferences.0 //@requirements.1/@outgoingReferences.8">
+    <requirements xsi:type="requirements:Requirement" wording="The patient or personal health representative can see patient personal health information (including historical values), immunizations, and office visit information (date, diagnoses, medication, name of attending physician but not notes, laboratory procedures) for (a) their own records and (b) the records for whom the user is a personal representative." id="S1" incomingReferences="//@requirements.16/@requirements.2/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The patient or personal health representative can see an abbreviated health history of their siblings, parents, and both sets of grandparents for which MIDs are available in iTrust. They can see diagnoses related to the following [presented as a table with an x if the family member suffered from that diagnosis]:* high blood pressure (Systolic blood pressure over 240 mmHg and/or a diastolic blood pressure over 120 mmHg);* high cholesterol (HDL (&#x201c;good&#x201d;) cholesterol levels under 35 mg/dL (milligrams per deciliter) and/or a triglyceride level over 250 mg/dL);* diabetes [is diagnosed with ICD-9CM code beginning with 250:[[http://icd9cm.chrisendres.com/index.php?action=child&amp;recordid=1765]],;* cancer [is diagnosed with ICD-9CM code beginning with 199:[[http://icd9cm.chrisendres.com/index.php?action=child&amp;recordid=1765]],;* heart disease [is diagnosed with ICD=9CM code beginning with 402:[[http://icd9cm.chrisendres.com/index.php?action=child&amp;recordid=1765]],;* smoking; and* the cause of death if the family member is deceased." id="S2" incomingReferences="//@requirements.16/@requirements.2/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC9.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="A patient or personal health representative chooses to view medical records [S1] including family history [S2]." id="M1">
+        <outgoingReferences target="//@requirements.16/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.16/@requirements.1" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="UC58" id="UC58" title="Manage Dependency" incomingReferences="//@requirements.10/@outgoingReferences.1 //@requirements.1/@outgoingReferences.0">
+    <outgoingReferences target="//@requirements.31" type="PRECONDITION"/>
+    <requirements xsi:type="requirements:Requirement" wording="The HCP selects the option to add a patient to the system. The HCP enters the first and last names for new patient." id="S1" incomingReferences="//@requirements.17/@requirements.8/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The HCP indicates that the new patient is a dependent." id="S2" incomingReferences="//@requirements.17/@requirements.8/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:Requirement" wording="The HCP types in a patient MID [E1] for the patient assuming the role as personal representative and selects the representative patient from a list. [E2]" id="S3" incomingReferences="//@requirements.17/@requirements.8/@requirements.0/@outgoingReferences.2">
+      <outgoingReferences target="//@requirements.17/@requirements.5" type="COMPLEMENT"/>
+      <outgoingReferences target="//@requirements.17/@requirements.6" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The HCP types in a patient MID [E3] for a patient they would like to switch dependency status and sets the dependency status for that patient." id="S4" incomingReferences="//@requirements.17/@requirements.8/@requirements.0/@outgoingReferences.3">
+      <outgoingReferences target="//@requirements.17/@requirements.7" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The dependent user is not able to log into the system." id="S5" incomingReferences="//@requirements.17/@requirements.8/@requirements.0/@outgoingReferences.4"/>
+    <requirements xsi:type="requirements:Requirement" wording="If the representative patient MID is invalid, the new patient is not created and the user is prompted for a new MID." id="E1" incomingReferences="//@requirements.17/@requirements.2/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="If the representative is a dependent user, an error message will display saying a dependent user cannot represent other patients." id="E2" incomingReferences="//@requirements.17/@requirements.2/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:Requirement" wording="If a patient with the MID doesn't exist, the user will be prompted to enter another MID." id="E3" incomingReferences="//@requirements.17/@requirements.3/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC58.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="The HCP selects the option to add a patient to the system [S1]. The HCP indicates that the new patient is a dependent [S2]. The HCP chooses an existing patient to assign as the new patient's representative [S3]. The HCP can add or remove a patient's dependent status [S4] The dependent patient cannot log in to the system themselves [S5]." id="M1">
+        <outgoingReferences target="//@requirements.17/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.17/@requirements.1" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.17/@requirements.2" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.17/@requirements.3" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.17/@requirements.4" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="UC52" id="UC52" title="View Basic Health Metrics" incomingReferences="//@requirements.26/@requirements.1/@outgoingReferences.0 //@requirements.10/@outgoingReferences.17 //@requirements.1/@outgoingReferences.24">
+    <requirements xsi:type="requirements:Requirement" wording="The health care personnel enters a MID [E1] of a patient and confirms their selection [E2]." id="S1" incomingReferences="//@requirements.18/@requirements.5/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.18/@requirements.2" type="COMPLEMENT"/>
+      <outgoingReferences target="//@requirements.18/@requirements.3" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The basic health metrics are displayed in order by office visit date with the most recent office visit first. There are three possible tables that correspond to the three age ranges that determine the metrics collected during an office visit [E3]:* Zero to less than Three Years of Age: length, weight, head circumference, and household smoking status* Three Years of Age to less than Twelve Years of Age: height, weight, blood pressure, and household smoking status* Twelve Years of Age and Older: height, weight, blood pressure, household smoking status, patient smoking status, high density lipoproteins (HDL) cholesterol, low density lipoproteins (LDL) cholesterol, and Triglycerides.in a table with a different table for each age range as described in UC51.  Each table row represents the metrics from a given office visit date." id="S2" incomingReferences="//@requirements.18/@requirements.5/@requirements.0/@outgoingReferences.1">
+      <outgoingReferences target="//@requirements.18/@requirements.4" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The health care professional types an invalid medical identification number and is prompted to try again." id="E1" incomingReferences="//@requirements.18/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The patient chosen is not the desired patient. The health care professional does not confirm the selection and is prompted to try again." id="E2" incomingReferences="//@requirements.18/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:Requirement" wording="If there is no data for a given age range, there should be no table for that age range." id="E3" incomingReferences="//@requirements.18/@requirements.1/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC52.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="The HCP selects a patient [S1] and selects the option to view the basic health metrics for the patient [S2].  The patient selects the option to view their own basic health metrics [S2]." id="M1">
+        <outgoingReferences target="//@requirements.18/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.18/@requirements.1" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="This use case enables a user (patient or LHCP) to view a list of prescriptions for a patient." id="UC19" title="View prescription report Use Case" incomingReferences="//@requirements.1/@outgoingReferences.12">
+    <requirements xsi:type="requirements:Requirement" wording="The user (patient or personal representative - see UC13) can choose to view a list of (1) their own prescriptions or (2) the prescriptions for whom the user is a person health representative by choosing one patient from a a list of these patients. A prescription list is then displayed [S3], sorted by start date (the later date is ranked earlier)." id="S1" incomingReferences="//@requirements.19/@requirements.5/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.19/@requirements.2" type="REFINEMENT"/>
+      <outgoingReferences target="//@requirements.5"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The user (LHCP) selects a patient [E1, E2]. At this point, the LHCP can view a prescription list for that patient [S3], sorted by start date (the later date is ranked earlier)." id="S2" incomingReferences="//@requirements.19/@requirements.5/@requirements.0/@outgoingReferences.1">
+      <outgoingReferences target="//@requirements.19/@requirements.3" type="COMPLEMENT"/>
+      <outgoingReferences target="//@requirements.19/@requirements.4" type="COMPLEMENT"/>
+      <outgoingReferences target="//@requirements.19/@requirements.2" type="REFINEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The prescription report is titled with the patient name. The prescription list includes medication, date prescribed, start date, end date for each prescription, and the name of the doctor who prescribed the medication." id="S3" incomingReferences="//@requirements.19/@requirements.1/@outgoingReferences.2 //@requirements.19/@requirements.0/@outgoingReferences.0 //@requirements.19/@requirements.5/@requirements.0/@outgoingReferences.2"/>
+    <requirements xsi:type="requirements:Requirement" wording="The LHCP types an invalid medical identification number and is prompted to try again." id="E1" incomingReferences="//@requirements.19/@requirements.1/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The patient chosen is not the desired patient. The LHCP does not confirm the selection and is prompted to try again." id="E2" incomingReferences="//@requirements.19/@requirements.1/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC19.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="A patient or personal representative [S1] or LHCP [S2] chooses to view prescription reports [S3]." id="M1">
+        <outgoingReferences target="//@requirements.19/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.19/@requirements.1" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.19/@requirements.2" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC6" title="View HCP; Designate/Undesignate Designated Licensed Health Care Professional Use Case" incomingReferences="//@requirements.6/@requirements.1/@outgoingReferences.1 //@requirements.29/@requirements.1/@outgoingReferences.2 //@requirements.1/@outgoingReferences.23">
+    <requirements xsi:type="requirements:Requirement" wording="The LHCP's name, specialty, address, date of office visit, and whether or not the LHCP is a DLHCP for this patient is indicated. The list is sorted by the date of the last office visit (most recent first)." id="S1" incomingReferences="//@requirements.20/@requirements.3/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The patient can choose to toggle between designating/undesignating any LHCP as being a DLHCP for them." id="S2" incomingReferences="//@requirements.20/@requirements.3/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:Requirement" wording="The patient types a last name or partial last name, and/or providing the specialty. The patient may optionally enter a zip code (match on first three numbers of zip code), in addition to the name and/or specialty. The LHCP's name, specialty, and address are provided." id="S3" incomingReferences="//@requirements.20/@requirements.3/@requirements.0/@outgoingReferences.2"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC6.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="The patient chooses to view all LHCPs the patient has ever had an office visit with and those whom he/she had designated [S1, S2]. The patient can also add a LHCP to their provider list by searching for the name and/or specialty of a LHCP [S3] and then selecting to add the HCP to their list of providers." id="M1">
+        <outgoingReferences target="//@requirements.20/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.20/@requirements.1" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.20/@requirements.2" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="The Activity feed functionality enables a patient to self-enforce a limitation on who can create, read, update, delete their patient record.  The patient can report concerns when they see someone has accessed his or her records without a need.  Additionally, because an iTrust user knows their access will be easily viewable by a patient, he or she will be less inclined to access records inappropriately." id="UC43" title="View Activity Feed Use Case" incomingReferences="//@requirements.1/@outgoingReferences.17">
+    <requirements xsi:type="requirements:Requirement" wording="The activity feed shall show the information below (if the accessor is an LHCP, the accessor's name in the displayed activity shall be linked to the LHCP's contact information):* who/when created or disabled the patient,* who/when accessed the patient's demographic information (**other then DLHCP**),* who/when accessed/edited the patient's medical records (i.e., personal health records) (**other then DLHCP**),* who/when documented or edited the patient's office visits (**other then DLHCP**),* who/when declared/undeclared the patient's personal representative,* who/when analyzed risk of chronic disease for the patient (**other then DLHCP**),* who/when proactively determined needed patient care for the patient (**other then DLHCP**),* who/when viewed the patient's prescription report (**other then DLHCP**),* who/when viewed the patient's emergency electronic health record (**other then DLHCP**),* who/when scheduled an appointment with the patient,* who/when accessed the patient's comprehensive reports (**other then DLHCP**),* who/when viewed laboratory procedure status of the patient or edited laboratory procedure of the patient (**other then DLHCP**),* who/when accessed the patient's information (name, address, and date of last office visit) (**other then DLHCP**),* who/when sent the patient a message,* who/when proactively confirmed prescription-renewal needs for the patient (**other then DLHCP**),* who/when referred the patient for consultations,* who/when added/deleted the patient from monitoring list,* who/when prescribed drug to the patient (**other then DLHCP**),* who/when reported remote monitoring information for the patient,* the date and time of each of the patient's successful authentications.* who/when referred a patient to another HCP* who/when marked a lab procedure as completed." id="S1" incomingReferences="//@requirements.21/@requirements.3/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="Only the most recent 20 activities are listed in the user page after login. If there are more than the currently listed activities, a link of &#x201c;Older Activities&#x201d; shall be displayed [E1]. The patient can choose to click this link. The system shall append 20 more activities to the end of the currently listed activities on the same page. If there still are more than the currently listed activities, a link of &#x201c;Older Activities&#x201d; shall be further displayed [E1] and so on." id="S2" incomingReferences="//@requirements.21/@requirements.3/@requirements.0/@outgoingReferences.1">
+      <outgoingReferences target="//@requirements.21/@requirements.2" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="If there are no older activities besides the currently listed activities, no link of &#x201c;Older Activities&#x201d; is displayed." id="E1" incomingReferences="//@requirements.21/@requirements.1/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC43.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="After the patient logs in, an activity feed is displayed [S1, S2]." id="M1">
+        <outgoingReferences target="//@requirements.21/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.21/@requirements.1" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC4" title="Enter/edit Demographics Use Case" incomingReferences="//@requirements.6/@requirements.1/@outgoingReferences.0 //@requirements.29/@requirements.1/@outgoingReferences.0 //@requirements.23/@outgoingReferences.2 //@requirements.1/@outgoingReferences.19">
+    <requirements xsi:type="requirements:Requirement" wording="A patient or personal health representative may enter or edit their own demographic information including their security question/answer according to [[requirements:df1|data format 6.1]]. When answer to the security question is typed in, the answer should not appear on the screen (similar to how a password normally appears) and the answer should be confirmed (by the patient or personal health representative) before it is saved. [E1]." id="S1" incomingReferences="//@requirements.22/@requirements.6/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.22/@requirements.4" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="HCP must enter the MID of a patient and then enter or edit demographic information with the exception of the patient's security question/password according to [[requirements:df1|data format 6.1]] [E1]." id="S2" incomingReferences="//@requirements.22/@requirements.6/@requirements.0/@outgoingReferences.1">
+      <outgoingReferences target="//@requirements.22/@requirements.4" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="An HCP may enter or edit their own demographic information according to [[requirements:df2|data format 6.2]] [E1]." id="S3" incomingReferences="//@requirements.22/@requirements.6/@requirements.0/@outgoingReferences.2">
+      <outgoingReferences target="//@requirements.22/@requirements.4" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="An HCP may upload a photo of the patient as part of the patient's demographic records [E2]." id="S4" incomingReferences="//@requirements.22/@requirements.6/@requirements.0/@outgoingReferences.3">
+      <outgoingReferences target="//@requirements.22/@requirements.5" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The system prompts the patient or HCP to correct the format of a required data field because the input of that data field does not match that specified in [[requirements:df1|data format 6.1]] or [[requirements:df2|data format 6.2]], as appropriate." id="E1" incomingReferences="//@requirements.22/@requirements.1/@outgoingReferences.0 //@requirements.22/@requirements.0/@outgoingReferences.0 //@requirements.22/@requirements.2/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The system shall display a default placeholder image for patients who do not have a photograph on file." id="E2" incomingReferences="//@requirements.22/@requirements.3/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC4.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="Demographic information is entered and/or edited [S1, S2, S3, S4]. The user is presented with a success or failure message and the form is updated so that the user may correct the form or add more information." id="M1">
+        <outgoingReferences target="//@requirements.22/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.22/@requirements.1" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.22/@requirements.2" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.22/@requirements.3" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC1" title="Create and Deactivate Patients Use Case" incomingReferences="//@requirements.1/@outgoingReferences.14">
+    <outgoingReferences target="//@requirements.16" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.24" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.22" type="PRECONDITION"/>
+    <outgoingReferences target="//@requirements.1" type="PRECONDITION"/>
+    <requirements xsi:type="requirements:Requirement" wording="The HCP enters a patient as a new user of iTrust Medical Records system. Only the name and email are provided. The patient's assigned MID and a secret key (the initial password) are personally provided to the user, with which the user can reset his/her password. The HCP can edit the patient according to [[requirements:df4|data format 6.4]] [E1] with all initial values (except patient MID) defaulting to null and/or 0 as appropriate. Patient MID should be the number assigned when the patient is added to the system and cannot be edited. The HCP does not have the ability to enter/edit/view the patient's security question/password." id="S1" incomingReferences="//@requirements.23/@requirements.6/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.23/@requirements.3" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The HCP selects a patient to deactivate. The HCP is presented with a confirmation containing the name of the patient and determines if it is the patient they intend to deactivate [E2]. A deactivated patient can not be modified or log into the system, and can only be reactivated by the administrator." id="S2" incomingReferences="//@requirements.23/@requirements.6/@requirements.0/@outgoingReferences.1">
+      <outgoingReferences target="//@requirements.23/@requirements.4" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The HCP uploads a comma-seperated value file containing one patient per row. The fields of the CSV file must include at least the first name, last name, and e-mail address, with additional columns available for the other demographic values. The patients are created, the tables are populated, and the MIDS and temporary passwords are displayed to the HCP in a table. The event is logged." id="S3"/>
+    <requirements xsi:type="requirements:Requirement" wording="The system prompts the enterer/editor to correct the format of a required data field because the input of that data field does not match that specified in [[requirements:df4|data format 6.4]] for patients." id="E1" incomingReferences="//@requirements.23/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="If the confirmation screen does not show the name of the intended patient, the HCP is then prompted to input the correct patient identification information again." id="E2" incomingReferences="//@requirements.23/@requirements.1/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="If the file is malformed, then no data is added, and an error message explaining the correct file structure is presented." id="E3"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC1.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="An HCP is able to create a patient [S1] or disable a selected patient [S2]. The create/disable patients and HCP transaction is logged (UC5)." id="M1">
+        <outgoingReferences target="//@requirements.23/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.23/@requirements.1" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.13"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC8" title="View Access Log Use Case" incomingReferences="//@requirements.23/@outgoingReferences.1 //@requirements.1/@outgoingReferences.9">
+    <requirements xsi:type="requirements:Requirement" wording="By default, the patient is presented with a list sorted by dates, most recent access first." id="S1" incomingReferences="//@requirements.24/@requirements.2/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The patient may choose to view the list sorted by the role of the accessor relative to the patient (personal health representative, LHCP, UAP, Emergency Responder; any order is fine as long as the list is sorted by role) as well as by date for each role type, most recent access first." id="S2" incomingReferences="//@requirements.24/@requirements.2/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC8.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="The patient chooses to view his or her access log or that for a person for whom they are a personal health representative. The patient then chooses the beginning and end date for the period of time they would like to view their access log for [S1, S2]. The resulting list should include the following for each access:* Name of non-DLHCP accessor (with a link to contact information if the viewer is an LHCP)* Role of non-DLHCP accessor relative to the patient* Date and time of access* Transaction Type (See [[requirements:df3|Data Format 6.3]])" id="M1">
+        <outgoingReferences target="//@requirements.24/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.24/@requirements.1" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC10" title="Enter/edit personal health records Use Case" incomingReferences="//@requirements.10/@outgoingReferences.2 //@requirements.1/@outgoingReferences.1">
+    <requirements xsi:type="requirements:Requirement" wording="The health care personnel enters a MID [E1] of a patient and confirms their selection [E2]." id="S1" incomingReferences="//@requirements.25/@requirements.5/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.25/@requirements.3" type="COMPLEMENT"/>
+      <outgoingReferences target="//@requirements.25/@requirements.4" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The health care personnel may enter/edit personal health information including Patient Information ([[requirements:df4|Data Format 6.4.1]]), Insurance Information ([[requirements:df4|Data Format 6.4.2]]), Emergency Contact Information ([[requirements:df4|Data Format 6.4.3]]), and Patient&#x2019;s Health Information ([[requirements:df4|Data Format 6.4.4]]). The HCP can indicate drug allergies [S3]. The HCP can indicate the patient has passed away, providing an appropriate diagnosis code." id="S2" incomingReferences="//@requirements.25/@requirements.5/@requirements.0/@outgoingReferences.1">
+      <outgoingReferences target="//@requirements.25/@requirements.2" type="REFINEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The HCP can select a medication from a pull down list and add it to the list of medications the patient is allergic to.  The medication is checked against the patient's current and future prescriptions. The HCP is notified of any current or future prescriptions to which the patient has a drug allergy." id="S3" incomingReferences="//@requirements.25/@requirements.1/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The health care professional types an invalid medical identification number and is prompted to try again." id="E1" incomingReferences="//@requirements.25/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The patient chosen is not the desired patient. The health care professional does not confirm the selection and is prompted to try again." id="E2" incomingReferences="//@requirements.25/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC10.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="An HCP chooses to enter personal health information for a patient [S1]. The information is viewed by the HCP [S2]." id="M1">
+        <outgoingReferences target="//@requirements.25/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.25/@requirements.1" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="UC53" id="UC53" title="BMI Calculation" incomingReferences="//@requirements.10/@outgoingReferences.13 //@requirements.1/@outgoingReferences.21">
+    <requirements xsi:type="requirements:Requirement" wording="The health care personnel enters a MID [E1] of a patient and confirms their selection [E2] [S2]." id="S1" incomingReferences="//@requirements.26/@requirements.4/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.26/@requirements.2" type="COMPLEMENT"/>
+      <outgoingReferences target="//@requirements.26/@requirements.3" type="COMPLEMENT"/>
+      <outgoingReferences target="//@requirements.26/@requirements.1" type="REFINEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The basic health metrics are displayed in order by office visit date with the most recent office visit first as specified in UC52. There are three possible tables that correspond to the three age ranges. Additionally, an extra column for BMI  be displayed in every age category." id="S2" incomingReferences="//@requirements.26/@requirements.4/@requirements.0/@outgoingReferences.1 //@requirements.26/@requirements.0/@outgoingReferences.2">
+      <outgoingReferences target="//@requirements.18"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The health care professional types an invalid medical identification number and is prompted to try again." id="E1" incomingReferences="//@requirements.26/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The patient chosen is not the desired patient. The health care professional does not confirm the selection and is prompted to try again." id="E2" incomingReferences="//@requirements.26/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC53.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="The HCP selects a patient [S1] and selects the option to view the basic health metrics for the patient [S2]. The patient selects the option to view their own basic health metrics [S2]." id="M1">
+        <outgoingReferences target="//@requirements.26/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.26/@requirements.1" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="The HCP is able to document various aspects of an office visit with a patient.  The documentation uses industry-standard prescription, lab procedure, diagnosis, medical procedure, and immunization codes as defined in [[requirements:uc15|(UC15)]]." id="UC11" title="Document office visit Use Case" incomingReferences="//@requirements.6/@requirements.1/@outgoingReferences.2 //@requirements.29/@requirements.1/@outgoingReferences.1 //@requirements.10/@outgoingReferences.5 //@requirements.1/@outgoingReferences.6">
+    <outgoingReferences target="//@requirements.12" type="PRECONDITION"/>
+    <requirements xsi:type="requirements:Requirement" wording="The HCP enters a MID [E1] or name of a patient and confirms their selection [E2]." id="S1" incomingReferences="//@requirements.27/@requirements.7/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.27/@requirements.4" type="COMPLEMENT"/>
+      <outgoingReferences target="//@requirements.27/@requirements.5" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The HCP documents the following information related to an office visit. All events are logged (UC5. Required information is designated; all other information is optional:* Date (required)* Hospital location of the office visit, if any, (the default should be the HCP's home location) (required)* Notes (numbers, characters, #, ;, ?, -, ', ., :, blankspace and carriage return are all allowed input values) (required)* Basic Health Metrics (UC51) (required)* Prescribed Medications (NDC, see [[requirements:df6|Data Format 6.6]]) [S4]* Lab procedures that are ordered (LOINC code, see [[requirements:df11|Data Format 6.11]])(UC26)* Diagnoses (via the ICD-10CM code)* Medical procedures (CPT code, see UC15, S1)* Immunizations given (CPT Code, see UC15, S1)" id="S2" incomingReferences="//@requirements.27/@requirements.7/@requirements.0/@outgoingReferences.1">
+      <outgoingReferences target="//@requirements.27/@requirements.3" type="REFINEMENT"/>
+      <outgoingReferences target="//@requirements.13"/>
+      <outgoingReferences target="//@requirements.12"/>
+      <outgoingReferences target="//@requirements.30"/>
+      <outgoingReferences target="//@requirements.14"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="HCPs can return to an office visit and modify or delete the fields of the office visit [notes, health metrics UC51, prescriptions, laboratory procedures (UC26), diagnoses, procedures, and/or immunizations (UC15)]. The event is logged (UC5) and the HCP is returned in the specific office visit record to verify his or her changes." id="S3" incomingReferences="//@requirements.27/@requirements.7/@requirements.0/@outgoingReferences.2">
+      <outgoingReferences target="//@requirements.12"/>
+      <outgoingReferences target="//@requirements.30"/>
+      <outgoingReferences target="//@requirements.14"/>
+      <outgoingReferences target="//@requirements.13"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The HCP has selects a medication. The HCP provides the dosage in milligrams, the start and end date for the prescription [E3], and any special instructions. The instructions can contain numbers, characters, #, ;, ?, -, ', ., :, blankspace and carriage return. The HCP must provide instructions (can neither be empty nor the default form field value), or else they cannot add the prescription." id="S4" incomingReferences="//@requirements.27/@requirements.1/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.27/@requirements.6" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The HCP types an invalid medical identification number and is prompted to try again." id="E1" incomingReferences="//@requirements.27/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The patient chosen is not the desired patient. The health care personnel does not confirm the selection and is prompted to try again." id="E2" incomingReferences="//@requirements.27/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:Requirement" wording="The patient may not have two active prescriptions for the same medication at any time within the specified date range." id="E3" incomingReferences="//@requirements.27/@requirements.3/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC11.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="An HCP chooses a patient [S1] in order to document [S2] or edit [S3] an office visit." id="M1">
+        <outgoingReferences target="//@requirements.27/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.27/@requirements.1" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.27/@requirements.2" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC47" title="Find an Expert Use Case" incomingReferences="//@requirements.10/@outgoingReferences.9">
+    <requirements xsi:type="requirements:Requirement" wording="The patient uses a text field to change the radius in which hospitals are discovered. The radius is a rough measure of distance from near (exact zip code) to far (zip code only matches on the first digit)." id="S1" incomingReferences="//@requirements.28/@requirements.3/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The patient has the option to enter another zip code instead of using their home zip code." id="S2" incomingReferences="//@requirements.28/@requirements.3/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:Requirement" wording="An error message, &quot;Invalid zip code&quot; is displayed if the user enters a zip code that does not conform to the data format for Zip Code in [[requirements:df1|Data Format 6.1: Patient]]." id="E1" incomingReferences="//@requirements.28/@requirements.3/@requirements.0/@outgoingReferences.2"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC47.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="* The patient needs to find an HCP with a particular specialty (OB/GYN, Surgeon, etc), and selects that specialty from a drop-down list [S1][S2].* OB/GYN* Surgeon* Heart Surgeon* Pediatrician* General Physician* A table of all of the hospitals with the same leading X digits of the patient's stored home zip code or of the entered zip code that contain an HCP with that specialty is displayed, including their name and address. Under each hospital, the name and contact e-mail of the specialist is displayed [E1].* The event is logged." id="M1">
+        <outgoingReferences target="//@requirements.28/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.28/@requirements.1" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.28/@requirements.2" type="COMPLEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC46" title="View Patient Group Reports Use Case" incomingReferences="//@requirements.10/@outgoingReferences.16">
+    <requirements xsi:type="requirements:Requirement" wording="The LHCP chooses to view a report of all patients of a single or either gender, in a specified age range [E1], with none, one, or more diagnoses." id="S1" incomingReferences="//@requirements.29/@requirements.4/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.29/@requirements.3" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The LHCP can view of the comprehensive patient report for the specified group, including the information below.* All patient demographic information (address, phone, etc.), see (UC4) and [[requirements:df1|Data Format 6.1]].* All diagnoses, including those not normally viewable by the requesting LHCP, see (UC11) and [[requirements:df5|Data Format 6.5]].* All designated HCPs (MIDs and Names), see (UC6).* All allergies, procedures, medications, office visits, and known relatives, see (UC11) and [[requirements:df5|Data Format 6.5]], [[requirements:df6|6.6]]." id="S2" incomingReferences="//@requirements.29/@requirements.4/@requirements.0/@outgoingReferences.1">
+      <outgoingReferences target="//@requirements.22"/>
+      <outgoingReferences target="//@requirements.27"/>
+      <outgoingReferences target="//@requirements.20"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The LHCP can download an XML file containing all patient information." id="S3"/>
+    <requirements xsi:type="requirements:Requirement" wording="The LHCP types an invalid age range and is prompted to try again." id="E1" incomingReferences="//@requirements.29/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC46.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="The LHCP requests a comprehensive report for all patients with a specified gender, age, and diagnosis [S1]. The LHCP is able to view the comprehensive group report [S2]." id="M1">
+        <outgoingReferences target="//@requirements.29/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.29/@requirements.1" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="This use case provides capabilities for the patient, the lab technician and the HCP to manage and view lab procedures and results." id="UC26" title="Manage Lab Procedures Use Case" incomingReferences="//@requirements.27/@requirements.2/@outgoingReferences.1 //@requirements.7/@requirements.8/@requirements.0/@outgoingReferences.6 //@requirements.27/@requirements.1/@outgoingReferences.3 //@requirements.1/@outgoingReferences.18">
+    <requirements xsi:type="requirements:Requirement" wording="An HCP can create a lab procedure for a given office visit. The HCP selects a procedure code (LOINC), a priority from 1 to 3 (1=most important, 3=not as important), and Lab Technician (listed with his/her specialty and the number of pending lab procedures in his/her priority queue, grouped by priority). The HCP saves the new lab procedure, or cancels the lab procedure creation [E1], [E2]. The status of the lab procedure is marked as in transit." id="S1" incomingReferences="//@requirements.30/@requirements.12/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.30/@requirements.9" type="COMPLEMENT"/>
+      <outgoingReferences target="//@requirements.30/@requirements.10" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="An HCP can view a previously created lab procedure for a given office visit. The HCP can view patient name, lab procedure code (LOINC), current lab procedure status, office visit date when procedure was ordered, and Lab Technician name." id="S2" incomingReferences="//@requirements.30/@requirements.12/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:Requirement" wording="An HCP can reassign a previously created lab procedure to a different Lab Technician if the lab procedure is not yet in the testing state. The HCP selects a different Lab Technician from the list of available Lab Technicians (displayed with Lab Technician specialty and the number of pending lab procedures in his/her priority queue, grouped by priority). The HCP confirms the reassignment, or cancels the reassignment [E2]." id="S3" incomingReferences="//@requirements.30/@requirements.12/@requirements.0/@outgoingReferences.2">
+      <outgoingReferences target="//@requirements.30/@requirements.10" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="An HCP can remove a previously created lab procedure for a given office visit. The HCP chooses to remove the lab procedure as long as the status is either in transit or received. The HCP is prompted to confirm that he/she wishes to remove the lab procedure." id="S4" incomingReferences="//@requirements.30/@requirements.12/@requirements.0/@outgoingReferences.3"/>
+    <requirements xsi:type="requirements:Requirement" wording="An HCP can add commentary to a pending lab procedure. The HCP enters a comment for a lab procedure with status as pending. Upon entering a comment, the lab procedure status is updated to completed." id="S5" incomingReferences="//@requirements.30/@requirements.12/@requirements.0/@outgoingReferences.4"/>
+    <requirements xsi:type="requirements:Requirement" wording="A patient may view his or her own lab procedure. On the associated office visit page, the patient can see the current status of the lab procedure, the HCP name, and the date that the procedure was assigned. If the lab procedure status is marked as completed, the patient can see the results and the HCP-provided comments." id="S6" incomingReferences="//@requirements.30/@requirements.12/@requirements.0/@outgoingReferences.5"/>
+    <requirements xsi:type="requirements:Requirement" wording="A Lab Technician can view his or her assigned lab procedures. The Lab Technician sees a list of all lab procedures assigned to him/her that have a status of received, followed by a list of lab procedures that remain in transit. The list of received lab procedures is sorted by priority (from most important to least important), with a secondary sort by office visit date (oldest to newest). The first lab procedure in the received list is marked with a status of testing, and all other lab procedures have a status of received. The list of in transit lab procedures is sorted by office visit date, from oldest to most recent. In both lists, the Lab Technician is provided the lab procedure ID, lab procedure code (LOINC), status, priority, HCP name, and office visit date." id="S7" incomingReferences="//@requirements.30/@requirements.8/@outgoingReferences.0 //@requirements.30/@requirements.12/@requirements.0/@outgoingReferences.6"/>
+    <requirements xsi:type="requirements:Requirement" wording="A Lab Technician can record the results of a lab procedure [E3]. The Lab Technician enters the lab procedure numerical result and confidence interval for the lab procedure with the status of testing. Upon recording the results of the lab procedure, the status is updated to pending." id="S8" incomingReferences="//@requirements.30/@requirements.12/@requirements.0/@outgoingReferences.7">
+      <outgoingReferences target="//@requirements.30/@requirements.11" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="A Lab Technician can update the status of a lab procedure to received. In the list of in transit lab procedures [S7], the Lab Technician can update the status to received when the sample has been received in his/her lab." id="S9" incomingReferences="//@requirements.30/@requirements.12/@requirements.0/@outgoingReferences.8">
+      <outgoingReferences target="//@requirements.30/@requirements.6" type="REFINEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording="The lab procedure code (LOINC) is not the intended lab procedure code. The HCP selects a different procedure code." id="E1" incomingReferences="//@requirements.30/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The selected Lab Technician is not the intended Lab Technician. The HCP selects a different Lab Technician." id="E2" incomingReferences="//@requirements.30/@requirements.0/@outgoingReferences.1 //@requirements.30/@requirements.2/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The information provided is invalid. The user is prompted to try again." id="E3" incomingReferences="//@requirements.30/@requirements.7/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC26.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="An HCP can create a lab procedure for a given office visit [S1]. An HCP can view a previously created lab procedure for a given office visit [S2]. An HCP can reassign a previously created lab procedure [S3]. An HCP can remove a previously created lab procedure [S4]. An HCP can add commentary to a pending lab procedure and update the lab procedure status to completed [S5]. A patient may view his or her own lab procedure results [S6]. A Lab Technician can view his or her priority queue of lab procedures [S7]. A Lab Technician can record the results of a lab procedure [S8]. A Lab Technician can update the status of a lab procedure as received [S9]. All events are logged (UC5)." id="M1">
+        <outgoingReferences target="//@requirements.30/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.30/@requirements.1" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.30/@requirements.2" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.30/@requirements.3" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.30/@requirements.4" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.30/@requirements.5" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.30/@requirements.6" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.30/@requirements.7" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.30/@requirements.8" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.13"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="UC59" id="UC59" title="Dependents Medical Records" incomingReferences="//@requirements.10/@outgoingReferences.11 //@requirements.1/@outgoingReferences.16 //@requirements.17/@outgoingReferences.0">
+    <requirements xsi:type="requirements:Requirement" wording="The option to switch views to a patient's dependent's view appears on the patient's request records release history page." id="S1" incomingReferences="//@requirements.31/@requirements.5/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The patient may view their own old release requests or submit a new personal records release request (UC56)." id="S2" incomingReferences="//@requirements.31/@requirements.5/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:Requirement" wording="The patient can view their dependents' past records release requests." id="S3" incomingReferences="//@requirements.31/@requirements.5/@requirements.0/@outgoingReferences.2"/>
+    <requirements xsi:type="requirements:Requirement" wording="The patient can request new medical records releases for dependents." id="S4" incomingReferences="//@requirements.31/@requirements.5/@requirements.0/@outgoingReferences.3"/>
+    <requirements xsi:type="requirements:Requirement" wording="If the patient does not have a dependent, they cannot view or release medical records for anyone but themselves." id="E1"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC59.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="The patient chooses to request a medical records release. The patient can choose to view the request records release history page from either the patient's view or their dependents' view [S1]. From this page the patient can view their old requests or submit a new request [S2]. The patient may also choose to view old requests for their dependent(s) [S3] or submit a new records release request for dependent(s) [S4]." id="M1">
+        <outgoingReferences target="//@requirements.31/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.31/@requirements.1" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.31/@requirements.2" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.31/@requirements.3" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC27" title="Alert Users by Email Use Case">
+    <requirements xsi:type="requirements:Requirement" wording="The user has successfully changed his/her password [[requirements:uc3|(UC3, S2)]]. An email informing the user of the password change is sent to the user including the MID but not the password." id="S1" incomingReferences="//@requirements.32/@requirements.2/@requirements.0/@outgoingReferences.0 //@requirements.1/@requirements.1/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The status of a laboratory procedure has been updated [[requirements:uc26|(UC26, S3)]]. The patient is notified with the following information: the LOINC number and the updated status." id="S2" incomingReferences="//@requirements.32/@requirements.2/@requirements.0/@outgoingReferences.1"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC27.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="An email alert is sent out to the iTrust user in the event of a changed password [S1], status change in laboratory procedure [S2], comprehensive report requested and generated." id="M1">
+        <outgoingReferences target="//@requirements.32/@requirements.0" type="REFINEMENT"/>
+        <outgoingReferences target="//@requirements.32/@requirements.1" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC29" title="Find LHCPs with experience with a diagnosis" incomingReferences="//@requirements.1/@outgoingReferences.10">
+    <requirements xsi:type="requirements:RequirementsSet" id="UC29.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="A patient has just been diagnosed with a condition and wants to find the LHCPs in the area who have handled that condition. The patient chooses 'My Diagnoses&#x201d; and is presented with a listing of all their own diagnoses, sorted by diagnosis date (more recent first). The patient can select a diagnosis and will be presented with the LHCPs in the patient's living area (based upon the first three numbers of their zip code) who have handled this diagnosis in the last three years. The list is ranked by the quantity of patients the LHCP has treated for that diagnosis (each patient is only counted once regardless of the number of office visits). For each LHCP, the following information is displayed:* Name of LHCP linked to contact information for that LHCP* The quantity of unique patients treated by that LHCP for that diagnosis (each patient is only counted once regardless of the number of office visits)* List of all prescriptions given by that LHCP for that diagnosis* List of all laboratory procedures ordered by that LHCP for that diagnosis* The LCHP's average visit satisfaction* The LHCP's average treatment satisfaction" id="M1"/>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC12" title="Determine operational profile Use Case">
+    <requirements xsi:type="requirements:RequirementsSet" id="UC12.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="The software tester authenticates himself or herself in the iTrust Medical Records system (UC2). He or she is then presented with the actual operational profile of the operations of the iTrust Medical Records where the use percentage is the % of total transactions for each particular transaction logging type, broken-down by each of the user types &quot;patient, LHCP, UHCP, admin, tester&quot;" id="M1">
+        <outgoingReferences target="//@requirements.10"/>
+      </requirements>
+    </requirements>
+  </requirements>
+  <requirements xsi:type="requirements:RequirementsSet" wording="" id="UC18" title="Maintain a hospital listing Use Case" incomingReferences="//@requirements.10/@outgoingReferences.3">
+    <requirements xsi:type="requirements:Requirement" wording="The administrator will store (1) hospital Id number for the hospital [E1], (2) up to 30 alphanumeric characters giving the name of the hospital, **and (3) an address for the hospital.**" id="S1" incomingReferences="//@requirements.35/@requirements.4/@requirements.0/@outgoingReferences.0">
+      <outgoingReferences target="//@requirements.35/@requirements.2" type="COMPLEMENT"/>
+    </requirements>
+    <requirements xsi:type="requirements:Requirement" wording=". The system shall enable the administrator to add a new entry for a hospital, or modify the hospital name in an existing entry. Note that the administrator is not allowed through the system interface to delete an existing entry or modify the hospital ID number in an existing entry." id="S2"/>
+    <requirements xsi:type="requirements:Requirement" wording="The administrator types an invalid hospital ID and is prompted to try again." id="E1" incomingReferences="//@requirements.35/@requirements.0/@outgoingReferences.0"/>
+    <requirements xsi:type="requirements:Requirement" wording="The administrator types an invalid hospital name and is prompted to try again." id="E2"/>
+    <requirements xsi:type="requirements:RequirementsSet" id="UC18.2" title="MainFlow" ordered="true">
+      <requirements xsi:type="requirements:Requirement" wording="An administrator chooses to maintain the hospital listing [S1].(Note: A personnel may be assigned to more than one [[requirements:uc2|(UC 2, S1)]])" id="M1">
+        <outgoingReferences target="//@requirements.35/@requirements.0" type="REFINEMENT"/>
+      </requirements>
+    </requirements>
+  </requirements>
+</requirements:RequirementsSet>

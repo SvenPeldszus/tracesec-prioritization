@@ -64,15 +64,14 @@ public class ModelSecectionPage extends WizardPage {
 
 		@Override
 		public String getColumnText(final Object element, final int columnIndex) {
-			if (element instanceof IFile) {
-				final var path = (IFile) element;
+			if (element instanceof final IFile path) {
 				switch (columnIndex) {
 				case 0:
 					return path.getParent().getProjectRelativePath().toString();
 				case 1:
 					return path.getName();
 				case 2:
-					return getModelString(path);
+					return this.getModelString(path);
 				default:
 					break;
 				}
@@ -94,7 +93,7 @@ public class ModelSecectionPage extends WizardPage {
 				// In case of exception or not finding name fallback to EMF
 			}
 
-			final var model = getModel(path);
+			final var model = ModelSecectionPage.this.getModel(path);
 			if (model != null) {
 				return model.toString();
 			}
@@ -117,7 +116,7 @@ public class ModelSecectionPage extends WizardPage {
 			} else if (element instanceof EObject) {
 				ePackage = ((EObject) element).eClass().getEPackage();
 			} else if (element instanceof IFile) {
-				final var eObject = getModel((IFile) element);
+				final var eObject = ModelSecectionPage.this.getModel((IFile) element);
 				if (eObject != null) {
 					ePackage = eObject.eClass().getEPackage();
 				}
@@ -129,14 +128,11 @@ public class ModelSecectionPage extends WizardPage {
 				return null;
 			}
 
-			switch (columnIndex) {
-			case 0:
-				return Integer.toString(ModelSecectionPage.this.order.indexOf(ePackage));
-			case 1:
-				return ePackage.getNsURI();
-			default:
-				return null;
-			}
+			return switch (columnIndex) {
+			case 0 -> Integer.toString(ModelSecectionPage.this.order.indexOf(ePackage));
+			case 1 -> ePackage.getNsURI();
+			default -> null;
+			};
 		}
 	}
 
@@ -189,7 +185,7 @@ public class ModelSecectionPage extends WizardPage {
 		this.project = project;
 		this.modelVisitor = new ExtensionFileVisitor("xmi", "uml");
 		project.accept(this.modelVisitor);
-		this.files = getIFiles(project, this.modelVisitor.getFiles());
+		this.files = this.getIFiles(project, this.modelVisitor.getFiles());
 		this.pm = GravityActivator.getProgramModelFolder(project, null).getFile("pm.xmi");
 		this.set = new ResourceSetImpl();
 		this.configurationVisitor = new ExtensionFileVisitor("tracesec");
@@ -203,9 +199,8 @@ public class ModelSecectionPage extends WizardPage {
 	 */
 	private List<IFile> getIFiles(final IProject project, final List<Path> files) {
 		final var location = project.getLocation().toFile().toPath();
-		final var collect = files.stream().map(location::relativize).map(Path::toString).map(project::getFile)
+		return files.stream().map(location::relativize).map(Path::toString).map(project::getFile)
 				.collect(Collectors.toList());
-		return collect;
 	}
 
 	@Override
@@ -213,19 +208,19 @@ public class ModelSecectionPage extends WizardPage {
 		final var composite = new SashForm(parent, SWT.VERTICAL);
 		composite.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-		final var modelSelcectionComposite = createModelSelectionComposite(composite);
-		createModelSelectionControl(modelSelcectionComposite);
+		final var modelSelcectionComposite = this.createModelSelectionComposite(composite);
+		this.createModelSelectionControl(modelSelcectionComposite);
 
-		final var modelOrderComposite = createModelOrderComposite(composite);
-		createModelOrderControl(modelOrderComposite);
+		final var modelOrderComposite = this.createModelOrderComposite(composite);
+		this.createModelOrderControl(modelOrderComposite);
 
-		createConfiguationControl(composite);
+		this.createConfiguationControl(composite);
 
 		composite.setWeights(50, 35, 15);
 		this.recalculateFindings = new Button(composite, SWT.CHECK);
 		this.recalculateFindings.setText("Recalculate SonarQube findings.");
 
-		setControl(composite);
+		this.setControl(composite);
 	}
 
 	private Composite createConfiguationControl(final SashForm parent) {
@@ -251,8 +246,8 @@ public class ModelSecectionPage extends WizardPage {
 		this.selectionConfigurationText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		final var configurationFiles = this.configurationVisitor.getFiles();
 		if (configurationFiles.size() == 1) {
-			this.selectionConfigurationText
-			.setText(getIFiles(this.project, configurationFiles).get(0).getProjectRelativePath().toString());
+			this.selectionConfigurationText.setText(
+					this.getIFiles(this.project, configurationFiles).get(0).getProjectRelativePath().toString());
 		}
 
 		final var browseButton = new Button(composite, SWT.PUSH);
@@ -279,24 +274,24 @@ public class ModelSecectionPage extends WizardPage {
 	}
 
 	private void createModelSelectionControl(final Composite parent) {
-		final var composite = generalLayout(parent);
-		final var label = tableTitle(composite, "Models within the project");
+		final var composite = this.generalLayout(parent);
+		final var label = this.tableTitle(composite, "Models within the project");
 
 		final var modelsTable = new Table(composite, SWT.CHECK | SWT.BORDER | SWT.SINGLE | SWT.FULL_SELECTION);
 		modelsTable.setHeaderVisible(true);
-		createColumn(modelsTable, "Path");
-		createColumn(modelsTable, "File");
-		createColumn(modelsTable, "Root Element");
+		this.createColumn(modelsTable, "Path");
+		this.createColumn(modelsTable, "File");
+		this.createColumn(modelsTable, "Root Element");
 
 		this.modelSelectionTableViewer = new CheckboxTableViewer(modelsTable);
 		this.modelSelectionTableViewer.setLabelProvider(new ModelFileLabelProvider());
 		this.modelSelectionTableViewer.add(this.files.toArray());
-		this.modelSelectionTableViewer.setChecked(getPm(), true);
-		this.modelSelectionTableViewer.setGrayed(getPm(), true);
+		this.modelSelectionTableViewer.setChecked(this.getPm(), true);
+		this.modelSelectionTableViewer.setGrayed(this.getPm(), true);
 
-		layoutTable(modelsTable, label);
+		this.layoutTable(modelsTable, label);
 
-		final var selectionComposite = createButtonArea(composite, label);
+		final var selectionComposite = this.createButtonArea(composite, label);
 
 		final var selectAllButton = new Button(selectionComposite, SWT.PUSH);
 		selectAllButton.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -305,8 +300,8 @@ public class ModelSecectionPage extends WizardPage {
 			@Override
 			public void widgetSelected(final SelectionEvent event) {
 				ModelSecectionPage.this.modelSelectionTableViewer
-				.setCheckedElements(ModelSecectionPage.this.modelVisitor.getFiles().toArray());
-				selectionCheckStateChanged();
+						.setCheckedElements(ModelSecectionPage.this.modelVisitor.getFiles().toArray());
+				ModelSecectionPage.this.selectionCheckStateChanged();
 			}
 		});
 
@@ -317,9 +312,9 @@ public class ModelSecectionPage extends WizardPage {
 			@Override
 			public void widgetSelected(final SelectionEvent event) {
 				ModelSecectionPage.this.modelOrderTableViewer
-				.remove(ModelSecectionPage.this.modelSelectionTableViewer.getCheckedElements());
+						.remove(ModelSecectionPage.this.modelSelectionTableViewer.getCheckedElements());
 				ModelSecectionPage.this.modelSelectionTableViewer.setCheckedElements(new Object[0]);
-				selectionCheckStateChanged();
+				ModelSecectionPage.this.selectionCheckStateChanged();
 			}
 		});
 
@@ -329,9 +324,9 @@ public class ModelSecectionPage extends WizardPage {
 		this.modelSelectionTableViewer.addCheckStateListener(event -> {
 			final var element = event.getElement();
 			if (event.getChecked()) {
-				addToSelected(element);
+				this.addToSelected(element);
 			} else {
-				removeFromSelected(element);
+				this.removeFromSelected(element);
 			}
 		});
 	}
@@ -353,19 +348,18 @@ public class ModelSecectionPage extends WizardPage {
 	}
 
 	private void removeFromSelected(final Object element) {
-		final var eObject = getEObject(element);
-		if (eObject instanceof CorrespondenceModel) {
-			final var corr = (CorrespondenceModel) eObject;
-			final var keep = getEPackagesToKeep(element);
+		final var eObject = this.getEObject(element);
+		if (eObject instanceof final CorrespondenceModel corr) {
+			final var keep = this.getEPackagesToKeep(element);
 			if (!keep.contains(corr.getSource().eClass().getEPackage())) {
-				removeFromSelected(corr.getSource());
+				this.removeFromSelected(corr.getSource());
 			}
 			if (!keep.contains(corr.getTarget().eClass().getEPackage())) {
-				removeFromSelected(corr.getTarget());
+				this.removeFromSelected(corr.getTarget());
 			}
 		} else {
 			final var ePackage = eObject.eClass().getEPackage();
-			removeFromOrder(ePackage);
+			this.removeFromOrder(ePackage);
 		}
 	}
 
@@ -378,7 +372,7 @@ public class ModelSecectionPage extends WizardPage {
 		final Set<EObject> keep = new HashSet<>();
 		for (final Object checked : this.modelSelectionTableViewer.getCheckedElements()) {
 			if (checked != element) {
-				final var checkedEObject = getEObject(checked);
+				final var checkedEObject = this.getEObject(checked);
 				keep.add(checkedEObject.eClass().getEPackage());
 				if (checkedEObject instanceof CorrespondenceModel) {
 					keep.add(((CorrespondenceModel) checkedEObject).getSource().eClass().getEPackage());
@@ -392,8 +386,9 @@ public class ModelSecectionPage extends WizardPage {
 	private EObject getEObject(final Object element) {
 		if (element instanceof EObject) {
 			return (EObject) element;
-		} else if (element instanceof IFile) {
-			return getModel((IFile) element);
+		}
+		if (element instanceof IFile) {
+			return this.getModel((IFile) element);
 		}
 		System.err.println("ERROR");
 
@@ -401,11 +396,10 @@ public class ModelSecectionPage extends WizardPage {
 	}
 
 	private void addToSelected(final Object element) {
-		final var eObject = getEObject(element);
-		if (eObject instanceof CorrespondenceModel) {
-			final var corr = (CorrespondenceModel) eObject;
-			addToSelected(corr.getSource());
-			addToSelected(corr.getTarget());
+		final var eObject = this.getEObject(element);
+		if (eObject instanceof final CorrespondenceModel corr) {
+			this.addToSelected(corr.getSource());
+			this.addToSelected(corr.getTarget());
 		} else {
 			EPackage ePackage;
 			if (eObject instanceof EPackage) {
@@ -414,7 +408,7 @@ public class ModelSecectionPage extends WizardPage {
 				ePackage = eObject.eClass().getEPackage();
 			}
 			if (!this.order.contains(ePackage)) {
-				addToOrder(ePackage);
+				this.addToOrder(ePackage);
 			}
 		}
 	}
@@ -463,20 +457,20 @@ public class ModelSecectionPage extends WizardPage {
 	}
 
 	private void createModelOrderControl(final Composite parent) {
-		final var composite = generalLayout(parent);
-		final var label = tableTitle(composite, "Model order");
+		final var composite = this.generalLayout(parent);
+		final var label = this.tableTitle(composite, "Model order");
 
 		final var modelsTable = new Table(composite, SWT.CHECK | SWT.BORDER | SWT.SINGLE | SWT.FULL_SELECTION);
 		modelsTable.setHeaderVisible(true);
-		createColumn(modelsTable, "Position");
-		createColumn(modelsTable, "Root Element");
+		this.createColumn(modelsTable, "Position");
+		this.createColumn(modelsTable, "Root Element");
 
-		layoutTable(modelsTable, label);
+		this.layoutTable(modelsTable, label);
 
 		this.modelOrderTableViewer = new TableViewer(modelsTable);
 		this.modelOrderTableViewer.setLabelProvider(new ModelOrderLabelProvider());
 
-		final var selectionComposite = createButtonArea(composite, label);
+		final var selectionComposite = this.createButtonArea(composite, label);
 
 		final var upButton = new Button(selectionComposite, SWT.PUSH);
 		upButton.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -536,7 +530,7 @@ public class ModelSecectionPage extends WizardPage {
 			}
 		});
 
-		addToOrder(BasicPackage.eINSTANCE);
+		this.addToOrder(BasicPackage.eINSTANCE);
 	}
 
 	private void createColumn(final Table table, final String label) {
@@ -547,7 +541,7 @@ public class ModelSecectionPage extends WizardPage {
 	}
 
 	private void selectionCheckStateChanged() {
-		getContainer().updateButtons();
+		this.getContainer().updateButtons();
 	}
 
 	@Override
@@ -564,8 +558,7 @@ public class ModelSecectionPage extends WizardPage {
 	}
 
 	public List<IFile> getModels() {
-		return Stream.of(this.modelSelectionTableViewer.getCheckedElements()).map(IFile.class::cast)
-				.collect(Collectors.toList());
+		return Stream.of(this.modelSelectionTableViewer.getCheckedElements()).map(IFile.class::cast).toList();
 	}
 
 	public IFile getPm() {

@@ -140,22 +140,13 @@ public interface TracegraphPackage extends EPackage {
 	int NODE__REPRESENTS = 2;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__ID = 3;
-
-	/**
 	 * The number of structural features of the '<em>Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = 4;
+	int NODE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Node</em>' class.
@@ -297,17 +288,6 @@ public interface TracegraphPackage extends EPackage {
 	EReference getNode_Represents();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.tracesec.prioritization.tracegraph.Node#getId <em>Id</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see org.tracesec.prioritization.tracegraph.Node#getId()
-	 * @see #getNode()
-	 * @generated
-	 */
-	EAttribute getNode_Id();
-
-	/**
 	 * Returns the meta object for class '{@link org.tracesec.prioritization.tracegraph.Edge <em>Edge</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -432,14 +412,6 @@ public interface TracegraphPackage extends EPackage {
 		 * @generated
 		 */
 		EReference NODE__REPRESENTS = eINSTANCE.getNode_Represents();
-
-		/**
-		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute NODE__ID = eINSTANCE.getNode_Id();
 
 		/**
 		 * The meta object literal for the '{@link org.tracesec.prioritization.tracegraph.impl.EdgeImpl <em>Edge</em>}' class.

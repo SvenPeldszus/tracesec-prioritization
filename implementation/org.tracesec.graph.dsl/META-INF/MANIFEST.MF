@@ -13,8 +13,9 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
  org.eclipse.xtext.util,
  org.eclipse.emf.common,
- org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
+ org.tracesec.graph.dsl
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.tracesec.graph.dsl.graphConfiguration.impl,
  org.tracesec.graph.dsl.parser.antlr,
  org.tracesec.graph.dsl.serializer,

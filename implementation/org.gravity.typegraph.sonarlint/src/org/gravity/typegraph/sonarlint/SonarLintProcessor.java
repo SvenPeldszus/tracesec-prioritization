@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Spliterator;
 import java.util.Spliterators;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -47,10 +46,11 @@ import org.gravity.typegraph.basic.TypeGraph;
 import org.gravity.typegraph.basic.annotations.TAnnotatable;
 import org.sonarlint.eclipse.core.internal.SonarLintCorePlugin;
 import org.sonarlint.eclipse.core.internal.TriggerType;
+import org.sonarlint.eclipse.core.internal.jobs.AnalyzeProjectJob;
 import org.sonarlint.eclipse.core.internal.jobs.AnalyzeProjectRequest;
 import org.sonarlint.eclipse.core.internal.jobs.AnalyzeProjectRequest.FileWithDocument;
-import org.sonarlint.eclipse.core.internal.jobs.AnalyzeStandaloneProjectJob;
 import org.sonarlint.eclipse.core.resource.ISonarLintProject;
+import org.sonarsource.sonarlint.core.rpc.protocol.common.RuleType;
 
 @SuppressWarnings("restriction")
 public class SonarLintProcessor {
@@ -61,7 +61,7 @@ public class SonarLintProcessor {
 
 	public static List<SonarlintFinding> getFindings(final TypeGraph pm) {
 		return getParallelStream(pm).filter(SonarlintFinding.class::isInstance).map(SonarlintFinding.class::cast)
-				.collect(Collectors.toList());
+				.toList();
 	}
 
 	public static List<SonarlintFinding> addSonarLintFindingsToPM(final IProject project,
@@ -70,10 +70,10 @@ public class SonarLintProcessor {
 		// Initialize SonarLint and run analysis job
 		final var sonarProject = Adapters.adapt(project, ISonarLintProject.class);
 		final Collection<FileWithDocument> files = sonarProject.files().stream()
-				.map(file -> new FileWithDocument(file, null)).collect(Collectors.toList());
+				.map(file -> new FileWithDocument(file, null)).toList();
 
 		final var request = new AnalyzeProjectRequest(sonarProject, files, TriggerType.MANUAL, true);
-		final var job = new AnalyzeStandaloneProjectJob(request);
+		final var job = new AnalyzeProjectJob(request);
 		job.schedule();
 
 		// Create PM while SonarLint is running
@@ -122,6 +122,9 @@ public class SonarLintProcessor {
 
 		return map.entrySet().parallelStream().flatMap(entry -> {
 			final var resource = entry.getKey();
+			if (!"java".equals(resource.getFileExtension())) {
+				return Stream.empty();
+			}
 			final var parser = ASTParser.newParser(AST.JLS17);
 			parser.setKind(ASTParser.K_COMPILATION_UNIT);
 			final var icu = resource.getAdapter(IJavaElement.class);
@@ -139,7 +142,12 @@ public class SonarLintProcessor {
 					annotation.setDescription((String) attributes.get("message"));
 					annotation.setCreationdate(marker.getCreationTime());
 					annotation.setSeverity(Integer.toString((int) attributes.get("severity")));
-					annotation.setKind((String) attributes.get("issuetype"));
+					final var issuetype = attributes.get("issuetype");
+					if (issuetype instanceof final String string) {
+						annotation.setKind(string);
+					} else if (issuetype instanceof final RuleType ruletype) {
+						annotation.setKind(ruletype.toString());
+					}
 					annotation.setMarker(marker);
 					annotation.setTAnnotated(base);
 					annotation.setLine((int) attributes.get("lineNumber"));
@@ -152,7 +160,7 @@ public class SonarLintProcessor {
 					return null;
 				}
 			}).filter(Objects::nonNull);
-		}).collect(Collectors.toList());
+		}).toList();
 	}
 
 	private static void deleteOldMarkers(final TypeGraph pm) {
@@ -182,25 +190,25 @@ public class SonarLintProcessor {
 		}
 
 		TAnnotatable base = pm;
-		if (node instanceof MethodDeclaration) {
-			base = JavaASTUtil.getTMethodDefinition((MethodDeclaration) node, pm);
-		} else if (node instanceof FieldDeclaration) {
-			base = JavaASTUtil.getTFieldDefinition((FieldDeclaration) node, pm);
-		} else if (node instanceof AbstractTypeDeclaration) {
-			base = JavaASTUtil.getType((AbstractTypeDeclaration) node, pm);
-		} else if (node instanceof CompilationUnit) {
-			base = JavaASTUtil.getType((TypeDeclaration) ((CompilationUnit) node).types().get(0), pm);
-		} else if (node instanceof EnumConstantDeclaration) {
-			final var constant = (EnumConstantDeclaration) node;
-			final var type = JavaASTUtil.getType((AbstractTypeDeclaration) constant.getParent(),pm);
-			final var result = type.getSignature().stream().filter(TFieldSignature.class :: isInstance)
-					.filter(s -> constant.getName().getFullyQualifiedName().equals(((TFieldSignature)s).getField().getTName())).findAny();
-			if(result.isPresent()) {
+		if (node instanceof final MethodDeclaration method) {
+			base = JavaASTUtil.getTMethodDefinition(method, pm);
+		} else if (node instanceof final FieldDeclaration field) {
+			base = JavaASTUtil.getTFieldDefinition(field, pm);
+		} else if (node instanceof final AbstractTypeDeclaration type) {
+			base = JavaASTUtil.getType(type, pm);
+		} else if (node instanceof final CompilationUnit cu) {
+			base = JavaASTUtil.getType((TypeDeclaration) cu.types().get(0), pm);
+		} else if (node instanceof final EnumConstantDeclaration constant) {
+			final var type = JavaASTUtil.getType((AbstractTypeDeclaration) constant.getParent(), pm);
+			final var result = type.getSignature().stream().filter(TFieldSignature.class::isInstance).filter(
+					s -> constant.getName().getFullyQualifiedName().equals(((TFieldSignature) s).getField().getTName()))
+					.findAny();
+			if (result.isPresent()) {
 				base = result.get().getTDefinition(type);
 			}
-		} else if(node instanceof Initializer) {
-			final var type = JavaASTUtil.getType((AbstractTypeDeclaration) node.getParent(),pm);
-			base = type.getTDefinition(type.getTName()+".initializer()");
+		} else if (node instanceof Initializer) {
+			final var type = JavaASTUtil.getType((AbstractTypeDeclaration) node.getParent(), pm);
+			base = type.getTDefinition(type.getTName() + ".initializer()");
 		}
 		return base;
 	}

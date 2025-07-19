@@ -183,16 +183,6 @@ public class TracegraphPackageImpl extends EPackageImpl implements TracegraphPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getNode_Id() {
-		return (EAttribute) nodeEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getEdge() {
 		return edgeEClass;
 	}
@@ -265,7 +255,6 @@ public class TracegraphPackageImpl extends EPackageImpl implements TracegraphPac
 		createEReference(nodeEClass, NODE__OUT);
 		createEReference(nodeEClass, NODE__IN);
 		createEReference(nodeEClass, NODE__REPRESENTS);
-		createEAttribute(nodeEClass, NODE__ID);
 
 		edgeEClass = createEClass(EDGE);
 		createEReference(edgeEClass, EDGE__SRC);
@@ -322,8 +311,6 @@ public class TracegraphPackageImpl extends EPackageImpl implements TracegraphPac
 		initEReference(getNode_Represents(), ecorePackage.getEObject(), null, "represents", null, 1, 1, Node.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNode_Id(), ecorePackage.getEString(), "id", null, 0, 1, Node.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(edgeEClass, Edge.class, "Edge", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEdge_Src(), this.getNode(), this.getNode_Out(), "src", null, 1, 1, Edge.class, !IS_TRANSIENT,

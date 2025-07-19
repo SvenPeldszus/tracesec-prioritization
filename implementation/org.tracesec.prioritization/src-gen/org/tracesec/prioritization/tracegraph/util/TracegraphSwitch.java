@@ -66,29 +66,29 @@ public class TracegraphSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-		case TracegraphPackage.GRAPH: {
-			Graph graph = (Graph) theEObject;
-			T result = caseGraph(graph);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case TracegraphPackage.NODE: {
-			Node node = (Node) theEObject;
-			T result = caseNode(node);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case TracegraphPackage.EDGE: {
-			Edge edge = (Edge) theEObject;
-			T result = caseEdge(edge);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		default:
-			return defaultCase(theEObject);
+			case TracegraphPackage.GRAPH: {
+				Graph graph = (Graph) theEObject;
+				T result = caseGraph(graph);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case TracegraphPackage.NODE: {
+				Node node = (Node) theEObject;
+				T result = caseNode(node);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case TracegraphPackage.EDGE: {
+				Edge edge = (Edge) theEObject;
+				T result = caseEdge(edge);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			default:
+				return defaultCase(theEObject);
 		}
 	}
 

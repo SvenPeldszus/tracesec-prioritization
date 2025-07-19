@@ -57,14 +57,14 @@ public class TracegraphFactoryImpl extends EFactoryImpl implements TracegraphFac
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case TracegraphPackage.GRAPH:
-			return createGraph();
-		case TracegraphPackage.NODE:
-			return createNode();
-		case TracegraphPackage.EDGE:
-			return createEdge();
-		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+			case TracegraphPackage.GRAPH:
+				return createGraph();
+			case TracegraphPackage.NODE:
+				return createNode();
+			case TracegraphPackage.EDGE:
+				return createEdge();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 

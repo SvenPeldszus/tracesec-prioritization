@@ -139,7 +139,12 @@ public class IssuesView extends ViewPart {
 		createColumn("Scope", new ColumnLabelProvider() {
 			@Override
 			public String getText(final Object element) {
-				final var annotated = ((Finding) element).getRepresents().getTAnnotated();
+				final var represents = ((Finding) element).getRepresents();
+				if(represents.eIsProxy()) {
+					return "Unresolved Proxy";
+				}
+
+				final var annotated = represents.getTAnnotated();
 				if (annotated instanceof TMethodDefinition) {
 					return "method";
 				}
@@ -159,7 +164,11 @@ public class IssuesView extends ViewPart {
 		createColumn("Element", new ColumnLabelProvider() {
 			@Override
 			public String getText(final Object element) {
-				final var annotated = ((Finding) element).getRepresents().getTAnnotated();
+				final var represents = ((Finding) element).getRepresents();
+				if(represents.eIsProxy()) {
+					return "Unresolved Proxy";
+				}
+				final var annotated = represents.getTAnnotated();
 				if (annotated instanceof TMember) {
 					final var member = (TMember) annotated;
 					return member.getDefinedBy().getFullyQualifiedName() + '.' + member.getSignatureString();

@@ -15,7 +15,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Display;
-import org.gravity.eclipse.ui.GravityUiActivator;
+import org.gravity.eclipse.ui.handler.UISelectionHelper;
 import org.tracesec.prioritization.ui.wizard.TraceSecWizard;
 
 public class PrioritizationHandler extends AbstractHandler {
@@ -24,7 +24,7 @@ public class PrioritizationHandler extends AbstractHandler {
 
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
-		final List<IProject> selection = GravityUiActivator.getSelection(event).stream().map(r -> {
+		final List<IProject> selection = UISelectionHelper.getSelection(event).stream().map(r -> {
 			if (r instanceof IJavaProject) {
 				return ((IJavaProject) r).getProject();
 			}

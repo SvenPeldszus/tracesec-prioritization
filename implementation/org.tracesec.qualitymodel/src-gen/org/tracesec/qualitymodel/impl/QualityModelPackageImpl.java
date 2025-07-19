@@ -30,6 +30,13 @@ public class QualityModelPackageImpl extends EPackageImpl implements QualityMode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass qualityModelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass qualityEClass = null;
 
 	/**
@@ -45,13 +52,6 @@ public class QualityModelPackageImpl extends EPackageImpl implements QualityMode
 	 * @generated
 	 */
 	private EEnum priorityEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass qualityModelEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -123,6 +123,36 @@ public class QualityModelPackageImpl extends EPackageImpl implements QualityMode
 	 * @generated
 	 */
 	@Override
+	public EClass getQualityModel() {
+		return qualityModelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getQualityModel_Qualities() {
+		return (EReference)qualityModelEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getQualityModel_Root() {
+		return (EReference)qualityModelEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getQuality() {
 		return qualityEClass;
 	}
@@ -153,7 +183,7 @@ public class QualityModelPackageImpl extends EPackageImpl implements QualityMode
 	 * @generated
 	 */
 	@Override
-	public EAttribute getQuality_Priority() {
+	public EAttribute getQuality_Description() {
 		return (EAttribute)qualityEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -163,18 +193,8 @@ public class QualityModelPackageImpl extends EPackageImpl implements QualityMode
 	 * @generated
 	 */
 	@Override
-	public EAttribute getQuality_Description() {
-		return (EAttribute)qualityEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getQuality_RelevantElements() {
-		return (EReference)qualityEClass.getEStructuralFeatures().get(4);
+		return (EReference)qualityEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -233,36 +253,6 @@ public class QualityModelPackageImpl extends EPackageImpl implements QualityMode
 	 * @generated
 	 */
 	@Override
-	public EClass getQualityModel() {
-		return qualityModelEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getQualityModel_Qualities() {
-		return (EReference)qualityModelEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getQualityModel_Root() {
-		return (EReference)qualityModelEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public QualityModelFactory getQualityModelFactory() {
 		return (QualityModelFactory)getEFactoryInstance();
 	}
@@ -293,7 +283,6 @@ public class QualityModelPackageImpl extends EPackageImpl implements QualityMode
 		qualityEClass = createEClass(QUALITY);
 		createEReference(qualityEClass, QUALITY__ASPECTS);
 		createEAttribute(qualityEClass, QUALITY__TITLE);
-		createEAttribute(qualityEClass, QUALITY__PRIORITY);
 		createEAttribute(qualityEClass, QUALITY__DESCRIPTION);
 		createEReference(qualityEClass, QUALITY__RELEVANT_ELEMENTS);
 
@@ -346,7 +335,6 @@ public class QualityModelPackageImpl extends EPackageImpl implements QualityMode
 		initEClass(qualityEClass, Quality.class, "Quality", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getQuality_Aspects(), this.getAspect(), this.getAspect_Owner(), "aspects", null, 0, -1, Quality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuality_Title(), ecorePackage.getEString(), "title", null, 0, 1, Quality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getQuality_Priority(), ecorePackage.getEInt(), "priority", null, 0, 1, Quality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuality_Description(), ecorePackage.getEString(), "description", null, 0, 1, Quality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getQuality_RelevantElements(), theEcorePackage.getEObject(), null, "relevantElements", null, 0, -1, Quality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

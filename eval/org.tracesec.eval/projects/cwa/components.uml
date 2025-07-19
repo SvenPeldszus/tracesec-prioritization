@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_qkZBIB4ZEe22wYox361OOQ" name="server">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_Wa3TcAqwEe6CGOzMWPCReA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Component" xmi:id="_qs7SEB4ZEe22wYox361OOQ" name="server">
+    <packagedElement xmi:type="uml:Component" xmi:id="_qwKMQB4ZEe22wYox361OOQ" name="common">
+      <packagedElement xmi:type="uml:Component" xmi:id="_qwZc0B4ZEe22wYox361OOQ" name="jupiterHelpers"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_qw2v0B4ZEe22wYox361OOQ" name="shared"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_qxg3IB4ZEe22wYox361OOQ" name="protocols"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_qyEQwB4ZEe22wYox361OOQ" name="persistence"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_qzBTAB4ZEe22wYox361OOQ" name="federation"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_qzoXAB4ZEe22wYox361OOQ" name="services">
+      <packagedElement xmi:type="uml:Component" xmi:id="_q0MXsB4ZEe22wYox361OOQ" name="distribution">
+        <packagedElement xmi:type="uml:Usage" xmi:id="_oU_qAB4cEe22wYox361OOQ" client="_q0MXsB4ZEe22wYox361OOQ" supplier="_kwqnoB4cEe22wYox361OOQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Component" xmi:id="_q2qc4B4ZEe22wYox361OOQ" name="submission">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_KMrLkB4cEe22wYox361OOQ" client="_q2qc4B4ZEe22wYox361OOQ" supplier="_Gl7uYB4cEe22wYox361OOQ" contract="_Gl7uYB4cEe22wYox361OOQ"/>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_AbLcUB4cEe22wYox361OOQ" client="_q2qc4B4ZEe22wYox361OOQ" supplier="_6RvY4B4bEe22wYox361OOQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Component" xmi:id="_q3gKYB4ZEe22wYox361OOQ" name="callback">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_aBJJ4B4cEe22wYox361OOQ" client="_q3gKYB4ZEe22wYox361OOQ" supplier="_XE8egB4cEe22wYox361OOQ" contract="_XE8egB4cEe22wYox361OOQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Component" xmi:id="_q4HOYB4ZEe22wYox361OOQ" name="download">
+        <packagedElement xmi:type="uml:Usage" xmi:id="_h80nAB4cEe22wYox361OOQ" client="_q4HOYB4ZEe22wYox361OOQ" supplier="_enPLQB4cEe22wYox361OOQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Component" xmi:id="_q4x8wB4ZEe22wYox361OOQ" name="upload">
+        <packagedElement xmi:type="uml:Usage" xmi:id="_VUU1cB4cEe22wYox361OOQ" client="_q4x8wB4ZEe22wYox361OOQ" supplier="_RDhuoB4cEe22wYox361OOQ"/>
+      </packagedElement>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_yFvAwB4bEe22wYox361OOQ" name="verification">
+    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_-lGJcAq1Ee6CGOzMWPCReA" client="_yFvAwB4bEe22wYox361OOQ" supplier="_6RvY4B4bEe22wYox361OOQ" contract="_6RvY4B4bEe22wYox361OOQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_zd8w4B4bEe22wYox361OOQ" name="gateway">
+    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_T0R_AB4cEe22wYox361OOQ" client="_zd8w4B4bEe22wYox361OOQ" supplier="_RDhuoB4cEe22wYox361OOQ" contract="_RDhuoB4cEe22wYox361OOQ"/>
+    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_hIeY8B4cEe22wYox361OOQ" client="_zd8w4B4bEe22wYox361OOQ" supplier="_enPLQB4cEe22wYox361OOQ" contract="_enPLQB4cEe22wYox361OOQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_am0CwB4cEe22wYox361OOQ" client="_zd8w4B4bEe22wYox361OOQ" supplier="_XE8egB4cEe22wYox361OOQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_0-6NUB4bEe22wYox361OOQ" name="object store">
+    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_o35iwB4cEe22wYox361OOQ" client="_0-6NUB4bEe22wYox361OOQ" supplier="_kwqnoB4cEe22wYox361OOQ" contract="_kwqnoB4cEe22wYox361OOQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_2Sdf4B4bEe22wYox361OOQ" name="mobile client">
+    <packagedElement xmi:type="uml:Usage" xmi:id="_K5yJMB4cEe22wYox361OOQ" client="_2Sdf4B4bEe22wYox361OOQ" supplier="_Gl7uYB4cEe22wYox361OOQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_6RvY4B4bEe22wYox361OOQ" name="TAN Verification"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_Gl7uYB4cEe22wYox361OOQ" name="TAN and Diagnosis Key Provider"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_RDhuoB4cEe22wYox361OOQ" name="Key Batch Upload"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_XE8egB4cEe22wYox361OOQ" name="New Batch Callback"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_enPLQB4cEe22wYox361OOQ" name="Key Batch Request"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_kwqnoB4cEe22wYox361OOQ" name="File API"/>
+</uml:Model>

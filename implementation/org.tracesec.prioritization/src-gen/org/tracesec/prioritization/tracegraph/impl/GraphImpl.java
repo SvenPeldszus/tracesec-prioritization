@@ -109,10 +109,10 @@ public class GraphImpl extends MinimalEObjectImpl.Container implements Graph {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case TracegraphPackage.GRAPH__EDGES:
-			return ((InternalEList<?>) getEdges()).basicRemove(otherEnd, msgs);
-		case TracegraphPackage.GRAPH__NODES:
-			return ((InternalEList<?>) getNodes()).basicRemove(otherEnd, msgs);
+			case TracegraphPackage.GRAPH__EDGES:
+				return ((InternalEList<?>) getEdges()).basicRemove(otherEnd, msgs);
+			case TracegraphPackage.GRAPH__NODES:
+				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -125,10 +125,10 @@ public class GraphImpl extends MinimalEObjectImpl.Container implements Graph {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case TracegraphPackage.GRAPH__EDGES:
-			return getEdges();
-		case TracegraphPackage.GRAPH__NODES:
-			return getNodes();
+			case TracegraphPackage.GRAPH__EDGES:
+				return getEdges();
+			case TracegraphPackage.GRAPH__NODES:
+				return getNodes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -142,14 +142,14 @@ public class GraphImpl extends MinimalEObjectImpl.Container implements Graph {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case TracegraphPackage.GRAPH__EDGES:
-			getEdges().clear();
-			getEdges().addAll((Collection<? extends Edge>) newValue);
-			return;
-		case TracegraphPackage.GRAPH__NODES:
-			getNodes().clear();
-			getNodes().addAll((Collection<? extends Node>) newValue);
-			return;
+			case TracegraphPackage.GRAPH__EDGES:
+				getEdges().clear();
+				getEdges().addAll((Collection<? extends Edge>) newValue);
+				return;
+			case TracegraphPackage.GRAPH__NODES:
+				getNodes().clear();
+				getNodes().addAll((Collection<? extends Node>) newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -162,12 +162,12 @@ public class GraphImpl extends MinimalEObjectImpl.Container implements Graph {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case TracegraphPackage.GRAPH__EDGES:
-			getEdges().clear();
-			return;
-		case TracegraphPackage.GRAPH__NODES:
-			getNodes().clear();
-			return;
+			case TracegraphPackage.GRAPH__EDGES:
+				getEdges().clear();
+				return;
+			case TracegraphPackage.GRAPH__NODES:
+				getNodes().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -180,10 +180,10 @@ public class GraphImpl extends MinimalEObjectImpl.Container implements Graph {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case TracegraphPackage.GRAPH__EDGES:
-			return edges != null && !edges.isEmpty();
-		case TracegraphPackage.GRAPH__NODES:
-			return nodes != null && !nodes.isEmpty();
+			case TracegraphPackage.GRAPH__EDGES:
+				return edges != null && !edges.isEmpty();
+			case TracegraphPackage.GRAPH__NODES:
+				return nodes != null && !nodes.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

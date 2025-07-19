@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.tracesec.qualitymodel.Quality#getAspects <em>Aspects</em>}</li>
  *   <li>{@link org.tracesec.qualitymodel.Quality#getTitle <em>Title</em>}</li>
- *   <li>{@link org.tracesec.qualitymodel.Quality#getPriority <em>Priority</em>}</li>
  *   <li>{@link org.tracesec.qualitymodel.Quality#getDescription <em>Description</em>}</li>
  *   <li>{@link org.tracesec.qualitymodel.Quality#getRelevantElements <em>Relevant Elements</em>}</li>
  * </ul>
@@ -33,7 +32,7 @@ public interface Quality extends EObject {
 	 * It is bidirectional and its opposite is '{@link org.tracesec.qualitymodel.Aspect#getOwner <em>Owner</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Aspects</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Aspects</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -70,32 +69,6 @@ public interface Quality extends EObject {
 	 * @generated
 	 */
 	void setTitle(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Priority</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Priority</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Priority</em>' attribute.
-	 * @see #setPriority(int)
-	 * @see org.tracesec.qualitymodel.QualityModelPackage#getQuality_Priority()
-	 * @model
-	 * @generated
-	 */
-	int getPriority();
-
-	/**
-	 * Sets the value of the '{@link org.tracesec.qualitymodel.Quality#getPriority <em>Priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Priority</em>' attribute.
-	 * @see #getPriority()
-	 * @generated
-	 */
-	void setPriority(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.

@@ -10,26 +10,26 @@ Configuration:
 
 Namespace:
 	"namespace" package=STRING "{"
-	("default" "=" default=INT)?
-	("consider" "=" consider=Consider)?
-	("include" "{"
-	(include+=Type)*
-	"}")?
-	("exclude" "{"
-	(exclude+=[ecore::EClass])+
-	"}")?
+		("default" "=" default=INT)?
+		("consider" "=" consider=Consider)?
+		("include" "{"
+			(include+=Type)*
+		"}")?
+		("exclude" "{"
+			(exclude+=[ecore::EClass])+
+		"}")?
 	"}";
 
 Type:
 	"type" type=[ecore::EClass] "{"
-	("consider" "=" consider=Consider)?
-	("default" "=" default=INT)?
-	("include" "{"
-	(inlcude+=Edge)+
-	"}")?
-	("exclude" "{"
-	(exclude+=[ecore::EReference])+
-	"}")?
+		("consider" "=" consider=Consider)?
+		("default" "=" default=INT)?
+		("include" "{"
+			(inlcude+=Edge)+
+		"}")?
+		("exclude" "{"
+			(exclude+=[ecore::EReference])+
+		"}")?
 	"}";
 
 Edge:
@@ -40,10 +40,7 @@ Weight: NumberWeight | AttributeWeight;
 
 NumberWeight: value=INT;
 
-AttributeWeight: (owner=Owner ".")? value=[ecore::EAttribute];
-
-enum Owner:
-	TARGET="trg" | ASSOCIATION="assoc";
+AttributeWeight: value=[ecore::EAttribute];
 
 enum Consider:
 	ALL="ALL" | NONE="NONE";

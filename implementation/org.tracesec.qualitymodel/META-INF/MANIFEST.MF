@@ -7,15 +7,12 @@ Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.tracesec.qualitymodel,
  org.tracesec.qualitymodel.impl,
  org.tracesec.qualitymodel.util
 Require-Bundle: org.eclipse.uml2.common;visibility:=reexport,
  org.eclipse.emf.ecore.xmi,
- org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport,
- org.gravity.typegraph.sonarlint,
- org.sonarlint.eclipse.core,
- org.sonarsource.sonarlint.core.sonarlint-core-osgi
+ org.gravity.typegraph.sonarlint
 Bundle-ActivationPolicy: lazy
+Bundle-Activator: org.tracesec.qualitymodel.Activator

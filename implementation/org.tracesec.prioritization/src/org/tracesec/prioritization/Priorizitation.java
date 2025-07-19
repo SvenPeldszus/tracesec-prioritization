@@ -20,9 +20,9 @@ public class Priorizitation {
 
 	private static final Logger LOGGER = Logger.getLogger(Priorizitation.class);
 
-	private static int index = 0;
+	private static int index = 1;
 
-	public static SortedMap<Integer, List<SonarlintFinding>> prioritize(final Collection<SonarlintFinding> findings,
+	public SortedMap<Integer, List<SonarlintFinding>> prioritize(final Collection<SonarlintFinding> findings,
 			final Quality root, final Graph graph) {
 		final var source = getNode(graph, root);
 		if (source.isEmpty()) {
@@ -31,19 +31,10 @@ public class Priorizitation {
 		}
 		final var sourceNode = source.get();
 
-		final var flows = findings.parallelStream().collect(Collectors.toMap(k -> k, finding -> {
-			System.out.println("\n\nCompute flow for finding: " + finding);
-			final var algo = new DinicsAlgorithm(graph);
-			final var node = getNode(graph, finding);
-			if (node.isPresent()) {
-				final var maxFlow = algo.maxFlow(sourceNode, node.get());
-				System.out.println(index+++"/"+findings.size());
-				return maxFlow;
-			} else {
-				LOGGER.error("Finding is not in flow network: " + finding);
-				return -1;
-			}
-		}));
+		final var flows = findings.parallelStream()
+				.collect(Collectors.toMap(k -> k,
+						finding -> this.prioritize(findings, graph, sourceNode, finding,
+								new DinicsAlgorithm(graph))));
 
 		final SortedMap<Integer, List<SonarlintFinding>> map = new TreeMap<>();
 		for (final Entry<SonarlintFinding, Integer> entry : flows.entrySet()) {
@@ -53,8 +44,19 @@ public class Priorizitation {
 
 	}
 
+	protected Integer prioritize(final Collection<SonarlintFinding> findings, final Graph graph, final Node sourceNode,
+			final SonarlintFinding finding, final DinicsAlgorithm algo) {
+		final var node = getNode(graph, finding);
+		if (node.isPresent()) {
+			final var maxFlow = algo.maxFlow(sourceNode, node.get());
+			System.out.println(index++ + "/" + findings.size());
+			return maxFlow;
+		}
+		LOGGER.error("Finding is not in flow network: " + finding);
+		return -1;
+	}
+
 	private static Optional<Node> getNode(final Graph graph, final EObject object) {
 		return graph.getNodes().parallelStream().filter(node -> object.equals(node.getRepresents())).findAny();
 	}
-
 }

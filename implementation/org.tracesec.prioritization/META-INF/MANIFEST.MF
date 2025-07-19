@@ -7,21 +7,26 @@ Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.tracesec.prioritization,
+ org.tracesec.prioritization.graph,
+ org.tracesec.prioritization.prioritization.prioritization,
+ org.tracesec.prioritization.prioritization.prioritization.impl,
+ org.tracesec.prioritization.prioritization.prioritization.util,
  org.tracesec.prioritization.tracegraph,
  org.tracesec.prioritization.tracegraph.impl,
  org.tracesec.prioritization.tracegraph.util,
  org.tracesec.prioritization.tracelinks,
  org.tracesec.prioritization.tracelinks.impl,
- org.tracesec.prioritization.tracelinks.util,
- org.tracesec.prioritization.prioritization.prioritization,
- org.tracesec.prioritization.prioritization.prioritization.impl,
- org.tracesec.prioritization.prioritization.prioritization.util
+ org.tracesec.prioritization.tracelinks.util
 Require-Bundle: org.eclipse.uml2.uml,
  org.tracesec.graph.dsl,
  org.gravity.tgg.pm.uml,
  org.tracesec.qualitymodel,
  org.gravity.typegraph.sonarlint;visibility:=reexport,
- org.apache.log4j
+ org.apache.log4j,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.gravity.hulk.antipatterngraph;visibility:=reexport,
+ org.gravity.typegraph.basic;visibility:=reexport
 Bundle-ActivationPolicy: lazy
