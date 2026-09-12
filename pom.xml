@@ -187,15 +187,15 @@
 										<goals>
 											<goal>compile</goal>
 										</goals>
-										</pluginExecutionFilter>
-										<action>
-											<ignore/>
-										</action>
-									</pluginExecution>
-									<pluginExecution>
-										<pluginExecutionFilter>
-											<groupId>
-												org.eclipse.tycho
+									</pluginExecutionFilter>
+									<action>
+										<ignore/>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.eclipse.tycho
 											</groupId>
 											<artifactId>
 												tycho-packaging-plugin
@@ -316,6 +316,16 @@
 			<id>GRaViTY</id>
 			<layout>p2</layout>
 			<url>https://gravity-tool.org/beta-updatesite</url>
+		</repository>
+		<repository>
+			<id>Henshin</id>
+			<layout>p2</layout>
+			<url>https://download.eclipse.org/modeling/emft/henshin/updates/nightly</url>
+		</repository>
+		<repository>
+			<id>Henshin MultiVar</id>
+			<layout>p2</layout>
+			<url>https://gravity-tool.org/henshin-multivar/updatesite</url>
 		</repository>
                 <repository>
                         <id>CARiSMA</id>
