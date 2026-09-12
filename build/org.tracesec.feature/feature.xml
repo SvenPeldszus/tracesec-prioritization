@@ -14,8 +14,6 @@
    </copyright>
 
    <requires>
-      <!-- GRaViTY UML transitively provides the Eclipse, MoDisco and type-graph stack used by TraceSec. -->
-      <import feature="org.gravity.features.uml" version="1.0.0.qualifier"/>
       <!-- Install the supported SonarQube for IDE distribution; individual bundle requirements remain in plugin manifests. -->
       <import feature="org.sonarlint.eclipse.feature" version="12.7.0.84850" match="compatible"/>
    </requires>
