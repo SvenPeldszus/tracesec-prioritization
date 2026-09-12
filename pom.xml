@@ -13,7 +13,7 @@
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 		<!-- Tycho settings -->
-		<tycho-version>2.6.0</tycho-version>
+		<tycho-version>4.0.13</tycho-version>
 		<!-- Define overridable properties for tycho-surefire-plugin -->
 		<platformSystemProperties/>
 		<moduleProperties/>
@@ -230,7 +230,7 @@
 					</configuration>
 				</plugin>
 				<!-- to skip running (and compiling) tests use commandline flag: -Dmaven.test.skip
-					To skip tests, but still compile them, use: -DskipTests
+					To skip tests, but still compile them, use -DskipTests
 					To allow all tests in a pom to pass/fail, use commandline flag: -fae (fail
 					at end) -->
 				<plugin>
