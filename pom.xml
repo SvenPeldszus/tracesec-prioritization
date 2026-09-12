@@ -303,7 +303,7 @@
 		<repository>
                         <id>Sonarlint</id>
                         <layout>p2</layout>
-                        <url>https://eclipse-uc.sonarlint.org</url>
+                        <url>https://binaries.sonarsource.com/SonarLint-for-Eclipse/releases/7.1.0.39158/</url>
                 </repository>
 		<repository>
 			<id>eMoflon TIE</id>
