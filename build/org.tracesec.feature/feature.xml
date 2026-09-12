@@ -55,7 +55,6 @@
       <import plugin="org.apache.log4j"/>
       <import plugin="org.eclipse.xtext.ide"/>
       <import plugin="org.eclipse.xtext.xbase.ide"/>
-      <import feature="org.eclipse.xtext.ui" version="2.25.0.v20210301-1429"/>
       <import plugin="org.eclipse.xtext.ui.shared"/>
       <import plugin="org.eclipse.xtext.ui.codetemplates.ui"/>
       <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
@@ -68,7 +67,6 @@
       <import plugin="org.eclipse.uml2.common"/>
       <import plugin="org.eclipse.emf.ecore.xmi"/>
       <import plugin="org.eclipse.xtext"/>
-      <import feature="org.eclipse.xtext.xbase" version="2.25.0.v20210301-1429"/>
       <import plugin="org.eclipse.equinox.common" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.xbase.lib" version="2.14.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.util"/>
@@ -84,19 +82,13 @@
       <import plugin="org.sonarlint.eclipse.ui"/>
       <import plugin="org.sonarlint.eclipse.jdt"/>
       <import plugin="org.eclipse.text"/>
-      <import plugin="org.sonarsource.sonarlint.core.sonarlint-core-osgi"/>
-      <import feature="org.eclipse.xtext.ui" version="2.25.0.v20210301-1429"/>
-      <import feature="org.eclipse.xtext.xbase" version="2.25.0.v20210301-1429"/>
-      <import feature="org.eclipse.xtext.ui" version="2.25.0.v20210301-1429"/>
-      <import feature="org.eclipse.xtext.xbase" version="2.25.0.v20210301-1429"/>
-      <import feature="org.eclipse.xtext.ui" version="2.25.0.v20210301-1429"/>
-      <import feature="org.eclipse.xtext.xbase" version="2.25.0.v20210301-1429"/>
+      <import plugin="org.sonarsource.sonarlint.core.sonarlint-java-client-osgi"/>
       <import feature="org.gravity.features.hulk" version="1.0.0.qualifier"/>
-      <import feature="org.sonarlint.eclipse.feature" version="7.1.0.39158"/>
-      <import feature="org.eclipse.xtext.runtime" version="2.25.0.v20210301-1429"/>
-      <import feature="org.eclipse.xtext.ui" version="2.25.0.v20210301-1429"/>
-      <import feature="org.eclipse.xtext.xbase" version="2.25.0.v20210301-1429"/>
-      <import feature="org.eclipse.xtext.xbase.lib" version="2.25.0.v20210301-0822"/>
+      <import feature="org.sonarlint.eclipse.feature" version="12.7.0.84850" match="compatible"/>
+      <import feature="org.eclipse.xtext.runtime"/>
+      <import feature="org.eclipse.xtext.ui"/>
+      <import feature="org.eclipse.xtext.xbase"/>
+      <import feature="org.eclipse.xtext.xbase.lib"/>
       <import feature="org.eclipse.uml2" version="5.5.2.v20210228-1829"/>
       <import feature="org.gravity.features.uml" version="1.0.0.qualifier"/>
       <import feature="org.moflon.tgg.mosl.feature" version="3.0.1.202202151536"/>

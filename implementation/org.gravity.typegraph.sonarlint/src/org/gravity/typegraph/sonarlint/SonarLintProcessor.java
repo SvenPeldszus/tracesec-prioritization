@@ -49,8 +49,8 @@ import org.sonarlint.eclipse.core.internal.TriggerType;
 import org.sonarlint.eclipse.core.internal.jobs.AnalyzeProjectJob;
 import org.sonarlint.eclipse.core.internal.jobs.AnalyzeProjectRequest;
 import org.sonarlint.eclipse.core.internal.jobs.AnalyzeProjectRequest.FileWithDocument;
+import org.sonarlint.eclipse.core.internal.markers.MarkerUtils;
 import org.sonarlint.eclipse.core.resource.ISonarLintProject;
-import org.sonarsource.sonarlint.core.rpc.protocol.common.RuleType;
 
 @SuppressWarnings("restriction")
 public class SonarLintProcessor {
@@ -67,8 +67,11 @@ public class SonarLintProcessor {
 	public static List<SonarlintFinding> addSonarLintFindingsToPM(final IProject project,
 			final IProgressMonitor monitor) throws CoreException, NoConverterRegisteredException, IOException {
 
-		// Initialize SonarLint and run analysis job
+		// Initialize SonarQube for IDE and run a full project analysis.
 		final var sonarProject = Adapters.adapt(project, ISonarLintProject.class);
+		if (sonarProject == null) {
+			throw new CoreException(Status.error("Couldn't adapt project to a SonarQube for IDE project"));
+		}
 		final Collection<FileWithDocument> files = sonarProject.files().stream()
 				.map(file -> new FileWithDocument(file, null)).toList();
 
@@ -76,19 +79,23 @@ public class SonarLintProcessor {
 		final var job = new AnalyzeProjectJob(request);
 		job.schedule();
 
-		// Create PM while SonarLint is running
+		// Create PM while SonarQube for IDE is running.
 		final var converter = GravityActivator.getDefault().getConverter(project);
 		if (!converter.convertProject(monitor)) {
 			throw new CoreException(Status.error("Couldn't create program model"));
 		}
 		final var pm = converter.getPG();
 
-		// Wait for SonarLint to finish if not already finished
+		// Wait for the analysis to finish if it has not already completed.
 		try {
 			job.join();
 		} catch (final InterruptedException e) {
 			Thread.currentThread().interrupt();
 			throw new CoreException(Status.error(e.getMessage()));
+		}
+		final var result = job.getResult();
+		if (result != null && !result.isOK()) {
+			throw new CoreException(result);
 		}
 
 		final var findings = addResultsToPM(sonarProject, pm);
@@ -99,16 +106,15 @@ public class SonarLintProcessor {
 	}
 
 	/**
-	 * Adds the sonar lint results to the program model
+	 * Adds the SonarQube for IDE results to the program model.
 	 *
-	 * @param sonarProject The sonar lint project for which results are present
+	 * @param sonarProject The SonarQube for IDE project for which results are present
 	 * @param pm           The corresponding program model
 	 * @return the added findings
-	 * @throws CoreException
+	 * @throws CoreException if markers cannot be read
 	 */
 	private static List<SonarlintFinding> addResultsToPM(final ISonarLintProject sonarProject, final TypeGraph pm)
 			throws CoreException {
-		// Get SonarLint results
 		final var markers = sonarProject.getResource().findMarkers(SonarLintCorePlugin.MARKER_REPORT_ID, true,
 				IResource.DEPTH_INFINITE);
 
@@ -128,31 +134,31 @@ public class SonarLintProcessor {
 			final var parser = ASTParser.newParser(AST.JLS17);
 			parser.setKind(ASTParser.K_COMPILATION_UNIT);
 			final var icu = resource.getAdapter(IJavaElement.class);
-			parser.setSource((ICompilationUnit) icu);
+			if (!(icu instanceof ICompilationUnit compilationUnit)) {
+				return Stream.empty();
+			}
+			parser.setSource(compilationUnit);
 			final var ast = parser.createAST(null);
 
 			return entry.getValue().stream().map(marker -> {
 				try {
 					final var base = getAnnotatedPMElement(marker, pm, ast);
-
 					final var attributes = marker.getAttributes();
 					final var annotation = SonarlintFactory.eINSTANCE.createSonarlintFinding();
-					annotation.setRulekey((String) attributes.get("rulekey"));
-					annotation.setRulename((String) attributes.get("rulename"));
-					annotation.setDescription((String) attributes.get("message"));
-					annotation.setCreationdate(marker.getCreationTime());
-					annotation.setSeverity(Integer.toString((int) attributes.get("severity")));
-					final var issuetype = attributes.get("issuetype");
-					if (issuetype instanceof final String string) {
-						annotation.setKind(string);
-					} else if (issuetype instanceof final RuleType ruletype) {
-						annotation.setKind(ruletype.toString());
-					}
+
+					final var ruleKey = stringValue(attributes.get(MarkerUtils.SONAR_MARKER_RULE_KEY_ATTR));
+					annotation.setRulekey(ruleKey);
+					final var ruleName = stringValue(attributes.get("rulename"));
+					annotation.setRulename(ruleName != null ? ruleName : ruleKey);
+					annotation.setDescription(marker.getAttribute(IMarker.MESSAGE, ""));
+					annotation.setCreationdate(getCreationDate(marker, attributes));
+					annotation.setSeverity(getSeverity(attributes));
+					annotation.setKind(getKind(attributes));
 					annotation.setMarker(marker);
 					annotation.setTAnnotated(base);
-					annotation.setLine((int) attributes.get("lineNumber"));
-					annotation.setStartChar((int) attributes.get("charStart"));
-					annotation.setEndChar((int) attributes.get("charEnd"));
+					annotation.setLine(marker.getAttribute(IMarker.LINE_NUMBER, -1));
+					annotation.setStartChar(marker.getAttribute(IMarker.CHAR_START, -1));
+					annotation.setEndChar(marker.getAttribute(IMarker.CHAR_END, -1));
 
 					return annotation;
 				} catch (final CoreException e) {
@@ -161,6 +167,46 @@ public class SonarLintProcessor {
 				}
 			}).filter(Objects::nonNull);
 		}).toList();
+	}
+
+	private static String getSeverity(final Map<String, Object> attributes) {
+		// Standard Experience uses IssueSeverity; MQR mode uses the highest impact severity.
+		var severity = attributes.get(MarkerUtils.SONAR_MARKER_ISSUE_SEVERITY_ATTR);
+		if (severity == null) {
+			severity = attributes.get(MarkerUtils.SONAR_MARKER_ISSUE_HIGHEST_IMPACT_ATTR);
+		}
+		if (severity == null) {
+			severity = attributes.get(IMarker.PRIORITY);
+		}
+		return stringValue(severity);
+	}
+
+	private static String getKind(final Map<String, Object> attributes) {
+		// Standard Experience exposes the issue type; MQR mode exposes the Clean Code attribute.
+		var kind = attributes.get(MarkerUtils.SONAR_MARKER_ISSUE_TYPE_ATTR);
+		if (kind == null) {
+			kind = attributes.get(MarkerUtils.SONAR_MARKER_ISSUE_ATTRIBUTE_ATTR);
+		}
+		return stringValue(kind);
+	}
+
+	private static long getCreationDate(final IMarker marker, final Map<String, Object> attributes) throws CoreException {
+		final var creationDate = attributes.get(MarkerUtils.SONAR_MARKER_CREATION_DATE_ATTR);
+		if (creationDate instanceof final Number number) {
+			return number.longValue();
+		}
+		if (creationDate instanceof final String string) {
+			try {
+				return Long.parseLong(string);
+			} catch (final NumberFormatException ignored) {
+				// Fall back to the Eclipse marker timestamp.
+			}
+		}
+		return marker.getCreationTime();
+	}
+
+	private static String stringValue(final Object value) {
+		return value == null ? null : value.toString();
 	}
 
 	private static void deleteOldMarkers(final TypeGraph pm) {
@@ -175,16 +221,15 @@ public class SonarLintProcessor {
 
 	private static TAnnotatable getAnnotatedPMElement(final IMarker marker, final TypeGraph pm, final ASTNode ast)
 			throws CoreException {
-		final var attributes2 = marker.getAttributes();
-		final var start = (int) attributes2.get("charStart");
-		final var end = (int) attributes2.get("charEnd");
+		final var start = marker.getAttribute(IMarker.CHAR_START, 0);
+		final var end = marker.getAttribute(IMarker.CHAR_END, start);
 
-		final var finder = new NodeFinder(ast, start, end - start);
+		final var finder = new NodeFinder(ast, start, Math.max(0, end - start));
 		var node = finder.getCoveredNode();
 		if (node == null) {
 			node = finder.getCoveringNode();
 		}
-		while (!(node instanceof BodyDeclaration) && !(node instanceof TypeDeclaration)
+		while (node != null && !(node instanceof BodyDeclaration) && !(node instanceof TypeDeclaration)
 				&& !(node instanceof CompilationUnit)) {
 			node = node.getParent();
 		}
@@ -196,8 +241,9 @@ public class SonarLintProcessor {
 			base = JavaASTUtil.getTFieldDefinition(field, pm);
 		} else if (node instanceof final AbstractTypeDeclaration type) {
 			base = JavaASTUtil.getType(type, pm);
-		} else if (node instanceof final CompilationUnit cu) {
-			base = JavaASTUtil.getType((TypeDeclaration) cu.types().get(0), pm);
+		} else if (node instanceof final CompilationUnit cu && !cu.types().isEmpty()
+				&& cu.types().get(0) instanceof final TypeDeclaration type) {
+			base = JavaASTUtil.getType(type, pm);
 		} else if (node instanceof final EnumConstantDeclaration constant) {
 			final var type = JavaASTUtil.getType((AbstractTypeDeclaration) constant.getParent(), pm);
 			final var result = type.getSignature().stream().filter(TFieldSignature.class::isInstance).filter(

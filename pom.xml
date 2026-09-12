@@ -298,12 +298,12 @@
 		<repository>
 			<id>Eclipse</id>
 			<layout>p2</layout>
-			<url>https://download.eclipse.org/releases/2022-03</url>
+			<url>https://download.eclipse.org/releases/2025-09</url>
 		</repository>
 		<repository>
-                        <id>Sonarlint</id>
+                        <id>SonarQube for IDE</id>
                         <layout>p2</layout>
-                        <url>https://binaries.sonarsource.com/SonarLint-for-Eclipse/releases/7.1.0.39158/</url>
+                        <url>https://binaries.sonarsource.com/SonarLint-for-Eclipse/releases/12.7.0.84850/</url>
                 </repository>
 		<repository>
 			<id>eMoflon TIE</id>
@@ -318,7 +318,7 @@
                 <repository>
                         <id>CARiSMA</id>
                         <layout>p2</layout>
-                        <url>https://rgse.uni-koblenz.de/carisma/updatesite/</url>
+                        <url>https://carisma-tool.github.io/carisma-tool</url>
                 </repository>
 		<repository>
 			<id>plantuml</id>
